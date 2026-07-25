@@ -12,16 +12,20 @@
    ===================================================================== */
 
 /* Self-hosted Pretendard (body / UI) + Paperlogy (optional display). */
-/* ★ 폰트 실물은 상위 폴더(design-core/fonts/)에 있어 경로를 ../fonts/로 교정함. */
-@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 100; font-display: swap; src: url("../fonts/Pretendard-Thin.ttf") format("truetype"); }
-@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 200; font-display: swap; src: url("../fonts/Pretendard-ExtraLight.ttf") format("truetype"); }
-@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 300; font-display: swap; src: url("../fonts/Pretendard-Light.ttf") format("truetype"); }
-@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/Pretendard-Regular.ttf") format("truetype"); }
-@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/Pretendard-Medium.ttf") format("truetype"); }
-@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/Pretendard-SemiBold.ttf") format("truetype"); }
-@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/Pretendard-Bold.ttf") format("truetype"); }
-@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/Pretendard-ExtraBold.ttf") format("truetype"); }
-@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 900; font-display: swap; src: url("../fonts/Pretendard-Black.ttf") format("truetype"); }
+/* ★ 2026-07-25 실측 수정: assets/fonts/ 안 Pretendard 실물은 전부 .otf인데
+   src가 .ttf를 요구해 전부 404(로컬 ERR_FILE_NOT_FOUND / 배포본 HTTP 404) →
+   Pretendard 미로딩, 시스템 폴백(Helvetica Neue 등)으로 렌더링되던 버그 수정.
+   확장자를 실제 파일(.otf)에 맞추고 format도 opentype로 정정. Paperlogy는
+   실물이 .ttf 그대로라 변경 없음(Glob 실측 확인, assets/fonts/ 9개 전부 .ttf). */
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 100; font-display: swap; src: url("../fonts/Pretendard-Thin.otf") format("opentype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 200; font-display: swap; src: url("../fonts/Pretendard-ExtraLight.otf") format("opentype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 300; font-display: swap; src: url("../fonts/Pretendard-Light.otf") format("opentype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/Pretendard-Regular.otf") format("opentype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/Pretendard-Medium.otf") format("opentype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/Pretendard-SemiBold.otf") format("opentype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/Pretendard-Bold.otf") format("opentype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/Pretendard-ExtraBold.otf") format("opentype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 900; font-display: swap; src: url("../fonts/Pretendard-Black.otf") format("opentype"); }
 
 @font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 100; font-display: swap; src: url("../fonts/Paperlogy-1Thin.ttf") format("truetype"); }
 @font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 200; font-display: swap; src: url("../fonts/Paperlogy-2ExtraLight.ttf") format("truetype"); }

@@ -544,18 +544,33 @@ body.dk {
   font-size: 30px;
   line-height: 1.25;
   font-weight: 700;
+  /* ★2026-07-25: 태그 종류(h1/h2)와 무관하게 항상 홈 기준(-0.3px)으로 통일.
+     이전엔 이 값을 안 정해서 tokens-domestic.css의 .dk h1(-0.5px)/.dk h2(-0.3px)
+     전역값을 그대로 물려받아 홈(h2)과 하위 5페이지(h1)가 서로 다르게 렌더링됐다. */
+  letter-spacing: var(--dk-track-snug);
   word-break: keep-all;
 }
-.dk-bg-video-content p {
+/* ★2026-07-25 수정: 기존 `.dk-bg-video-content p`(범용 p 선택자, specificity 0,1,1)가
+   `.dk-breadcrumb`(0,1,0)·`.lead`(0,1,0)보다 세서 하위 5페이지 브레드크럼·리드문단까지
+   20px/300/흰색으로 덮어써 위계가 깨졌던 버그 수정. 홈 히어로의 무클래스 리드문단
+   전용 클래스(.dk-hero-lead-plain)를 index.html에 부여하고, 이 규칙은 그 클래스만
+   겨냥하도록 좁혔다. */
+.dk-bg-video-content .dk-hero-lead-plain {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
   line-height: 1.4;
   font-weight: 300;
+  color: #fff;
   word-break: keep-all;
 }
-.dk-bg-video-section .dk-bg-video-content h2,
-.dk-bg-video-section .dk-bg-video-content p {
+.dk-bg-video-section .dk-bg-video-content h2 {
+  color: #fff;
+}
+/* 하위 5페이지 히어로 안의 .lead는 어두운 배경 위라 기본 .dk .lead의 회색(#555)
+   대신 흰색으로 덮어써야 한다(글자·배경 안 보임 방지). 다른 값(18px/400/
+   Pretendard)은 tokens-domestic.css의 .dk .lead 정의를 그대로 상속한다. */
+.dk-bg-video-content .lead {
   color: #fff;
 }
 @media (max-width: 768px) {
@@ -581,8 +596,13 @@ body.dk {
    h2 30px/700)를 재사용함 — 하위 전용 배너가 따로 없음. 그래서 하위 페이지도
    .dk-bg-video-section/.dk-bg-video-content를 그대로 재사용(구조 통일), 실물 사진/영상은
    아직 없어 코발트 그라디언트 placeholder 유지 + breadcrumb만 추가로 얹는다. */
-.dk-breadcrumb { font-size: 13px; color: rgba(255,255,255,0.55); margin: 0 0 18px; letter-spacing: .2px; }
-.dk-breadcrumb span { color: #fff; font-weight: 600; }
+/* ★2026-07-25 재수정(1차 수정 검증 중 재발견): `.dk-breadcrumb`(class 단독, specificity
+   0,1,0)가 tokens-domestic.css의 `.dk p`(0,1,1)에 여전히 밀려 16px/#555555(본문 회색)로
+   렌더링되고 있었다(`.dk-bg-video-content p`를 좁힌 것만으로는 불충분). 실제 마크업
+   중첩 그대로 `.dk-bg-video-content .dk-breadcrumb`로 스코프해 specificity를 0,2,0으로
+   올려 `.dk p`를 이기도록 고쳤다. */
+.dk-bg-video-content .dk-breadcrumb { font-size: 13px; color: rgba(255,255,255,0.55); margin: 0 0 18px; letter-spacing: .2px; }
+.dk-bg-video-content .dk-breadcrumb span { color: #fff; font-weight: 600; }
 .dk-bg-video-content .dk-label { color: var(--dk-accent-red-light); margin-bottom: 14px; }
 .dk-bg-video-content h1 {
   margin: 0 0 20px;
@@ -591,6 +611,7 @@ body.dk {
   line-height: 1.25;
   font-weight: 700;
   color: #fff;
+  letter-spacing: var(--dk-track-snug); /* ★2026-07-25: 홈 h2와 통일(-0.3px) */
   word-break: keep-all;
 }
 @media (max-width: 768px) { .dk-bg-video-content h1 { font-size: 22px; } }
