@@ -245,14 +245,18 @@ body.dk {
    푸터 — 신규 작성(아임웹 의존 없음). 사업자정보는
    clients/dakgong/자료/2026-07-23_국내캠프_푸터정보...md 정본 값 그대로.
    ===================================================================== */
-.site-footer { background: #1a1a1a; color: rgba(255,255,255,0.55); padding: 44px 0 36px; font-size: 13px; line-height: 1.9; }
-.site-footer a { color: rgba(255,255,255,0.78); text-decoration: none; }
+/* ★2026-07-25 실측 정밀화(www.dakgongcamp.com/26 footer): bg #292929(구 #1a1a1a는
+   근사값이었음), 약관/SNS/사업자정보 텍스트 전부 #eee, copyright만 #828282/13px/200.
+   ⚠️ 구조 자체(전화·카카오·이메일 직통 행 유무, 약관 링크 유무)는 이번 지시 범위를
+   넘는 발견이라 색상만 정밀화하고 마크업은 그대로 둠 — 보고서 참조. */
+.site-footer { background: #292929; color: #eee; padding: 44px 0 36px; font-size: 13px; line-height: 1.9; }
+.site-footer a { color: #eee; text-decoration: none; }
 .site-footer a:hover { color: #fff; }
-.site-footer__contact { font-size: 14px; color: rgba(255,255,255,0.9); margin: 0 0 16px; }
+.site-footer__contact { font-size: 14px; color: #eee; margin: 0 0 16px; }
 .site-footer__social { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 20px; }
 .site-footer hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 20px 0; }
-.site-footer__biz { margin: 0; }
-.site-footer__copy { margin-top: 16px; color: rgba(255,255,255,0.32); }
+.site-footer__biz { margin: 0; font-size: 12px; color: #eee; }
+.site-footer__copy { margin-top: 16px; color: #828282; font-size: 13px; font-weight: 200; }
 
 /* ── 정체성 띠 (무한 롤링 배너) ── */
 .dk-idband-wrap {
@@ -672,7 +676,11 @@ table.dk-table tbody tr:nth-child(even) td, table.dk-table tbody tr:nth-child(ev
 /* 관리시스템 5축 — 흰/연회색 교차 섹션 */
 .dk-axis-sec:nth-of-type(even) { background: var(--dk-surface-card); }
 
-/* ── CONTACT 페이지 — 직통 연락 카드 + 문의 폼 (2026-07-25 신규) ── */
+/* ── CONTACT 페이지 (2026-07-25 회장 6차 지적 반영 — 필핀 실사이트(/26) 그대로 재현)
+   필핀 원본 실측(Playwright, www.dakgongcamp.com/26): 회색(#F9F9F9) 히어로에 제목 한 줄만,
+   전화/카카오/이메일 카드 없음, 폼 하나(개인정보동의 체크박스+이름+연락처+내용+제출)뿐.
+   기존 .dk-contact-direct(전화/카카오/이메일 3카드)는 원본에 없는 요소라 마크업에서 제거.
+   규칙은 다른 곳에서 참조할 수 있어 남겨둔다(미사용). ── */
 .dk-contact-direct { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: clamp(40px,6vw,56px); }
 .dk-contact-direct a {
   display: flex; flex-direction: column; gap: 6px;
@@ -685,25 +693,57 @@ table.dk-table tbody tr:nth-child(even) td, table.dk-table tbody tr:nth-child(ev
 .dk-contact-direct .k { font-size: 12.5px; font-weight: 700; letter-spacing: .5px; color: var(--dk-accent-red); }
 .dk-contact-direct .v { font-size: 16px; font-weight: 700; color: var(--dk-ink); }
 
+/* CONTACT 전용 회색 히어로 — 실측: bg #F9F9F9, 높이 175px(헤더 70px 아래), 좌측정렬,
+   제목만(부제 없음), Paperlogy 800 36px 잉크색. 다른 페이지의 .dk-bg-video-section
+   (영상배경 600px 코발트그라디언트)과 완전히 다른, 원본에도 별도로 존재하는 스타일. */
+.dk-contact-hero { background: #F9F9F9; padding: 60px 0; }
+.dk-contact-hero h1 {
+  margin: 0; font-family: 'Paperlogy', sans-serif; font-weight: 800; font-size: 36px;
+  color: var(--dk-ink); letter-spacing: var(--dk-track-snug);
+}
+@media (max-width: 768px) {
+  .dk-contact-hero { padding: 40px 0; }
+  .dk-contact-hero h1 { font-size: 26px; }
+}
+
+/* 폼 위 안내 — 원본은 센터정렬 제목(36px/700)+회색 부제(18px/#555), 에어브로우 라벨 없음 */
+.dk-contact-formhead { text-align: center; margin-bottom: clamp(32px,5vw,48px); }
+.dk-contact-formhead .lead { margin-top: 14px; }
+
+/* 개인정보 수집·이용 동의 — 원본에 있는 유일한 부가 요소(스크롤 고지문+체크박스) */
+.dk-consent-box {
+  max-height: 140px; overflow-y: auto; font-size: 12.5px; line-height: 1.7;
+  color: var(--dk-fg-3); background: var(--dk-surface-card);
+  border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-sm);
+  padding: 14px 16px; margin-top: 8px;
+}
+.dk-consent-check { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--dk-ink); font-weight: 400; margin-top: 10px; cursor: pointer; }
+.dk-consent-check input { width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--dk-accent-red); }
+
 .dk-form-wrap { max-width: 640px; margin: 0 auto; }
 .dk-form { display: flex; flex-direction: column; gap: 22px; }
 .dk-form-row { display: flex; flex-direction: column; gap: 8px; }
 .dk-form-row label { font-size: 14px; font-weight: 700; color: var(--dk-ink); }
 .dk-form-row .req { color: var(--dk-accent-red); margin-left: 2px; }
-.dk-form-row input,
+.dk-form-row input:not([type="checkbox"]),
 .dk-form-row textarea {
   font: inherit; font-size: 15px; padding: 13px 15px; width: 100%;
   border: 1.4px solid var(--dk-hairline); border-radius: var(--dk-radius-sm);
   background: #fff; color: var(--dk-ink); box-sizing: border-box;
 }
+/* ★버그수정: 위 width:100% 규칙이 체크박스에도 걸려 개인정보동의 체크박스가
+   행 전체로 늘어나 라벨 텍스트가 오른쪽 끝으로 밀려나던 문제 — checkbox 제외로 해결. */
+.dk-form-row label.dk-consent-check { font-weight: 400; display: flex; }
 .dk-form-row input:focus,
 .dk-form-row textarea:focus { outline: none; border-color: var(--dk-accent-red); }
 .dk-form-row textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
 .dk-form-honeypot { position: absolute; left: -9999px; top: -9999px; }
+/* ★2026-07-25: 원본 실측(www.dakgongcamp.com/26 제출하기 버튼) = 진한 회색(#363636)
+   +흰글자+작은 사이즈(12px/700)+각진 라운드(2px). 레드 강조 버튼은 원본에 없는 임의 추가였음. */
 .dk-form-submit {
   align-self: flex-start; border: none; cursor: pointer;
-  background: var(--dk-accent-red); color: #fff; padding: 15px 34px;
-  border-radius: var(--dk-radius-sm); font-size: 15.5px; font-weight: 700;
+  background: #363636; color: #fff; padding: 12px 26px;
+  border-radius: 2px; font-size: 13px; font-weight: 700;
   transition: opacity var(--dk-dur-fast) var(--dk-ease-out);
 }
 .dk-form-submit:hover { opacity: 0.88; }
