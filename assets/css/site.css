@@ -252,8 +252,15 @@ body.dk {
 .site-footer { background: #292929; color: #eee; padding: 44px 0 36px; font-size: 13px; line-height: 1.9; }
 .site-footer a { color: #eee; text-decoration: none; }
 .site-footer a:hover { color: #fff; }
+/* ★2026-07-25: 필핀 원본 구조 대조 2건 반영 — 약관 링크 행 + SNS 아이콘.
+   근거: clients/dakgong/imweb/_reference/live-site-header-footer-extract_2026-07-25.md
+   약관 실제 URL 미확인(2026-07-23 자료 34행) → href="#" placeholder. */
+.site-footer__legal { font-size: 12px; color: #eee; margin: 0 0 14px; }
+.site-footer__legal span { margin: 0 8px; opacity: .45; }
 .site-footer__contact { font-size: 14px; color: #eee; margin: 0 0 16px; }
 .site-footer__social { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 20px; }
+.site-footer__social a { display: inline-flex; align-items: center; gap: 6px; }
+.site-footer__icon { width: 16px; height: 16px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .site-footer hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 20px 0; }
 .site-footer__biz { margin: 0; font-size: 12px; color: #eee; }
 .site-footer__copy { margin-top: 16px; color: #828282; font-size: 13px; font-weight: 200; }
