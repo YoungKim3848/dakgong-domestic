@@ -1,0 +1,382 @@
+/* =====================================================================
+   DAKGONG CAMP — Design Tokens (국내캠프 파생본 / DOMESTIC)
+   ---------------------------------------------------------------------
+   이 파일은 필핀(필리핀캠프) tokens.css의 국내캠프 파생본이다.
+   accent-red 계열 토큰명은 그대로 유지하되(--dk-accent-red 등),
+   실제 색은 코발트 블루(B안 #0f52c9)다.
+   근거 = domestic-blue/PALETTE.md B안(코발트) · WCAG 명도대비 계산 완료.
+   같은 것 = 그 외 전부(잉크·본문·다크섹션·캔버스·폭 1280·타이포·간격·radius·motion).
+   다른 것 = 포인트 컬러 4색뿐(아래 표 참조).
+   상태 = DRAFT (고객 미승인, 회장 추천 B안 기준 복제본).
+   ★ 토큰 이름을 바꾸지 말 것 — 필핀 컴포넌트/페이지 재사용 호환을 위해 이름 고정.
+   ===================================================================== */
+
+/* Self-hosted Pretendard (body / UI) + Paperlogy (optional display). */
+/* ★ 폰트 실물은 상위 폴더(design-core/fonts/)에 있어 경로를 ../fonts/로 교정함. */
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 100; font-display: swap; src: url("../fonts/Pretendard-Thin.ttf") format("truetype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 200; font-display: swap; src: url("../fonts/Pretendard-ExtraLight.ttf") format("truetype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 300; font-display: swap; src: url("../fonts/Pretendard-Light.ttf") format("truetype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/Pretendard-Regular.ttf") format("truetype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/Pretendard-Medium.ttf") format("truetype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/Pretendard-SemiBold.ttf") format("truetype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/Pretendard-Bold.ttf") format("truetype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/Pretendard-ExtraBold.ttf") format("truetype"); }
+@font-face { font-family: "Pretendard"; font-style: normal; font-weight: 900; font-display: swap; src: url("../fonts/Pretendard-Black.ttf") format("truetype"); }
+
+@font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 100; font-display: swap; src: url("../fonts/Paperlogy-1Thin.ttf") format("truetype"); }
+@font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 200; font-display: swap; src: url("../fonts/Paperlogy-2ExtraLight.ttf") format("truetype"); }
+@font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 300; font-display: swap; src: url("../fonts/Paperlogy-3Light.ttf") format("truetype"); }
+@font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/Paperlogy-4Regular.ttf") format("truetype"); }
+@font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/Paperlogy-5Medium.ttf") format("truetype"); }
+@font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/Paperlogy-6SemiBold.ttf") format("truetype"); }
+@font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/Paperlogy-7Bold.ttf") format("truetype"); }
+@font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/Paperlogy-8ExtraBold.ttf") format("truetype"); }
+@font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 900; font-display: swap; src: url("../fonts/Paperlogy-9Black.ttf") format("truetype"); }
+
+:root {
+  /* ----- Brand & accent --------------------------------------------- */
+  --dk-primary:           #ffffff;   /* the canvas — trust & clarity */
+  --dk-ink:               #1a1a1a;   /* default headline / body color */
+  --dk-on-primary:        #ffffff;
+  --dk-on-dark:           #1a1a1a;
+  --dk-accent-red:        #0f52c9;   /* ★국내 파생: 코발트 B안 주력(필핀 #ab0000 치환). 이름은 유지 */
+  --dk-accent-red-2:      #2666d6;   /* ★국내 파생: 코발트 보조(필핀 #c1272d 치환) */
+  --dk-accent-red-light:  #5187e8;   /* ★국내 파생: 코발트 hover(필핀 #e74c5a 치환) */
+  --dk-accent-red-bg:     #dce8fc;   /* ★국내 파생: 연한 코발트 배경(필핀 #fbd7d7 치환) */
+  --dk-surface-dark:      #2a2a2a;   /* ★실측: 검정 섹션·카드. 순검정 #111 ❌ (변경 없음) */
+  --dk-accent-black:      #1a1a1a;
+
+  /* ----- Text scale (foreground) ------------------------------------ */
+  --dk-fg-1:              #1a1a1a;   /* primary text (= ink) */
+  --dk-fg-2:              #2a2a2a;   /* body-strong, leads */
+  --dk-fg-3:              #555555;   /* ★실측: 본문 회색. 구값 #4a4a4a ❌ */
+  --dk-fg-muted:          #808080;   /* captions, meta, breadcrumbs */
+
+  /* ----- Surfaces --------------------------------------------------- */
+  --dk-canvas:            #ffffff;
+  --dk-surface-soft:      #fafafa;   /* almost-white, for stat blocks */
+  --dk-surface-card:      #f5f5f5;   /* feature cards */
+  --dk-surface-elevated:  #efefef;   /* nested cards */
+
+  /* ----- Hairlines & dividers -------------------------------------- */
+  --dk-hairline:          #d0d0d0;   /* visible 1px rule */
+  --dk-hairline-soft:     #e8e8e8;   /* card edge / faint rule */
+
+  /* ----- Semantic --------------------------------------------------- */
+  --dk-warning:           #ff6b6b;
+  --dk-success:           #2ecc71;
+
+  /* ----- Type families --------------------------------------------- */
+  --dk-font-sans: "Pretendard", -apple-system, BlinkMacSystemFont,
+                  "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI",
+                  Roboto, sans-serif;
+  /* Paperlogy = optional display face for posters / hero / card-news headlines. */
+  --dk-font-display: "Paperlogy", "Pretendard", var(--dk-font-sans);
+
+  /* ----- Type scale (size / weight / line-height / tracking) ------- */
+  /* ★ 2026-06-29 메인페이지 실측값으로 확정. display-lg(섹션H2)=Paperlogy 36px, label=15px/400/no-uppercase */
+  --dk-display-xl:  700 48px/1.2  var(--dk-font-display);
+  --dk-display-lg:  700 36px/1.25 var(--dk-font-display); /* 섹션 H2. Paperlogy. 구값 40px ❌ */
+  --dk-display-md:  700 32px/1.3  var(--dk-font-display);
+  --dk-display-sm:  700 28px/1.35 var(--dk-font-display);
+  --dk-title-lg:    700 24px/1.4  var(--dk-font-sans);
+  --dk-title-md:    600 20px/1.5  var(--dk-font-sans);
+  --dk-title-sm:    600 18px/1.5  var(--dk-font-sans);
+  --dk-body-lg:     400 18px/1.6  var(--dk-font-sans);   /* 리드/서브텍스트. 구값 없었음 */
+  --dk-body-md:     400 16px/1.6  var(--dk-font-sans);
+  --dk-body-sm:     400 14px/1.6  var(--dk-font-sans);
+  --dk-caption:     400 12px/1.5  var(--dk-font-sans);
+  --dk-button:      700 14px/1.4  var(--dk-font-sans);
+  --dk-nav-link:    600 14px/1.5  var(--dk-font-sans);
+  --dk-label-red:   400 15px/1.4  var(--dk-font-sans);   /* 빨강 라벨. 대문자X. 구값 label-up(700/14px/uppercase) ❌ */
+  --dk-label-up:    700 14px/1.4  var(--dk-font-sans);   /* 일반 태그/뱃지용으로만 유지 */
+
+  --dk-track-tight: -0.5px;
+  --dk-track-snug:  -0.3px;
+  --dk-track-wide:   0.5px;
+  --dk-track-caption: 0.3px;
+
+  /* ----- Spacing (4px base) ---------------------------------------- */
+  --dk-space-xxs: 4px;
+  --dk-space-xs:  8px;
+  --dk-space-sm:  12px;
+  --dk-space-md:  16px;
+  --dk-space-lg:  24px;
+  --dk-space-xl:  32px;
+  --dk-space-xxl: 48px;
+  --dk-space-section: 64px;
+
+  /* ----- Radii ----------------------------------------------------- */
+  --dk-radius-none: 0;
+  --dk-radius-xs:   4px;
+  --dk-radius-sm:   8px;
+  --dk-radius-md:   12px;
+  --dk-radius-lg:   16px;
+  --dk-radius-full: 9999px;
+
+  /* ----- Layout ---------------------------------------------------- */
+  --dk-container: 1280px;    /* ★2026-07-14 코어 확정. 구값 1200px ❌ (아임웹 실측 폭과 불일치했음 → 실측 기준으로 통일. 국내캠프 등 비(非)아임웹 사이트도 이 값을 쓴다) */
+  --dk-touch-min: 44px;        /* WCAG AAA hit target */
+  --dk-divider-accent: 3px;    /* the signature red rule */
+
+  /* ----- Motion ---------------------------------------------------- */
+  --dk-ease-out:  cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dk-ease-in:   cubic-bezier(0.6, 0, 0.8, 0.2);
+  --dk-dur-fast:  120ms;
+  --dk-dur-base:  200ms;
+  --dk-dur-slow:  320ms;
+}
+
+/* =====================================================================
+   Semantic element styles — apply once, get the look for free.
+   Scope under .dk to avoid leaking into host pages. The UI kits and
+   preview cards all wrap their content in <body class="dk"> or a
+   <div class="dk"> ancestor.
+   ===================================================================== */
+
+.dk {
+  font: var(--dk-body-md);
+  color: var(--dk-fg-1);
+  background: var(--dk-canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  word-break: keep-all;   /* ★실측: 한글 줄바꿈. 모든 .dk 하위에 적용 */
+}
+
+.dk h1, .dk .h1 {
+  font: var(--dk-display-xl);
+  letter-spacing: var(--dk-track-tight);
+  color: var(--dk-ink);
+  margin: 0;
+}
+.dk h2, .dk .h2 {
+  font: var(--dk-display-lg);
+  letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink);
+  margin: 0;
+}
+.dk h3, .dk .h3 {
+  font: var(--dk-display-md);
+  color: var(--dk-ink);
+  margin: 0;
+}
+.dk h4, .dk .h4 {
+  font: var(--dk-display-sm);
+  color: var(--dk-ink);
+  margin: 0;
+}
+.dk h5, .dk .h5 {
+  font: var(--dk-title-lg);
+  color: var(--dk-ink);
+  margin: 0;
+}
+.dk h6, .dk .h6 {
+  font: var(--dk-title-md);
+  color: var(--dk-ink);
+  margin: 0;
+}
+
+.dk p {
+  font: var(--dk-body-md);
+  color: var(--dk-fg-3);
+  margin: 0;
+}
+/* ★실측(dakgongcamp.imweb.me): 리드·서브텍스트 = 18px / 400 / 1.7 / #555555 */
+.dk .lead {
+  font: var(--dk-body-lg);
+  line-height: 1.7;
+  color: var(--dk-fg-3);
+  word-break: keep-all;
+}
+/* ★실측: 빨강 라벨 = 15px / 400 / 대문자 아님 / 자간 normal / (국내파생은 코발트) */
+.dk .label-red {
+  font: var(--dk-label-red);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--dk-accent-red);
+}
+.dk .caption {
+  font: var(--dk-caption);
+  letter-spacing: var(--dk-track-caption);
+  color: var(--dk-fg-muted);
+}
+.dk .label-up {
+  font: var(--dk-label-up);
+  letter-spacing: var(--dk-track-wide);
+  text-transform: uppercase;
+  color: var(--dk-ink);
+}
+.dk .nav-link {
+  font: var(--dk-nav-link);
+  color: var(--dk-ink);
+  text-decoration: none;
+}
+.dk a {
+  color: var(--dk-accent-red);
+  text-decoration: none;
+  transition: color var(--dk-dur-fast) var(--dk-ease-out);
+}
+.dk a:hover {
+  color: var(--dk-accent-red-light);
+}
+
+/* ----- Buttons ------------------------------------------------------ */
+.dk .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--dk-space-xs);
+  height: var(--dk-touch-min);
+  padding: 12px 24px;
+  border-radius: var(--dk-radius-md);
+  font: var(--dk-button);
+  letter-spacing: var(--dk-track-wide);
+  cursor: pointer;
+  border: none;
+  transition: background var(--dk-dur-fast) var(--dk-ease-out),
+              color var(--dk-dur-fast) var(--dk-ease-out),
+              transform var(--dk-dur-fast) var(--dk-ease-out);
+  user-select: none;
+}
+.dk .btn:active { transform: scale(0.98); }
+
+.dk .btn-primary {
+  background: var(--dk-accent-red);
+  color: var(--dk-on-primary);
+}
+.dk .btn-primary:hover { background: var(--dk-accent-red-light); }
+
+.dk .btn-primary-outline {
+  background: transparent;
+  color: var(--dk-accent-red);
+  border: 2px solid var(--dk-accent-red);
+  padding: 10px 22px; /* compensate for border */
+}
+.dk .btn-primary-outline:hover {
+  background: var(--dk-accent-red);
+  color: var(--dk-on-primary);
+}
+
+.dk .btn-secondary {
+  background: var(--dk-surface-card);
+  color: var(--dk-ink);
+}
+.dk .btn-secondary:hover { background: var(--dk-surface-elevated); }
+
+.dk .btn-icon {
+  width: var(--dk-touch-min);
+  height: var(--dk-touch-min);
+  padding: 0;
+  border-radius: var(--dk-radius-full);
+  background: var(--dk-surface-card);
+  color: var(--dk-ink);
+}
+.dk .btn-icon:hover { background: var(--dk-surface-elevated); }
+
+/* ----- Cards & surfaces -------------------------------------------- */
+.dk .card {
+  background: var(--dk-surface-card);
+  border-radius: var(--dk-radius-sm);
+  padding: var(--dk-space-lg);
+}
+.dk .card-elevated {
+  background: var(--dk-surface-elevated);
+  border-radius: var(--dk-radius-sm);
+  padding: var(--dk-space-lg);
+}
+.dk .card-achievement {
+  background: var(--dk-primary);
+  border: 2px solid var(--dk-accent-red);
+  border-radius: var(--dk-radius-md);
+  padding: var(--dk-space-lg);
+}
+.dk .stat-block {
+  background: var(--dk-surface-soft);
+  border-radius: var(--dk-radius-sm);
+  padding: var(--dk-space-lg);
+}
+
+/* ----- Section header (red band) ----------------------------------- */
+.dk .section-header {
+  background: var(--dk-accent-red);
+  color: var(--dk-on-primary);
+  padding: var(--dk-space-xl) var(--dk-space-lg);
+  border-radius: 0;
+}
+.dk .section-header h2,
+.dk .section-header h3 { color: var(--dk-on-primary); }
+
+/* ----- Dividers ---------------------------------------------------- */
+.dk .divider-accent {
+  height: var(--dk-divider-accent);
+  background: var(--dk-accent-red);
+  border: 0;
+  width: 48px;
+}
+.dk .divider-hair {
+  height: 1px;
+  background: var(--dk-hairline);
+  border: 0;
+}
+
+/* ----- Tag / badge -------------------------------------------------- */
+.dk .tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font: var(--dk-button);
+  letter-spacing: var(--dk-track-wide);
+  text-transform: uppercase;
+  color: var(--dk-accent-red);
+  background: transparent;
+  border: 1.5px solid var(--dk-accent-red);
+  border-radius: var(--dk-radius-xs);
+}
+.dk .tag-filled {
+  color: var(--dk-on-primary);
+  background: var(--dk-accent-red);
+  border-color: var(--dk-accent-red);
+}
+.dk .tag-neutral {
+  color: var(--dk-fg-3);
+  border-color: var(--dk-hairline);
+}
+
+/* ----- Form inputs ------------------------------------------------- */
+.dk .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.dk .field-label {
+  font: var(--dk-body-sm);
+  font-weight: 600;
+  color: var(--dk-fg-2);
+}
+.dk .input,
+.dk .textarea,
+.dk .select {
+  height: var(--dk-touch-min);
+  padding: 0 var(--dk-space-md);
+  font: var(--dk-body-md);
+  color: var(--dk-ink);
+  background: var(--dk-canvas);
+  border: 1.5px solid var(--dk-hairline);
+  border-radius: var(--dk-radius-sm);
+  transition: border-color var(--dk-dur-fast) var(--dk-ease-out);
+}
+.dk .textarea { height: auto; padding: 12px var(--dk-space-md); resize: vertical; min-height: 96px; }
+.dk .input:focus,
+.dk .textarea:focus,
+.dk .select:focus {
+  outline: none;
+  border-color: var(--dk-accent-red);
+}
+.dk .input::placeholder,
+.dk .textarea::placeholder { color: var(--dk-fg-muted); }
+
+/* ----- Logo lockup helper ------------------------------------------ */
+.dk .logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dk-space-sm);
+}
