@@ -23,6 +23,18 @@ body.dk {
 }
 
 .dk-wrap { max-width: var(--dk-container); margin: 0 auto; padding: 0 clamp(20px,5vw,48px); }
+/* ★2026-07-25 회장 4차 지적 재확정 — 히어로(.dk-bg-video-content, max-width 1280px,
+   padding 0)와 본문(.dk-wrap, 동일 max-width 1280px)의 폭이 안 맞는 원인 실측:
+   clamp(20px,5vw,48px)는 5vw가 960px 뷰포트부터 48px 상한에 걸려 "고정 48px"이
+   되어버려서, 뷰포트가 1280px 이상인 데스크톱에서도 본문이 좌우 48px씩(총 96px)
+   더 좁게 나온다. 뷰포트가 1280px보다 좁을 때(태블릿 이하)는 .dk-wrap의 실제
+   박스폭이 뷰포트폭 그대로라 이 여백이 화면 끝 밀착 방지용으로 계속 필요하다.
+   그래서 뷰포트가 1280px에 도달해 컨테이너가 max-width로 꽉 찬 순간부터만
+   패딩을 0으로 만들어 히어로와 정확히 같은 1280px 박스가 되게 한다(모바일 여백은
+   그대로 보존). */
+@media (min-width: 1280px) {
+  .dk-wrap, .dk-pt-in { padding: 0; }
+}
 .dk-sec  { padding: clamp(56px,8vw,96px) 0; }
 
 .dk-label {
