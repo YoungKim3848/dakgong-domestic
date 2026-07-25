@@ -42,4 +42,13 @@
       if (li) li.classList.add('is-active');
     }
   }
+
+  // 스크롤 고정 헤더 — position:sticky는 CSS가 처리, 여기서는 스크롤량에 따라
+  // .is-scrolled만 토글해 옅은 그림자를 얹는다(맨 위에서는 그림자 없음).
+  var onScroll = function () {
+    if (window.scrollY > 8) header.classList.add('is-scrolled');
+    else header.classList.remove('is-scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 })();

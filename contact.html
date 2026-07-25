@@ -50,8 +50,9 @@
 <!-- ══════════════════════════════════════════
      페이지 인트로 — 카피 출처: index.html 문의 CTA 섹션 카피 재사용(회장 지시)
 ══════════════════════════════════════════ -->
-<section class="dk-pagehero">
-  <div class="dk-wrap">
+<section class="dk-bg-video-section">
+  <div class="dk-bg-video-placeholder"></div>
+  <div class="dk-bg-video-content">
     <p class="dk-breadcrumb">HOME / <span>CONTACT</span></p>
     <span class="dk-label">CONTACT | 문의하기</span>
     <h1>실패 없는 입시 루틴의 시작,<br>닥공캠프 한국 스파르타 캠프가 함께합니다</h1>
@@ -64,7 +65,7 @@
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
-    <div class="dk-contact-direct">
+    <div class="dk-contact-direct" data-reveal="stagger">
       <a href="tel:07074631391">
         <span class="k">전화 문의</span>
         <span class="v">070-7463-1391</span>
@@ -84,7 +85,7 @@
          제출 성공 시 action의 성공 쿼리(?submitted=true)로 이 페이지에 되돌아오고,
          아래 인라인 스크립트가 그 쿼리를 읽어 성공 안내를 보여준다(별도 thank-you 페이지 없음).
     ══════════════════════════════════════════ -->
-    <div class="dk-form-wrap">
+    <div class="dk-form-wrap" data-reveal>
       <div class="dk-callout dk-form-success" id="contact-success">
         <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
         <p>문의가 정상적으로 접수되었습니다. 확인 후 순서대로 연락드리겠습니다.</p>
@@ -143,6 +144,7 @@
 </footer>
 
 <script src="assets/js/nav.js"></script>
+<script src="assets/js/reveal.js"></script>
 <script>
   (function () {
     var params = new URLSearchParams(location.search);
