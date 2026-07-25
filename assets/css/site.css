@@ -394,16 +394,29 @@ body.dk {
   align-items: center; margin-top: clamp(40px,6vw,72px);
 }
 .dk-bi-row--rev .dk-bi-media { order: 2; }
+/* ── 미디어 슬롯 공용 배경 (2026-07-25 근본수정)
+   전: flat var(--dk-surface-soft)(#fafafa, 흰 배경 섹션 위에서 거의 안 보임) →
+       "빈 회색 박스/버그"로 오인되는 원인. 실물 사진·영상은 여전히 넣지 않되(원칙 유지),
+       "여기 콘텐츠 들어올 자리"임이 분명하도록 은은한 코발트 톤 그리드 패턴 + 그라디언트로 교체.
+   .dk-bi-slot(브랜드 인트로 3개)/.dk-vi-card(인터뷰 4개)/.dk-tr-card(후기 6개)/.dk-pt-vis(POINT 6개)
+   전부 이 배경 하나로 통일 — 페이지별 담당자가 실물 넣을 땐 이 background만 지우면 됨. */
+.dk-bi-slot, .dk-vi-card, .dk-tr-card, .dk-pt-vis {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(20,42,77,0.10) 1.4px, transparent 0),
+    linear-gradient(155deg, #f5f8fc 0%, #eef2f8 55%, #e9eef5 100%);
+  background-size: 18px 18px, 100% 100%;
+  background-position: 0 0, 0 0;
+}
 .dk-bi-slot {
   position: relative; aspect-ratio: 4/3; border-radius: var(--dk-radius-lg);
-  border: 2px dashed var(--dk-hairline); background: var(--dk-surface-soft);
+  border: 1.5px dashed #c3ccd8;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; gap: 10px; padding: 24px;
-  transition: border-color var(--dk-dur-base) var(--dk-ease-out);
+  transition: border-color var(--dk-dur-base) var(--dk-ease-out), box-shadow var(--dk-dur-base) var(--dk-ease-out);
 }
-.dk-bi-slot:hover { border-color: var(--dk-fg-muted); }
-.dk-bi-slot svg { width: 32px; height: 32px; stroke: var(--dk-fg-muted); stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.dk-bi-slot .tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--dk-fg-muted); border: 1px solid var(--dk-hairline); border-radius: var(--dk-radius-full); padding: 5px 12px; }
+.dk-bi-slot:hover { border-color: var(--dk-fg-muted); box-shadow: inset 0 0 0 1px rgba(20,42,77,0.06); }
+.dk-bi-slot svg { width: 32px; height: 32px; stroke: #5b6b85; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dk-bi-slot .tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: #5b6b85; border: 1px solid #c3ccd8; border-radius: var(--dk-radius-full); padding: 5px 12px; background: rgba(255,255,255,0.6); }
 .dk-bi-slot .spec { font-size: 12.5px; color: var(--dk-fg-muted); max-width: 260px; line-height: 1.6; margin: 0; }
 .dk-bi-st { font: var(--dk-display-sm); letter-spacing: var(--dk-track-snug); color: var(--dk-ink); margin: 0 0 14px; }
 .dk-bi-st em { color: var(--dk-accent-red); font-style: normal; }
@@ -431,15 +444,15 @@ body.dk {
 .dk-vi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
 .dk-vi-card {
   position: relative; aspect-ratio: 16/9; border-radius: var(--dk-radius-lg);
-  border: 2px dashed var(--dk-hairline); background: var(--dk-surface-soft);
+  border: 1.5px dashed #c3ccd8;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
 }
 .dk-vi-card { transition: transform var(--dk-dur-base) var(--dk-ease-out), border-color var(--dk-dur-base) var(--dk-ease-out); }
 .dk-vi-card:hover { transform: translateY(-4px); border-color: var(--dk-fg-muted); }
-.dk-vi-play { width: 52px; height: 52px; border-radius: 50%; background: rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center; transition: background var(--dk-dur-fast) var(--dk-ease-out); }
+.dk-vi-play { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.75); box-shadow: 0 1px 4px rgba(20,42,77,0.12); display: flex; align-items: center; justify-content: center; transition: background var(--dk-dur-fast) var(--dk-ease-out); }
 .dk-vi-card:hover .dk-vi-play { background: var(--dk-accent-red); }
 .dk-vi-card:hover .dk-vi-play svg { fill: #fff; }
-.dk-vi-play svg { width: 18px; height: 18px; fill: var(--dk-fg-muted); }
+.dk-vi-play svg { width: 18px; height: 18px; fill: #5b6b85; }
 .dk-vi-todo { font-size: 12.5px; color: var(--dk-fg-muted); text-align: center; padding: 0 20px; margin: 0; line-height: 1.6; }
 
 /* ── 텍스트 리뷰 ── */
@@ -447,13 +460,13 @@ body.dk {
 .dk-tr-track { display: flex; gap: 20px; padding: 0 clamp(20px,5vw,48px); width: max-content; }
 .dk-tr-card {
   flex: 0 0 260px; width: 260px; min-height: 200px;
-  border: 2px dashed var(--dk-hairline); border-radius: var(--dk-radius-lg);
-  background: var(--dk-surface-soft); display: flex; flex-direction: column;
+  border: 1.5px dashed #c3ccd8; border-radius: var(--dk-radius-lg);
+  display: flex; flex-direction: column;
   align-items: center; justify-content: center; text-align: center; gap: 10px; padding: 24px;
   transition: transform var(--dk-dur-base) var(--dk-ease-out), border-color var(--dk-dur-base) var(--dk-ease-out);
 }
 .dk-tr-card:hover { transform: translateY(-4px); border-color: var(--dk-fg-muted); }
-.dk-tr-card svg { width: 26px; height: 26px; stroke: var(--dk-fg-muted); stroke-width: 1.6; fill: none; }
+.dk-tr-card svg { width: 26px; height: 26px; stroke: #5b6b85; stroke-width: 1.6; fill: none; }
 .dk-tr-card p { font-size: 12.5px; color: var(--dk-fg-muted); line-height: 1.6; margin: 0; }
 @media (max-width: 480px) { .dk-tr-card { flex: 0 0 200px; width: 200px; } }
 
@@ -477,10 +490,11 @@ body.dk {
 }
 .dk-pt-link:hover { background: var(--dk-accent-red); color: #fff; border-color: var(--dk-accent-red); }
 .dk-pt-vis {
-  aspect-ratio: 4/3; border-radius: var(--dk-radius-lg); background: var(--dk-surface-elevated);
+  aspect-ratio: 4/3; border-radius: var(--dk-radius-lg);
+  border: 1.5px solid #e1e7f0;
   display: flex; align-items: center; justify-content: center;
 }
-.dk-pt-vis .num { font-family: var(--dk-font-display); font-size: 64px; font-weight: 800; color: var(--dk-accent-red-bg); }
+.dk-pt-vis .num { font-family: var(--dk-font-display); font-size: 64px; font-weight: 800; color: #c3cee2; }
 @media (max-width: 640px) {
   .dk-pt-in { grid-template-columns: 1fr; gap: 24px; }
   .dk-pt-item--rev .dk-pt-vis { order: 0; }
