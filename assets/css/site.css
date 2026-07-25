@@ -90,8 +90,17 @@ body.dk {
 .site-header.is-scrolled {
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);
 }
+/* ★2026-07-25 회장 1920px 실측 재확정 — 헤더는 본문(.dk-wrap, 1280px 박스)과
+   달리 뷰포트 기준 좌131px/우131px 여백의 거의 풀블리드 레이아웃이다(필핀
+   dakgongcamp.com 실측: 로고 시작 x=131, 메뉴그룹+MENU아이콘 끝 x=1789,
+   1920-1789=131 — 좌우 대칭). 그래서 헤더 안쪽은 .dk-wrap(1280 중앙정렬)을
+   쓰지 않고 자체 풀폭 padding을 쓴다. clamp 상한 131px = 6.823vw(1920 기준
+   131px과 정확히 일치하도록 역산한 값), 좁은 화면에서는 20px까지 줄어든다. */
 .site-header__inner {
   height: 70px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 clamp(20px, 6.823vw, 131px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -99,6 +108,16 @@ body.dk {
 }
 .site-logo { display: flex; align-items: center; height: 100%; }
 .site-logo img { display: block; height: 32px; width: auto; }
+
+/* 메뉴 링크 그룹 + MENU 아이콘 버튼을 하나의 우측 그룹으로 묶는다(필핀 원본은
+   nav 끝(1736)과 MENU 아이콘 시작(1751) 사이 15px 간격 — 그대로 재현).
+   묶지 않고 header__inner에 개별 flex item으로 두면 space-between이 셋을
+   고르게 벌려버려 "로고 / 메뉴 / 아이콘"이 3분할되는 오류가 난다. */
+.site-header__right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
 .site-nav__list {
   display: flex;
@@ -162,8 +181,14 @@ body.dk {
 }
 .site-nav__sub li a:hover { color: var(--dk-accent-red); background: var(--dk-surface-card); }
 
+/* ★2026-07-25: 필핀 원본은 데스크톱에서도 메뉴 링크 오른쪽에 MENU 아이콘 버튼이
+   상시 노출된다(모바일 전용이 아님). 그래서 이 버튼은 모든 폭에서 항상 보이게
+   display:flex 고정 — 예전엔 display:none 기본값 + 880px 이하에서만 flex였음
+   (그래서 우측 그룹이 데스크톱에서 짧게 끝나 "여백이 이상하다" 인상의 원인이었음).
+   데스크톱에서는 .site-nav가 고정 오버레이가 아니라 항상 보이는 인라인 상태라
+   클릭해도 열고닫을 대상이 없어 장식+보조 버튼으로만 동작한다(막대 X자 애니메이션만). */
 .site-nav__toggle {
-  display: none;
+  display: flex;
   width: 40px; height: 40px; border: none; background: transparent; cursor: pointer;
   flex-direction: column; align-items: center; justify-content: center; gap: 5px;
   flex-shrink: 0;

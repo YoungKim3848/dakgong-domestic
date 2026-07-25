@@ -21,32 +21,34 @@
      ⚠️ 이 블록을 고치면 6개 파일 전부 동일하게 고쳐야 한다(정적 사이트라 include 없음).
 ══════════════════════════════════════════ -->
 <header class="site-header" id="site-header">
-  <div class="site-header__inner dk-wrap">
+  <div class="site-header__inner">
     <a class="site-logo" href="index.html" aria-label="닥공캠프 국내 스파르타 캠프 홈으로 이동">
       <img src="assets/images/logo.png" alt="닥공캠프 | 국내 스파르타 캠프" width="180" height="28">
     </a>
 
-    <nav class="site-nav" id="site-nav" aria-label="주 메뉴">
-      <ul class="site-nav__list">
-        <li><a href="index.html">HOME</a></li>
-        <li class="has-sub">
-          <a href="curriculum.html">ABOUT CAMP</a>
-          <ul class="site-nav__sub">
-            <li><a href="curriculum.html">학습 시스템</a></li>
-            <li><a href="class-level.html">수준별 반 편성</a></li>
-            <li><a href="care-system.html">관리 시스템</a></li>
-            <li><a href="teachers.html">선생님·멘토</a></li>
-            <li><a href="facilities.html">생활환경·식단</a></li>
-          </ul>
-        </li>
-        <li><a href="contact.html">CONTACT</a></li>
-      </ul>
-    </nav>
+    <div class="site-header__right">
+      <nav class="site-nav" id="site-nav" aria-label="주 메뉴">
+        <ul class="site-nav__list">
+          <li><a href="index.html">HOME</a></li>
+          <li class="has-sub">
+            <a href="curriculum.html">ABOUT CAMP</a>
+            <ul class="site-nav__sub">
+              <li><a href="curriculum.html">학습 시스템</a></li>
+              <li><a href="class-level.html">수준별 반 편성</a></li>
+              <li><a href="care-system.html">관리 시스템</a></li>
+              <li><a href="teachers.html">선생님·멘토</a></li>
+              <li><a href="facilities.html">생활환경·식단</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
 
-    <button class="site-nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="sr-only">메뉴 열기/닫기</span>
-      <span class="site-nav__toggle-bar"></span>
-    </button>
+      <button class="site-nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">메뉴 열기/닫기</span>
+        <span class="site-nav__toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
 
