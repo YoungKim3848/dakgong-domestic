@@ -33,13 +33,33 @@
     });
   }
 
-  var here = location.pathname.split('/').pop() || 'index.html';
+  /* 경로 정규화 — Netlify Pretty URLs(대시보드 설정)가 배포 시 href를
+     "curriculum.html" → "/curriculum" 으로 자동 재작성해도(로컬 소스와
+     달라짐), 그리고 주소창 pathname이 "/curriculum" 또는 "/curriculum/"
+     또는 "/curriculum.html"이어도 전부 "curriculum"으로 맞춰 비교한다.
+     ★2026-07-25: 이 정규화 누락이 배포본에서 active 강조가 전혀 안 뜨던
+     근본 원인이었음(로컬 파일엔 href="curriculum.html", 배포본엔
+     href="/curriculum" — 정확 일치 비교라 항상 실패). */
+  function dkNormPath(p) {
+    if (!p) return 'index';
+    p = p.split('#')[0].split('?')[0];
+    var parts = p.split('/').filter(Boolean);
+    var last = parts.length ? parts[parts.length - 1] : '';
+    last = last.replace(/\.html$/i, '');
+    if (last === '') last = 'index';
+    return last.toLowerCase();
+  }
+  var here = dkNormPath(location.pathname);
   var allLinks = nav.querySelectorAll('a[href]');
   for (var k = 0; k < allLinks.length; k++) {
-    var href = allLinks[k].getAttribute('href').split('#')[0];
+    var href = dkNormPath(allLinks[k].getAttribute('href'));
     if (href && href === here) {
-      var li = allLinks[k].closest('li');
-      if (li) li.classList.add('is-active');
+      var el = allLinks[k].closest('li');
+      while (el) {
+        el.classList.add('is-active');
+        var parentLi = el.parentElement ? el.parentElement.closest('li') : null;
+        el = parentLi;
+      }
     }
   }
 
