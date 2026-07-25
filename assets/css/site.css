@@ -258,9 +258,15 @@ body.dk {
 .site-footer__legal { font-size: 12px; color: #eee; margin: 0 0 14px; }
 .site-footer__legal span { margin: 0 8px; opacity: .45; }
 .site-footer__contact { font-size: 14px; color: #eee; margin: 0 0 16px; }
-.site-footer__social { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 20px; }
-.site-footer__social a { display: inline-flex; align-items: center; gap: 6px; }
-.site-footer__icon { width: 16px; height: 16px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+/* ★2026-07-25(2차 실측): 필핀 실사이트 Playwright 재실측 결과로 SNS 아이콘 전면 교체.
+   실측 근거: 필핀 사이트는 아이콘폰트(Plipop-Social-Icons + FontAwesome)를 쓰며
+   순서=블로그·유튜브·인스타그램·카카오, 색상=#eee 단색, 텍스트 라벨 없음(sr-only만),
+   높이 20px 고정·너비는 글리프별 비율 자유(정사각 아님). 우리 쪽은 프라이빗 웹폰트를
+   그대로 박을 수 없어(라이선스 문제) 동일 형태를 손으로 그린 SVG로 재현. */
+.site-footer__social { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 20px; }
+.site-footer__social a { display: inline-flex; align-items: center; }
+.site-footer__icon { height: 20px; width: auto; flex: 0 0 auto; color: #eee; }
+.site-footer__social a:hover .site-footer__icon { color: #fff; }
 .site-footer hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 20px 0; }
 .site-footer__biz { margin: 0; font-size: 12px; color: #eee; }
 .site-footer__copy { margin-top: 16px; color: #828282; font-size: 13px; font-weight: 200; }
