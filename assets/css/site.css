@@ -538,6 +538,46 @@ table.dk-table tbody tr:nth-child(even) td, table.dk-table tbody tr:nth-child(ev
 /* 관리시스템 5축 — 흰/연회색 교차 섹션 */
 .dk-axis-sec:nth-of-type(even) { background: var(--dk-surface-card); }
 
+/* ── CONTACT 페이지 — 직통 연락 카드 + 문의 폼 (2026-07-25 신규) ── */
+.dk-contact-direct { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: clamp(40px,6vw,56px); }
+.dk-contact-direct a {
+  display: flex; flex-direction: column; gap: 6px;
+  background: var(--dk-surface-card); border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); padding: 22px 22px 24px;
+  text-decoration: none; color: var(--dk-ink);
+  transition: border-color var(--dk-dur-fast) var(--dk-ease-out);
+}
+.dk-contact-direct a:hover { border-color: var(--dk-accent-red); }
+.dk-contact-direct .k { font-size: 12.5px; font-weight: 700; letter-spacing: .5px; color: var(--dk-accent-red); }
+.dk-contact-direct .v { font-size: 16px; font-weight: 700; color: var(--dk-ink); }
+
+.dk-form-wrap { max-width: 640px; margin: 0 auto; }
+.dk-form { display: flex; flex-direction: column; gap: 22px; }
+.dk-form-row { display: flex; flex-direction: column; gap: 8px; }
+.dk-form-row label { font-size: 14px; font-weight: 700; color: var(--dk-ink); }
+.dk-form-row .req { color: var(--dk-accent-red); margin-left: 2px; }
+.dk-form-row input,
+.dk-form-row textarea {
+  font: inherit; font-size: 15px; padding: 13px 15px; width: 100%;
+  border: 1.4px solid var(--dk-hairline); border-radius: var(--dk-radius-sm);
+  background: #fff; color: var(--dk-ink); box-sizing: border-box;
+}
+.dk-form-row input:focus,
+.dk-form-row textarea:focus { outline: none; border-color: var(--dk-accent-red); }
+.dk-form-row textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+.dk-form-honeypot { position: absolute; left: -9999px; top: -9999px; }
+.dk-form-submit {
+  align-self: flex-start; border: none; cursor: pointer;
+  background: var(--dk-accent-red); color: #fff; padding: 15px 34px;
+  border-radius: var(--dk-radius-sm); font-size: 15.5px; font-weight: 700;
+  transition: opacity var(--dk-dur-fast) var(--dk-ease-out);
+}
+.dk-form-submit:hover { opacity: 0.88; }
+.dk-form-note { font-size: 13px; color: var(--dk-fg-muted); margin: -8px 0 0; }
+.dk-form-success { display: none; }
+.dk-form-success.is-shown { display: flex; }
+@media (max-width: 480px) { .dk-form-submit { width: 100%; } }
+
 /* ── 반응형 안전장치 ── */
 @media (max-width: 480px) {
   .dk-g5, .dk-g3, .dk-perf-nums, .dk-kp-track, .dk-vi-grid { grid-template-columns: 1fr; }
