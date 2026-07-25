@@ -37,6 +37,17 @@
 @font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/Paperlogy-8ExtraBold.ttf") format("truetype"); }
 @font-face { font-family: "Paperlogy"; font-style: normal; font-weight: 900; font-display: swap; src: url("../fonts/Paperlogy-9Black.ttf") format("truetype"); }
 
+/* ★2026-07-25: 필핀 실사이트 SNS 아이콘 폰트 실측 반영(블로그·유튜브·카카오).
+   파일 출처 = https://vendor-cdn.imweb.me/fonts/Plipop-Social-Icons.ttf?xgz9qy
+   (로그인·결제 없이 공개 접근 가능한 URL, 2026-07-25 확인·다운로드).
+   글리프 매핑은 https://vendor-cdn.imweb.me/css/ii.css?1738631657 원본 CSS 정본 값 +
+   실사이트 getComputedStyle(el, '::before').content 실측(Playwright)으로 이중 확인. */
+@font-face { font-family: "Plipop-Social-Icons"; font-style: normal; font-weight: normal; font-display: block; src: url("../fonts/Plipop-Social-Icons.ttf") format("truetype"); }
+/* 인스타그램은 필핀 사이트도 Plipop이 아니라 FontAwesome 5 Brands(class="fa fa-instagram")를 씀
+   — getComputedStyle 확인 결과 font-family: FontAwesome, content: "\f16d". 동일 글리프를
+   Font Awesome Free 6.5.1(SIL OFL 라이선스, 자유 재배포 가능)에서 self-host. */
+@font-face { font-family: "FA-Brands"; font-style: normal; font-weight: 400; font-display: block; src: url("../fonts/fa-brands-400.woff2") format("woff2"), url("../fonts/fa-brands-400.ttf") format("truetype"); }
+
 :root {
   /* ----- Brand & accent --------------------------------------------- */
   --dk-primary:           #ffffff;   /* the canvas — trust & clarity */

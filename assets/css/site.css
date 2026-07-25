@@ -258,15 +258,30 @@ body.dk {
 .site-footer__legal { font-size: 12px; color: #eee; margin: 0 0 14px; }
 .site-footer__legal span { margin: 0 8px; opacity: .45; }
 .site-footer__contact { font-size: 14px; color: #eee; margin: 0 0 16px; }
-/* ★2026-07-25(2차 실측): 필핀 실사이트 Playwright 재실측 결과로 SNS 아이콘 전면 교체.
-   실측 근거: 필핀 사이트는 아이콘폰트(Plipop-Social-Icons + FontAwesome)를 쓰며
+/* ★2026-07-25(3차, 최종): Plipop-Social-Icons.ttf가 실제로는 로그인·결제 없이
+   공개 URL(vendor-cdn.imweb.me/fonts/Plipop-Social-Icons.ttf)에서 받을 수 있는
+   파일임을 재확인 → 손그림 SVG를 걷어내고 실제 아이콘 폰트로 교체.
    순서=블로그·유튜브·인스타그램·카카오, 색상=#eee 단색, 텍스트 라벨 없음(sr-only만),
-   높이 20px 고정·너비는 글리프별 비율 자유(정사각 아님). 우리 쪽은 프라이빗 웹폰트를
-   그대로 박을 수 없어(라이선스 문제) 동일 형태를 손으로 그린 SVG로 재현. */
+   높이(font-size) 20px, hover 시 #fff. 글리프 코드포인트는 tokens-domestic.css
+   @font-face 주석의 실측 근거(ii.css 원본 + Playwright computed style) 참조. */
 .site-footer__social { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 20px; }
 .site-footer__social a { display: inline-flex; align-items: center; }
-.site-footer__icon { height: 20px; width: auto; flex: 0 0 auto; color: #eee; }
-.site-footer__social a:hover .site-footer__icon { color: #fff; }
+.site-footer__icon-font {
+  font-size: 20px;
+  line-height: 1;
+  color: #eee;
+  font-style: normal;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.site-footer__social a:hover .site-footer__icon-font { color: #fff; }
+.site-footer__icon-font.ii { font-family: "Plipop-Social-Icons"; }
+.site-footer__icon-font.ii-nblog::before { content: "\e90f"; }
+.site-footer__icon-font.ii-youtube::before { content: "\e919"; }
+.site-footer__icon-font.ii-kakaotalk::before { content: "\e90d"; }
+.site-footer__icon-font.fa-instagram { font-family: "FA-Brands"; font-weight: 400; }
+.site-footer__icon-font.fa-instagram::before { content: "\f16d"; }
 .site-footer hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 20px 0; }
 .site-footer__biz { margin: 0; font-size: 12px; color: #eee; }
 .site-footer__copy { margin-top: 16px; color: #828282; font-size: 13px; font-weight: 200; }
