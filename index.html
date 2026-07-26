@@ -162,54 +162,60 @@
 </section>
 
 <!-- ══════════════════════════════════════════
-     4) 브랜드 연혁 — 타임라인(필핀 연혁 페이지 참고, 표 아님)
+     4) 브랜드 연혁 — 필핀 실사이트 .dk-history 컴포넌트 원본 구조 그대로(색만 치환)
 ══════════════════════════════════════════ -->
-<section class="dk-sec dk-sec--white">
-  <div class="dk-wrap">
-    <div class="dk-history-split" data-reveal>
-      <div class="dk-history-intro">
-        <span class="dk-label">HISTORY | 주요 연혁</span>
-        <h2 class="dk-h2">멈추지 않고<br>쌓아온 시간</h2>
-        <p class="lead">2020년 첫 캠프부터 2026년 오늘까지,<br>한국 스파르타 캠프가 쌓아온 연혁입니다.</p>
-      </div>
-      <div class="dk-timeline">
-        <div class="dk-timeline-item">
-          <span class="dk-timeline-year">2020</span>
-          <span class="dk-timeline-dot-col"><span class="dk-timeline-dot"></span></span>
-          <p class="dk-timeline-text">한국 닥공 스파르타 여름캠프 1회차 시작</p>
-        </div>
-        <div class="dk-timeline-item">
-          <span class="dk-timeline-year">2021</span>
-          <span class="dk-timeline-dot-col"><span class="dk-timeline-dot"></span></span>
-          <p class="dk-timeline-text">국내 기숙형 스파르타 학습 루틴 정착 및 수학 중심 반 편성 운영</p>
-        </div>
-        <div class="dk-timeline-item">
-          <span class="dk-timeline-year">2022</span>
-          <span class="dk-timeline-dot-col"><span class="dk-timeline-dot"></span></span>
-          <p class="dk-timeline-text">중등·고등 학생별 진도 관리와 관리형 자습 운영 체계 강화</p>
-        </div>
-        <div class="dk-timeline-item">
-          <span class="dk-timeline-year">2023</span>
-          <span class="dk-timeline-dot-col"><span class="dk-timeline-dot"></span></span>
-          <p class="dk-timeline-text">HMJ 교육법인 설립, 한국캠프 운영 관리 체계 확대</p>
-        </div>
-        <div class="dk-timeline-item">
-          <span class="dk-timeline-year">2024</span>
-          <span class="dk-timeline-dot-col"><span class="dk-timeline-dot"></span></span>
-          <p class="dk-timeline-text">국내 스파르타 캠프 수학 집중 학습, 주말 국어·영어 특강, 선택과목 운영 보강</p>
-        </div>
-        <div class="dk-timeline-item">
-          <span class="dk-timeline-year">2025</span>
-          <span class="dk-timeline-dot-col"><span class="dk-timeline-dot"></span></span>
-          <p class="dk-timeline-text">한국캠프 재참가 학생 관리와 학부모 소통 기반의 반 조정 시스템 강화</p>
-        </div>
-        <div class="dk-timeline-item dk-timeline-item--future">
-          <span class="dk-timeline-year">2026</span>
-          <span class="dk-timeline-dot-col"><span class="dk-timeline-dot"></span></span>
-          <p class="dk-timeline-text">한국 스파르타 캠프 13회차 진행<span class="dk-timeline-badge">예정</span><br>국내 입시형 기숙 캠프 운영 고도화 · 국내 입시컨설팅 서비스 오픈</p>
-        </div>
-      </div>
+<section class="dk-history">
+  <div class="dk-history__wrap dk-wrap">
+   <div class="dk-history__inner">
+
+    <div class="dk-history__head">
+      <p class="dk-history__label">HISTORY <span>ㅣ</span> <em>닥공의 발자취</em></p>
+      <h2 class="dk-history__title">멈추지 않고<br>쌓아온 시간</h2>
+      <p class="dk-history__sub">2020년 첫 캠프부터 2026년 오늘까지,<br>한국 스파르타 캠프가 쌓아온 연혁입니다.</p>
     </div>
+
+    <ol class="dk-history__timeline">
+      <li class="dk-history__item">
+        <div class="dk-history__year">2020</div>
+        <div class="dk-history__rail"></div>
+        <div class="dk-history__events"><p class="dk-history__event">한국 닥공 스파르타 여름캠프 1회차 시작</p></div>
+      </li>
+      <li class="dk-history__item">
+        <div class="dk-history__year">2021</div>
+        <div class="dk-history__rail"></div>
+        <div class="dk-history__events"><p class="dk-history__event">국내 기숙형 스파르타 학습 루틴 정착 및 수학 중심 반 편성 운영</p></div>
+      </li>
+      <li class="dk-history__item">
+        <div class="dk-history__year">2022</div>
+        <div class="dk-history__rail"></div>
+        <div class="dk-history__events"><p class="dk-history__event">중등·고등 학생별 진도 관리와 관리형 자습 운영 체계 강화</p></div>
+      </li>
+      <li class="dk-history__item">
+        <div class="dk-history__year">2023</div>
+        <div class="dk-history__rail"></div>
+        <div class="dk-history__events"><p class="dk-history__event">HMJ 교육법인 설립, 한국캠프 운영 관리 체계 확대</p></div>
+      </li>
+      <li class="dk-history__item">
+        <div class="dk-history__year">2024</div>
+        <div class="dk-history__rail"></div>
+        <div class="dk-history__events"><p class="dk-history__event">국내 스파르타 캠프 수학 집중 학습, 주말 국어·영어 특강, 선택과목 운영 보강</p></div>
+      </li>
+      <li class="dk-history__item">
+        <div class="dk-history__year">2025</div>
+        <div class="dk-history__rail"></div>
+        <div class="dk-history__events"><p class="dk-history__event">한국캠프 재참가 학생 관리와 학부모 소통 기반의 반 조정 시스템 강화</p></div>
+      </li>
+      <li class="dk-history__item dk-history__item--soon">
+        <div class="dk-history__year">2026</div>
+        <div class="dk-history__rail"></div>
+        <div class="dk-history__events">
+          <p class="dk-history__event">한국 스파르타 캠프 13회차 진행<span class="dk-history__soon">예정</span></p>
+          <p class="dk-history__event">국내 입시형 기숙 캠프 운영 고도화 · 국내 입시컨설팅 서비스 오픈</p>
+        </div>
+      </li>
+    </ol>
+
+   </div>
   </div>
 </section>
 
@@ -349,7 +355,7 @@
         <div class="dk-pt-txt">
           <p class="dk-pt-label">POINT 01</p>
           <h3 class="dk-pt-h">하루 9시간 이상<br>압도적인 수학 학습량</h3>
-          <p class="dk-pt-d">수학을 중심축으로 국어·영어특강, 수능대비, 선택과목까지 — 입시에 필요한 과목 밸런스를 완벽하게 책임집니다.</p>
+          <p class="dk-pt-d">수학을 중심축으로 국어·영어특강, 수능대비, 선택과목까지 입시에 필요한 과목 밸런스를 완벽하게 책임집니다.</p>
           <a class="dk-pt-link" href="curriculum.html">학습 시스템 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="dk-pt-vis"><span class="num">01</span></div>
@@ -400,12 +406,9 @@
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
-    <div class="dk-split" data-reveal>
-      <div>
-        <span class="dk-label">FAQ</span>
-        <h2 class="dk-h2">자주 묻는 질문</h2>
-      </div>
-      <p>입시·학습 시스템, 수준별 반 편성,<br>학습관리·멘토링, 생활·건강·안전 40가지입니다.</p>
+    <div style="text-align:center; max-width:640px; margin:0 auto;" data-reveal>
+      <h2 class="dk-h2"><span style="color:var(--dk-accent-red);">닥공캠프</span> Q&amp;A</h2>
+      <p class="lead" style="margin-top:14px;">입시·학습 시스템, 수준별 반 편성, 학습관리·멘토링,<br>생활·건강·안전, 학부모님들이 가장 많이 묻는 질문 40가지입니다.</p>
     </div>
 
     <p class="dk-label" style="margin:32px 0 12px;">Ⅰ. 입시·학습 시스템</p>

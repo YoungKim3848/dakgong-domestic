@@ -545,12 +545,13 @@ body.dk {
 .dk-pt-item:nth-child(even) { background: var(--dk-surface-card); }
 .dk-pt-in {
   max-width: var(--dk-container); margin: 0 auto; padding: 0 clamp(20px,5vw,48px); width: 100%;
-  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,72px); align-items: center;
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,72px); align-items: start;
 }
 .dk-pt-item--rev .dk-pt-vis { order: -1; }
 .dk-pt-label { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; color: var(--dk-accent-red); margin: 0 0 14px; }
 .dk-pt-h { font: var(--dk-display-sm); letter-spacing: var(--dk-track-snug); color: var(--dk-ink); margin: 0 0 16px; }
-.dk-pt-d { font: var(--dk-body-md); color: var(--dk-fg-3); line-height: 1.75; margin: 0 0 24px; max-width: 460px; }
+.dk-pt-d { font: var(--dk-body-md); color: var(--dk-fg-3); line-height: 1.75; margin: 0 0 24px; }
+.dk-pt-vis { margin-top: 8px; }
 .dk-pt-link {
   display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
   border: 1.6px solid var(--dk-ink); border-radius: var(--dk-radius-sm);
@@ -720,35 +721,41 @@ body.dk {
 .dk-table-wrap { overflow-x: auto; border-radius: var(--dk-radius-lg); border: 1px solid var(--dk-hairline-soft); }
 table.dk-table--menu th, table.dk-table--menu td { padding: 12px 14px; font-size: 13px; line-height: 1.5; min-width: 150px; }
 
-/* ── 연혁 타임라인 — 회장 피드백(필핀 참고): 표가 아니라 세로 타임라인으로 ── */
-.dk-history-split { display: grid; grid-template-columns: 260px 1fr; gap: clamp(32px,5vw,64px); align-items: start; }
-.dk-history-intro { position: sticky; top: 100px; }
-.dk-history-intro .lead { margin-top: 14px; color: var(--dk-fg-3); }
-.dk-timeline { position: relative; padding-left: 4px; }
-.dk-timeline-item {
-  display: grid; grid-template-columns: 64px 24px 1fr; column-gap: 16px;
-  padding: 18px 0; border-bottom: 1px solid var(--dk-hairline-soft);
+/* ── 연혁 타임라인 — 필핀 실사이트(dakgongcamp.com) .dk-history 컴포넌트 원본 그대로,
+   색만 레드(#ab0000)→코발트(--dk-accent-red, 국내파생) 치환. 레이아웃·폭·타이포 무변경. ── */
+.dk-history { background: #fff; padding: clamp(56px, 9vw, 96px) 0; }
+.dk-history__inner { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: clamp(40px, 5vw, 88px); align-items: start; }
+.dk-history__head { position: sticky; top: 48px; }
+.dk-history__label { font: 700 15px/30px 'Pretendard',sans-serif; letter-spacing: normal; color: var(--dk-accent-red); margin: 0 0 10px; }
+.dk-history__label span { color: #cfcfcf; margin: 0 6px; font-weight: 400; }
+.dk-history__label em { color: #333; font-style: normal; }
+.dk-history__title {
+  font-family: 'Paperlogy','Pretendard',sans-serif !important;
+  font-size: 36px !important; font-weight: 700 !important; line-height: 1.2 !important;
+  letter-spacing: -0.5px !important; color: #1A1A1A !important; margin: 0;
 }
-.dk-timeline-item:last-child { border-bottom: none; }
-.dk-timeline-year { font-family: var(--dk-font-display); font-weight: 800; font-size: 20px; color: var(--dk-ink); line-height: 1.3; }
-.dk-timeline-dot-col { position: relative; display: flex; justify-content: center; }
-.dk-timeline-dot-col::before {
-  content: ""; position: absolute; top: 24px; bottom: -18px; left: 50%; width: 1px;
-  background: var(--dk-hairline-soft); transform: translateX(-50%);
-}
-.dk-timeline-item:last-child .dk-timeline-dot-col::before { display: none; }
-.dk-timeline-dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--dk-accent-red); background: #fff; margin-top: 5px; }
-.dk-timeline-item--future .dk-timeline-dot { background: var(--dk-accent-red); }
-.dk-timeline-text { font-size: 14.5px; line-height: 1.7; color: var(--dk-fg-3); margin: 0; }
-.dk-timeline-badge {
-  display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: var(--dk-radius-full);
-  background: var(--dk-accent-red-bg); color: var(--dk-accent-red); font-size: 11px; font-weight: 700; vertical-align: middle;
-}
+.dk-history__sub { font: 400 18px/1.35 'Pretendard',sans-serif; color: #555; margin: 16px 0 0; text-align: left; word-break: keep-all; }
+.dk-history__timeline { list-style: none; margin: 0 0 0 auto; padding: 0; min-width: 0; width: 100%; max-width: 560px; }
+.dk-history__item { position: relative; display: grid; grid-template-columns: 84px 28px 1fr; gap: clamp(10px, 1.6vw, 18px); padding-bottom: 30px; }
+.dk-history__item:last-child { padding-bottom: 0; }
+.dk-history__year { font: 800 26px/1.1 'Paperlogy','Pretendard',sans-serif; color: #1A1A1A; letter-spacing: -0.5px; text-align: right; padding-top: 1px; }
+.dk-history__rail { position: relative; }
+.dk-history__rail::before { content: ""; position: absolute; left: 50%; transform: translateX(-50%); top: 6px; bottom: -30px; width: 2px; background: #e8e8e8; }
+.dk-history__item:last-child .dk-history__rail::before { display: none; }
+.dk-history__rail::after { content: ""; position: absolute; left: 50%; top: 6px; transform: translateX(-50%); width: 13px; height: 13px; border-radius: 50%; background: #fff; border: 3px solid var(--dk-accent-red); box-sizing: border-box; }
+.dk-history__events { padding-top: 1px; display: flex; flex-direction: column; gap: 7px; }
+.dk-history__event { font: 500 15.5px/1.55 'Pretendard',sans-serif; color: #333; margin: 0; word-break: keep-all; }
+.dk-history__item--soon .dk-history__year { color: var(--dk-accent-red); }
+.dk-history__item--soon .dk-history__rail::after { background: var(--dk-accent-red); }
+.dk-history__soon { display: inline-block; margin-left: 8px; font: 700 11px/1 'Pretendard',sans-serif; color: var(--dk-accent-red); background: var(--dk-accent-red-bg); border-radius: 100px; padding: 4px 9px; vertical-align: middle; }
 @media (max-width: 768px) {
-  .dk-history-split { grid-template-columns: 1fr; }
-  .dk-history-intro { position: static; }
-  .dk-timeline-item { grid-template-columns: 56px 20px 1fr; column-gap: 10px; }
-  .dk-timeline-year { font-size: 17px; }
+  .dk-history__inner { display: block; }
+  .dk-history__head { position: static; margin-bottom: 40px; }
+  .dk-history__timeline { max-width: none; margin-left: 0; }
+  .dk-history__label { font-size: 13px; }
+  .dk-history__title { font-size: 26px !important; }
+  .dk-history__sub { font-size: 15px; line-height: 1.55; }
+  .dk-history__item { grid-template-columns: 52px 22px 1fr; }
 }
 table.dk-table { width: 100%; border-collapse: collapse; min-width: 480px; }
 table.dk-table th, table.dk-table td { padding: 16px 20px; text-align: left; font-size: 14.5px; line-height: 1.6; vertical-align: top; }
