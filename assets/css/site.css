@@ -155,20 +155,9 @@ body.dk {
 /* 현재 페이지(active) 강조: 굵기 700 + 포인트색. 비활성 3개 = 400 + #212121.
    ★2026-07-25 실측 확정값(HQ 컨트롤러 1920px 실측) 반영. */
 .site-nav__list > li.is-active > a { font-weight: 700; }
-/* 밑줄 그로우 — 마우스 오버 시 좌→우로 자라는 밑줄(호버 반응 확실히 보이게).
-   현재 페이지(is-active)는 항상 그려진 상태로 위치 표시. */
-.site-nav__list > li > a::after {
-  content: "";
-  position: absolute;
-  left: 18px; right: 18px; bottom: 14px;
-  height: 2px;
-  background: var(--dk-accent-red);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dk-dur-base) var(--dk-ease-out);
-}
-/* ★2026-07-26 회장 지시 — 상단메뉴 hover 시 파란 밑줄 제거. 현재 페이지 표시(is-active)는 유지. */
-.site-nav__list > li.is-active > a::after { transform: scaleX(1); }
+/* ★2026-07-26 회장 지시 — 밑줄 시스템 전체 삭제. 이 밑줄은 회장 요청으로 만든 게
+   아니라 2026-07-25 다른 세션에서 "실측 확정값"이라며 임의로 들어간 것이었음.
+   현재 페이지 = 컬러+볼드만(위 154·157행), 호버 = 컬러 변화만(위 153행). 밑줄 없음. */
 
 .site-nav__sub {
   position: absolute; top: 100%; left: 50%;
