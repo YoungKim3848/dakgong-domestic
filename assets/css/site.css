@@ -747,7 +747,12 @@ table.dk-table tbody tr:nth-child(even) td, table.dk-table tbody tr:nth-child(ev
 .dk-step-arrow { display: flex; align-items: center; justify-content: center; color: var(--dk-fg-muted); font-size: 18px; padding: 0 6px; flex: 0 0 auto; }
 @media (max-width: 768px) { .dk-steps { flex-direction: column; } .dk-step-arrow { transform: rotate(90deg); padding: 6px 0; } }
 
-/* 안내 콜아웃 */
+/* ★2026-07-26 killaislop.com #17 반영 — "좌측컬러바+둥근카드"를 아무 안내문에나
+   씌우던 걸 정리. dk-callout은 정말 중요한 결주(수치 정의·근거·상태)에만 남기고,
+   그 외 평범한 보충설명은 박스 없는 dk-plain-note로 내림. */
+.dk-plain-note { font-size: 14px; line-height: 1.7; color: var(--dk-fg-3); margin: 0; }
+
+/* 안내 콜아웃 — 희소 자원, 페이지당 한둘만 */
 .dk-callout { display: flex; align-items: flex-start; gap: 14px; background: var(--dk-accent-red-bg); border-left: 4px solid var(--dk-accent-red); border-radius: var(--dk-radius-md); padding: 20px 24px; margin-top: clamp(32px,5vw,56px); }
 .dk-callout svg { flex-shrink: 0; width: 20px; height: 20px; stroke: var(--dk-accent-red); stroke-width: 1.8; fill: none; margin-top: 2px; }
 .dk-callout p { margin: 0; font-size: 14.5px; color: var(--dk-fg-2); line-height: 1.7; }
