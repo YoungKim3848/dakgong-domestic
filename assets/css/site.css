@@ -398,7 +398,7 @@ body.dk {
 .dk-perf-title em { color: var(--dk-accent-red-light); font-style: normal; }
 .dk-perf-nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; margin-bottom: 20px; }
 .dk-perf-num {
-  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28);
   border-radius: var(--dk-radius-lg); padding: 30px 24px; text-align: center;
   transition: transform var(--dk-dur-base) var(--dk-ease-out), background var(--dk-dur-base) var(--dk-ease-out);
 }
@@ -489,10 +489,12 @@ body.dk {
 }
 
 /* ── 키포인트 요약 ── */
-.dk-kp-wrap { background: var(--dk-surface-dark); border-radius: var(--dk-radius-lg); padding: clamp(32px,5vw,56px) clamp(20px,4vw,40px); }
+/* ★2026-07-26 회장 지적 — 어두운 바깥박스+어두운 안쪽카드 이중박스라 가독성 저하.
+   바깥 wrap을 없애고 카드가 밝은 섹션 배경 위에 바로 놓이게 단일 표면으로 정리. */
+.dk-kp-wrap { padding: 0; }
 .dk-kp-track { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-.dk-kp-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--dk-radius-md); padding: 28px 24px; transition: transform var(--dk-dur-base) var(--dk-ease-out), background var(--dk-dur-base) var(--dk-ease-out); }
-.dk-kp-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.09); }
+.dk-kp-card { background: var(--dk-surface-dark); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--dk-radius-md); padding: 28px 24px; transition: transform var(--dk-dur-base) var(--dk-ease-out), background var(--dk-dur-base) var(--dk-ease-out); }
+.dk-kp-card:hover { transform: translateY(-4px); background: #333; }
 .dk-kp-num { font-family: var(--dk-font-display); font-size: 30px; font-weight: 800; color: var(--dk-accent-red-light); line-height: 1; margin-bottom: 16px; }
 .dk-kp-text { font-size: 17px; font-weight: 600; color: #fff; line-height: 1.6; margin: 0; }
 .dk-kp-note { text-align: center; margin: clamp(28px,4vw,40px) auto 0; max-width: 640px; font: var(--dk-title-md); color: #fff; opacity: 0.92; }
