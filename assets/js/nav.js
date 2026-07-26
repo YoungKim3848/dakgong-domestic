@@ -12,13 +12,14 @@
     toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
+  /* ★2026-07-26 — #site-nav는 이제 폭과 무관하게 항상 "삼선이 여는 패널"이라
+     ABOUT CAMP 펼침도 폭 조건 없이 항상 동작해야 한다(예전엔 880px 이하에서만
+     펼치고, PC에서는 그냥 curriculum.html로 바로 넘어가버렸음). */
   var subParents = nav.querySelectorAll('.has-sub > a');
   for (var i = 0; i < subParents.length; i++) {
     subParents[i].addEventListener('click', function (e) {
-      if (window.matchMedia('(max-width: 880px)').matches) {
-        e.preventDefault();
-        this.parentElement.classList.toggle('is-open');
-      }
+      e.preventDefault();
+      this.parentElement.classList.toggle('is-open');
     });
   }
 
@@ -26,10 +27,8 @@
   for (var j = 0; j < leafLinks.length; j++) {
     leafLinks[j].addEventListener('click', function () {
       if (this.parentElement.classList.contains('has-sub')) return;
-      if (window.matchMedia('(max-width: 880px)').matches) {
-        header.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
+      header.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
     });
   }
 
@@ -50,7 +49,7 @@
     return last.toLowerCase();
   }
   var here = dkNormPath(location.pathname);
-  var allLinks = nav.querySelectorAll('a[href]');
+  var allLinks = header.querySelectorAll('a[href]');
   for (var k = 0; k < allLinks.length; k++) {
     var href = dkNormPath(allLinks[k].getAttribute('href'));
     if (href && href === here) {
