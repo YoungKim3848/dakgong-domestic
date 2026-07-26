@@ -607,12 +607,15 @@ body.dk {
    20px/300/흰색으로 덮어써 위계가 깨졌던 버그 수정. 홈 히어로의 무클래스 리드문단
    전용 클래스(.dk-hero-lead-plain)를 index.html에 부여하고, 이 규칙은 그 클래스만
    겨냥하도록 좁혔다. */
+/* ★2026-07-26 회장 지적 — 히어로 서브카피가 필핀보다 커 보인다는 피드백으로 재조정.
+   기존 20px/300/Helvetica는 홈 전용 임시값이었고, 실측 검증된 공용 .lead(18px/400/1.7/
+   Pretendard)와 달랐던 게 원인. 공용 값에 맞춰 통일. */
 .dk-bg-video-content .dk-hero-lead-plain {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  line-height: 1.4;
-  font-weight: 300;
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  font-weight: 400;
   color: #fff;
   word-break: keep-all;
 }
@@ -668,8 +671,9 @@ body.dk {
 }
 @media (max-width: 768px) { .dk-bg-video-content h1 { font-size: 22px; } }
 
-.dk-shead { margin-bottom: clamp(32px,5vw,48px); }
-.dk-shead .lead { margin-top: 14px; max-width: 680px; }
+.dk-shead { margin-bottom: clamp(40px,6vw,56px); }
+.dk-shead .lead { margin-top: 18px; max-width: 680px; }
+.dk-shead h2.dk-h2 { margin-bottom: 4px; }
 
 /* 아코디언 — 학습 시스템 6대 수업 */
 .dk-course-list { border-top: 1px solid var(--dk-hairline-soft); }
@@ -749,8 +753,8 @@ table.dk-table tbody tr:nth-child(even) td, table.dk-table tbody tr:nth-child(ev
 .dk-callout p { margin: 0; font-size: 14.5px; color: var(--dk-fg-2); line-height: 1.7; }
 
 /* 간단 체크 리스트 */
-.dk-checklist { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
-.dk-checklist li { position: relative; padding-left: 22px; font-size: 15px; color: var(--dk-fg-3); line-height: 1.75; }
+.dk-checklist { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.dk-checklist li { position: relative; padding-left: 22px; font-size: 15px; color: var(--dk-fg-3); line-height: 1.8; }
 .dk-checklist li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--dk-accent-red); }
 
 /* 관리시스템 5축 — 흰/연회색 교차 섹션 */
