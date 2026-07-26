@@ -5,11 +5,14 @@
 ## 구조
 
 - `index.html` — 홈
-- `curriculum.html` — 학습 시스템 (ABOUT CAMP 하위)
-- `class-level.html` — 수준별 반 편성 (ABOUT CAMP 하위)
-- `care-system.html` — 관리 시스템 (ABOUT CAMP 하위)
-- `teachers.html` — 선생님·멘토 (ABOUT CAMP 하위)
-- `facilities.html` — 생활환경·식단 (ABOUT CAMP 하위)
+- `curriculum.html` — 학습 시스템 (ABOUT CAMP 하위, POINT1 — 옛 class-level.html 병합)
+- `teachers.html` — 선생님·멘토 (ABOUT CAMP 하위, POINT2)
+- `self-study.html` — 관리형 자습 (ABOUT CAMP 하위, POINT3 — 옛 care-system.html 학습관리 축 독립)
+- `life-care.html` — 생활환경 (ABOUT CAMP 하위, POINT4 — 옛 care-system.html 나머지 축 + facilities.html 병합)
+- `contact.html` — 문의
+
+2026-07-26 IA 재편으로 어바웃캠프 하위가 5페이지→4페이지로 바뀌었다(4대 핵심역량 POINT1~4에 1:1 대응).
+옛 URL(`class-level.html`/`care-system.html`/`facilities.html`)은 `netlify.toml`에서 301 리다이렉트 처리.
 - `assets/css/tokens-domestic.css` — 디자인 토큰(색·타이포·간격, 코발트 #0f52c9)
 - `assets/css/site.css` — 공용 스타일(헤더/내비/푸터 포함)
 - `assets/js/nav.js` — 헤더 모바일 토글 + 현재 페이지 표시 최소 JS

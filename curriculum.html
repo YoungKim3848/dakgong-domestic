@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>학습 시스템 | 닥공캠프 국내 스파르타 캠프</title>
-<meta name="description" content="닥공캠프 한국 스파르타 캠프 6대 핵심 수업 구성 — 수학수업, 국어·영어 특강, 수능대비 집중반, 선택과목, 실전 멘토링, 관리형 자기주도학습.">
+<meta name="description" content="닥공캠프 한국 스파르타 캠프 학습 시스템 — 6대 핵심 수업 구성, 하루 9시간 학습 배분, 수준별 반 편성 기준.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
 
 <!-- ══════════════════════════════════════════
      공통 헤더 — 6개 페이지 전부 동일 마크업 유지 필수.
-     아임웹 의존 없는 순수 HTML/CSS/최소 JS(assets/js/nav.js)로 신규 작성.
+     2026-07-26 IA 재편: 어바웃캠프 하위 5개→4개(학습시스템/선생님멘토/관리형자습/생활환경).
      ⚠️ 이 블록을 고치면 6개 파일 전부 동일하게 고쳐야 한다(정적 사이트라 include 없음).
 ══════════════════════════════════════════ -->
 <header class="site-header" id="site-header">
@@ -34,10 +34,9 @@
             <a href="curriculum.html">ABOUT CAMP</a>
             <ul class="site-nav__sub">
               <li><a href="curriculum.html">학습 시스템</a></li>
-              <li><a href="class-level.html">수준별 반 편성</a></li>
-              <li><a href="care-system.html">관리 시스템</a></li>
               <li><a href="teachers.html">선생님·멘토</a></li>
-              <li><a href="facilities.html">생활환경·식단</a></li>
+              <li><a href="self-study.html">관리형 자습</a></li>
+              <li><a href="life-care.html">생활환경</a></li>
             </ul>
           </li>
           <li><a href="contact.html">CONTACT</a></li>
@@ -53,13 +52,14 @@
 </header>
 
 <!-- ══════════════════════════════════════════
-     페이지 인트로 — 카피 출처: clients/dakgong/imweb/국내캠프_하위5페이지_카피초안_2026-07-21.md §1 학습 시스템
+     히어로 — POINT1: 하루 9시간+ 수학 중심 학습량
+     카피 출처: 자료/2026-07-21_...메인카피수정.md + 커리큘럼.txt
 ══════════════════════════════════════════ -->
 <section class="dk-bg-video-section">
   <div class="dk-bg-video-placeholder"></div>
   <div class="dk-bg-video-content">
-    <h1>수학이 중심을 잡는다<br>닥공캠프 한국 스파르타 캠프 6대 핵심 수업 구성</h1>
-    <p class="lead">닥공캠프 한국 스파르타 캠프는 수학을 중심축으로 국어, 영어특강, 수능대비, 선택과목, 관리형 자습, 멘토링까지 입시에 필요한 주요 과목 밸런스를 책임집니다.</p>
+    <h1>하루 9시간, 수학에 압도적으로 집중합니다</h1>
+    <p class="lead">국어·영어 주말특강, 수능대비반, 선택과목까지 — 입시에 필요한 과목 밸런스를 한 곳에서 챙깁니다.</p>
   </div>
 </section>
 
@@ -77,14 +77,15 @@
 </div>
 
 <!-- ══════════════════════════════════════════
-     6대 핵심 수업 — 아코디언(네이티브 details/summary, JS 비의존)
+     6대 핵심 수업 구성 — 닥공 원문 타이틀·6항목 그대로 유지.
+     4개는 이 페이지에서 상세, 멘토링·관리형자습 2개는 전용 페이지로 링크.
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
     <div class="dk-shead" data-reveal>
-      <span class="dk-label">6 CLASSES | 하루를 채우는 6개의 수업</span>
+      <span class="dk-label">6 CLASSES | 6대 핵심 수업 구성</span>
       <h2 class="dk-h2">과목마다 목적이 다릅니다</h2>
-      <p class="lead">각 수업을 눌러 구체적인 운영 방식을 확인하세요.</p>
+      <p class="lead">닥공캠프 한국 스파르타 캠프는 수학을 중심축으로 국어, 영어특강, 수능대비, 선택과목, 관리형 자습, 멘토링까지 입시에 필요한 주요 과목 밸런스를 완벽하게 책임집니다.</p>
     </div>
 
     <div class="dk-course-list" data-reveal>
@@ -96,10 +97,10 @@
         </summary>
         <div class="dk-course-a">
           <ul>
-            <li>상위권 대학 진학을 결정짓는 핵심, 수학의 절대적 학습량 확보</li>
-            <li>개인 맞춤형 분반 — 학년과 상관없이 입소 전 진행해온 진도와 현재 실력을 정밀 분석해 최적의 반을 구성</li>
-            <li>강의형 밀착 시스템 — 개념강의 → 수준별 문제풀이 → 철저한 오답 관리 → 반복 학습</li>
-            <li>선행학습 위주로 진행하되, 놓치기 쉬운 현행 학습까지 빈틈없이 연계 관리</li>
+            <li>상위권 대학 진학을 결정짓는 핵심, 수학의 절대적 학습량을 확보합니다.</li>
+            <li>개인 맞춤형 분반 — 학년과 상관없이 입소 전 진도와 현재 실력을 정밀 분석해 최적의 반을 구성합니다.</li>
+            <li>강의형 밀착 시스템 — 개념강의 → 수준별 문제풀이 → 오답 관리 → 반복 학습으로 이어집니다.</li>
+            <li>선행학습을 위주로 하되, 놓치기 쉬운 현행 학습까지 빈틈없이 연계 관리합니다.</li>
           </ul>
         </div>
       </details>
@@ -112,8 +113,8 @@
         </summary>
         <div class="dk-course-a">
           <ul>
-            <li>국어(수능 및 모의고사 완벽 대비) — 중등부는 문법 체계 정립과 비문학·문학 독해 기초 체력, 고등부는 수능형 출제 패턴 분석과 실전 독해력·시간관리 능력 강화</li>
-            <li>영어(입시 영어 개념 및 실전 감각) — 수능형 지문 독해법, 고난도 문제 유형 파악, 매끄러운 오답 분석 지도, 모의고사 실전 풀이</li>
+            <li>국어 — 중등부는 문법 체계와 비문학·문학 독해 기초, 고등부는 수능형 출제 패턴 분석과 실전 독해력·시간관리를 강화합니다.</li>
+            <li>영어 — 수능형 지문 독해법, 고난도 문제 유형, 오답 분석 지도와 모의고사 실전 풀이로 입시 영어 감각을 단기간에 끌어올립니다.</li>
           </ul>
         </div>
       </details>
@@ -126,8 +127,8 @@
         </summary>
         <div class="dk-course-a">
           <ul>
-            <li>실전 수능 타임 테이블에 맞춘 모의고사 연습 → 심층 해설 → 오답 정리 → 관리형 자습의 무한 반복 훈련</li>
-            <li>최근 수능을 직접 치러낸 SKY·의대 선배들과 실전 학습루틴, 당일 멘탈관리 조언 공유</li>
+            <li>실제 수능 타임 테이블에 맞춘 모의고사 연습 → 심층 해설 → 오답 정리 → 관리형 자습을 반복합니다.</li>
+            <li>최근 수능을 직접 치러낸 선배들과 실전 학습 루틴, 당일 멘탈관리 조언을 나눕니다. (선배 멘토링 상세는 <a href="teachers.html">선생님·멘토 페이지</a>에서 확인하세요.)</li>
           </ul>
         </div>
       </details>
@@ -140,40 +141,27 @@
         </summary>
         <div class="dk-course-a">
           <ul>
-            <li>학생이 선택한 수능 탐구 과목 중심의 개념 정리 및 심층 학습</li>
-            <li>학생의 개인별 니즈와 목표 대학 가이드라인에 맞춰 반 구성(신청 인원·캠프 운영 상황에 따라 개설 여부 조정 가능)</li>
+            <li>학생이 선택한 수능 탐구 과목 중심으로 개념 정리와 심층 학습을 진행합니다.</li>
+            <li>개인별 목표 대학 가이드라인에 맞춰 반을 구성합니다. (신청 인원과 운영 상황에 따라 개설 여부가 조정될 수 있습니다.)</li>
           </ul>
         </div>
       </details>
 
-      <details class="dk-course-item">
-        <summary class="dk-course-q">
+      <a class="dk-course-item dk-course-item--link" href="teachers.html">
+        <span class="dk-course-q">
           <span class="dk-course-tag">동기부여</span>
           <span class="dk-course-title">SKY·의대 선배들의 실전 멘토링</span>
-          <span class="dk-course-icon">+</span>
-        </summary>
-        <div class="dk-course-a">
-          <ul>
-            <li>닥공캠프가 배출한 명문대·의대 선배 스태프가 캠프 내에 함께 상주하며 생활</li>
-            <li>과목별 성적 향상법, 학생부(생기부) 관리 팁, 수능 준비 노하우, 슬럼프를 극복하는 현실적인 멘탈 케어</li>
-          </ul>
-        </div>
-      </details>
+          <span class="dk-course-icon">→</span>
+        </span>
+      </a>
 
-      <details class="dk-course-item">
-        <summary class="dk-course-q">
+      <a class="dk-course-item dk-course-item--link" href="self-study.html">
+        <span class="dk-course-q">
           <span class="dk-course-tag">몰입 환경</span>
           <span class="dk-course-title">관리형 자기주도학습 <em>24/7 케어</em></span>
-          <span class="dk-course-icon">+</span>
-        </summary>
-        <div class="dk-course-a">
-          <ul>
-            <li>전문 관리 감독 선생님이 강의실에 상주하며 학습을 방해하는 유해 요소를 차단</li>
-            <li>막히는 문항이나 오답은 멘토·강사진에게 즉각 질문(방치 없는 실시간 Q&amp;A)</li>
-            <li>정해진 자습 시간까지 촘촘하게 관리해 낮 동안 배운 개념을 온전히 자신의 것으로 만드는 '진짜 공부 시간' 확보</li>
-          </ul>
-        </div>
-      </details>
+          <span class="dk-course-icon">→</span>
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -199,7 +187,7 @@
           <tr><th>국어 주말 과제</th><td>약 1시간</td></tr>
           <tr><th>영어 주말 수업 및 과제</th><td>약 1시간</td></tr>
           <tr><th>야간 추가수업</th><td>선택과목, 실전반, 개인·소규모 요청수업</td></tr>
-          <tr><th>관리형 자습</th><td>학생별 과제와 목표 학습량에 따라 별도 운영(시간 플러스마이너스 알파)</td></tr>
+          <tr><th>관리형 자습</th><td>학생별 과제와 목표 학습량에 따라 별도 운영</td></tr>
         </tbody>
       </table>
     </div>
@@ -212,13 +200,135 @@
 </section>
 
 <!-- ══════════════════════════════════════════
+     반편성 원칙 — 학년 아닌 실력
+══════════════════════════════════════════ -->
+<section class="dk-sec dk-sec--white">
+  <div class="dk-wrap">
+    <div class="dk-shead" data-reveal>
+      <span class="dk-label">CLASS PLACEMENT | 반편성 원칙</span>
+      <h2 class="dk-h2">학년이 아니라 실력이 반을 정합니다</h2>
+      <p class="lead">학년과 상관없이 입소 전 진행해온 진도와 현재 실력을 정밀 분석해 최적의 반을 구성합니다. 같은 학년이라도 선행 정도와 문제 해결 수준이 다르면 서로 다른 반에 배정될 수 있습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     같은 스파르타 환경, 다른 관리 포인트 — 중고 비교표
+══════════════════════════════════════════ -->
+<section class="dk-sec" style="background: var(--dk-surface-card);">
+  <div class="dk-wrap">
+    <div class="dk-shead" data-reveal>
+      <span class="dk-label">MANAGEMENT FOCUS | 관리 포인트</span>
+      <h2 class="dk-h2">같은 스파르타 환경, 다른 관리 포인트</h2>
+      <p class="lead">닥공캠프는 학생의 발달 단계와 입시 시기에 맞춰 중등부는 공부 습관과 수학 기본기를, 고등부는 내신·수능형 학습량과 실전 루틴을 더 강하게 통제하고 관리합니다.</p>
+    </div>
+
+    <div class="dk-table-wrap">
+      <table class="dk-table">
+        <thead>
+          <tr><th>구분</th><th>중등</th><th>고등</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>핵심 목표</th><td>수학 기본기, 선행 진도, 공부 습관 형성</td><td>내신·수능 대비 학습량 확보와 실전 문제풀이 강화</td></tr>
+          <tr><th>수학 운영</th><td>개념 설명, 유형별 반복 훈련, 현행·선행 병행</td><td>진도별 반 편성, 고난도·오답 누적 관리, 수능형 문제 적응</td></tr>
+          <tr><th>국어·영어</th><td>문법·독해 기초 확립, 모의고사형 문제 적응</td><td>수능형 지문 독해, 시간관리, 오답 분석</td></tr>
+          <tr><th>자습 관리</th><td>정해진 시간 앉아 공부하는 루틴, 질문 습관 만들기</td><td>일일 학습량 점검, 약점 보완, 모의고사 후 오답 루틴 관리</td></tr>
+          <tr><th>멘토링</th><td>명문대 선배들과의 교감, 공부 방법 습득, 동기부여</td><td>실전 입시 경험 공유, 멘탈 케어, 과목별 전략 점검</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     반편성 기준·상담 절차
+══════════════════════════════════════════ -->
+<section class="dk-sec dk-sec--white">
+  <div class="dk-wrap">
+    <div class="dk-shead" data-reveal>
+      <span class="dk-label">PLACEMENT TEST | 배정 기준</span>
+      <h2 class="dk-h2">반편성은 어떻게 결정되나</h2>
+      <p class="lead">입소 전 학부모 상담으로 현재 학교·학년·최근 학습 진도·취약 단원을 확인합니다. 필요하면 자체 테스트를 진행하고, 수업 시작 후에도 실제 이해도와 과제 수행 상태를 확인해 최종 반을 조정합니다.</p>
+    </div>
+    <div class="dk-g5" data-reveal="stagger">
+      <div class="dk-card5">
+        <p class="lead">수학</p>
+        <p class="sub">희망 진도의 이전 1년 과정 테스트 + 희망 진도 과정 테스트. 고등부는 내신형·모의고사형 문제를 모두 확인합니다.</p>
+      </div>
+      <div class="dk-card5">
+        <p class="lead">국어·영어</p>
+        <p class="sub">고등부 모의고사 수준을 기준으로 우선 레벨을 구분하고, 판단이 어려운 학생은 자체 제작 테스트를 추가로 진행합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     실제 반 구성 (예시)
+══════════════════════════════════════════ -->
+<section class="dk-sec" style="background: var(--dk-surface-card);">
+  <div class="dk-wrap">
+    <div class="dk-shead" data-reveal>
+      <span class="dk-label">CLASS STRUCTURE | 실제 반 구성</span>
+      <h2 class="dk-h2">실제 반 구성 <span class="dk-badge">예시 기준</span></h2>
+      <p class="lead">아래 반 개수는 최대 구성 예시이며, 캠프별 참가 학생의 학년과 진도 분포에 따라 조정될 수 있습니다.</p>
+    </div>
+
+    <div class="dk-g5" data-reveal="stagger">
+      <div class="dk-card5">
+        <p class="lead">수학</p>
+        <p class="sub">초·중·고 선행 6개<span class="dk-badge">예시</span><br>중1~고2 내신대비반 6개<span class="dk-badge">예시</span><br>심화반 2개<span class="dk-badge">예시</span></p>
+      </div>
+      <div class="dk-card5">
+        <p class="lead">과학</p>
+        <p class="sub">중등과학 내신대비 3개<span class="dk-badge">예시</span><br>고등 과학Ⅰ 과정 2개<span class="dk-badge">예시</span><br>개별 선택과목</p>
+      </div>
+      <div class="dk-card5">
+        <p class="lead">국어·영어</p>
+        <p class="sub">주말 특강 과목별 3~4개<span class="dk-badge">예시</span> 수준별 반</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     수업이 벅찬 학생 · 여유 있는 학생 대응
+══════════════════════════════════════════ -->
+<section class="dk-sec dk-sec--white">
+  <div class="dk-wrap">
+    <div class="dk-shead" data-reveal>
+      <span class="dk-label">SUPPORT | 학습 보완</span>
+      <h2 class="dk-h2">수업이 벅차거나 너무 쉬우면, 그대로 두지 않습니다</h2>
+      <p class="lead">학생에게 무조건 현재 반을 유지하도록 하지 않습니다. 수업을 충분히 소화하고 여유가 있다고 판단되면 상위 반이나 빠른 진도로의 조정도 검토합니다.</p>
+    </div>
+
+    <div class="dk-steps" data-reveal="stagger">
+      <div class="dk-step"><span class="dk-step-num">1</span><p>수업 참여상태 확인</p></div>
+      <div class="dk-step-arrow">›</div>
+      <div class="dk-step"><span class="dk-step-num">2</span><p>담당교사 의견 확인</p></div>
+      <div class="dk-step-arrow">›</div>
+      <div class="dk-step"><span class="dk-step-num">3</span><p>학생 면담</p></div>
+      <div class="dk-step-arrow">›</div>
+      <div class="dk-step"><span class="dk-step-num">4</span><p>부족 단원 보완</p></div>
+      <div class="dk-step-arrow">›</div>
+      <div class="dk-step"><span class="dk-step-num">5</span><p>학부모 상담</p></div>
+      <div class="dk-step-arrow">›</div>
+      <div class="dk-step"><span class="dk-step-num">6</span><p>필요 시 반 조정</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
      문의 CTA
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-cta">
   <div class="dk-wrap">
     <span class="dk-label">문의하기</span>
-    <h2 class="dk-h2" style="margin-bottom:28px;">6대 핵심 수업 배치가 궁금하다면,<br>지금 상담에서 확인하세요.</h2>
-    <a class="btn" style="background:#fff; color:var(--dk-accent-red);" href="contact.html">입시 상담 신청</a>
+    <h2 class="dk-h2" style="margin-bottom:28px;">학습 시스템과 반편성이 궁금하다면,<br>지금 상담에서 확인하세요.</h2>
+    <div class="btn-group">
+      <a class="btn btn-cta-primary" href="contact.html">캠프 참여 문의하기 →</a>
+      <a class="btn btn-cta-outline" href="https://pf.kakao.com/_FSxmqn" target="_blank" rel="noopener">카카오톡 상담하기 →</a>
+    </div>
   </div>
 </section>
 

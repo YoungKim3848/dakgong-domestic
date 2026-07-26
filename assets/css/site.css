@@ -419,6 +419,14 @@ body.dk {
 .dk-cta .dk-label { color: rgba(255,255,255,0.75); }
 .dk-cta h2 { color: #fff; margin: 0 0 28px; }
 .dk-cta .btn { text-decoration: none; }
+/* ★2026-07-26 회장 지시 — CTA 버튼 2개 구성(필핀과 문구 동일, 색만 국내 코발트로),
+   전 페이지 CTA 디자인 통일. 필핀 원문 버튼 카피 그대로: "캠프 참여 문의하기"
+   (채움, 흰바탕+코발트글자) + "카카오톡 상담하기"(외곽선, 흰테두리). */
+.dk-cta .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.dk-cta .btn-cta-primary { background: #fff; color: var(--dk-accent-red); }
+.dk-cta .btn-cta-primary:hover { background: var(--dk-surface-soft); }
+.dk-cta .btn-cta-outline { background: transparent; color: #fff; border: 2px solid #fff; padding: 10px 22px; }
+.dk-cta .btn-cta-outline:hover { background: #fff; color: var(--dk-accent-red); }
 
 /* ── 브랜드 인트로 ── */
 .dk-bi-row {
@@ -668,6 +676,7 @@ body.dk {
 
 /* 표 — 비교표 / 시간표 / 단계표 */
 .dk-table-wrap { overflow-x: auto; border-radius: var(--dk-radius-lg); border: 1px solid var(--dk-hairline-soft); }
+table.dk-table--menu th, table.dk-table--menu td { padding: 12px 14px; font-size: 13px; line-height: 1.5; min-width: 150px; }
 table.dk-table { width: 100%; border-collapse: collapse; min-width: 480px; }
 table.dk-table th, table.dk-table td { padding: 16px 20px; text-align: left; font-size: 14.5px; line-height: 1.6; vertical-align: top; }
 table.dk-table thead th { background: var(--dk-surface-dark); color: #fff; font-weight: 700; font-size: 14px; }

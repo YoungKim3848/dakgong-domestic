@@ -1,6 +1,23 @@
 [build]
   publish = "."
 
+# 2026-07-26 IA 재편: 어바웃캠프 하위 5페이지→4페이지 재구성으로 옛 URL 제거.
+# 옛 링크(검색엔진 색인·과거 공유 링크 포함)가 404 나지 않도록 새 페이지로 리다이렉트.
+[[redirects]]
+  from = "/class-level.html"
+  to = "/curriculum.html"
+  status = 301
+
+[[redirects]]
+  from = "/care-system.html"
+  to = "/self-study.html"
+  status = 301
+
+[[redirects]]
+  from = "/facilities.html"
+  to = "/life-care.html"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]

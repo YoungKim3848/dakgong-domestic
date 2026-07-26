@@ -16,9 +16,7 @@
 <body class="dk">
 
 <!-- ══════════════════════════════════════════
-     공통 헤더 — 6개 페이지 전부 동일 마크업 유지 필수.
-     아임웹 의존 없는 순수 HTML/CSS/최소 JS(assets/js/nav.js)로 신규 작성.
-     ⚠️ 이 블록을 고치면 6개 파일 전부 동일하게 고쳐야 한다(정적 사이트라 include 없음).
+     공통 헤더 — 2026-07-26 IA 재편(원점재검토): 어바웃캠프 하위 5개→4개(POINT1~4 대응).
 ══════════════════════════════════════════ -->
 <header class="site-header" id="site-header">
   <div class="site-header__inner">
@@ -34,10 +32,9 @@
             <a href="curriculum.html">ABOUT CAMP</a>
             <ul class="site-nav__sub">
               <li><a href="curriculum.html">학습 시스템</a></li>
-              <li><a href="class-level.html">수준별 반 편성</a></li>
-              <li><a href="care-system.html">관리 시스템</a></li>
               <li><a href="teachers.html">선생님·멘토</a></li>
-              <li><a href="facilities.html">생활환경·식단</a></li>
+              <li><a href="self-study.html">관리형 자습</a></li>
+              <li><a href="life-care.html">생활환경</a></li>
             </ul>
           </li>
           <li><a href="contact.html">CONTACT</a></li>
@@ -53,7 +50,7 @@
 </header>
 
 <!-- ══════════════════════════════════════════
-     1) 히어로 — 정본 카피(2026-07-21 메인카피수정본), 실물 영상 없음 → 코발트 그라디언트 placeholder
+     1) 히어로 + 슬로건
 ══════════════════════════════════════════ -->
 <section class="dk-bg-video-section">
   <div class="dk-bg-video-placeholder"></div>
@@ -68,7 +65,6 @@
   </div>
 </section>
 
-<!-- 정체성 띠 — 무한 롤링 배너 -->
 <div class="dk-idband-wrap">
   <div class="dk-idband-track">
     <span>하루 9시간 이상 압도적인 수학 학습량</span><span>ㅣ</span>
@@ -83,7 +79,7 @@
 </div>
 
 <!-- ══════════════════════════════════════════
-     2) 브랜드 인트로
+     2) 문제제기 / 브랜드소개 — "재능이 아니라 학습량"
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
@@ -91,7 +87,7 @@
     <h2 class="dk-h2">이 방학, 성적을 바꾸는 건<br>재능이 아니라 학습량입니다</h2>
     <p style="font: var(--dk-body-lg); color: var(--dk-fg-3); line-height:1.75; margin: 16px 0 0; max-width: 640px;">
       많은 학부모님이 이 방학을 어떻게 보내야 할지 고민하십니다.<br>
-      닥공캠프 한국 스파르타 캠프가 20년간 확인한 답은, 편안한 방학이 아니라 <b>압도적인 학습량을 버텨내는 방학</b>이었습니다.
+      닥공캠프 한국 스파르타 캠프가 확인한 답은, 편안한 방학이 아니라 <b>압도적인 학습량을 버텨내는 방학</b>이었습니다.
     </p>
 
     <div class="dk-bi-row" data-reveal>
@@ -136,21 +132,71 @@
       </div>
     </div>
 
-    <p class="dk-bi-close">판단은 학부모님의 몫입니다. 그 판단 이후의 루틴은, 20년간 닥공캠프가 책임져 왔습니다.</p>
+    <p class="dk-bi-close">판단은 학부모님의 몫입니다. 그 판단 이후의 루틴은, 닥공캠프가 책임져 왔습니다.</p>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════
-     3) 키포인트 요약
+     3) 숫자로 보는 닥공캠프
+══════════════════════════════════════════ -->
+<section class="dk-sec" style="background: var(--dk-surface-card);">
+  <div class="dk-wrap">
+    <div class="dk-split" data-reveal>
+      <div>
+        <span class="dk-label">TRACK RECORD</span>
+        <h2 class="dk-h2">숫자로 보는 닥공캠프</h2>
+      </div>
+      <p>2020년부터 한국 스파르타 캠프를 본격 운영해오며 쌓아온 기록입니다.</p>
+    </div>
+    <div class="dk-g4" data-reveal="stagger">
+      <div class="dk-stat4"><div class="v"><em>2020</em>년</div><div class="k">한국 스파르타 캠프 본격 운영</div></div>
+      <div class="dk-stat4"><div class="v"><em>13</em>회차</div><div class="k">2026년 한국 스파르타 캠프 예정</div></div>
+      <div class="dk-stat4"><div class="v">약 <em>5,000</em>명</div><div class="k">누적 참가 학생</div></div>
+      <div class="dk-stat4"><div class="v">약 <em>60</em>%</div><div class="k">재참가율</div></div>
+      <div class="dk-stat4"><div class="v">약 <em>100~120</em>명</div><div class="k">한 회차 평균 참가 인원</div></div>
+      <div class="dk-stat4"><div class="v">하루 <em>9</em>시간 이상</div><div class="k">수학 중심 집중 학습</div></div>
+      <div class="dk-stat4"><div class="v">주 <em>7</em>일</div><div class="k">주말까지 이어지는 학습 운영</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     4) 브랜드 연혁 — 신규 섹션
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-sec--white">
+  <div class="dk-wrap">
+    <div class="dk-shead" data-reveal>
+      <span class="dk-label">HISTORY | 주요 연혁</span>
+      <h2 class="dk-h2">닥공캠프 한국 스파르타 캠프가 쌓아온 시간</h2>
+    </div>
+    <div class="dk-table-wrap">
+      <table class="dk-table">
+        <thead><tr><th>연도</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><th>2020</th><td>한국 닥공 스파르타 여름캠프 1회차 시작</td></tr>
+          <tr><th>2021</th><td>국내 기숙형 스파르타 학습 루틴 정착 및 수학 중심 반 편성 운영</td></tr>
+          <tr><th>2022</th><td>중등·고등 학생별 진도 관리와 관리형 자습 운영 체계 강화</td></tr>
+          <tr><th>2023</th><td>HMJ 교육법인 설립, 한국캠프 운영 관리 체계 확대</td></tr>
+          <tr><th>2024</th><td>국내 스파르타 캠프 수학 집중 학습, 주말 국어·영어 특강, 선택과목 운영 보강</td></tr>
+          <tr><th>2025</th><td>한국캠프 재참가 학생 관리와 학부모 소통 기반의 반 조정 시스템 강화</td></tr>
+          <tr><th>2026</th><td>한국 스파르타 캠프 13회차 진행 예정, 국내 입시형 기숙 캠프 운영 고도화 · 국내 입시컨설팅 서비스 오픈</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     5) 4대 핵심역량 요약 (POINT1~4 티저)
+══════════════════════════════════════════ -->
+<section class="dk-sec" style="background: var(--dk-surface-card);">
   <div class="dk-wrap">
     <div class="dk-split" data-reveal>
       <div>
         <span class="dk-label">KEY POINTS | 차별점</span>
-        <h2 class="dk-h2">닥공캠프가 다른 이유 4가지</h2>
+        <h2 class="dk-h2">한국 스파르타 캠프 4대 핵심 역량</h2>
       </div>
-      <p>한국 스파르타 캠프가 20년간 지켜온<br>4가지 핵심 역량입니다.</p>
+      <p>이 4가지가 닥공캠프 학습 시스템의 뼈대입니다.<br>아래에서 각각 자세히 확인하세요.</p>
     </div>
     <div class="dk-kp-wrap">
       <div class="dk-kp-track" data-reveal="stagger">
@@ -164,9 +210,37 @@
 </section>
 
 <!-- ══════════════════════════════════════════
-     4) 비디오 인터뷰 — 실물 없음, placeholder
+     6) 진학실적
 ══════════════════════════════════════════ -->
-<section class="dk-sec" style="background: var(--dk-surface-card);">
+<section class="dk-sec dk-perf">
+  <div class="dk-wrap">
+    <p class="dk-perf-title">[숫자가 증명하는 닥공교육그룹 <em>진학실적</em>]</p>
+    <div class="dk-perf-nums" data-reveal="stagger">
+      <div class="dk-perf-num">
+        <div class="v">250명+</div>
+        <div class="k">SKY 및 의·치·한·수 진학</div>
+      </div>
+      <div class="dk-perf-num">
+        <div class="v">800명+</div>
+        <div class="k">인서울 주요 대학 진학</div>
+      </div>
+      <div class="dk-perf-num">
+        <div class="v">1500명+</div>
+        <div class="k">전국 거점 국공립대 진학</div>
+      </div>
+    </div>
+    <div class="dk-perf-badges">
+      <span class="dk-perf-badge">매 학기 중·고교 전교 1등 배출</span>
+      <span class="dk-perf-badge">매 학기 중·고교 상위권을 휩쓰는 압도적 성적</span>
+    </div>
+    <p class="body">결과를 만들어본 사람만이, 다음 결과도 증명할 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     7) 영상 리뷰 — 실물 없음, placeholder
+══════════════════════════════════════════ -->
+<section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
     <div class="dk-split" data-reveal>
       <div>
@@ -197,9 +271,9 @@
 </section>
 
 <!-- ══════════════════════════════════════════
-     5) 텍스트 리뷰 — 실물 없음, placeholder(필핀 후기 예시 절대 미사용)
+     8) 텍스트 리뷰 — 실물 없음, placeholder(예시 후기 절대 게재 금지 유지)
 ══════════════════════════════════════════ -->
-<section class="dk-sec dk-sec--white">
+<section class="dk-sec" style="background: var(--dk-surface-card);">
   <div class="dk-wrap">
     <div class="dk-split" data-reveal>
       <div>
@@ -222,18 +296,17 @@
 </section>
 
 <!-- ══════════════════════════════════════════
-     6) 키포인트별 상세(좌우교차) — href를 실제 하위 5페이지로 연결(2026-07-25).
-     매핑 판단: POINT01~04(수학/국어영어/수능대비/선택과목)=curriculum.html(학습시스템 페이지,
-     6대 수업 전부 이 페이지에 있음) · POINT05(멘토링)=teachers.html · POINT06(관리형자습)=care-system.html
+     9~16) POINT1~4 — 2026-07-26 IA 재편: 4대핵심역량 각각을 어바웃캠프
+     신규 4페이지(학습시스템/선생님멘토/관리형자습/생활환경)로 연결.
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
     <div class="dk-split" data-reveal>
       <div>
-        <span class="dk-label">CURRICULUM | 6대 핵심 수업</span>
-        <h2 class="dk-h2">6대 핵심 수업 구성</h2>
+        <span class="dk-label">4 POINTS | 4대 핵심 역량</span>
+        <h2 class="dk-h2">4가지 핵심 역량, 하나씩 뜯어보면</h2>
       </div>
-      <p>수학을 중심축으로 국어·영어특강, 수능대비, 선택과목, 관리형 자습, 멘토링까지<br>입시에 필요한 과목 밸런스를 완벽하게 책임집니다.</p>
+      <p>각 역량이 실제로 어떻게 운영되는지<br>전용 페이지에서 자세히 확인하세요.</p>
     </div>
   </div>
 
@@ -242,8 +315,8 @@
       <div class="dk-pt-in">
         <div class="dk-pt-txt">
           <p class="dk-pt-label">POINT 01</p>
-          <h3 class="dk-pt-h">[핵심과목] 수학수업<br>(주중 집중학습)</h3>
-          <p class="dk-pt-d">상위권 대학 진학을 결정짓는 핵심, 수학의 절대적 학습량 확보. 진도·실력 정밀 분석 후 개인 맞춤형 분반으로 개념강의→문제풀이→오답관리→반복학습을 이어갑니다.</p>
+          <h3 class="dk-pt-h">하루 9시간 이상<br>압도적인 수학 학습량</h3>
+          <p class="dk-pt-d">수학을 중심축으로 국어·영어특강, 수능대비, 선택과목까지 — 입시에 필요한 과목 밸런스를 완벽하게 책임집니다.</p>
           <a class="dk-pt-link" href="curriculum.html">학습 시스템 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="dk-pt-vis"><span class="num">01</span></div>
@@ -254,9 +327,9 @@
       <div class="dk-pt-in">
         <div class="dk-pt-txt">
           <p class="dk-pt-label">POINT 02</p>
-          <h3 class="dk-pt-h">[주말특강] 국어·영어<br>전문 특강</h3>
-          <p class="dk-pt-d">주말을 활용한 입시 핵심 과목 맥락잡기. 국어는 문법·독해 기초부터 수능형 실전 독해까지, 영어는 수능형 지문 독해와 오답 분석까지 다룹니다.</p>
-          <a class="dk-pt-link" href="curriculum.html">국어·영어 특강 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <h3 class="dk-pt-h">SKY·의대 선배들의<br>24시간 밀착 멘토링</h3>
+          <p class="dk-pt-d">닥공을 직접 버텨본 사람만이 학생의 흐트러지는 순간을 잡을 수 있습니다. 가장 가깝고 강력한 입시 페이스메이커입니다.</p>
+          <a class="dk-pt-link" href="teachers.html">선생님·멘토 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="dk-pt-vis"><span class="num">02</span></div>
       </div>
@@ -266,9 +339,9 @@
       <div class="dk-pt-in">
         <div class="dk-pt-txt">
           <p class="dk-pt-label">POINT 03</p>
-          <h3 class="dk-pt-h">[학년별 맞춤] 수능 대비<br>집중반 (고2~고3)</h3>
-          <p class="dk-pt-d">실전 수능 흐름을 몸에 새기는 파이널 루틴. 실제 수능 타임테이블에 맞춘 모의고사와 심층 해설, 오답 정리를 반복하며 실전 감각을 극대화합니다.</p>
-          <a class="dk-pt-link" href="curriculum.html">수능대비반 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <h3 class="dk-pt-h">빈틈없는<br>관리형 자기주도 학습</h3>
+          <p class="dk-pt-d">계획만 거창한 자습은 없습니다. 목표 제출 → 상시 순회 확인 → 질문·보완 → 완료량 점검까지, 실행력을 담보하는 환경입니다.</p>
+          <a class="dk-pt-link" href="self-study.html">관리형 자습 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="dk-pt-vis"><span class="num">03</span></div>
       </div>
@@ -278,153 +351,19 @@
       <div class="dk-pt-in">
         <div class="dk-pt-txt">
           <p class="dk-pt-label">POINT 04</p>
-          <h3 class="dk-pt-h">[목표별 선택] 과학·사회<br>선택과목</h3>
-          <p class="dk-pt-d">탐구 과목의 조기 완성으로 입시 경쟁력 확보. 물리·화학 등 학생이 선택한 수능 탐구 과목을 개인별 니즈와 목표 대학에 맞춰 구성합니다.</p>
-          <a class="dk-pt-link" href="curriculum.html">선택과목 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <h3 class="dk-pt-h">무너지지 않는<br>완벽한 생활 루틴 구축</h3>
+          <p class="dk-pt-d">닥공캠프는 수업만 하고 끝나는 캠프가 아닙니다. 생활·건강·식단·안전까지 입체적으로 케어하는 기숙형 토탈 관리 시스템입니다.</p>
+          <a class="dk-pt-link" href="life-care.html">생활환경 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="dk-pt-vis"><span class="num">04</span></div>
       </div>
     </div>
-
-    <div class="dk-pt-item" data-reveal>
-      <div class="dk-pt-in">
-        <div class="dk-pt-txt">
-          <p class="dk-pt-label">POINT 05</p>
-          <h3 class="dk-pt-h">[동기부여] SKY·의대 선배들의<br>실전 멘토링</h3>
-          <p class="dk-pt-d">가장 가깝고 강력한 입시 페이스메이커. 명문대·의대 선배 스태프가 캠프에 상주하며 성적 향상법, 생기부 관리 팁, 멘탈 케어까지 함께합니다.</p>
-          <a class="dk-pt-link" href="teachers.html">선생님·멘토 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-        <div class="dk-pt-vis"><span class="num">05</span></div>
-      </div>
-    </div>
-
-    <div class="dk-pt-item dk-pt-item--rev" data-reveal>
-      <div class="dk-pt-in">
-        <div class="dk-pt-txt">
-          <p class="dk-pt-label">POINT 06</p>
-          <h3 class="dk-pt-h">[몰입 환경] 관리형<br>자기주도학습 (24/7 케어)</h3>
-          <p class="dk-pt-d">계획만 거창한 자습은 없다, 실행력을 담보하는 철저한 환경. 감독 선생님 상주 + 실시간 질문·피드백으로 자습 시간을 온전히 내 것으로 만듭니다.</p>
-          <a class="dk-pt-link" href="care-system.html">관리 시스템 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-        <div class="dk-pt-vis"><span class="num">06</span></div>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════
-     [부가 섹션] 하루의 흐름 + 토탈케어 관리시스템 5축
-══════════════════════════════════════════ -->
-<section class="dk-sec" style="background: var(--dk-surface-card);">
-  <div class="dk-wrap">
-    <div class="dk-split" data-reveal>
-      <div>
-        <span class="dk-label">DAILY FLOW</span>
-        <h2 class="dk-h2">하루의 흐름</h2>
-      </div>
-      <p>오전·오후·저녁, 하루 9시간이 어떻게 채워지는지 큰 흐름만 먼저 보여드립니다.</p>
-    </div>
-    <div class="dk-g3" data-reveal="stagger" style="align-items:center; margin-bottom: clamp(40px,6vw,64px);">
-      <div class="dk-flow-card">
-        <span class="tod">오전</span>
-        <p>수학 개념·유형 수업</p>
-      </div>
-      <div class="dk-flow-card">
-        <span class="tod">오후</span>
-        <p>문제풀이·질문·오답 정리</p>
-      </div>
-      <div class="dk-flow-card">
-        <span class="tod">저녁</span>
-        <p>관리형 자습·일일 점검</p>
-      </div>
-    </div>
-
-    <div class="dk-split" data-reveal>
-      <div>
-        <span class="dk-label">TOTAL CARE</span>
-        <h2 class="dk-h2">토탈케어 관리시스템</h2>
-      </div>
-      <p>기상부터 취침까지, 생활·학습·건강·식단·안전을 입체적으로 케어합니다.</p>
-    </div>
-    <div class="dk-g3" data-reveal="stagger">
-      <div class="dk-flow-card">
-        <span class="tod">생활관리</span>
-        <p>무너지지 않는 24시간 스파르타 루틴</p>
-      </div>
-      <div class="dk-flow-card">
-        <span class="tod">학습관리</span>
-        <p>데이터 기반의 정밀 밀착 추적</p>
-      </div>
-      <div class="dk-flow-card">
-        <span class="tod">건강관리</span>
-        <p>신속하고 완벽한 의료 인프라 확보</p>
-      </div>
-      <div class="dk-flow-card">
-        <span class="tod">식단관리</span>
-        <p>장기 레이스를 버텨내는 고영양 체력 식단</p>
-      </div>
-      <div class="dk-flow-card">
-        <span class="tod">안전관리</span>
-        <p>외부 위험 요소가 차단된 보안</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     [부가 섹션] 숫자로 보는 닥공캠프
-══════════════════════════════════════════ -->
-<section class="dk-sec dk-sec--white">
-  <div class="dk-wrap">
-    <div class="dk-split" data-reveal>
-      <div>
-        <span class="dk-label">TRACK RECORD</span>
-        <h2 class="dk-h2">숫자로 보는 닥공캠프</h2>
-      </div>
-      <p>2020년부터 한국 스파르타 캠프를 본격 운영해오며 쌓아온 기록입니다.</p>
-    </div>
-    <div class="dk-g4" data-reveal="stagger">
-      <div class="dk-stat4"><div class="v"><em>2020</em>년</div><div class="k">한국 스파르타 캠프 본격 운영</div></div>
-      <div class="dk-stat4"><div class="v"><em>13</em>회차</div><div class="k">2026년 한국 스파르타 캠프 예정</div></div>
-      <div class="dk-stat4"><div class="v">약 <em>5,000</em>명</div><div class="k">누적 참가 학생</div></div>
-      <div class="dk-stat4"><div class="v">약 <em>60</em>%</div><div class="k">재참가율</div></div>
-      <div class="dk-stat4"><div class="v">약 <em>100~120</em>명</div><div class="k">한 회차 평균 참가 인원</div></div>
-      <div class="dk-stat4"><div class="v">하루 <em>9</em>시간 이상</div><div class="k">수학 중심 집중 학습</div></div>
-      <div class="dk-stat4"><div class="v">주 <em>7</em>일</div><div class="k">주말까지 이어지는 학습 운영</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     [부가 섹션] 진학실적
-══════════════════════════════════════════ -->
-<section class="dk-sec dk-perf">
-  <div class="dk-wrap">
-    <p class="dk-perf-title">[숫자가 증명하는 닥공교육그룹 <em>20년의 신화</em>]</p>
-    <div class="dk-perf-nums" data-reveal="stagger">
-      <div class="dk-perf-num">
-        <div class="v">250명+</div>
-        <div class="k">SKY 및 의·치·한·수 진학</div>
-      </div>
-      <div class="dk-perf-num">
-        <div class="v">800명+</div>
-        <div class="k">인서울 주요 대학 진학</div>
-      </div>
-      <div class="dk-perf-num">
-        <div class="v">1500명+</div>
-        <div class="k">전국 거점 국공립대 진학</div>
-      </div>
-    </div>
-    <div class="dk-perf-badges">
-      <span class="dk-perf-badge">매 학기 중·고교 전교 1등 배출</span>
-      <span class="dk-perf-badge">매 학기 중·고교 상위권을 휩쓰는 압도적 성적</span>
-    </div>
-    <p class="body">초·중·고 학습은 철저한 전략입니다. 결과를 만들어본 전문가만이 다음 결과도 증명할 수 있습니다. 동네 학원과는 비교할 수 없는 차이를 직접 경험해 보세요.</p>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     7) FAQ
+     17) FAQ — 40문항 전체(회장 지시, 8개 발췌 아님)
+     출처: 닥공_한국입시캠프_FAQ_40문항.docx (2026-07-20 닥공 제공)
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
@@ -433,61 +372,83 @@
         <span class="dk-label">FAQ</span>
         <h2 class="dk-h2">자주 묻는 질문</h2>
       </div>
+      <p>입시·학습 시스템, 수준별 반 편성,<br>학습관리·멘토링, 생활·건강·안전 40가지입니다.</p>
     </div>
+
+    <p class="dk-label" style="margin:32px 0 12px;">Ⅰ. 입시·학습 시스템</p>
     <div class="dk-faq-wrap">
-      <details class="dk-faq-item">
-        <summary class="dk-faq-q"><span class="qn">Q.01</span><span class="qt">닥공캠프는 어떤 학생에게 적합한 입시캠프인가요?</span><span class="qi">＋</span></summary>
-        <div class="dk-faq-a"><p>중학교 1학년부터 고등학교 3학년까지, 방학 동안 내신·선행·수능 학습량을 집중적으로 확보하고 싶은 학생에게 적합합니다. 현재 성적보다 공부하려는 의지와 기숙형 집중학습을 받아들일 준비가 중요합니다. 수학 기초가 부족한 학생은 기본기와 공부 습관을, 상위권 학생은 선행 진도와 고난도 문제풀이를 강화할 수 있도록 운영합니다.</p></div>
-      </details>
-      <details class="dk-faq-item">
-        <summary class="dk-faq-q"><span class="qn">Q.02</span><span class="qt">하루 종일 수학만 공부하나요?</span><span class="qi">＋</span></summary>
-        <div class="dk-faq-a"><p>수학이 핵심 과목이지만 수학만 공부하지는 않습니다. 주중에는 수학과 과학, 관리형 자습을 중심으로 운영하고, 주말에는 수능국어·수능영어 및 모의고사형 특강을 진행합니다. 고등학생은 물리·화학 등 과학과 사회 선택과목도 신청할 수 있습니다.</p></div>
-      </details>
-      <details class="dk-faq-item">
-        <summary class="dk-faq-q"><span class="qn">Q.03</span><span class="qt">수학반은 학년별로 나누나요, 실력별로 나누나요?</span><span class="qi">＋</span></summary>
-        <div class="dk-faq-a"><p>학년만으로 반을 구성하지 않습니다. 학생이 캠프 전까지 공부한 진도와 현재 실력을 함께 확인해 반을 배정합니다. 같은 학년이라도 선행 정도와 문제 해결 수준이 다르면 서로 다른 반에 배정될 수 있습니다.</p></div>
-      </details>
-      <details class="dk-faq-item">
-        <summary class="dk-faq-q"><span class="qn">Q.04</span><span class="qt">반 편성 전에 어떤 상담과 테스트를 진행하나요?</span><span class="qi">＋</span></summary>
-        <div class="dk-faq-a"><p>입소 전 학부모 상담을 통해 현재 학교, 학년, 최근 학습 진도, 희망 진도와 취약 단원을 확인합니다. 필요한 경우 자체 테스트를 진행하고, 수업 시작 후에도 실제 이해도와 과제 수행상태를 확인해 최종 반을 조정합니다.</p></div>
-      </details>
-      <details class="dk-faq-item">
-        <summary class="dk-faq-q"><span class="qn">Q.05</span><span class="qt">관리형 자습은 일반 자습과 무엇이 다른가요?</span><span class="qi">＋</span></summary>
-        <div class="dk-faq-a"><p>학생을 자습실에 앉혀두고 스스로 알아서 공부하게 하는 방식이 아닙니다. 자습 시작 전 목표 학습량을 정하고, 담당자가 자습실을 상시 순회하면서 교재 범위, 문제풀이 상태, 오답 재풀이, 집중도와 과제 완료 여부를 확인합니다.</p></div>
-      </details>
-      <details class="dk-faq-item">
-        <summary class="dk-faq-q"><span class="qn">Q.06</span><span class="qt">선생님과 입시 멘토는 학생에게 어떤 도움을 주나요?</span><span class="qi">＋</span></summary>
-        <div class="dk-faq-a"><p>과목 선생님은 개념수업, 진도관리, 문제풀이, 질문 해결과 반 조정을 담당합니다. 닥공캠프 경험자 또는 SKY·서성한·의치한약수 등 상위권 대학 진학 경험이 있는 멘토는 공부법, 시간관리, 내신·수능 준비, 학생부 관리, 슬럼프와 멘탈 관리에 현실적인 조언을 제공합니다. 선생님과 멘토는 캠프 기간 동안 시설에 상주합니다.</p></div>
-      </details>
-      <details class="dk-faq-item">
-        <summary class="dk-faq-q"><span class="qn">Q.07</span><span class="qt">기상부터 취침까지 하루 생활은 어떻게 관리하나요?</span><span class="qi">＋</span></summary>
-        <div class="dk-faq-a"><p>학생들은 매일 오전 6시 50분에 일괄 기상합니다. 기상 후 세면, 침구 정리, 식사와 수업 준비까지 정해진 일정에 따라 움직입니다. 학습이 끝난 뒤에는 숙소별 점호를 통해 인원, 냉난방, 소등과 학생 컨디션을 확인합니다.</p></div>
-      </details>
-      <details class="dk-faq-item">
-        <summary class="dk-faq-q"><span class="qn">Q.08</span><span class="qt">학생이 아프거나 열이 나면 어떻게 대응하나요?</span><span class="qi">＋</span></summary>
-        <div class="dk-faq-a"><p>먼저 체온과 증상, 식사와 수분섭취 상태를 확인하고 수업 참여가 어렵다면 휴식하도록 합니다. 발열이 있거나 상비약만으로 대응하기 어렵다고 판단되면 학부모에게 상황을 공유하고 즉시 병원으로 이동합니다. 진료 후에는 복약시간과 체온·컨디션을 확인해 수업 복귀 여부를 결정합니다.</p></div>
-      </details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.01</span><span class="qt">닥공캠프는 어떤 학생에게 적합한 입시캠프인가요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>중학교 1학년부터 고등학교 3학년까지, 방학 동안 내신·선행·수능 학습량을 집중적으로 확보하고 싶은 학생에게 적합합니다. 현재 성적보다 공부하려는 의지와 기숙형 집중학습을 받아들일 준비가 중요합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.02</span><span class="qt">현재 성적이 낮아도 참가할 수 있나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>가능합니다. 성적이 낮은 학생에게 무리한 선행을 강요하지 않고, 현재 수준에서 필요한 개념과 유형부터 다시 시작합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.03</span><span class="qt">상위권 학생에게도 충분한 학습 난이도를 제공하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>상위권 학생은 선행반·심화반·수능대비반과 선택과목 수업을 통해 높은 난도의 학습을 진행할 수 있습니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.04</span><span class="qt">중학생과 고등학생의 학습 목표는 어떻게 다른가요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>중등부는 수학 기본기, 선행, 공부 습관을 만드는 데 중점을 둡니다. 고등부는 내신과 수능형 문제풀이, 시간관리, 오답분석을 더 강하게 관리합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.05</span><span class="qt">하루 실제 학습시간은 어떻게 구성되나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>수학 수업 하루 6시간(8타임), 과학 수업 1시간 30분, 국어·영어 주말 특강 및 과제, 관리형 자습으로 구성됩니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.06</span><span class="qt">하루 종일 수학만 공부하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>수학이 핵심 과목이지만 수학만 공부하지는 않습니다. 주중에는 수학과 과학, 관리형 자습을 중심으로, 주말에는 수능국어·영어 특강을 진행합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.07</span><span class="qt">수학을 핵심 과목으로 운영하는 이유는 무엇인가요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>수학은 중·고등 내신과 수능에서 누적 학습의 영향이 큰 과목입니다. 방학 동안 충분한 수업량과 문제풀이량을 확보하는 것이 중요합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.08</span><span class="qt">중학생은 선행학습과 학교 내신 중 무엇을 우선하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>현재 진도와 이해도에 따라 결정합니다. 현행 과정이 부족하면 기초를 먼저 보완하고, 안정된 학생은 선행으로 진행합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.09</span><span class="qt">현행 과정이 부족한데 선행학습부터 시작해도 되나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>희망 진도의 이전 1년 과정과 현재 진도를 함께 확인한 뒤 결정합니다. 무리하게 진도만을 기준으로 반을 배정하지 않습니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.10</span><span class="qt">고등학생은 내신과 수능을 어떻게 함께 준비하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>고1·고2는 학교 진도와 내신형 문제를 중심으로, 고2 후반부터 고3은 모의고사와 수능형 문제 비중을 높입니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.11</span><span class="qt">고1·고2·고3의 학습 운영에는 어떤 차이가 있나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>고1은 고등수학 적응과 내신 기초, 고2는 내신과 수능형 사고의 병행, 고3은 실전 모의고사와 취약 단원 정리에 집중합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.12</span><span class="qt">고등학생을 위한 수능대비반에서는 무엇을 하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>모의고사 풀이, 시간 배분, 해설, 오답분석과 재풀이를 반복합니다. 틀린 원인을 개념·해석·계산·시간 부족으로 나눠 다음 학습에 반영합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.13</span><span class="qt">수시 준비 학생과 정시 준비 학생은 다르게 관리하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>정시 중심 학생은 모의고사·수능형 문제풀이 비중을, 수시 중심 학생은 내신 진도와 취약 단원 관리에 더 집중합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.14</span><span class="qt">국어와 영어 입시특강은 어떻게 진행되나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>토요일은 수능영어·모의고사 중심, 일요일은 수능국어·모의고사 중심으로 진행합니다. 고등부는 시간관리와 오답분석을 강화합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.15</span><span class="qt">물리·화학 등 과학 선택과목도 공부할 수 있나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>가능합니다. 중등과학 내신대비반, 고등 과학Ⅰ 과정과 개별 선택과목을 운영합니다. 신청 인원에 따라 개설 여부가 조정될 수 있습니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.16</span><span class="qt">캠프 기간 동안 어느 정도의 진도를 나갈 수 있나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>일반적으로 4주 캠프 기준 약 1년 과정의 개념설명을 진행합니다. 다만 진도는 이해와 오답 보완 상태에 따라 조정됩니다.</p></div></details>
+    </div>
+
+    <p class="dk-label" style="margin:32px 0 12px;">Ⅱ. 수준별 반 편성</p>
+    <div class="dk-faq-wrap">
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.17</span><span class="qt">수학반은 학년별로 나누나요, 실력별로 나누나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>학년만으로 반을 구성하지 않습니다. 입소 전 진도와 현재 실력을 함께 확인해 반을 배정합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.18</span><span class="qt">반 편성 전에 어떤 상담과 테스트를 진행하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>입소 전 학부모 상담으로 학교·학년·진도·취약 단원을 확인하고, 필요하면 자체 테스트를 추가로 진행합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.19</span><span class="qt">희망 진도의 이전 1년 과정까지 확인하는 이유는 무엇인가요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>수학은 이전 과정의 개념이 다음 진도의 기반이 되기 때문입니다. 이전 1년 과정까지 확인해 실제 선행 준비도를 판단합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.20</span><span class="qt">고등부는 왜 내신형 문제와 모의고사형 문제를 모두 테스트하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>학교 시험을 잘 보는 능력과 수능형 문제 해결 능력이 반드시 같지는 않기 때문입니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.21</span><span class="qt">수학반은 실제 몇 개 반으로 운영되나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>초·중·고 선행반 6개, 내신대비반 6개, 심화반 2개 수준으로 구성할 수 있습니다. 실제 반 수는 회차별 학생 분포에 따라 조정됩니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.22</span><span class="qt">국어·영어·과학도 수준별로 반을 나누나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>과학은 학년별·과정별로 나뉘고, 국어·영어는 주말 특강을 과목별 3~4개 수준으로 나눠 진행합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.23</span><span class="qt">배정된 반의 수업을 따라가기 어려우면 어떻게 하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>참여상태·과제수행·이해도를 확인하고, 담당교사 의견과 학부모 상담을 거쳐 보완 또는 반 조정 방향을 결정합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.24</span><span class="qt">수업이 너무 쉽거나 진도가 느린 경우에도 반을 조정할 수 있나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>가능합니다. 수업을 충분히 소화하고 여유가 있다고 판단되면 상위 반이나 빠른 진도로의 조정을 검토합니다.</p></div></details>
+    </div>
+
+    <p class="dk-label" style="margin:32px 0 12px;">Ⅲ. 학습관리·멘토링</p>
+    <div class="dk-faq-wrap">
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.25</span><span class="qt">관리형 자습은 일반 자습과 무엇이 다른가요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>자습 시작 전 목표 학습량을 정하고, 담당자가 자습실을 상시 순회하며 진행상태를 확인합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.26</span><span class="qt">자습 시작 전에 목표 학습량을 정하는 이유는 무엇인가요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>막연히 오래 앉아 있는 것을 방지하기 위해서입니다. 구체적인 목표를 정하고 완료량과 비교합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.27</span><span class="qt">관리형 자습 담당자는 실제로 무엇을 확인하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>목표량, 진행 교재와 범위, 풀이 과정, 오답 재풀이 여부, 집중력 저하, 과제 미완료 사유를 확인합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.28</span><span class="qt">학생이 문제집 진도만 나가고 제대로 이해하지 못하는 것은 어떻게 확인하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>같은 유형을 반복해서 틀리는지, 질문한 문제를 다시 풀 수 있는지를 확인합니다. 이해가 부족하면 다시 설명하거나 진도를 조정합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.29</span><span class="qt">오답관리는 구체적으로 어떻게 진행하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>틀린 문제를 개념 부족, 조건 해석 오류, 계산 실수, 시간 부족으로 구분해 재풀이와 질문으로 이어갑니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.30</span><span class="qt">질문을 잘하지 못하는 학생은 어떻게 관리하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>담당자가 순회하면서 오래 멈춰 있거나 과제가 반복 미완료되면 원인을 확인하고 질문하도록 연결합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.31</span><span class="qt">과제를 계속 완료하지 못하는 학생은 어떻게 지도하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>과제량·개념·집중력 중 원인을 먼저 확인하고, 조정이나 보완을 검토하며 반복되면 학부모와 상담합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.32</span><span class="qt">선생님과 입시 멘토는 학생에게 어떤 도움을 주나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>과목 선생님은 개념·진도·문제풀이·반 조정을, 멘토는 공부법·시간관리·생기부 관리·멘탈 케어를 담당합니다.</p></div></details>
+    </div>
+
+    <p class="dk-label" style="margin:32px 0 12px;">Ⅳ. 생활·건강·안전</p>
+    <div class="dk-faq-wrap">
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.33</span><span class="qt">기상부터 취침까지 하루 생활은 어떻게 관리하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>매일 오전 6시 50분 일괄 기상 후 정해진 일정대로 움직이며, 학습이 끝난 뒤 숙소별 점호를 진행합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.34</span><span class="qt">과제를 끝내지 못하면 취침시간은 어떻게 되나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>학생별 완료 여부·학년·컨디션에 따라 다릅니다. 원인을 확인하고 담당자 관리 아래 추가 학습 여부를 조정합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.35</span><span class="qt">캠프 규칙을 반복해서 어기면 어떻게 조치하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>1차는 1:1 면담과 경고, 2차는 학부모 상담 후 생활방향 결정, 3차는 학부모와 협의해 퇴소 여부를 결정합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qt">휴대전화 사용과 학부모 연락은 어떻게 운영하나요?</span><span class="qn">Q.36</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>학습 몰입을 위해 사용을 제한합니다. 보관 방식과 사용 가능 시간은 오리엔테이션에서 안내하며, 긴급 연락은 관리자를 통합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.37</span><span class="qt">학생이 아프거나 열이 나면 어떻게 대응하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>먼저 상태를 확인해 휴식하도록 하고, 상비약으로 대응하기 어려우면 학부모에게 공유 후 즉시 병원으로 이동합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.38</span><span class="qt">개인 복용약이나 영양제는 어떻게 관리하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>입소 전 복용약·영양제·알레르기를 제출받아, 복용 알림 체크리스트로 관리합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.39</span><span class="qt">식사와 알레르기는 어떻게 관리하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>하루 세 끼 급식과 주 1회 특별식을 제공하며, 알레르기·섭취 제한사항은 입소 전 확인합니다.</p></div></details>
+      <details class="dk-faq-item"><summary class="dk-faq-q"><span class="qn">Q.40</span><span class="qt">숙소·야간 점호·외부 이동은 어떻게 관리하나요?</span><span class="qi">＋</span></summary><div class="dk-faq-a"><p>숙소는 8인실로 운영하며, 취침 시 인원·냉난방·소등·컨디션을 확인합니다. 단독 외부 이동은 제한됩니다.</p></div></details>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════
-     8) 문의 CTA — 홈 자체 섹션(id="contact", 스크롤 앵커용 유지). ★2026-07-25: 실제
-     CONTACT 메뉴/하위 5페이지 CTA는 이제 별도 contact.html(문의폼)로 통일했고,
-     이 섹션 버튼도 contact.html로 감(아래 참조).
+     18) 문의 CTA
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-cta" id="contact">
   <div class="dk-wrap">
     <span class="dk-label">문의하기</span>
     <h2 class="dk-h2" style="margin-bottom:28px;">실패 없는 입시 루틴의 시작,<br>닥공캠프 한국 스파르타 캠프가 함께합니다.</h2>
-    <a class="btn" style="background:#fff; color:var(--dk-accent-red);" href="contact.html">문의하기</a>
+    <div class="btn-group">
+      <a class="btn btn-cta-primary" href="contact.html">캠프 참여 문의하기 →</a>
+      <a class="btn btn-cta-outline" href="https://pf.kakao.com/_FSxmqn" target="_blank" rel="noopener">카카오톡 상담하기 →</a>
+    </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════
-     공통 푸터 — 6개 페이지 전부 동일 마크업 유지 필수.
-     사업자정보 출처: clients/dakgong/자료/2026-07-23_국내캠프_푸터정보_사업자정보_SNS링크_회장전달.md
-     (호스팅 제공자 아임웹 문구는 회장 지시로 제외)
+     19) 공통 푸터 — 6개 페이지 전부 동일 마크업 유지 필수.
 ══════════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="dk-wrap">
