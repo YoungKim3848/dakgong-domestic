@@ -361,6 +361,24 @@ body.dk {
 .dk-stat4 .v em { color: var(--dk-accent-red); font-style: normal; }
 .dk-stat4 .k { font-size: 13px; color: var(--dk-fg-3); }
 
+/* ── 숫자로 보는 캠프(다크형) — 필핀 실사이트 참고: 다크섹션+원형아이콘+큰숫자+설명문 ── */
+.dk-stat-dark-sec { background: var(--dk-surface-dark); }
+.dk-stat-dark-sec .dk-label { color: rgba(255,255,255,0.6); }
+.dk-stat-dark-sec .dk-h2 { color: #fff; }
+.dk-stat-dark-sec .dk-split p { color: rgba(255,255,255,0.7); }
+.dk-stat-dark-list { display: flex; flex-direction: column; gap: 0; }
+.dk-stat-dark-item { display: grid; grid-template-columns: 64px 1fr; gap: 20px; align-items: center; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.dk-stat-dark-item:last-child { border-bottom: none; }
+.dk-stat-dark-icon {
+  width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--dk-accent-red);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.dk-stat-dark-icon svg { width: 24px; height: 24px; stroke: var(--dk-accent-red); stroke-width: 1.8; fill: none; }
+.dk-stat-dark-num { font-family: var(--dk-font-display); font-size: clamp(24px,3vw,30px); font-weight: 800; color: var(--dk-accent-red-light); line-height: 1; }
+.dk-stat-dark-num span { font-size: 16px; font-weight: 600; margin-left: 2px; }
+.dk-stat-dark-desc { font-size: 14px; color: rgba(255,255,255,0.72); margin: 6px 0 0; line-height: 1.6; }
+@media (max-width: 640px) { .dk-stat-dark-item { grid-template-columns: 48px 1fr; gap: 14px; } .dk-stat-dark-icon { width: 44px; height: 44px; } .dk-stat-dark-icon svg { width: 20px; height: 20px; } }
+
 /* ── 진학실적 ── */
 .dk-perf { background: #1a1a1a; }
 .dk-perf-title {
@@ -472,22 +490,30 @@ body.dk {
 .dk-kp-text { font-size: 17px; font-weight: 600; color: #fff; line-height: 1.6; margin: 0; }
 .dk-kp-note { text-align: center; margin: clamp(28px,4vw,40px) auto 0; max-width: 640px; font: var(--dk-title-md); color: #fff; opacity: 0.92; }
 
-/* ── 비디오 인터뷰 ── */
-.dk-vi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+/* ── 비디오 인터뷰 — 필핀 실사이트 gallery2 실측(우상단 재생버튼 + 좌하단 캡션 오버레이바) 재현.
+   PC 3칸 그리드 / 모바일 1칸씩 수직 나열(회장 확정 2026-07-26). */
+.dk-vi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 880px) { .dk-vi-grid { grid-template-columns: 1fr; } }
 .dk-vi-card {
   position: relative; aspect-ratio: 16/9; border-radius: var(--dk-radius-lg);
-  border: 1.5px dashed #c3ccd8;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-  flex: 0 0 320px; width: 320px;
+  border: 1.5px dashed #c3ccd8; overflow: hidden;
+  transition: transform var(--dk-dur-base) var(--dk-ease-out), border-color var(--dk-dur-base) var(--dk-ease-out);
 }
-@media (max-width: 480px) { .dk-vi-card { flex: 0 0 240px; width: 240px; } }
-.dk-vi-card { transition: transform var(--dk-dur-base) var(--dk-ease-out), border-color var(--dk-dur-base) var(--dk-ease-out); }
 .dk-vi-card:hover { transform: translateY(-4px); border-color: var(--dk-fg-muted); }
-.dk-vi-play { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.75); box-shadow: 0 1px 4px rgba(20,42,77,0.12); display: flex; align-items: center; justify-content: center; transition: background var(--dk-dur-fast) var(--dk-ease-out); }
+.dk-vi-play {
+  position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.85); box-shadow: 0 1px 4px rgba(20,42,77,0.15);
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--dk-dur-fast) var(--dk-ease-out);
+}
 .dk-vi-card:hover .dk-vi-play { background: var(--dk-accent-red); }
 .dk-vi-card:hover .dk-vi-play svg { fill: #fff; }
-.dk-vi-play svg { width: 18px; height: 18px; fill: #5b6b85; }
-.dk-vi-todo { font-size: 12.5px; color: var(--dk-fg-muted); text-align: center; padding: 0 20px; margin: 0; line-height: 1.6; }
+.dk-vi-play svg { width: 14px; height: 14px; fill: #5b6b85; }
+.dk-vi-todo {
+  position: absolute; left: 14px; bottom: 14px; right: 14px;
+  font-size: 12.5px; color: #fff; background: rgba(20,20,20,0.55); border-radius: 8px;
+  padding: 8px 12px; margin: 0; line-height: 1.5; backdrop-filter: blur(2px);
+}
 
 /* ── 텍스트 리뷰 ── */
 /* ★2026-07-26 회장 지시 — 리뷰 섹션에 필핀 review-carousel.imweb.html의 무한 롤링
@@ -699,6 +725,7 @@ table.dk-table--menu th, table.dk-table--menu td { padding: 12px 14px; font-size
 /* ── 연혁 타임라인 — 필핀 실사이트(dakgongcamp.com) .dk-history 컴포넌트 원본 그대로,
    색만 레드(#ab0000)→코발트(--dk-accent-red, 국내파생) 치환. 레이아웃·폭·타이포 무변경. ── */
 .dk-history { background: #fff; padding: clamp(56px, 9vw, 96px) 0; }
+.dk-history__wrap { max-width: 1280px; margin: 0 auto; padding: 0; box-sizing: border-box; }
 .dk-history__inner { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: clamp(40px, 5vw, 88px); align-items: start; }
 .dk-history__head { position: sticky; top: 48px; }
 .dk-history__label { font: 700 15px/30px 'Pretendard',sans-serif; letter-spacing: normal; color: var(--dk-accent-red); margin: 0 0 10px; }
@@ -724,6 +751,7 @@ table.dk-table--menu th, table.dk-table--menu td { padding: 12px 14px; font-size
 .dk-history__item--soon .dk-history__rail::after { background: var(--dk-accent-red); }
 .dk-history__soon { display: inline-block; margin-left: 8px; font: 700 11px/1 'Pretendard',sans-serif; color: var(--dk-accent-red); background: var(--dk-accent-red-bg); border-radius: 100px; padding: 4px 9px; vertical-align: middle; }
 @media (max-width: 768px) {
+  .dk-history__wrap { padding: 0 20px; }
   .dk-history__inner { display: block; }
   .dk-history__head { position: static; margin-bottom: 40px; }
   .dk-history__timeline { max-width: none; margin-left: 0; }
@@ -731,6 +759,9 @@ table.dk-table--menu th, table.dk-table--menu td { padding: 12px 14px; font-size
   .dk-history__title { font-size: 26px !important; }
   .dk-history__sub { font-size: 15px; line-height: 1.55; }
   .dk-history__item { grid-template-columns: 52px 22px 1fr; }
+  .dk-history__year { font-size: 19px; }
+  .dk-history__event { font-size: 14px; }
+  .dk-history__rail::after { width: 11px; height: 11px; }
 }
 table.dk-table { width: 100%; border-collapse: collapse; min-width: 480px; }
 table.dk-table th, table.dk-table td { padding: 16px 20px; text-align: left; font-size: 14.5px; line-height: 1.6; vertical-align: top; }
