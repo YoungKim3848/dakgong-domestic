@@ -130,16 +130,34 @@
       </div>
       <p>대상부터 학습량·관리까지,<br>캠프의 뼈대를 한 장으로 정리했습니다.</p>
     </div>
-    <div class="dk-table-wrap" data-reveal>
-      <table class="dk-table">
-        <tbody>
-          <tr><th>대상</th><td>중1 ~ 고3학년</td></tr>
-          <tr><th>학습량</th><td>수학 중심 일 9시간 이상 압도적 학습량</td></tr>
-          <tr><th>특강</th><td>국어·영어·사회·과학 특강</td></tr>
-          <tr><th>시험 대비</th><td>내신과 수능대비 학습</td></tr>
-          <tr><th>관리</th><td>기숙형 밀착 관리 (24시간)</td></tr>
-        </tbody>
-      </table>
+    <!-- 번호 블록 + 아이콘 라벨 + 값 3단. 5개가 서로 동등한 항목이라
+         번호 블록 농도는 일부러 계단으로 만들지 않고 전부 같은 코발트로 둔다. -->
+    <div class="dk-glance" data-reveal="stagger">
+      <div class="dk-glance-row">
+        <div class="dk-glance-no">01</div>
+        <div class="dk-glance-k"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 21v-1.6a6 6 0 016-6h3a6 6 0 016 6V21"/></svg>대상</div>
+        <p class="dk-glance-v">중1 ~ 고3학년</p>
+      </div>
+      <div class="dk-glance-row">
+        <div class="dk-glance-no">02</div>
+        <div class="dk-glance-k"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.6V12l3.4 3.4"/></svg>학습량</div>
+        <p class="dk-glance-v">수학 중심 일 9시간 이상 압도적 학습량</p>
+      </div>
+      <div class="dk-glance-row">
+        <div class="dk-glance-no">03</div>
+        <div class="dk-glance-k"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v12H4z"/><path d="M8 21h8M12 17.5V21"/></svg>특강</div>
+        <p class="dk-glance-v">국어·영어·사회·과학 특강</p>
+      </div>
+      <div class="dk-glance-row">
+        <div class="dk-glance-no">04</div>
+        <div class="dk-glance-k"><svg viewBox="0 0 24 24"><path d="M6.5 3.5h11v17h-11z"/><path d="M9.5 8h5M9.5 12h5M9.5 16h3"/></svg>시험 대비</div>
+        <p class="dk-glance-v">내신과 수능대비 학습</p>
+      </div>
+      <div class="dk-glance-row">
+        <div class="dk-glance-no">05</div>
+        <div class="dk-glance-k"><svg viewBox="0 0 24 24"><path d="M12 3.2l7 3.1v5c0 4.4-2.9 8-7 9.5-4.1-1.5-7-5.1-7-9.5v-5z"/></svg>관리</div>
+        <p class="dk-glance-v">기숙형 밀착 관리 (24시간)</p>
+      </div>
     </div>
   </div>
 </section>
@@ -156,35 +174,40 @@
       </div>
       <p>2020년부터 한국 스파르타 캠프를 본격 운영해오며 쌓아온 기록입니다.</p>
     </div>
-    <div class="dk-stat-dark-list" data-reveal="stagger">
-      <div class="dk-stat-dark-item">
-        <div class="dk-stat-dark-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18"/></svg></div>
-        <div><div class="dk-stat-dark-num">2020<span>년</span></div><p class="dk-stat-dark-desc">한국 스파르타 캠프를 본격 운영해온 시작 연도입니다.</p></div>
+    <!-- ★2026-07-28 재설계 — 아이콘+숫자 7줄 나열을 걷어내고 주 메시지 2개만 크게 세운다.
+         "9시간/24시간" 프레이밍은 쓰지 않는다(분모가 24면 9시간이 무조건 작아 보인다).
+         252시간 = 9시간 × 28일. 확정값에서 계산한 값이며 새로 만든 수치가 아니다. -->
+    <div class="dk-duo" data-reveal>
+      <div class="dk-duo-cell">
+        <p class="cl">방학 한 시즌 학습량</p>
+        <div class="dk-glowstat"><span class="n">252<u>시간</u></span></div>
+        <span class="dk-eq">매일 <b>9시간</b> × <b>4주</b></span>
+        <p class="dk-dnote">수학을 중심으로, 주 7일 이어집니다.</p>
       </div>
-      <div class="dk-stat-dark-item">
-        <div class="dk-stat-dark-icon"><svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0012 4a8 8 0 108 8"/><path d="M17 4v4h-4"/></svg></div>
-        <div><div class="dk-stat-dark-num">13<span>회차</span></div><p class="dk-stat-dark-desc">2026년 현재 13번째 시즌을 진행하고 있습니다.</p></div>
+      <div class="dk-duo-cell">
+        <p class="cl">재참가율</p>
+        <p class="dk-head6">10명 중 <em>6명</em>이<br>다시 옵니다</p>
+        <div class="dk-ppl" role="img" aria-label="10명 중 6명이 다시 참가">
+          <span class="on"><svg viewBox="0 0 24 30"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zM2.5 29v-6.5A6.5 6.5 0 019 16h6a6.5 6.5 0 016.5 6.5V29z"/></svg></span>
+          <span class="on"><svg viewBox="0 0 24 30"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zM2.5 29v-6.5A6.5 6.5 0 019 16h6a6.5 6.5 0 016.5 6.5V29z"/></svg></span>
+          <span class="on"><svg viewBox="0 0 24 30"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zM2.5 29v-6.5A6.5 6.5 0 019 16h6a6.5 6.5 0 016.5 6.5V29z"/></svg></span>
+          <span class="on"><svg viewBox="0 0 24 30"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zM2.5 29v-6.5A6.5 6.5 0 019 16h6a6.5 6.5 0 016.5 6.5V29z"/></svg></span>
+          <span class="on"><svg viewBox="0 0 24 30"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zM2.5 29v-6.5A6.5 6.5 0 019 16h6a6.5 6.5 0 016.5 6.5V29z"/></svg></span>
+          <span class="on"><svg viewBox="0 0 24 30"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zM2.5 29v-6.5A6.5 6.5 0 019 16h6a6.5 6.5 0 016.5 6.5V29z"/></svg></span>
+          <span class="off"><svg viewBox="0 0 24 30"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zM2.5 29v-6.5A6.5 6.5 0 019 16h6a6.5 6.5 0 016.5 6.5V29z"/></svg></span>
+          <span class="off"><svg viewBox="0 0 24 30"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zM2.5 29v-6.5A6.5 6.5 0 019 16h6a6.5 6.5 0 016.5 6.5V29z"/></svg></span>
+          <span class="off"><svg viewBox="0 0 24 30"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zM2.5 29v-6.5A6.5 6.5 0 019 16h6a6.5 6.5 0 016.5 6.5V29z"/></svg></span>
+          <span class="off"><svg viewBox="0 0 24 30"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zM2.5 29v-6.5A6.5 6.5 0 019 16h6a6.5 6.5 0 016.5 6.5V29z"/></svg></span>
+        </div>
+        <p class="dk-dnote">재참가율 60% · 한 번 온 학생이 스스로 다시 선택합니다.</p>
       </div>
-      <div class="dk-stat-dark-item">
-        <div class="dk-stat-dark-icon"><svg viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg></div>
-        <div><div class="dk-stat-dark-num">약 5,000<span>명</span></div><p class="dk-stat-dark-desc">지금까지 캠프를 다녀간 누적 참가 학생 수입니다.</p></div>
-      </div>
-      <div class="dk-stat-dark-item">
-        <div class="dk-stat-dark-icon"><svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0012 4a8 8 0 108 8"/><path d="M17 4v4h-4"/></svg></div>
-        <div><div class="dk-stat-dark-num">약 60<span>%</span></div><p class="dk-stat-dark-desc">한 번 참가한 학생 중 다시 참가한 비율입니다.</p></div>
-      </div>
-      <div class="dk-stat-dark-item">
-        <div class="dk-stat-dark-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 016-6h4a6 6 0 016 6v2"/></svg></div>
-        <div><div class="dk-stat-dark-num">약 100~120<span>명</span></div><p class="dk-stat-dark-desc">한 회차에 평균적으로 참가하는 인원입니다.</p></div>
-      </div>
-      <div class="dk-stat-dark-item">
-        <div class="dk-stat-dark-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-        <div><div class="dk-stat-dark-num">하루 9<span>시간 이상</span></div><p class="dk-stat-dark-desc">수학을 중심으로 집중하는 하루 학습량입니다.</p></div>
-      </div>
-      <div class="dk-stat-dark-item">
-        <div class="dk-stat-dark-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18"/></svg></div>
-        <div><div class="dk-stat-dark-num">주 7<span>일</span></div><p class="dk-stat-dark-desc">주말까지 이어지는 학습 운영 요일수입니다.</p></div>
-      </div>
+    </div>
+
+    <div class="dk-strip" data-reveal="stagger">
+      <div><div class="v">5,000<u>명</u></div><p class="k">누적 참가</p></div>
+      <div><div class="v">13<u>회차</u></div><p class="k">2026년 현재</p></div>
+      <div><div class="v">100~120<u>명</u></div><p class="k">회차당 인원</p></div>
+      <div><div class="v">2020<u>년~</u></div><p class="k">운영 시작</p></div>
     </div>
   </div>
 </section>
@@ -277,21 +300,24 @@
 <section class="dk-sec dk-perf">
   <div class="dk-wrap">
     <p class="dk-perf-title">[숫자가 증명하는 닥공교육그룹 <em>20년의 신화</em>]</p>
-    <div class="dk-perf-nums" data-reveal="stagger">
-      <div class="dk-perf-num">
-        <div class="v">250명+</div>
-        <div class="k">SKY 및 의·치·한·수 진학</div>
-      </div>
-      <div class="dk-perf-num">
-        <div class="v">800명+</div>
-        <div class="k">인서울 주요 대학 진학</div>
-      </div>
-      <div class="dk-perf-num">
-        <div class="v">1500명+</div>
-        <div class="k">전국 거점 국공립대 진학</div>
-      </div>
+    <!-- ★2026-07-28 재설계 — 막대·면적 폐기. 길이=인원수로 매핑하면 1,500이 무조건 제일 크고
+         SKY가 제일 작아져 소구가 뒤집힌다. 허브 다이어그램은 값 비교용 도형이 아니므로
+         크기를 "핵심/확장 위계"에 쓸 수 있다. 실제 인원은 각 요소 안에 그대로 적혀 있다. -->
+    <div class="dk-hub-grp" data-reveal>
+      <i></i><span class="t">핵심 성과</span><span class="r"></span><i class="hollow"></i><span class="t">확장 성과</span>
     </div>
-    <div class="dk-perf-badges">
+    <div class="dk-orbit" data-reveal>
+      <span class="ring"></span>
+      <div class="dk-core">
+        <p class="k">SKY 및 의·치·한·수</p>
+        <span class="v">250<u>명+</u></span>
+      </div>
+      <div class="dk-chipx p1"><span class="b"></span><span class="t">인서울<br>주요 대학</span><span class="n">800<u>명+</u></span></div>
+      <div class="dk-chipx p2"><span class="b"></span><span class="t">거점<br>국공립대</span><span class="n">1,500<u>명+</u></span></div>
+    </div>
+    <p class="dk-hub-cap"><b>닥공교육그룹 20년</b>, 가장 좁은 문에서 결과를 만들어 왔습니다.<br>
+      <span class="dk-hub-badge"><span>누적 진학</span><b>2,550<u>명+</u></b></span></p>
+    <div class="dk-perf-badges" style="margin-top:26px;">
       <span class="dk-perf-badge">매 학기 중·고교 전교 1등 배출</span>
       <span class="dk-perf-badge">매 학기 중·고교 상위권을 휩쓰는 압도적 성적</span>
     </div>
@@ -312,9 +338,11 @@
       <p>실제 수료생·학부모 인터뷰 영상은<br>확보 후 이 자리에 채워집니다.</p>
     </div>
     <div class="dk-vi-grid" data-reveal="stagger">
-      <div class="dk-vi-card"><div class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="dk-vi-todo">권장 16:9 · 학부모 인터뷰<br>[TODO: 인터뷰 영상 확보 후 삽입]</p></div>
-      <div class="dk-vi-card"><div class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="dk-vi-todo">권장 16:9 · 수료생 인터뷰<br>[TODO: 인터뷰 영상 확보 후 삽입]</p></div>
-      <div class="dk-vi-card"><div class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="dk-vi-todo">권장 16:9 · 학부모 인터뷰<br>[TODO: 인터뷰 영상 확보 후 삽입]</p></div>
+      <!-- ★2026-07-28 — 균등 3칸 → 큰1+작은2 비대칭. 캡션은 카드 위로 올라탄다.
+           실물 영상이 들어와도 골격을 다시 안 짜도 되도록 지금 잡아둔다. -->
+      <div class="dk-vi-card"><div class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="dk-vi-cap">학부모 인터뷰 <span style="opacity:.7">· 권장 4:3</span></p></div>
+      <div class="dk-vi-card"><div class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="dk-vi-cap">수료생 인터뷰 <span style="opacity:.7">· 권장 16:9</span></p></div>
+      <div class="dk-vi-card"><div class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="dk-vi-cap">학부모 인터뷰 <span style="opacity:.7">· 권장 16:9</span></p></div>
     </div>
   </div>
 </section>
@@ -375,7 +403,7 @@
           <p class="dk-pt-d">수학을 중심축으로 국어·영어특강, 수능대비, 선택과목까지 입시에 필요한 과목 밸런스를 완벽하게 책임집니다.</p>
           <a class="dk-pt-link" href="curriculum.html">학습 시스템 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="dk-pt-vis"><span class="num">01</span></div>
+        <div class="dk-pt-vis"><div class="card">수업 사진</div><span class="num">01</span></div>
       </div>
     </div>
 
@@ -387,7 +415,7 @@
           <p class="dk-pt-d">닥공을 직접 버텨본 사람만이 학생의 흐트러지는 순간을 잡을 수 있습니다. 가장 가깝고 강력한 입시 페이스메이커입니다.</p>
           <a class="dk-pt-link" href="teachers.html">선생님·멘토 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="dk-pt-vis"><span class="num">02</span></div>
+        <div class="dk-pt-vis"><div class="card">멘토링 사진</div><span class="num">02</span></div>
       </div>
     </div>
 
@@ -399,7 +427,7 @@
           <p class="dk-pt-d">계획만 거창한 자습은 없습니다. 목표 제출 → 상시 순회 확인 → 질문·보완 → 완료량 점검까지, 실행력을 담보하는 환경입니다.</p>
           <a class="dk-pt-link" href="self-study.html">관리형 자습 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="dk-pt-vis"><span class="num">03</span></div>
+        <div class="dk-pt-vis"><div class="card">자습실 사진</div><span class="num">03</span></div>
       </div>
     </div>
 
@@ -411,7 +439,7 @@
           <p class="dk-pt-d">닥공캠프는 수업만 하고 끝나는 캠프가 아닙니다. 생활·건강·식단·안전까지 입체적으로 케어하는 기숙형 토탈 관리 시스템입니다.</p>
           <a class="dk-pt-link" href="life-care.html">생활환경 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="dk-pt-vis"><span class="num">04</span></div>
+        <div class="dk-pt-vis"><div class="card">생활 사진</div><span class="num">04</span></div>
       </div>
     </div>
 
@@ -425,7 +453,7 @@
           <p class="dk-pt-d">캠프에서의 노력이 확실한 결과로 이어지도록, 대치동 프리미엄 컨설팅으로 최적의 입시 전략을 완성합니다.</p>
           <a class="dk-pt-link" href="#">입시 컨설팅 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="dk-pt-vis"><span class="num">05</span></div>
+        <div class="dk-pt-vis"><div class="card">컨설팅 사진</div><span class="num">05</span></div>
       </div>
     </div>
   </div>

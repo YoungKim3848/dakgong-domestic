@@ -292,10 +292,12 @@
 </section>
 
 <!-- ══════════════════════════════════════════
-     일정·일과표 — 2026-07-28 회장 전달 자료로 실물 반영(기존 [TODO] 대체).
+     일정·일과표 — 2026-07-28 회장 전달 자료로 실물 반영.
      출처: 닥공\한국캠프_일일스케줄_중등부용.pdf / _고등부용.pdf (각 4주 과정),
-           월간 일정표는 회장 전달 이미지("한국 세부 월별 일정표 (예시)") 원문 전사.
+           월간 일정표는 회장 전달 이미지("한국 세부 월별 일정표 (예시)") 전사.
      ※ 월간 일정표는 원본이 "예시"로 명시돼 있어 예시 배지를 반드시 유지할 것.
+     ※ 2026-07-28 표 재설계(프리뷰 7차) — 컬러 헤더 밴드 / 좌측 라벨 블록 /
+        행 줄무늬 / 셀 안 pill / 다크 주차 블록. 색은 토큰과 그 투명도 파생만 사용.
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
@@ -308,55 +310,48 @@
     <!-- 01 월간 일정표 -->
     <div class="dk-tt-block" data-reveal>
       <h3 class="dk-tt-h"><span class="no">01</span>월간 일정표<span class="dk-badge">예시</span></h3>
-      <p class="dk-tt-sub">입소부터 4주 차까지 주차별 운영 흐름입니다.</p>
-      <div class="dk-table-wrap">
-        <table class="dk-table dk-table--month">
-          <thead>
-            <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
-          </thead>
-          <tbody>
-            <tr class="dk-month-date"><td>7월 19일</td><td>7월 20일</td><td>7월 21일</td><td>7월 22일</td><td>7월 23일</td><td>7월 24일</td><td>7월 25일</td></tr>
-            <tr>
-              <td>입소<br>영어 레벨테스트<br>&amp; 수학 레벨테스트</td>
-              <td>오리엔테이션<br>&amp; 수학</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>고등부 내신대비 영어<br>&amp; 영어 모의고사 특강</td>
-            </tr>
-            <tr class="dk-month-date"><td>7월 26일</td><td>7월 27일</td><td>7월 28일</td><td>7월 29일</td><td>7월 30일</td><td>7월 31일</td><td>8월 1일</td></tr>
-            <tr>
-              <td>국어 모의고사 특강<br>&amp; 주간 수학 성취도평가</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>고등부 내신대비 영어<br>&amp; 영어 모의고사 특강</td>
-            </tr>
-            <tr class="dk-month-date"><td>8월 2일</td><td>8월 3일</td><td>8월 4일</td><td>8월 5일</td><td>8월 6일</td><td>8월 7일</td><td>8월 8일</td></tr>
-            <tr>
-              <td>국어 모의고사 특강<br>&amp; 주간 수학 성취도평가</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>고등부 내신대비 영어<br>&amp; 영어 모의고사 특강</td>
-            </tr>
-            <tr class="dk-month-date"><td>8월 9일</td><td>8월 10일</td><td>8월 11일</td><td>8월 12일</td><td>8월 13일</td><td>8월 14일</td><td>8월 15일</td></tr>
-            <tr>
-              <td>국어 모의고사 특강<br>&amp; 주간 수학 성취도평가</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>정규수업<br>&amp; 선택 과목</td>
-              <td>고등부 내신대비 영어<br>&amp; 영어 모의고사 특강</td>
-            </tr>
-          </tbody>
-        </table>
+      <p class="dk-tt-sub">입소부터 4주 차까지 주차별 운영 흐름입니다. 평일은 정규수업, 주말마다 특강이 붙습니다.</p>
+      <div class="dk-mon">
+        <div class="dk-mon-head">
+          <div>주차</div><div class="we">일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div class="we">토</div>
+        </div>
+        <div class="dk-mon-row">
+          <div class="dk-mon-wk"><b>1</b>주차</div>
+          <div class="dk-mon-cells">
+            <div class="dk-mon-day open"><span class="d">7.19</span><span class="n">입소<br>레벨테스트</span></div>
+            <div class="dk-mon-day reg" style="grid-column:span 5"><span class="d">7.20 ~ 7.24</span><span class="n">오리엔테이션 → 정규수업 &amp; 선택 과목</span></div>
+            <div class="dk-mon-day we"><span class="d">7.25</span><span class="n">내신대비<br>모의 특강</span></div>
+          </div>
+        </div>
+        <div class="dk-mon-row">
+          <div class="dk-mon-wk"><b>2</b>주차</div>
+          <div class="dk-mon-cells">
+            <div class="dk-mon-day we"><span class="d">7.26</span><span class="n">모의고사<br>성취도</span></div>
+            <div class="dk-mon-day reg" style="grid-column:span 5"><span class="d">7.27 ~ 7.31</span><span class="n">정규수업 &amp; 선택 과목</span></div>
+            <div class="dk-mon-day we"><span class="d">8.1</span><span class="n">내신대비<br>모의 특강</span></div>
+          </div>
+        </div>
+        <div class="dk-mon-row">
+          <div class="dk-mon-wk"><b>3</b>주차</div>
+          <div class="dk-mon-cells">
+            <div class="dk-mon-day we"><span class="d">8.2</span><span class="n">모의고사<br>성취도</span></div>
+            <div class="dk-mon-day reg" style="grid-column:span 5"><span class="d">8.3 ~ 8.7</span><span class="n">정규수업 &amp; 선택 과목</span></div>
+            <div class="dk-mon-day we"><span class="d">8.8</span><span class="n">내신대비<br>모의 특강</span></div>
+          </div>
+        </div>
+        <div class="dk-mon-row">
+          <div class="dk-mon-wk"><b>4</b>주차</div>
+          <div class="dk-mon-cells">
+            <div class="dk-mon-day we"><span class="d">8.9</span><span class="n">모의고사<br>성취도</span></div>
+            <div class="dk-mon-day reg" style="grid-column:span 5"><span class="d">8.10 ~ 8.14</span><span class="n">정규수업 &amp; 선택 과목</span></div>
+            <div class="dk-mon-day we"><span class="d">8.15</span><span class="n">내신대비<br>모의 특강</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="dk-tt-legend">
+        <span><i style="background:var(--dk-accent-red)"></i>입소·레벨테스트</span>
+        <span><i style="background:var(--dk-surface-soft)"></i>정규수업 &amp; 선택 과목</span>
+        <span><i style="background:var(--dk-accent-red-bg)"></i>주말 특강 (모의고사·내신대비)</span>
       </div>
       <p class="dk-table-note">* 상기 일정은 이해를 돕기 위한 예시이며 운영 사정에 따라 변경될 수 있습니다.</p>
     </div>
@@ -364,57 +359,125 @@
     <!-- 02 중등부 하루 일과 -->
     <div class="dk-tt-block" data-reveal>
       <h3 class="dk-tt-h"><span class="no">02</span>중등부 하루 일과</h3>
-      <p class="dk-tt-sub">한국 캠프 중등부 4주 과정 기준입니다.</p>
-      <div class="dk-table-wrap">
-        <table class="dk-table dk-table--day">
-          <thead>
-            <tr><th>구분</th><th>시간</th><th>월요일 ~ 금요일</th><th>토요일</th><th>일요일</th></tr>
-          </thead>
-          <tbody>
-            <tr><th>수업 시작</th><th>0교시</th><td>영단어</td><td>영어 단어 테스트<br>주말 영어 교재 준비</td><td>국어 어휘 점검<br>비문학 읽기 준비</td></tr>
-            <tr><th>아침</th><th>아침시간</th><td>아침식사</td><td>아침식사</td><td>아침식사</td></tr>
-            <tr><th>오전</th><th>1교시</th><td>국어 교재 문제풀이 (자습)</td><td>영어 독해·해석 숙제</td><td>국어 교재 문제풀이</td></tr>
-            <tr><th>오전</th><th>2~5교시</th><td>중등수학반<br>(1-2 &amp; 2-1 / 2-2 &amp; 3-1)<br>중등수학 총정리</td><td>중등영문법<br>주말 영어 교재 숙제</td><td>국어 어휘·비문학<br>국어 자습서 학습</td></tr>
-            <tr><th>점심</th><th>점심시간</th><td>점심시간</td><td>점심시간</td><td>점심시간</td></tr>
-            <tr><th>오후</th><th>6~8교시</th><td>중등수학반<br>(1-2 &amp; 2-1 / 2-2 &amp; 3-1)<br>중등수학 총정리</td><td>영어 필기 노트 정리<br>해석 확인</td><td>국어 독해 훈련<br>오답 정리</td></tr>
-            <tr><th>오후</th><th>9교시</th><td>중등영문법</td><td>중등영문법 보충</td><td>국어 문법·문학 보충</td></tr>
-            <tr><th>오후</th><th>10~11교시</th><td>중등과학 내신대비 수업<br>(1-2, 2-2, 3-2)</td><td>영어 과제 마무리</td><td>국어 과제 마무리</td></tr>
-            <tr><th>저녁</th><th>저녁시간</th><td>저녁시간 &amp; 샤워 및 청소 시간</td><td>저녁시간 &amp; 샤워 및 청소 시간</td><td>저녁시간 &amp; 샤워 및 청소 시간</td></tr>
-            <tr><th>저녁</th><th>12~13교시</th><td>자습 / 중등 개인별 자습서<br>국어 어휘·비문학</td><td>영어 개인별 자습<br>단어·독해 복습</td><td>국어 개인별 자습<br>어휘·비문학 복습</td></tr>
-            <tr><th>저녁</th><th>14~17교시</th><td>관리형 자습<br>질문 정리 및 보충 학습</td><td>영어 주간 과제 점검<br>개인별 자습</td><td>국어 주간 과제 점검<br>개인별 자습</td></tr>
-          </tbody>
-        </table>
+      <p class="dk-tt-sub">한국 캠프 중등부 4주 과정 · 월요일 ~ 금요일 기준입니다.</p>
+      <div class="dk-table-wrap"><table class="dk-tt">
+        <thead><tr><th style="width:56px">시간대</th><th style="width:78px">교시</th><th>수업 내용</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dk-tt-grp life" rowspan="2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>아침</td>
+            <td class="dk-tt-p">0교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--eng">영어</span><p class="dk-tt-txt">영단어</p></div></td>
+          </tr>
+          <tr><td class="dk-tt-p">아침시간</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--life">생활</span><p class="dk-tt-txt dim">아침식사</p></div></td></tr>
+
+          <tr>
+            <td class="dk-tt-grp am" rowspan="2"><svg viewBox="0 0 24 24"><path d="M4 18h16M12 3v3M5.6 8.6l2.1 2.1M18.4 8.6l-2.1 2.1"/><path d="M7 18a5 5 0 0110 0"/></svg>오전</td>
+            <td class="dk-tt-p">1교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--self">자습</span><p class="dk-tt-txt">국어 교재 문제풀이</p></div></td>
+          </tr>
+          <tr><td class="dk-tt-p">2~5교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--math">수학</span><p class="dk-tt-txt">중등수학반 (1-2 &amp; 2-1 / 2-2 &amp; 3-1) · 중등수학 총정리</p></div></td></tr>
+
+          <tr><td class="dk-tt-grp life"><svg viewBox="0 0 24 24"><path d="M6 3v8a3 3 0 006 0V3M9 11v10M17 3c-1.5 2-2 4-2 6s.5 3 2 3v9"/></svg>점심</td>
+            <td class="dk-tt-p">점심시간</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--life">생활</span><p class="dk-tt-txt dim">점심시간</p></div></td></tr>
+
+          <tr>
+            <td class="dk-tt-grp pm" rowspan="3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2"/></svg>오후</td>
+            <td class="dk-tt-p">6~8교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--math">수학</span><p class="dk-tt-txt">중등수학반 (1-2 &amp; 2-1 / 2-2 &amp; 3-1) · 중등수학 총정리</p></div></td>
+          </tr>
+          <tr><td class="dk-tt-p">9교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--eng">영어</span><p class="dk-tt-txt">중등영문법</p></div></td></tr>
+          <tr><td class="dk-tt-p">10~11교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--sci">과학</span><p class="dk-tt-txt">중등과학 내신대비 수업 (1-2, 2-2, 3-2)</p></div></td></tr>
+
+          <tr>
+            <td class="dk-tt-grp ev" rowspan="3"><svg viewBox="0 0 24 24"><path d="M20 13.5A8 8 0 1110.5 4a6.4 6.4 0 009.5 9.5z"/></svg>저녁</td>
+            <td class="dk-tt-p">저녁시간</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--life">생활</span><p class="dk-tt-txt dim">저녁식사 &amp; 샤워·청소</p></div></td>
+          </tr>
+          <tr><td class="dk-tt-p">12~13교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--self">자습</span><p class="dk-tt-txt">중등 개인별 자습서 · 국어 어휘·비문학</p></div></td></tr>
+          <tr><td class="dk-tt-p">14~17교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--self">관리형 자습</span><p class="dk-tt-txt">질문 정리 및 보충 학습</p></div></td></tr>
+        </tbody>
+      </table></div>
+      <div class="dk-tt-legend">
+        <span><i style="background:var(--dk-accent-red)"></i>수학</span>
+        <span><i style="background:var(--dk-accent-red-light)"></i>영어</span>
+        <span><i style="background:var(--dk-accent-red-bg)"></i>과학</span>
+        <span><i style="background:var(--dk-surface-elevated)"></i>자습·관리</span>
+        <span><i style="background:var(--dk-surface-card)"></i>생활</span>
       </div>
-      <p class="dk-table-note">* 모든 수업은 학생별 개인 선택으로 진행됩니다. 개인별 인강 학습을 위한 컴퓨터는 준비되어 있습니다.</p>
+      <p class="dk-table-note">* 모든 수업은 학생별 개인 선택으로 진행됩니다. 개인별 인강 학습을 위한 컴퓨터는 준비되어 있습니다. 토·일 일과는 별도 안내합니다.</p>
     </div>
 
     <!-- 03 고등부 하루 일과 -->
     <div class="dk-tt-block" data-reveal>
       <h3 class="dk-tt-h"><span class="no">03</span>고등부 하루 일과</h3>
-      <p class="dk-tt-sub">한국 캠프 고등부 4주 과정 기준입니다.</p>
-      <div class="dk-table-wrap">
-        <table class="dk-table dk-table--day">
-          <thead>
-            <tr><th>구분</th><th>시간</th><th>월요일 ~ 금요일</th><th>토요일</th><th>일요일</th></tr>
-          </thead>
-          <tbody>
-            <tr><th>수업 시작</th><th>0교시</th><td>영단어</td><td>영어 단어 테스트<br>주말 영어 교재 준비</td><td>국어 어휘 점검<br>국어모의 준비</td></tr>
-            <tr><th>아침</th><th>아침시간</th><td>아침식사</td><td>아침식사</td><td>아침식사</td></tr>
-            <tr><th>오전</th><th>1교시</th><td>국어 교재 문제풀이 (자습)</td><td>영어 독해·해석 숙제</td><td>국어 교재 문제풀이</td></tr>
-            <tr><th>오전</th><th>2~5교시</th><td>수학 선택 수업<br>공통수학 1 기본개념 / 공통수학 2 내신대비<br>대수 기본개념 / 고등수학 1,2 실전개념+기출<br>확률과 통계 기본개념</td><td>고1,2 영어<br>고3 영어</td><td>고1 국어모의<br>화작&amp;언매 / 문학</td></tr>
-            <tr><th>오전</th><th>2~5교시</th><td>고등부 내신대비<br>자습서학습(국어·영어) / 과탐 질문시간</td><td>영어 자습서 학습<br>내신대비 자습</td><td>국어 자습서 학습<br>내신대비 자습</td></tr>
-            <tr><th>점심</th><th>점심시간</th><td>점심시간</td><td>점심시간</td><td>점심시간</td></tr>
-            <tr><th>오후</th><th>6~9교시</th><td>수학 선택 수업<br>공통수학 2 기본개념·내신대비<br>미적분1 기본개념 / 미적분 수능대비 실전<br>고등수학 1,2 &amp; 미적분 1</td><td>주말 영어 교재 숙제<br>해석 및 필기 노트</td><td>고3 국어모의<br>화작&amp;언매 / 문학</td></tr>
-            <tr><th>오후</th><th>6~9교시</th><td>영어 선택<br>고3 영어 / 고1,2 영어</td><td>영어 오답 정리<br>개인별 자습</td><td>국어 오답 정리<br>개인별 자습</td></tr>
-            <tr><th>오후</th><th>10~11교시</th><td>통합과학 1 기본개념 / 통합과학 2 내신대비</td><td>영어 과제 마무리</td><td>국어 과제 마무리</td></tr>
-            <tr><th>저녁</th><th>저녁시간</th><td>저녁시간 &amp; 샤워 및 청소 시간</td><td>저녁시간 &amp; 샤워 및 청소 시간</td><td>저녁시간 &amp; 샤워 및 청소 시간</td></tr>
-            <tr><th>저녁</th><th>12~13교시</th><td>과탐·사탐 선택<br>물리1 / 생명과학 / 통합사회2 내신</td><td>영어 개인별 자습<br>단어·독해 복습</td><td>국어 개인별 자습<br>어휘·비문학 복습</td></tr>
-            <tr><th>저녁</th><th>14~15교시</th><td>화학1 / 사회 문화 / 기하 기본개념</td><td>영어 주간 과제 점검</td><td>국어 주간 과제 점검</td></tr>
-            <tr><th>저녁</th><th>16~17교시</th><td>지구과학1 / 생활과 윤리<br>확률과 통계 수능대비</td><td>관리형 자습<br>영어 보충</td><td>관리형 자습<br>국어 보충</td></tr>
-          </tbody>
-        </table>
+      <p class="dk-tt-sub">한국 캠프 고등부 4주 과정 · 월요일 ~ 금요일 기준입니다.</p>
+      <div class="dk-table-wrap"><table class="dk-tt">
+        <thead><tr><th style="width:56px">시간대</th><th style="width:78px">교시</th><th>수업 내용</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dk-tt-grp life" rowspan="2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>아침</td>
+            <td class="dk-tt-p">0교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--eng">영어</span><p class="dk-tt-txt">영단어</p></div></td>
+          </tr>
+          <tr><td class="dk-tt-p">아침시간</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--life">생활</span><p class="dk-tt-txt dim">아침식사</p></div></td></tr>
+
+          <tr>
+            <td class="dk-tt-grp am" rowspan="2"><svg viewBox="0 0 24 24"><path d="M4 18h16M12 3v3M5.6 8.6l2.1 2.1M18.4 8.6l-2.1 2.1"/><path d="M7 18a5 5 0 0110 0"/></svg>오전</td>
+            <td class="dk-tt-p">1교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--self">자습</span><p class="dk-tt-txt">국어 교재 문제풀이</p></div></td>
+          </tr>
+          <tr><td class="dk-tt-p">2~5교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-choice">
+              <div class="dk-tt-line"><span class="dk-pill dk-pill--math">수학</span><p class="dk-tt-txt">공통수학 1·2 / 대수 / 고등수학 1,2 실전 / 확률과 통계</p></div>
+              <span class="dk-tt-or">또는</span>
+              <div class="dk-tt-line"><span class="dk-pill dk-pill--self">내신대비</span><p class="dk-tt-txt">자습서학습(국어·영어) / 과탐 질문시간</p></div>
+            </div></td></tr>
+
+          <tr><td class="dk-tt-grp life"><svg viewBox="0 0 24 24"><path d="M6 3v8a3 3 0 006 0V3M9 11v10M17 3c-1.5 2-2 4-2 6s.5 3 2 3v9"/></svg>점심</td>
+            <td class="dk-tt-p">점심시간</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--life">생활</span><p class="dk-tt-txt dim">점심시간</p></div></td></tr>
+
+          <tr>
+            <td class="dk-tt-grp pm" rowspan="2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2"/></svg>오후</td>
+            <td class="dk-tt-p">6~9교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-choice">
+              <div class="dk-tt-line"><span class="dk-pill dk-pill--math">수학</span><p class="dk-tt-txt">공통수학 2 / 미적분1 / 미적분 수능대비 실전</p></div>
+              <span class="dk-tt-or">또는</span>
+              <div class="dk-tt-line"><span class="dk-pill dk-pill--eng">영어</span><p class="dk-tt-txt">고3 영어 / 고1,2 영어</p></div>
+            </div></td>
+          </tr>
+          <tr><td class="dk-tt-p">10~11교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--sci">과학</span><p class="dk-tt-txt">통합과학 1 기본개념 / 통합과학 2 내신대비</p></div></td></tr>
+
+          <tr>
+            <td class="dk-tt-grp ev" rowspan="4"><svg viewBox="0 0 24 24"><path d="M20 13.5A8 8 0 1110.5 4a6.4 6.4 0 009.5 9.5z"/></svg>저녁</td>
+            <td class="dk-tt-p">저녁시간</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--life">생활</span><p class="dk-tt-txt dim">저녁식사 &amp; 샤워·청소</p></div></td>
+          </tr>
+          <tr><td class="dk-tt-p">12~13교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--sci">탐구</span><p class="dk-tt-txt">물리1 / 생명과학 / 통합사회2 내신</p></div></td></tr>
+          <tr><td class="dk-tt-p">14~15교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--sci">탐구</span><p class="dk-tt-txt">화학1 / 사회 문화 / 기하 기본개념</p></div></td></tr>
+          <tr><td class="dk-tt-p">16~17교시</td>
+            <td class="dk-tt-c"><div class="dk-tt-line"><span class="dk-pill dk-pill--sci">탐구</span><p class="dk-tt-txt">지구과학1 / 생활과 윤리 / 확률과 통계 수능대비</p></div></td></tr>
+        </tbody>
+      </table></div>
+      <div class="dk-tt-legend">
+        <span><i style="background:var(--dk-accent-red)"></i>수학</span>
+        <span><i style="background:var(--dk-accent-red-light)"></i>영어</span>
+        <span><i style="background:var(--dk-accent-red-bg)"></i>과학·탐구</span>
+        <span><i style="background:var(--dk-surface-elevated)"></i>자습·관리</span>
+        <span><i style="background:var(--dk-surface-card)"></i>생활</span>
       </div>
-      <p class="dk-table-note">* 모든 수업은 학생별 개인 선택으로 진행됩니다. 개인별 인강 학습을 위한 컴퓨터는 준비되어 있습니다.</p>
+      <p class="dk-table-note">* 모든 수업은 학생별 개인 선택으로 진행됩니다. 개인별 인강 학습을 위한 컴퓨터는 준비되어 있습니다. 토·일 일과는 별도 안내합니다.</p>
     </div>
   </div>
 </section>

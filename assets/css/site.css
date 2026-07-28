@@ -1007,3 +1007,202 @@ table.dk-table--month tbody tr.dk-month-date td {
   [data-reveal="stagger"].is-in > *:nth-child(6) { transition-delay: 0.4s; }
   [data-reveal="stagger"].is-in > *:nth-child(7) { transition-delay: 0.48s; }
 }
+
+/* =====================================================================
+   2026-07-28 — 표·인포그래픽 재설계 (프리뷰 7차 확정분)
+   레퍼런스에서 가져온 표 문법: 컬러 헤더 밴드 / 좌측 라벨 블록 / 행 줄무늬 /
+   셀 안 pill / 번호 블록. 색은 tokens-domestic.css 값과 그 투명도 파생만 사용.
+   ※ p 요소용 클래스는 `.dk ` 접두 필수 — tokens의 `.dk p`(0-1-1)에 밀린다.
+   ===================================================================== */
+
+/* ── ① 표 공통 강화 — 기존 .dk-table 전면 교체(curriculum·life-care 전부 적용) ── */
+.dk-table-wrap {
+  overflow-x: auto; border-radius: var(--dk-radius-md);
+  border: 1px solid var(--dk-hairline-soft); background: #fff;
+  box-shadow: 0 2px 10px rgba(20,40,90,.06);
+}
+table.dk-table thead th {
+  background: var(--dk-accent-red); color: #fff;
+  font-weight: 700; font-size: 13px; letter-spacing: .3px;
+  padding: 13px 14px; white-space: nowrap; border: none;
+}
+table.dk-table tbody th {
+  background: var(--dk-surface-elevated); color: var(--dk-ink);
+  font-weight: 700; white-space: nowrap;
+}
+table.dk-table tbody td { color: var(--dk-fg-2); border-top: 1px solid var(--dk-hairline-soft); }
+table.dk-table tbody tr:nth-child(even) td { background: var(--dk-surface-soft); }
+table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevated); }
+
+/* ── ② 하루 일과표 — 좌측 시간대 밴드 + 과목 pill + 선택 묶음 ── */
+table.dk-tt { width: 100%; border-collapse: collapse; }
+table.dk-tt thead th {
+  background: var(--dk-accent-red); color: #fff; font-weight: 700; font-size: 12.5px;
+  letter-spacing: .3px; padding: 12px; text-align: left; white-space: nowrap;
+}
+table.dk-tt td { border-top: 1px solid var(--dk-hairline-soft); }
+table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { background: var(--dk-surface-soft); }
+.dk-tt-grp {
+  width: 56px; padding: 12px 4px; text-align: center; vertical-align: middle;
+  font-size: 12px; font-weight: 700; color: var(--dk-accent-red);
+  background: var(--dk-surface-elevated); border-right: 2px solid #fff;
+}
+.dk-tt-grp.am { background: rgba(15,82,201,.10); }
+.dk-tt-grp.pm { background: rgba(15,82,201,.20); }
+.dk-tt-grp.ev { background: rgba(15,82,201,.32); }
+.dk-tt-grp.life { color: var(--dk-fg-3); }
+.dk-tt-grp svg { display: block; width: 16px; height: 16px; margin: 0 auto 5px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.dk-tt-p {
+  width: 78px; padding: 12px 8px; text-align: center; vertical-align: middle;
+  font-size: 11.5px; font-weight: 700; color: var(--dk-fg-2); background: var(--dk-surface-soft); white-space: nowrap;
+}
+.dk-tt-c { padding: 11px 12px; vertical-align: middle; }
+.dk-tt-line { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+.dk-tt-line + .dk-tt-line { margin-top: 8px; }
+.dk .dk-tt-txt { font-size: 13px; color: var(--dk-fg-2); line-height: 1.55; margin: 0; min-width: 0; }
+.dk .dk-tt-txt.dim { color: var(--dk-fg-muted); }
+.dk-pill {
+  display: inline-flex; align-items: center; flex: none; border-radius: var(--dk-radius-xs);
+  padding: 4px 9px; font-size: 11px; font-weight: 700; letter-spacing: .2px;
+}
+.dk-pill--math { background: var(--dk-accent-red); color: #fff; }
+.dk-pill--eng  { background: var(--dk-accent-red-light); color: #fff; }
+.dk-pill--sci  { background: var(--dk-accent-red-bg); color: var(--dk-accent-red); }
+.dk-pill--self { background: var(--dk-surface-elevated); color: var(--dk-fg-2); }
+.dk-pill--life { background: var(--dk-surface-card); color: var(--dk-fg-muted); }
+.dk-tt-choice { border-left: 3px solid var(--dk-accent-red); padding-left: 11px; }
+.dk-tt-or {
+  display: inline-block; background: #fff; border: 1px solid var(--dk-accent-red);
+  color: var(--dk-accent-red); font-size: 10px; font-weight: 800;
+  border-radius: var(--dk-radius-xs); padding: 1px 6px; margin: 5px 0;
+}
+.dk-tt-legend { display: flex; flex-wrap: wrap; gap: 7px 14px; margin: 14px 2px 0; font-size: 12px; color: var(--dk-fg-3); }
+.dk-tt-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.dk-tt-legend i { width: 12px; height: 12px; border-radius: 3px; display: block; flex: none; border: 1px solid rgba(0,0,0,.06); }
+
+/* ── ③ 월간 일정표 — 다크 주차 블록 + 평일 병합 ── */
+.dk-mon { border-radius: var(--dk-radius-md); overflow: hidden; background: #fff;
+  border: 1px solid var(--dk-hairline-soft); box-shadow: 0 2px 10px rgba(20,40,90,.06); }
+.dk-mon-head { display: grid; grid-template-columns: 48px 1.5fr repeat(5,1fr) 1.5fr; background: var(--dk-accent-red); }
+.dk-mon-head div { padding: 11px 2px; text-align: center; font-size: 12px; font-weight: 700; color: #fff; }
+.dk-mon-head div:first-child { font-size: 11px; opacity: .82; }
+.dk-mon-head div.we { background: rgba(255,255,255,.16); }
+.dk-mon-row { display: grid; grid-template-columns: 48px 1fr; border-top: 1px solid var(--dk-hairline-soft); }
+.dk-mon-wk { background: var(--dk-surface-dark); color: #fff; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; font-size: 11px; font-weight: 700; line-height: 1.25; padding: 5px 2px; }
+.dk-mon-wk b { font-size: 16px; font-weight: 700; letter-spacing: -.5px; }
+.dk-mon-cells { display: grid; grid-template-columns: 1.5fr repeat(5,1fr) 1.5fr; gap: 3px; padding: 7px; }
+.dk-mon-day { border-radius: var(--dk-radius-xs); padding: 7px 4px; min-height: 56px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; }
+.dk-mon-day .d { font-size: 9.5px; color: var(--dk-fg-muted); font-variant-numeric: tabular-nums; }
+.dk-mon-day .n { font-size: 10.5px; font-weight: 700; line-height: 1.3; }
+.dk-mon-day.reg { background: var(--dk-surface-soft); border: 1px solid var(--dk-hairline-soft); }
+.dk-mon-day.reg .n { color: var(--dk-fg-3); font-weight: 600; }
+.dk-mon-day.open { background: var(--dk-accent-red); }
+.dk-mon-day.open .d { color: rgba(255,255,255,.72); }
+.dk-mon-day.open .n { color: #fff; }
+.dk-mon-day.we { background: var(--dk-accent-red-bg); border: 1px solid #b9d0f5; }
+.dk-mon-day.we .n { color: var(--dk-accent-red); }
+
+/* ── ④ 한눈에 보기 — 번호 블록 + 아이콘 라벨 + 값 ── */
+.dk-glance { display: flex; flex-direction: column; gap: 8px; }
+.dk-glance-row { display: grid; grid-template-columns: 50px 122px 1fr; align-items: stretch;
+  border-radius: var(--dk-radius-sm); overflow: hidden; background: #fff; border: 1px solid var(--dk-hairline-soft); }
+.dk-glance-no { display: flex; align-items: center; justify-content: center; background: var(--dk-accent-red);
+  color: #fff; font-weight: 700; font-size: 15px; letter-spacing: -.3px; }
+.dk-glance-k { display: flex; align-items: center; gap: 7px; padding: 13px 12px;
+  font-size: 13px; font-weight: 700; color: var(--dk-ink); background: var(--dk-surface-card); }
+.dk-glance-k svg { width: 15px; height: 15px; stroke: var(--dk-accent-red); fill: none; stroke-width: 1.9; flex: none; }
+.dk .dk-glance-v { display: flex; align-items: center; padding: 13px 14px; font-size: 13.5px; color: var(--dk-fg-2); line-height: 1.5; margin: 0; }
+@media (max-width: 560px) {
+  .dk-glance-row { grid-template-columns: 44px 1fr; }
+  .dk-glance-k { border-bottom: 1px solid var(--dk-hairline-soft); }
+  .dk-glance-v { grid-column: 2; }
+}
+
+/* ── ⑤ 숫자 섹션(다크) — 핵심/확장 허브 + 252시간 + 10명 중 6명 ── */
+.dk-hub-grp { display: flex; align-items: center; gap: 9px; max-width: 340px; margin: 0 auto 4px; }
+.dk-hub-grp i { width: 10px; height: 10px; border-radius: 50%; background: var(--dk-accent-red-light); flex: none; }
+.dk-hub-grp i.hollow { background: transparent; border: 1.7px solid rgba(255,255,255,.45); }
+.dk-hub-grp .t { font-size: 11px; font-weight: 700; letter-spacing: .9px; color: rgba(255,255,255,.72); }
+.dk-hub-grp .r { flex: 1; height: 1px; background: rgba(255,255,255,.16); }
+.dk-orbit { position: relative; width: min(300px, 78vw); aspect-ratio: 1; margin: 10px auto 0; }
+.dk-orbit .ring { position: absolute; inset: 0; border: 1px dashed rgba(255,255,255,.2); border-radius: 50%; }
+.dk-core { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  width: 65%; aspect-ratio: 1; border-radius: 50%; padding: 10px; text-align: center;
+  background: radial-gradient(circle at 40% 32%, var(--dk-accent-red-light) 0%, var(--dk-accent-red) 70%);
+  box-shadow: 0 14px 40px rgba(15,82,201,.45), 0 0 0 10px rgba(81,135,232,.12);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.dk .dk-core .k { font-size: 12px; font-weight: 700; color: #fff; opacity: .92; margin: 0 0 5px; line-height: 1.3; }
+.dk-core .v { font-size: clamp(34px,10vw,46px); font-weight: 700; letter-spacing: -2.2px; line-height: .95; color: #fff; }
+.dk-core .v u { text-decoration: none; font-size: .35em; }
+.dk-chipx { position: absolute; display: flex; align-items: center; gap: 8px; white-space: nowrap;
+  background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.28);
+  border-radius: var(--dk-radius-full); padding: 8px 14px 8px 11px; }
+.dk-chipx .b { width: 8px; height: 8px; border-radius: 50%; border: 1.7px solid rgba(255,255,255,.55); flex: none; }
+.dk-chipx .t { font-size: 10.5px; color: rgba(255,255,255,.66); line-height: 1.2; }
+.dk-chipx .n { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -.5px; }
+.dk-chipx .n u { text-decoration: none; font-size: .62em; font-weight: 600; color: rgba(255,255,255,.66); }
+.dk-chipx.p1 { left: -5%; top: 5%; } .dk-chipx.p2 { right: -7%; bottom: 8%; }
+.dk .dk-hub-cap { text-align: center; margin: 18px auto 0; max-width: 440px; font-size: 13px; color: rgba(255,255,255,.78); }
+.dk .dk-hub-cap b { color: #fff; font-weight: 700; }
+.dk-hub-badge { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid var(--dk-accent-red-light);
+  border-radius: var(--dk-radius-full); padding: 7px 16px; margin: 12px 0 0; }
+.dk-hub-badge span { font-size: 11.5px; font-weight: 700; color: var(--dk-accent-red-light); letter-spacing: .4px; }
+.dk-hub-badge b { font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -.6px; }
+.dk-hub-badge b u { text-decoration: none; font-size: .62em; font-weight: 600; color: var(--dk-accent-red-light); }
+
+.dk-duo { display: grid; gap: 1px; background: rgba(255,255,255,.12); margin-top: 30px; border-top: 1px solid rgba(255,255,255,.12); }
+@media (min-width: 640px) { .dk-duo { grid-template-columns: 1fr 1fr; } }
+.dk-duo-cell { background: var(--dk-surface-dark); padding: 26px 14px 22px; text-align: center; }
+.dk .dk-duo-cell .cl { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.6); margin: 0 0 8px; }
+.dk-glowstat { position: relative; display: flex; align-items: center; justify-content: center; height: 118px; overflow: hidden; }
+.dk-glowstat::before { content: ""; position: absolute; width: 250px; height: 118px; filter: blur(7px);
+  background: radial-gradient(ellipse at center, rgba(81,135,232,.42) 0%, rgba(81,135,232,.12) 42%, transparent 72%); }
+.dk-glowstat .n { position: relative; font-size: clamp(56px,15vw,76px); font-weight: 700; letter-spacing: -3.5px; line-height: 1; color: #fff; }
+.dk-glowstat .n u { text-decoration: none; font-size: .3em; letter-spacing: -1px; margin-left: 2px; color: var(--dk-accent-red-light); }
+.dk-eq { display: inline-flex; background: rgba(255,255,255,.09); border-radius: var(--dk-radius-full);
+  padding: 8px 15px; margin: 5px 0 0; font-size: 13px; color: rgba(255,255,255,.82); }
+.dk-eq b { color: #fff; font-weight: 700; }
+.dk .dk-head6 { font-family: var(--dk-font-display); font-weight: 800; font-size: clamp(22px,6vw,28px);
+  letter-spacing: -.9px; color: #fff; margin: 3px 0 0; line-height: 1.28; }
+.dk-head6 em { font-style: normal; color: var(--dk-accent-red-light); }
+.dk-ppl { display: flex; justify-content: center; gap: 6px; margin: 16px 0 0; }
+.dk-ppl svg { width: 24px; height: 30px; display: block; }
+.dk-ppl .on path { fill: var(--dk-accent-red-light); }
+.dk-ppl .off path { fill: rgba(255,255,255,.16); }
+.dk .dk-dnote { font-size: 12px; color: rgba(255,255,255,.55); margin: 13px 0 0; line-height: 1.55; }
+.dk-strip { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px;
+  background: rgba(255,255,255,.12); border-top: 1px solid rgba(255,255,255,.12); }
+@media (min-width: 560px) { .dk-strip { grid-template-columns: repeat(4,1fr); } }
+.dk-strip > div { background: var(--dk-surface-dark); padding: 17px 8px; text-align: center; }
+.dk-strip .v { font-size: clamp(17px,4.4vw,21px); font-weight: 700; color: #fff; letter-spacing: -.8px; line-height: 1; }
+.dk-strip .v u { text-decoration: none; font-size: .46em; color: rgba(255,255,255,.6); font-weight: 600; }
+.dk .dk-strip .k { font-size: 11px; color: rgba(255,255,255,.55); margin: 6px 0 0; }
+
+/* ── ⑥ 영상·사진 자리 — 큰 1 + 작은 2 비대칭, 캡션 오버레이 ── */
+.dk-vi-grid { display: grid; grid-template-columns: 1.65fr 1fr; grid-template-rows: auto auto; gap: 12px; }
+.dk-vi-grid .dk-vi-card { aspect-ratio: 16/9.6; position: relative; }
+.dk-vi-grid .dk-vi-card:first-child { grid-row: 1 / 3; aspect-ratio: 4/3.4; }
+@media (max-width: 640px) {
+  .dk-vi-grid { grid-template-columns: 1fr; }
+  .dk-vi-grid .dk-vi-card:first-child { grid-row: auto; aspect-ratio: 16/10; }
+}
+.dk-vi-cap { position: absolute; left: 0; right: 0; bottom: 0; background: rgba(26,26,26,.74); color: #fff;
+  padding: 8px 11px; font-size: 11.5px; font-weight: 600; line-height: 1.4; text-align: left;
+  border-radius: 0 0 var(--dk-radius-md) var(--dk-radius-md); }
+.dk-vi-play { position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--dk-accent-red); display: flex; align-items: center; justify-content: center; }
+.dk-vi-play svg { width: 12px; height: 12px; fill: #fff; }
+
+/* ── ⑦ POINT 시각 — 뒤에 코발트 블록 오프셋 ── */
+.dk-pt-vis { position: relative; aspect-ratio: auto; border: none; background: none; margin-top: 8px; padding: 0 14px 14px 0; display: block; }
+.dk-pt-vis::before { content: ""; position: absolute; left: 16px; top: 16px; right: 0; bottom: 0;
+  background: var(--dk-accent-red); border-radius: var(--dk-radius-lg); }
+.dk-pt-vis .card { position: relative; aspect-ratio: 4/3; border-radius: var(--dk-radius-lg);
+  border: 1.5px solid #dbe3f1; background: #fff;
+  background-image: radial-gradient(#e8edf6 1px, transparent 1px); background-size: 11px 11px;
+  display: flex; align-items: center; justify-content: center; color: #a9b6cc; font-size: 12px; }
+.dk-pt-vis .num { position: absolute; left: -4px; top: -14px; font-family: var(--dk-font-display);
+  font-size: 38px; font-weight: 800; color: var(--dk-accent-red); line-height: 1;
+  text-shadow: 0 0 0 #fff, -2px 0 0 #fff, 2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff; }
