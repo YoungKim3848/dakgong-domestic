@@ -1206,3 +1206,107 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 .dk-pt-vis .num { position: absolute; left: -4px; top: -14px; font-family: var(--dk-font-display);
   font-size: 38px; font-weight: 800; color: var(--dk-accent-red); line-height: 1;
   text-shadow: 0 0 0 #fff, -2px 0 0 #fff, 2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff; }
+
+/* =====================================================================
+   2026-07-28 — 시각 콘텐츠 슬롯 레이아웃 세트 (회장 지시)
+   "히어로 제외 페이지당 시각 콘텐츠 최소 1/3". 정비례 그리드 금지 —
+   섹션마다 다른 구도를 쓰되 사이즈는 다각화한다.
+   실물 사진·영상이 없어도 슬롯이 '설계된 자리'로 보이게 만들고,
+   실물이 들어오면 마크업 그대로 <img>/<video>만 갈아끼우면 되게 짠다.
+   색은 tokens 값과 그 투명도 파생만 사용.
+   ===================================================================== */
+
+/* ── 슬롯 기본 ── */
+.dk-ph {
+  /* ★그리드 자식의 기본 min-width:auto 때문에 최소 콘텐츠 폭(한글 keep-all) 아래로
+     안 줄어들어 모바일에서 가로 overflow가 났다. min-width:0으로 풀어 준다. */
+  min-width: 0;
+  position: relative; border-radius: var(--dk-radius-lg); overflow: hidden;
+  border: 1.5px dashed #c3ccd8;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(20,42,77,.10) 1.4px, transparent 0),
+    linear-gradient(155deg, #f5f8fc 0%, #eef2f8 55%, #e9eef5 100%);
+  background-size: 18px 18px, 100% 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: 9px; padding: 20px; min-height: 130px;
+}
+.dk-ph svg { width: 26px; height: 26px; stroke: var(--dk-accent-red); fill: none; stroke-width: 1.6; opacity: .55; }
+.dk-ph .tag {
+  font-size: 11px; font-weight: 700; letter-spacing: .3px; color: var(--dk-accent-red);
+  background: rgba(15,82,201,.10); border-radius: var(--dk-radius-full); padding: 3px 10px;
+}
+.dk .dk-ph .cap { font-size: 13px; font-weight: 700; color: var(--dk-fg-2); margin: 0; line-height: 1.45; }
+.dk .dk-ph .spec { font-size: 11.5px; color: var(--dk-fg-muted); margin: 0; line-height: 1.5; overflow-wrap: anywhere; }
+.dk .dk-ph .cap { overflow-wrap: anywhere; }
+/* 실물이 들어오면 이 클래스만 추가 — 점선·도트 제거 */
+.dk-ph.is-filled { border-style: solid; border-color: var(--dk-hairline-soft); background: none; padding: 0; }
+.dk-ph.is-filled > img, .dk-ph.is-filled > video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ── A. 풀블리드 와이드 밴드 — 섹션 사이를 끊는 가로 띠 ── */
+.dk-ph-band { margin: clamp(40px,6vw,64px) 0 0; }
+.dk-ph-band .dk-ph { aspect-ratio: 21/6; min-height: 150px; }
+@media (max-width: 640px) { .dk-ph-band .dk-ph { aspect-ratio: 16/9; } }
+
+/* ── B. 좌우 분할 — 텍스트 : 이미지 = 4 : 6 (교차 가능) ── */
+.dk-ph-split { display: grid; grid-template-columns: 4fr 6fr; gap: clamp(20px,3.5vw,44px); align-items: center; }
+.dk-ph-split.rev > *:first-child { order: 2; }
+.dk-ph-split .dk-ph { aspect-ratio: 4/3; }
+.dk-ph-split .txt h3 { font: var(--dk-title-lg); color: var(--dk-ink); margin: 0 0 10px; letter-spacing: var(--dk-track-snug); }
+.dk .dk-ph-split .txt p { font: var(--dk-body-md); color: var(--dk-fg-3); line-height: 1.75; margin: 0; }
+@media (max-width: 768px) {
+  .dk-ph-split { grid-template-columns: 1fr; gap: 18px; }
+  .dk-ph-split.rev > *:first-child { order: 0; }
+  .dk-ph-split .dk-ph { aspect-ratio: 16/10; }
+}
+
+/* ── C. 비대칭 3분할 — 큰 1 + 작은 2 (좌우 반전 가능) ── */
+.dk-ph-tri { display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
+.dk-ph-tri > *:first-child { grid-row: 1 / 3; }
+.dk-ph-tri.rev { grid-template-columns: 1fr 1.6fr; }
+.dk-ph-tri.rev > *:first-child { grid-column: 2; grid-row: 1 / 3; }
+.dk-ph-tri.rev > *:nth-child(2) { grid-column: 1; grid-row: 1; }
+.dk-ph-tri.rev > *:nth-child(3) { grid-column: 1; grid-row: 2; }
+.dk-ph-tri > *:first-child { aspect-ratio: 4/3.6; }
+.dk-ph-tri > *:nth-child(n+2) { aspect-ratio: auto; height: 100%; }
+@media (max-width: 640px) {
+  .dk-ph-tri { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+  .dk-ph-tri > *:first-child { grid-row: auto; grid-column: 1 / -1; aspect-ratio: 16/9.5; }
+  .dk-ph-tri.rev > *:first-child, .dk-ph-tri.rev > *:nth-child(2), .dk-ph-tri.rev > *:nth-child(3) { grid-column: auto; }
+  .dk-ph-tri.rev > *:first-child { grid-column: 1 / -1; }
+}
+
+/* ── D. 오프셋 겹침 2장 — 세로로 어긋나게 ── */
+.dk-ph-stack { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px,2.5vw,26px); align-items: start; }
+.dk-ph-stack > *:first-child { aspect-ratio: 3/4; }
+.dk-ph-stack > *:last-child { aspect-ratio: 3/4; margin-top: clamp(28px,5vw,64px); }
+@media (max-width: 560px) {
+  .dk-ph-stack > *:first-child, .dk-ph-stack > *:last-child { aspect-ratio: 4/3; }
+  .dk-ph-stack > *:last-child { margin-top: 0; }
+}
+
+/* ── E. 균등 4열 (프로필·시설 목록용) ── */
+.dk-ph-quad { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.dk-ph-quad .dk-ph { aspect-ratio: 3/3.6; }
+@media (max-width: 880px) { .dk-ph-quad { grid-template-columns: repeat(2,1fr); } }
+
+/* 슬롯 묶음 위 안내문 */
+.dk .dk-ph-note { font-size: 12px; color: var(--dk-fg-muted); margin: 12px 2px 0; line-height: 1.65; }
+
+
+/* ── 모바일 슬롯 비율 — 좁은 화면에선 텍스트가 길어지므로 슬롯을 세로로 세운다.
+   (가로 비율 그대로 두면 시각 비중이 절반 이하로 떨어진다) ── */
+@media (max-width: 640px) {
+  /* 좁은 화면에선 텍스트가 세로로 길어지므로 슬롯도 정사각~세로형으로 세운다.
+     가로형 그대로 두면 시각 비중이 절반 이하로 떨어진다. */
+  .dk-ph-band .dk-ph { aspect-ratio: 1/1.18; }
+  .dk-ph-tri > *:first-child { aspect-ratio: 4/5.2 !important; }
+  .dk-ph-tri > *:nth-child(n+2) { aspect-ratio: 1/1.15; }
+  .dk-ph-quad .dk-ph { aspect-ratio: 3/4; }
+}
+@media (max-width: 768px) {
+  .dk-ph-split .dk-ph { aspect-ratio: 1/1.18; }
+}
+@media (max-width: 560px) {
+  .dk-ph-stack { grid-template-columns: 1fr; }
+  .dk-ph-stack > *:first-child, .dk-ph-stack > *:last-child { aspect-ratio: 4/3.4; }
+}
