@@ -78,8 +78,10 @@ body.dk {
   font: var(--dk-display-lg);
   letter-spacing: var(--dk-track-snug); color: var(--dk-accent-red); margin: 0 0 12px;
 }
+/* ★2026-07-29 — 같은 섹션의 다른 본문 단락(18px/400/#555)과 크기·굵기·색이 달랐다(20px/600/#1a1a1a).
+   섹션 제목 아래 본문이므로 본문 주력 스타일로 통일한다. */
 .dk .dk-brand-sub {
-  font: var(--dk-title-md); color: var(--dk-ink); line-height: 1.6;
+  font: var(--dk-body-lg); color: var(--dk-fg-3); line-height: 1.75;
   margin: 0; max-width: 760px;
 }
 
