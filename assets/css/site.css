@@ -54,6 +54,27 @@ body.dk {
 .dk-sec--dark .dk-h2 { color: #fff; }
 .dk-sec--dark .dk-h2 em { color: var(--dk-accent-red-light); }
 
+/* ★2026-07-28 신설 — 브랜드 섹션 맨 앞 도입부(회장 지시 원문 2줄).
+   PHILOSOPHY 라벨·헤드라인 위에 별도 블록으로 올리고, 아래 헤어라인으로
+   "캠프 소개 → 원칙" 두 덩어리를 구분한다. */
+.dk-brand-intro {
+  margin: 0 0 clamp(32px,4vw,48px);
+  padding: 0 0 clamp(28px,3.5vw,40px);
+  border-bottom: 1px solid var(--dk-hairline-soft);
+}
+/* ※ 셀렉터에 `.dk `를 붙이는 이유 — tokens-domestic.css의 `.dk p`(특성도 0-1-1)가
+   클래스 하나짜리(0-1-0) 규칙을 이겨서 p 요소용 클래스는 그냥 두면 안 먹는다.
+   이 파일의 `.dk .lead`와 같은 기존 관례를 따른다. */
+.dk .dk-brand-kicker {
+  font-family: 'Paperlogy','Pretendard',sans-serif;
+  font-size: clamp(22px,2.4vw,30px); font-weight: 700; line-height: 1.35;
+  letter-spacing: var(--dk-track-snug); color: var(--dk-accent-red); margin: 0 0 12px;
+}
+.dk .dk-brand-sub {
+  font: var(--dk-title-md); color: var(--dk-ink); line-height: 1.6;
+  margin: 0; max-width: 760px;
+}
+
 .dk-split {
   display: flex; justify-content: space-between; align-items: flex-end;
   gap: clamp(24px,4vw,48px); flex-wrap: wrap;
@@ -179,9 +200,11 @@ body.dk {
 .site-nav__toggle-bar { position: relative; }
 .site-nav__toggle-bar::before { position: absolute; top: -7px; left: 0; }
 .site-nav__toggle-bar::after { position: absolute; top: 7px; left: 0; }
-.site-header.is-open .site-nav__toggle-bar { background: transparent; }
-.site-header.is-open .site-nav__toggle-bar::before { top: 0; transform: rotate(45deg); }
-.site-header.is-open .site-nav__toggle-bar::after { top: 0; transform: rotate(-45deg); }
+/* ★2026-07-28 — 패널이 열리면 헤더 삼선은 감춘다. 필핀 원본은 닫기(×)가 헤더가 아니라
+   패널 안 우상단에 있어서(.pc-navbar-toggle / .navbar-toggle.close.slide-close),
+   삼선을 ×로 바꾸면 헤더 ×와 패널 ×가 둘 다 보이는 중복이 된다. 그래서 삼선의
+   ×모핑 규칙을 걷어내고 패널 자체 닫기 버튼(.site-nav__close)만 남긴다. */
+.site-header.is-open .site-nav__toggle { visibility: hidden; }
 
 /* ── 삼선이 여는 어두운 슬라이드 패널: PC·모바일 공통, 폭 무관하게 항상 이 구조 ── */
 .site-nav {
@@ -191,38 +214,62 @@ body.dk {
   transform: translateX(100%);
   transition: transform var(--dk-dur-base) var(--dk-ease-out);
   overflow-y: auto;
-  padding: 90px 0 40px;
-  z-index: 399;
+  padding: 0 0 40px;
+  z-index: 401;
 }
 .site-header.is-open .site-nav { transform: translateX(0); }
 .site-header.is-open::before {
   content: ""; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 398;
 }
+
+/* ★2026-07-28 — 패널 상단 = 필핀 원본(`pc_slide_menu` 안: 닫기버튼 → `pc_slide_menu_logo`
+   → 메뉴목록) 구조 그대로. 국내 패널엔 로고·닫기가 통째로 빠져 있었다.
+   로고는 패널 배경이 #2a2a2a라 헤더용 검정 글자 로고를 못 쓴다 → 흰 글자 +
+   코발트 깃털 변형본(logo-on-dark.png)을 별도로 만들어 쓴다. */
+.site-nav__close {
+  position: absolute; top: 14px; right: 14px; width: 44px; height: 44px;
+  border: none; background: transparent; cursor: pointer; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-nav__close::before, .site-nav__close::after {
+  content: ""; position: absolute; width: 20px; height: 1.8px; background: rgba(255,255,255,0.85);
+  transition: background var(--dk-dur-fast) var(--dk-ease-out);
+}
+.site-nav__close::before { transform: rotate(45deg); }
+.site-nav__close::after  { transform: rotate(-45deg); }
+.site-nav__close:hover::before, .site-nav__close:hover::after { background: #fff; }
+
+.site-nav__logo { padding: 64px 28px 40px; text-align: center; }
+.site-nav__logo a { display: inline-block; }
+.site-nav__logo img { display: block; height: 26px; width: auto; margin: 0 auto; }
+
+/* 메뉴 항목 = 필핀 실측: 가운데 정렬, 구분선 없음(국내엔 좌측정렬+구분선이 들어가 있었음) */
 .site-nav__list { display: flex; flex-direction: column; align-items: stretch; gap: 0; list-style: none; margin: 0; padding: 0; }
 .site-nav__list > li { position: relative; }
 .site-nav__list > li > a {
-  display: flex; align-items: center; height: auto; padding: 16px 28px; color: rgba(255,255,255,0.92);
-  border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 16px;
-  font-family: 'Poppins', 'Pretendard', sans-serif; text-decoration: none;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  height: auto; padding: 14px 28px; color: rgba(255,255,255,0.92); font-size: 16px;
+  font-family: 'Poppins', 'Pretendard', sans-serif; letter-spacing: 0.5px; text-decoration: none;
   transition: color var(--dk-dur-fast) var(--dk-ease-out);
 }
 .site-nav__list > li > a:hover { color: #fff; }
 .site-nav__list > li.is-active > a { color: var(--dk-accent-red-light); font-weight: 700; }
-.site-nav__list > li.has-sub > a { position: relative; }
-.site-nav__list > li.has-sub > a::before {
-  content: "⌄"; position: absolute; right: 28px; top: 50%;
-  transform: translateY(-50%); font-size: 16px; color: rgba(255,255,255,0.6);
+.site-nav__list > li.has-sub > a::after {
+  content: "⌄"; display: inline-block; font-size: 15px; line-height: 1;
+  color: rgba(255,255,255,0.6); transform: translateY(-3px);
   transition: transform var(--dk-dur-base) var(--dk-ease-out);
 }
-.site-nav__list > li.has-sub.is-open > a::before { transform: translateY(-50%) rotate(180deg); }
+.site-nav__list > li.has-sub.is-open > a::after { transform: translateY(1px) rotate(180deg); }
 .site-nav__sub {
-  list-style: none; margin: 0; padding: 0; display: none;
+  list-style: none; margin: 0; padding: 4px 0 10px; display: none;
 }
 .site-nav__list > li.has-sub.is-open .site-nav__sub { display: block; }
 .site-nav__sub li a {
-  display: block; padding: 12px 28px 12px 44px; color: rgba(255,255,255,0.72); font-size: 14.5px; text-decoration: none;
+  display: block; padding: 9px 28px; text-align: center;
+  color: rgba(255,255,255,0.72); font-size: 14.5px; text-decoration: none;
 }
 .site-nav__sub li a:hover { color: #fff; }
+.site-nav__sub li.is-active a { color: var(--dk-accent-red-light); }
 
 /* ── 모바일: 로고 중앙정렬(필핀 실측), 헤더는 삼선만 우측에 ── */
 @media (max-width: 880px) {
@@ -548,6 +595,15 @@ body.dk {
   max-width: var(--dk-container); margin: 0 auto; padding: 0 clamp(20px,5vw,48px); width: 100%;
   display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,72px); align-items: start;
 }
+/* ★2026-07-28 회장 지적("타이틀 폭과 POINT 상세 폭이 안 맞는다") 근본원인 수정.
+   파일 앞쪽(35행) @media(min-width:1280px){ .dk-wrap, .dk-pt-in { padding:0 } }가
+   이미 있었지만, 바로 위 .dk-pt-in 선언이 그보다 뒤에 오면서 같은 특성도(0,1,0)라
+   나중 규칙이 이겨 패딩 48px이 되살아나 있었다(미디어쿼리는 특성도를 안 올린다).
+   → 데스크톱에서 타이틀(.dk-wrap, 1280px)보다 POINT 상세가 좌우 48px씩 좁던 원인.
+   .dk-pt-in 선언 "뒤"에 같은 미디어쿼리를 다시 둬서 실제로 먹게 만든다. */
+@media (min-width: 1280px) {
+  .dk-pt-in { padding: 0; }
+}
 .dk-pt-item--rev .dk-pt-vis { order: -1; }
 .dk-pt-label { font-size: 13px; font-weight: 700; letter-spacing: 1.5px; color: var(--dk-accent-red); margin: 0 0 14px; }
 .dk-pt-h { font: var(--dk-display-sm); letter-spacing: var(--dk-track-snug); color: var(--dk-ink); margin: 0 0 16px; }
@@ -769,7 +825,48 @@ table.dk-table thead th { background: var(--dk-surface-dark); color: #fff; font-
 table.dk-table tbody th { background: var(--dk-surface-card); color: var(--dk-ink); font-weight: 700; white-space: nowrap; }
 table.dk-table tbody td { color: var(--dk-fg-3); border-top: 1px solid var(--dk-hairline-soft); }
 table.dk-table tbody tr:nth-child(even) td, table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-soft); }
-.dk-table-note { margin: 14px 4px 0; font-size: 13px; color: var(--dk-fg-muted); line-height: 1.7; }
+/* ★2026-07-28 — `.dk `를 붙여 실제로 먹게 고침. 그동안 `.dk p`(0-1-1)에 밀려
+   이 규칙(0-1-0)이 한 번도 적용된 적 없었다(주석 크기·색이 본문과 동일했음). */
+.dk .dk-table-note { margin: 14px 4px 0; font-size: 13px; color: var(--dk-fg-muted); line-height: 1.7; }
+
+/* ── 일정·일과표 블록(생활환경 페이지) — 2026-07-28 신설.
+   한 섹션 안에 월간 일정표 / 중등부 일과 / 고등부 일과 3개를 쌓는다. ── */
+.dk-tt-block { margin-top: clamp(44px,5vw,64px); }
+.dk-tt-block:first-of-type { margin-top: 0; }
+.dk-tt-h {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-family: 'Paperlogy','Pretendard',sans-serif;
+  font-size: clamp(19px,2vw,23px); font-weight: 700; line-height: 1.4;
+  letter-spacing: var(--dk-track-snug); color: var(--dk-ink); margin: 0 0 6px;
+}
+.dk-tt-h .no {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 30px; height: 30px; padding: 0 8px; border-radius: var(--dk-radius-sm);
+  background: var(--dk-accent-red); color: #fff;
+  font-family: var(--dk-font-display); font-size: 13px; font-weight: 800; letter-spacing: 0.5px;
+}
+.dk .dk-tt-sub { font-size: 14.5px; color: var(--dk-fg-muted); line-height: 1.7; margin: 0 0 18px; }
+
+/* 하루 일과표 — 구분/시간 2개 라벨열 + 요일 3열 */
+table.dk-table--day { min-width: 760px; }
+table.dk-table--day tbody td { text-align: center; }
+table.dk-table--day tbody th { font-size: 13.5px; text-align: center; }
+
+/* 월간 일정표 — 7열이라 더 넓고 촘촘하게. 날짜줄/내용줄이 번갈이라
+   .dk-table 기본 짝수행 줄무늬는 끄고, 날짜줄만 회색으로 구분한다. */
+table.dk-table--month { min-width: 940px; }
+table.dk-table--month th, table.dk-table--month td {
+  padding: 11px 10px; font-size: 12.5px; line-height: 1.55; text-align: center; vertical-align: middle;
+}
+table.dk-table--month tbody tr td { background: #fff; color: var(--dk-fg-3); }
+table.dk-table--month tbody tr.dk-month-date td {
+  background: var(--dk-surface-card); color: var(--dk-ink);
+  font-weight: 700; font-size: 12px; white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .dk-tt-h { font-size: 18px; }
+  .dk-tt-sub { font-size: 13.5px; }
+}
 
 /* 배지 */
 .dk-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: var(--dk-radius-full); background: var(--dk-accent-red-bg); color: var(--dk-accent-red); vertical-align: middle; margin-left: 4px; white-space: nowrap; }

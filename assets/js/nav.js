@@ -7,9 +7,38 @@
   var nav = document.getElementById('site-nav');
   if (!header || !toggle || !nav) return;
 
-  toggle.addEventListener('click', function () {
-    var isOpen = header.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  var closeBtn = document.getElementById('nav-close');
+
+  function setOpen(open) {
+    header.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function isOpen() { return header.classList.contains('is-open'); }
+
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    setOpen(!isOpen());
+  });
+
+  /* ★2026-07-28 — 패널 닫기 3경로 신설(필핀은 되는데 국내는 하나도 안 됐음).
+     ①패널 우상단 × 버튼 ②패널 바깥 아무 곳이나 클릭(딤 오버레이 포함) ③Esc 키.
+     오버레이는 .site-header::before(가상요소)라 자체 리스너를 못 단다 → document
+     레벨에서 "패널 안도 아니고 삼선도 아닌 클릭"을 잡는 방식으로 처리한다. */
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(false);
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!isOpen()) return;
+    if (nav.contains(e.target) || toggle.contains(e.target)) return;
+    setOpen(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Escape' || e.keyCode === 27) && isOpen()) setOpen(false);
   });
 
   /* ★2026-07-26 — #site-nav는 이제 폭과 무관하게 항상 "삼선이 여는 패널"이라
@@ -27,8 +56,7 @@
   for (var j = 0; j < leafLinks.length; j++) {
     leafLinks[j].addEventListener('click', function () {
       if (this.parentElement.classList.contains('has-sub')) return;
-      header.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
+      setOpen(false);
     });
   }
 

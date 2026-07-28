@@ -11,7 +11,12 @@
 - `life-care.html` — 생활환경 (ABOUT CAMP 하위, POINT4 — 옛 care-system.html 나머지 축 + facilities.html 병합)
 - `contact.html` — 문의
 
-2026-07-26 IA 재편으로 어바웃캠프 하위가 5페이지→4페이지로 바뀌었다(4대 핵심역량 POINT1~4에 1:1 대응).
+2026-07-26 IA 재편으로 어바웃캠프 하위가 5페이지→4페이지로 바뀌었다(POINT1~4에 1:1 대응).
+
+**2026-07-28 — 핵심역량이 4대→5대로 늘었다.** POINT 05 = "국내 1타, 대치동 프리미엄 입시 컨설팅".
+전용 페이지는 아직 없어서 홈의 POINT 05 링크는 빈 링크(`#`)이고 헤더 드롭다운도 4개 그대로다.
+페이지를 만들 때 ①`index.html`의 POINT 05 `href` ②6개 파일 전부의 헤더·패널 드롭다운
+③이 README를 같이 고칠 것.
 옛 URL(`class-level.html`/`care-system.html`/`facilities.html`)은 `netlify.toml`에서 301 리다이렉트 처리.
 - `assets/css/tokens-domestic.css` — 디자인 토큰(색·타이포·간격, 코발트 #0f52c9)
 - `assets/css/site.css` — 공용 스타일(헤더/내비/푸터 포함)
