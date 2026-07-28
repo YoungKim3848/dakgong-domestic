@@ -158,40 +158,47 @@
   word-break: keep-all;   /* ★실측: 한글 줄바꿈. 모든 .dk 하위에 적용 */
 }
 
-.dk h1, .dk .h1 {
+/* ★2026-07-28 근본 수정 — 요소 기본값을 `:where()`로 감싸 특성도 0으로 낮춘다.
+   기존 `.dk h2`/`.dk p`는 특성도 (0-1-1)이라 컴포넌트 클래스 (0-1-0)를 전부 이겨서,
+   `.dk-perf-title`(32px/800/Paperlogy) · `.dk-kp-text`(17px/600) · `.dk-label`(15px) ·
+   `.dk-pt-label`(13px/700) · `.site-footer__*` · `.dk-history__*` 등 11개 이상이
+   자기 값을 못 받고 전부 16px/1.6 기본값으로 떨어져 있었다(제목 크기·줄간격이
+   섹션마다 제각각으로 보이던 실제 원인). 이건 "기본값"이므로 어떤 클래스든 이겨야 맞다.
+   `:where()`는 특성도를 0으로 만들어 클래스 규칙이 자연스럽게 우선하게 한다. */
+:where(.dk) h1, :where(.dk) .h1 {
   font: var(--dk-display-xl);
   letter-spacing: var(--dk-track-tight);
   color: var(--dk-ink);
   margin: 0;
 }
-.dk h2, .dk .h2 {
+:where(.dk) h2, :where(.dk) .h2 {
   font: var(--dk-display-lg);
   letter-spacing: var(--dk-track-snug);
   color: var(--dk-ink);
   margin: 0;
 }
-.dk h3, .dk .h3 {
+:where(.dk) h3, :where(.dk) .h3 {
   font: var(--dk-display-md);
   color: var(--dk-ink);
   margin: 0;
 }
-.dk h4, .dk .h4 {
+:where(.dk) h4, :where(.dk) .h4 {
   font: var(--dk-display-sm);
   color: var(--dk-ink);
   margin: 0;
 }
-.dk h5, .dk .h5 {
+:where(.dk) h5, :where(.dk) .h5 {
   font: var(--dk-title-lg);
   color: var(--dk-ink);
   margin: 0;
 }
-.dk h6, .dk .h6 {
+:where(.dk) h6, :where(.dk) .h6 {
   font: var(--dk-title-md);
   color: var(--dk-ink);
   margin: 0;
 }
 
-.dk p {
+:where(.dk) p {
   font: var(--dk-body-md);
   color: var(--dk-fg-3);
   margin: 0;
