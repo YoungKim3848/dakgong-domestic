@@ -1310,3 +1310,26 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
   .dk-ph-stack { grid-template-columns: 1fr; }
   .dk-ph-stack > *:first-child, .dk-ph-stack > *:last-child { aspect-ratio: 4/3.4; }
 }
+
+/* ── 히어로 줄바꿈 규칙 (web agent CLAUDE.md「한글 타이포·줄바꿈 기준」) ──
+   · 타이틀 <br> = 수사(대구) → 전 화면 유지
+   · 서브 <br> = 스타일용 → 820px 이하에서 제거. 마크업의 <br> 앞 공백이 어절을 띄운다.
+   · 긴 헤드라인은 text-wrap:balance로 행 길이 균형 */
+.dk-bg-video-content h1, .dk-bg-video-content h2 { text-wrap: balance; }
+@media (max-width: 820px) {
+  .dk-bg-video-content .lead br,
+  .dk-bg-video-content .dk-hero-lead-plain br { display: none; }
+}
+
+/* ── 고아 행 방지 (web agent CLAUDE.md「한글 타이포·줄바꿈 기준」) ──
+   마지막 행에 한두 글자만 남는 것을 브라우저가 알아서 피하게 한다.
+   제목·짧은 캡션 = balance(행 길이 균등), 본문 = pretty(고아 행 방지). */
+:where(.dk) h1, :where(.dk) h2, :where(.dk) h3, :where(.dk) h4,
+.dk-h2, .dk-perf-title, .dk-hub-cap, .dk-head6, .dk-tt-h,
+.dk-ph .cap, .dk-ph .spec, .dk-brand-kicker, .dk-brand-sub,
+.dk-glance-v, .dk-tt-txt, .dk-kp-text, .dk-pt-h {
+  text-wrap: balance;
+}
+:where(.dk) p, :where(.dk) li, :where(.dk) td, .dk-pt-d, .dk-faq-a p {
+  text-wrap: pretty;
+}
