@@ -437,7 +437,8 @@ body.dk {
 @media (max-width: 640px) { .dk-stat-dark-item { grid-template-columns: 48px 1fr; gap: 14px; } .dk-stat-dark-icon { width: 44px; height: 44px; } .dk-stat-dark-icon svg { width: 20px; height: 20px; } }
 
 /* ── 진학실적 ── */
-.dk-perf { background: #1a1a1a; }
+/* ★2026-07-29 — 다크 표면은 --dk-surface-dark 하나로 통일. #1a1a1a는 --dk-ink(글자색)이라 배경 오용이었다. */
+.dk-perf { background: var(--dk-surface-dark); }
 .dk-perf-title {
   font-family: var(--dk-font-display); font-weight: 800;
   font-size: clamp(22px,3.6vw,32px); color: #fff; line-height: 1.4;
@@ -774,7 +775,7 @@ body.dk {
 .dk-course-item { border-bottom: 1px solid var(--dk-hairline-soft); }
 .dk-course-q { display: flex; align-items: center; gap: 16px; padding: 22px 4px; cursor: pointer; list-style: none; }
 .dk-course-q::-webkit-details-marker { display: none; }
-.dk-course-tag { flex-shrink: 0; font-size: 12px; font-weight: 700; color: var(--dk-accent-red); background: var(--dk-accent-red-bg); border-radius: var(--dk-radius-full); padding: 5px 12px; white-space: nowrap; }
+.dk-course-tag { flex-shrink: 0; font-size: 12px; font-weight: 700; color: var(--dk-fg-2); background: var(--dk-surface-elevated); border-radius: var(--dk-radius-full); padding: 5px 12px; white-space: nowrap; }
 .dk-course-title { flex: 1; font: var(--dk-title-lg); color: var(--dk-ink); }
 .dk-course-title em { color: var(--dk-fg-muted); font-style: normal; font-size: 14px; font-weight: 400; margin-left: 6px; }
 .dk-course-icon { margin-left: auto; color: var(--dk-fg-muted); font-size: 22px; flex-shrink: 0; transition: transform var(--dk-dur-base) var(--dk-ease-out), color var(--dk-dur-base) var(--dk-ease-out); }
@@ -852,7 +853,7 @@ table.dk-table tbody tr:nth-child(even) td, table.dk-table tbody tr:nth-child(ev
 .dk-tt-h .no {
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 30px; height: 30px; padding: 0 8px; border-radius: var(--dk-radius-sm);
-  background: var(--dk-accent-red); color: #fff;
+  background: var(--dk-surface-dark); color: #fff;
   font-family: var(--dk-font-display); font-size: 13px; font-weight: 800; letter-spacing: 0.5px;
 }
 .dk .dk-tt-sub { font-size: 14.5px; color: var(--dk-fg-muted); line-height: 1.7; margin: 0 0 18px; }
@@ -879,7 +880,7 @@ table.dk-table--month tbody tr.dk-month-date td {
 }
 
 /* 배지 */
-.dk-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: var(--dk-radius-full); background: var(--dk-accent-red-bg); color: var(--dk-accent-red); vertical-align: middle; margin-left: 4px; white-space: nowrap; }
+.dk-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: var(--dk-radius-full); background: var(--dk-surface-elevated); color: var(--dk-fg-2); vertical-align: middle; margin-left: 4px; white-space: nowrap; }
 .dk-badge--s1 { background: var(--dk-surface-elevated); color: var(--dk-fg-2); }
 .dk-badge--s2 { background: var(--dk-surface-elevated); color: var(--dk-warning); border: 1px solid var(--dk-warning); }
 .dk-badge--s3 { background: var(--dk-accent-red); color: #fff; }
@@ -888,7 +889,7 @@ table.dk-table--month tbody tr.dk-month-date td {
 .dk-steps { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; }
 .dk-step { flex: 1 1 140px; min-width: 128px; background: #fff; border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-md); padding: 20px 16px; transition: border-color var(--dk-dur-base) var(--dk-ease-out), transform var(--dk-dur-base) var(--dk-ease-out); }
 .dk-step:hover { border-color: var(--dk-accent-red-bg); transform: translateY(-3px); }
-.dk-step-num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--dk-accent-red); color: #fff; font-weight: 800; font-size: 12.5px; margin-bottom: 12px; }
+.dk-step-num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--dk-surface-dark); color: #fff; font-weight: 800; font-size: 12.5px; margin-bottom: 12px; }
 .dk-step p { margin: 0; font-size: 13.5px; color: var(--dk-ink); font-weight: 600; line-height: 1.55; }
 .dk-step-arrow { display: flex; align-items: center; justify-content: center; color: var(--dk-fg-muted); font-size: 18px; padding: 0 6px; flex: 0 0 auto; }
 @media (max-width: 768px) { .dk-steps { flex-direction: column; } .dk-step-arrow { transform: rotate(90deg); padding: 6px 0; } }
@@ -899,8 +900,8 @@ table.dk-table--month tbody tr.dk-month-date td {
 .dk-plain-note { font-size: 14px; line-height: 1.7; color: var(--dk-fg-3); margin: 0; }
 
 /* 안내 콜아웃 — 희소 자원, 페이지당 한둘만 */
-.dk-callout { display: flex; align-items: flex-start; gap: 14px; background: var(--dk-accent-red-bg); border-left: 4px solid var(--dk-accent-red); border-radius: var(--dk-radius-md); padding: 20px 24px; margin-top: clamp(32px,5vw,56px); }
-.dk-callout svg { flex-shrink: 0; width: 20px; height: 20px; stroke: var(--dk-accent-red); stroke-width: 1.8; fill: none; margin-top: 2px; }
+.dk-callout { display: flex; align-items: flex-start; gap: 14px; background: var(--dk-surface-card); border-left: 4px solid var(--dk-surface-dark); border-radius: var(--dk-radius-md); padding: 20px 24px; margin-top: clamp(32px,5vw,56px); }
+.dk-callout svg { flex-shrink: 0; width: 20px; height: 20px; stroke: var(--dk-fg-2); stroke-width: 1.8; fill: none; margin-top: 2px; }
 .dk-callout p { margin: 0; font-size: 14.5px; color: var(--dk-fg-2); line-height: 1.7; }
 
 /* 간단 체크 리스트 */
@@ -1025,6 +1026,14 @@ table.dk-table--month tbody tr.dk-month-date td {
    ※ p 요소용 클래스는 `.dk ` 접두 필수 — tokens의 `.dk p`(0-1-1)에 밀린다.
    ===================================================================== */
 
+/* ★2026-07-29 포인트 컬러 사용 규칙 (회장 지적 "너무 대놓고 많이 써서 촌스럽다")
+   면(배경)에 코발트를 쓰는 곳은 다음 5곳뿐이다:
+     ① 롤링 밴드(브랜드 띠)  ② CTA 섹션  ③ 영상 재생 버튼(핵심 액션)
+     ④ 수학 pill(수학 중심 = 브랜드 메시지)  ⑤ 월간 일정표 입소일
+   그 외 강조(배지·태그·스텝번호·표 헤더·콜아웃)는 다크(--dk-surface-dark)나
+   중립 명도로 처리한다. 글자·아이콘 색으로서의 코발트는 이 규칙과 별개.
+   근거: open_design craft/anti-ai-slop.md "var(--accent) 6회 이상 = P1 tell". */
+
 /* ── ① 표 공통 강화 — 기존 .dk-table 전면 교체(curriculum·life-care 전부 적용) ── */
 .dk-table-wrap {
   overflow-x: auto; border-radius: var(--dk-radius-md);
@@ -1032,7 +1041,7 @@ table.dk-table--month tbody tr.dk-month-date td {
   box-shadow: 0 2px 10px rgba(20,40,90,.06);
 }
 table.dk-table thead th {
-  background: var(--dk-accent-red); color: #fff;
+  background: var(--dk-surface-dark); color: #fff;
   font-weight: 700; font-size: 13px; letter-spacing: .3px;
   padding: 13px 14px; white-space: nowrap; border: none;
 }
@@ -1047,20 +1056,20 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
 /* ── ② 하루 일과표 — 좌측 시간대 밴드 + 과목 pill + 선택 묶음 ── */
 table.dk-tt { width: 100%; border-collapse: collapse; }
 table.dk-tt thead th {
-  background: var(--dk-accent-red); color: #fff; font-weight: 700; font-size: 12.5px;
+  background: var(--dk-surface-dark); color: #fff; font-weight: 700; font-size: 12.5px;
   letter-spacing: .3px; padding: 12px; text-align: left; white-space: nowrap;
 }
 table.dk-tt td { border-top: 1px solid var(--dk-hairline-soft); }
 table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { background: var(--dk-surface-soft); }
 .dk-tt-grp {
   width: 56px; padding: 12px 4px; text-align: center; vertical-align: middle;
-  font-size: 12px; font-weight: 700; color: var(--dk-accent-red);
-  background: var(--dk-surface-elevated); border-right: 2px solid #fff;
+  font-size: 12px; font-weight: 700; color: var(--dk-fg-2);
+  background: var(--dk-surface-soft); border-right: 2px solid #fff;
 }
-.dk-tt-grp.am { background: rgba(15,82,201,.10); }
-.dk-tt-grp.pm { background: rgba(15,82,201,.20); }
-.dk-tt-grp.ev { background: rgba(15,82,201,.32); }
-.dk-tt-grp.life { color: var(--dk-fg-3); }
+.dk-tt-grp.am { background: #f0f0f0; }
+.dk-tt-grp.pm { background: #e2e2e2; }
+.dk-tt-grp.ev { background: #d2d2d2; }
+.dk-tt-grp.life { color: var(--dk-fg-muted); background: var(--dk-surface-soft); }
 .dk-tt-grp svg { display: block; width: 16px; height: 16px; margin: 0 auto 5px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 .dk-tt-p {
   width: 78px; padding: 12px 8px; text-align: center; vertical-align: middle;
@@ -1076,11 +1085,11 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
   padding: 4px 9px; font-size: 11px; font-weight: 700; letter-spacing: .2px;
 }
 .dk-pill--math { background: var(--dk-accent-red); color: #fff; }
-.dk-pill--eng  { background: var(--dk-accent-red-light); color: #fff; }
-.dk-pill--sci  { background: var(--dk-accent-red-bg); color: var(--dk-accent-red); }
-.dk-pill--self { background: var(--dk-surface-elevated); color: var(--dk-fg-2); }
-.dk-pill--life { background: var(--dk-surface-card); color: var(--dk-fg-muted); }
-.dk-tt-choice { border-left: 3px solid var(--dk-accent-red); padding-left: 11px; }
+.dk-pill--eng  { background: var(--dk-surface-dark); color: #fff; }
+.dk-pill--sci  { background: var(--dk-hairline); color: var(--dk-ink); }
+.dk-pill--self { background: #fff; color: var(--dk-fg-2); box-shadow: inset 0 0 0 1px var(--dk-hairline); }
+.dk-pill--life { background: #fff; color: var(--dk-fg-3); box-shadow: inset 0 0 0 1px var(--dk-hairline-soft); }
+.dk-tt-choice { border-left: 3px solid var(--dk-surface-dark); padding-left: 11px; }
 .dk-tt-or {
   display: inline-block; background: #fff; border: 1px solid var(--dk-accent-red);
   color: var(--dk-accent-red); font-size: 10px; font-weight: 800;
@@ -1093,7 +1102,7 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 /* ── ③ 월간 일정표 — 다크 주차 블록 + 평일 병합 ── */
 .dk-mon { border-radius: var(--dk-radius-md); overflow: hidden; background: #fff;
   border: 1px solid var(--dk-hairline-soft); box-shadow: 0 2px 10px rgba(20,40,90,.06); }
-.dk-mon-head { display: grid; grid-template-columns: 48px 1.5fr repeat(5,1fr) 1.5fr; background: var(--dk-accent-red); }
+.dk-mon-head { display: grid; grid-template-columns: 48px 1.5fr repeat(5,1fr) 1.5fr; background: var(--dk-surface-dark); }
 .dk-mon-head div { padding: 11px 2px; text-align: center; font-size: 12px; font-weight: 700; color: #fff; }
 .dk-mon-head div:first-child { font-size: 11px; opacity: .82; }
 .dk-mon-head div.we { background: rgba(255,255,255,.16); }
@@ -1111,14 +1120,14 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 .dk-mon-day.open { background: var(--dk-accent-red); }
 .dk-mon-day.open .d { color: rgba(255,255,255,.72); }
 .dk-mon-day.open .n { color: #fff; }
-.dk-mon-day.we { background: var(--dk-accent-red-bg); border: 1px solid #b9d0f5; }
-.dk-mon-day.we .n { color: var(--dk-accent-red); }
+.dk-mon-day.we { background: var(--dk-surface-elevated); border: 1px solid var(--dk-hairline); }
+.dk-mon-day.we .n { color: var(--dk-ink); }
 
 /* ── ④ 한눈에 보기 — 번호 블록 + 아이콘 라벨 + 값 ── */
 .dk-glance { display: flex; flex-direction: column; gap: 8px; }
 .dk-glance-row { display: grid; grid-template-columns: 50px 122px 1fr; align-items: stretch;
   border-radius: var(--dk-radius-sm); overflow: hidden; background: #fff; border: 1px solid var(--dk-hairline-soft); }
-.dk-glance-no { display: flex; align-items: center; justify-content: center; background: var(--dk-accent-red);
+.dk-glance-no { display: flex; align-items: center; justify-content: center; background: var(--dk-surface-dark);
   color: #fff; font-weight: 700; font-size: 15px; letter-spacing: -.3px; }
 .dk-glance-k { display: flex; align-items: center; gap: 7px; padding: 13px 12px;
   font-size: 13px; font-weight: 700; color: var(--dk-ink); background: var(--dk-surface-card); }
