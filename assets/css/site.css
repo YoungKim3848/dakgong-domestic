@@ -62,12 +62,20 @@ body.dk {
   padding: 0 0 clamp(28px,3.5vw,40px);
   border-bottom: 1px solid var(--dk-hairline-soft);
 }
+/* 아래로 내려온 경우 — 구분선을 위쪽으로 옮긴다 */
+.dk-brand-intro--after {
+  margin: clamp(32px,4vw,48px) 0 0;
+  padding: clamp(28px,3.5vw,40px) 0 0;
+  border-bottom: none;
+  border-top: 1px solid var(--dk-hairline-soft);
+}
 /* ※ 셀렉터에 `.dk `를 붙이는 이유 — tokens-domestic.css의 `.dk p`(특성도 0-1-1)가
    클래스 하나짜리(0-1-0) 규칙을 이겨서 p 요소용 클래스는 그냥 두면 안 먹는다.
    이 파일의 `.dk .lead`와 같은 기존 관례를 따른다. */
+/* ★2026-07-29 — 같은 섹션의 두 타이틀이 크기가 달랐다(kicker 30px vs .dk-h2 36px).
+   둘 다 섹션 제목 급이므로 .dk-h2와 동일한 토큰(display-lg)으로 통일하고 색으로만 구분한다. */
 .dk .dk-brand-kicker {
-  font-family: 'Paperlogy','Pretendard',sans-serif;
-  font-size: clamp(22px,2.4vw,30px); font-weight: 700; line-height: 1.35;
+  font: var(--dk-display-lg);
   letter-spacing: var(--dk-track-snug); color: var(--dk-accent-red); margin: 0 0 12px;
 }
 .dk .dk-brand-sub {
@@ -86,7 +94,7 @@ body.dk {
   .dk-split { flex-direction: column; align-items: flex-start; }
   .dk-split p { text-align: left; max-width: 100%; }
   .dk-sec { padding: 56px 0 !important; }
-  .dk-h2 { font-size: 26px !important; }
+  .dk-h2, .dk .dk-brand-kicker { font-size: 26px !important; }
 }
 
 /* sr-only — 표준 스크린리더 전용 숨김 패턴 (버튼/링크 보조텍스트용으로 계속 사용) */
