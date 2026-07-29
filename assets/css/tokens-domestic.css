@@ -134,6 +134,22 @@
   --dk-touch-min: 44px;        /* WCAG AAA hit target */
   --dk-divider-accent: 3px;    /* the signature red rule */
 
+  /* ----- Vertical rhythm / 섹션 내 상하여백 스케일 ---------------------
+     ★2026-07-29 신설. 회장 지적 "섹션내에서 상하여백 규칙 개판".
+     실측 결과 섹션 내부 간격이 0~46px 사이 16종으로 흩어져 있었고,
+     역할이 같은데 clamp 범위만 다른 선언이 10종이었다.
+     앞으로 블록 간 여백은 반드시 아래 5단 중 하나를 쓴다. 새 값을 짓지 않는다.
+       xs 라벨·캡션 → 바로 아래 (붙는 관계)
+       sm 소제목(h3) → 그 소제목이 이끄는 콘텐츠
+       md 콘텐츠 → 보조설명·부속 블록
+       lg 섹션 헤드 → 본문 / 블록 → 블록  (기본값)
+       xl 같은 섹션 안의 독립된 덩어리 (일과표 3블록 등) */
+  --dk-gap-xs: 12px;
+  --dk-gap-sm: clamp(16px, 2vw,   20px);
+  --dk-gap-md: clamp(26px, 3.2vw, 34px);
+  --dk-gap-lg: clamp(40px, 5vw,   56px);
+  --dk-gap-xl: clamp(56px, 7vw,   80px);
+
   /* ----- Motion ---------------------------------------------------- */
   --dk-ease-out:  cubic-bezier(0.2, 0.7, 0.2, 1);
   --dk-ease-in:   cubic-bezier(0.6, 0, 0.8, 0.2);
