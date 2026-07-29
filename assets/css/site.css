@@ -1201,8 +1201,8 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 
 /* ── ⑥ 영상·사진 자리 — 큰 1 + 작은 2 비대칭, 캡션 오버레이 ── */
 .dk-vi-grid { display: grid; grid-template-columns: 1.65fr 1fr; grid-template-rows: auto auto; gap: 12px; }
-.dk-vi-grid .dk-vi-card { aspect-ratio: 16/9.6; position: relative; }
-.dk-vi-grid .dk-vi-card:first-child { grid-row: 1 / 3; aspect-ratio: 4/3.4; }
+.dk-vi-grid .dk-vi-card { aspect-ratio: auto; height: 100%; position: relative; }
+.dk-vi-grid .dk-vi-card:first-child { grid-row: 1 / 3; aspect-ratio: 16/11; height: auto; }
 @media (max-width: 640px) {
   .dk-vi-grid { grid-template-columns: 1fr; }
   .dk-vi-grid .dk-vi-card:first-child { grid-row: auto; aspect-ratio: 16/10; }
@@ -1262,20 +1262,25 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 .dk-ph.is-filled > img, .dk-ph.is-filled > video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ── A. 풀블리드 와이드 밴드 — 섹션 사이를 끊는 가로 띠 ── */
-.dk-ph-band { margin: clamp(40px,6vw,64px) 0 0; }
-.dk-ph-band .dk-ph { aspect-ratio: 21/6; min-height: 150px; }
+/* ★2026-07-29 — 슬롯 블록 상하 여백 규칙. 섹션 사이 단독 블록이라 .dk-sec와 같은 리듬을 준다.
+   (이전엔 .dk-wrap만 걸쳐 위여백 0~84px, 아래여백 -20px 겹침까지 제각각이었다) */
+.dk-ph-block { padding-top: clamp(56px,8vw,96px); padding-bottom: clamp(56px,8vw,96px); margin: 0; }
+.dk-ph-band { margin: 0; }
+.dk-ph-band .dk-ph { aspect-ratio: 21/6; min-height: 150px; max-height: 380px; }
 @media (max-width: 640px) { .dk-ph-band .dk-ph { aspect-ratio: 16/9; } }
 
 /* ── B. 좌우 분할 — 텍스트 : 이미지 = 4 : 6 (교차 가능) ── */
-.dk-ph-split { display: grid; grid-template-columns: 4fr 6fr; gap: clamp(20px,3.5vw,44px); align-items: center; }
+/* 텍스트가 2~3줄뿐이라 컬럼이 넓으면 한 줄로 퍼져 좌우 균형이 깨진다.
+   텍스트 컬럼을 캡션 폭(최대 340px)으로 묶어 덩어리를 만든다. */
+.dk-ph-split { display: grid; grid-template-columns: minmax(220px,340px) 1fr; gap: clamp(20px,3.5vw,56px); align-items: center; }
 .dk-ph-split.rev > *:first-child { order: 2; }
-.dk-ph-split .dk-ph { aspect-ratio: 4/3; }
+.dk-ph-split .dk-ph { aspect-ratio: 16/9.5; }
 .dk-ph-split .txt h3 { font: var(--dk-title-lg); color: var(--dk-ink); margin: 0 0 10px; letter-spacing: var(--dk-track-snug); }
 .dk .dk-ph-split .txt p { font: var(--dk-body-md); color: var(--dk-fg-3); line-height: 1.75; margin: 0; }
 @media (max-width: 768px) {
   .dk-ph-split { grid-template-columns: 1fr; gap: 18px; }
   .dk-ph-split.rev > *:first-child { order: 0; }
-  .dk-ph-split .dk-ph { aspect-ratio: 16/10; }
+  .dk-ph-split .dk-ph { aspect-ratio: 16/9.5; }
 }
 
 /* ── C. 비대칭 3분할 — 큰 1 + 작은 2 (좌우 반전 가능) ── */
@@ -1285,7 +1290,7 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 .dk-ph-tri.rev > *:first-child { grid-column: 2; grid-row: 1 / 3; }
 .dk-ph-tri.rev > *:nth-child(2) { grid-column: 1; grid-row: 1; }
 .dk-ph-tri.rev > *:nth-child(3) { grid-column: 1; grid-row: 2; }
-.dk-ph-tri > *:first-child { aspect-ratio: 4/3.6; }
+.dk-ph-tri > *:first-child { aspect-ratio: 16/11; }
 .dk-ph-tri > *:nth-child(n+2) { aspect-ratio: auto; height: 100%; }
 @media (max-width: 640px) {
   .dk-ph-tri { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
@@ -1296,8 +1301,8 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 
 /* ── D. 오프셋 겹침 2장 — 세로로 어긋나게 ── */
 .dk-ph-stack { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px,2.5vw,26px); align-items: start; }
-.dk-ph-stack > *:first-child { aspect-ratio: 3/4; }
-.dk-ph-stack > *:last-child { aspect-ratio: 3/4; margin-top: clamp(28px,5vw,64px); }
+.dk-ph-stack > *:first-child { aspect-ratio: 4/3.4; }
+.dk-ph-stack > *:last-child { aspect-ratio: 4/3.4; margin-top: clamp(24px,4vw,48px); }
 @media (max-width: 560px) {
   .dk-ph-stack > *:first-child, .dk-ph-stack > *:last-child { aspect-ratio: 4/3; }
   .dk-ph-stack > *:last-child { margin-top: 0; }
@@ -1352,3 +1357,15 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 :where(.dk) p, :where(.dk) li, :where(.dk) td, .dk-pt-d, .dk-faq-a p {
   text-wrap: pretty;
 }
+
+/* ── PC 슬롯 높이 상한 (2026-07-29) ──
+   aspect-ratio만 두면 1440px에서 슬롯 하나가 836px까지 커져 화면을 거의 다 먹었다.
+   폭이 넓어질수록 비율 대신 상한이 걸리게 해서 블록 높이를 뷰포트의 ~70% 아래로 묶는다. */
+@media (min-width: 1024px) {
+  .dk-ph-split .dk-ph { max-height: 420px; }
+  .dk-ph-tri > *:first-child { max-height: 480px; }
+  .dk-ph-stack > * { max-height: 430px; }
+  .dk-ph-quad .dk-ph { max-height: 380px; }
+  .dk-vi-grid .dk-vi-card:first-child { max-height: 480px; }
+}
+
