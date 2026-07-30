@@ -1431,6 +1431,10 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 /* ★2026-07-30 회장 지적 "아래 버튼도 없는데 여백은 왜있나". 리드 블록 뒤에 아무것도 없어
    섹션 하단 96px이 빈 여백으로 남았다. 스케일 안에서 한 단 낮춘다(96 → lg). */
 .dk-sec--csintro { padding-bottom: var(--dk-gap-lg); }
+/* ★ 2026-07-30 회장 지시 — 캠프 포함으로 오해되지 않게 성격을 한 줄로 못 박는 안내.
+   작게, 중간 여백에. 강조하지 않는다(간보기 성격을 깨지 않도록). */
+.dk .dk-cs-caveat { margin: var(--dk-gap-md) 0 0; font-size: 12.5px; line-height: 1.75;
+  color: var(--dk-fg-muted); word-break: keep-all; }
 .dk-cs-lead { background: #fff; border: 1px solid var(--dk-hairline-soft);
   border-radius: var(--dk-radius-lg); border-top: 3px solid var(--dk-fg-2);
   padding: 18px 22px; margin-top: var(--dk-gap-md); }
