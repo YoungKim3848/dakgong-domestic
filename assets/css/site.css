@@ -1732,8 +1732,15 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 @media (max-width: 880px) {
   .dk-hc { --w: calc((100vw - 24px) / 3);
     padding: clamp(18px,4vw,26px) 12px clamp(14px,3vw,20px); border-radius: 0; }
-  /* 둘레 칸 — 번호 + 아이콘만 */
-  .dk .dk-hx__t, .dk .dk-hx__k, .dk .dk-hx__d { display: none; }
+  /* ★모바일도 3열 링을 유지한다(모바일이 기준). 다만 육각형이 114px밖에 안 되므로
+     칸 안에는 [번호 + 제목]만 남기고, 제목의 뒷부분은 감춘다(.dk-hx__tl).
+     지어낸 축약이 아니라 원문 단어를 잘라 쓰는 것이다 —
+       국어 · 영어(특강) / 수능 대비(집중반) / 과학 · 사회(선택과목) /
+       SKY · 의대(선배 멘토링) / (관리형) 자기주도학습
+     라벨·설명·아이콘은 감추고, 그 내용은 바로 아래 상세 6칸이 담당한다(번호 01~06이 1:1 대응). */
+  .dk .dk-hx__d, .dk .dk-hx__k, .dk-hx__i, .dk-hx__tl { display: none; }
+  .dk .dk-hx__t { font-size: clamp(11px,3vw,14px); line-height: 1.2;
+    letter-spacing: -0.7px; margin: 3px 0 0; }
   .dk-hx__in, .dk-hx--dr .dk-hx__in, .dk-hx--dl .dk-hx__in, .dk-hx--l .dk-hx__in,
   .dk-hx--ul .dk-hx__in, .dk-hx--ur .dk-hx__in, .dk-hx--r .dk-hx__in {
     align-items: center; justify-content: center; text-align: center; }
