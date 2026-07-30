@@ -1333,7 +1333,11 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 /* ── D. 오프셋 겹침 2장 — 세로로 어긋나게 ── */
 .dk-ph-stack { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px,2.5vw,26px); align-items: start; }
 .dk-ph-stack > *:first-child { aspect-ratio: 4/3.4; }
-.dk-ph-stack > *:last-child { aspect-ratio: 4/3.4; margin-top: clamp(24px,4vw,48px); }
+/* ★2026-07-30 회장 지적 "레이아웃 또 안맞음". 세로 엇갈림(offset)이 정돈돼 보이지 않아
+   PC에서도 두 칸을 같은 높이에 맞춘다. 아래 주석문도 좌측 정렬로 붙인다. */
+.dk-ph-stack > *:last-child { aspect-ratio: 4/3.4; margin-top: 0; }
+.dk-ph-stack { align-items: stretch; }
+.dk .dk-ph-note { text-align: left; max-width: 720px; }
 
 /* ── E. 균등 4열 (프로필·시설 목록용) ── */
 .dk-ph-quad { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
@@ -1424,6 +1428,9 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 ═══════════════════════════════════════════════════════════════════ */
 
 /* ── 01 닥공의 전문 영역 리드 블록 ── */
+/* ★2026-07-30 회장 지적 "아래 버튼도 없는데 여백은 왜있나". 리드 블록 뒤에 아무것도 없어
+   섹션 하단 96px이 빈 여백으로 남았다. 스케일 안에서 한 단 낮춘다(96 → lg). */
+.dk-sec--csintro { padding-bottom: var(--dk-gap-lg); }
 .dk-cs-lead { background: #fff; border: 1px solid var(--dk-hairline-soft);
   border-radius: var(--dk-radius-lg); border-top: 3px solid var(--dk-fg-2);
   padding: 18px 22px; margin-top: var(--dk-gap-md); }
@@ -1565,14 +1572,18 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
   color: var(--dk-fg-3); word-break: keep-all; }
 .dk .dk-cinq__d b { color: var(--dk-fg-2); font-weight: 700; }
 .dk-cinq__btns { display: grid; grid-auto-flow: row; gap: 10px; min-width: 0; }
-.dk-cinq__b { background: var(--dk-accent-red); color: #fff; border-radius: var(--dk-radius-md);
+/* ★2026-07-30 회장 지적 "cta 버튼 글자 안보인다".
+   tokens-domestic.css의 `.dk a`(특성도 0-1-1)가 `.dk-cinq__b`(0-1-0)를 이겨
+   글자색이 코발트로 덮여 코발트 배경과 같아졌다(실측: 글자 rgb(15,82,201) = 배경).
+   HANDOFF에 이미 적힌 함정인데 또 밟았다. → `.dk` 접두를 붙여 0-2-0으로 올린다. */
+.dk .dk-cinq__b { background: var(--dk-accent-red); color: #fff; border-radius: var(--dk-radius-md);
   padding: 13px 22px; font-size: 13.5px; font-weight: 700; text-align: center;
   white-space: nowrap; text-decoration: none;
   transition: background var(--dk-dur-fast) var(--dk-ease-out); }
-.dk-cinq__b:hover { background: var(--dk-accent-red-light); }
-.dk-cinq__b--gh { background: transparent; border: 2px solid var(--dk-accent-red);
+.dk .dk-cinq__b:hover { background: var(--dk-accent-red-light); color: #fff; }
+.dk .dk-cinq__b--gh { background: transparent; border: 2px solid var(--dk-accent-red);
   color: var(--dk-accent-red); padding: 11px 20px; }
-.dk-cinq__b--gh:hover { background: var(--dk-accent-red); color: #fff; }
+.dk .dk-cinq__b--gh:hover { background: var(--dk-accent-red); color: #fff; }
 @media (max-width: 760px) {
   .dk-cinq { grid-template-columns: 1fr; gap: 18px; }
   .dk-cinq__btns { grid-auto-flow: column; grid-auto-columns: 1fr; }
@@ -1635,14 +1646,17 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
   --t-lab: 10px;
   --t-bdy: clamp(10.5px, 1.25vw, 11.5px);
   --gap-1: 6px; --gap-2: 4px; --gap-3: 7px;
-  /* 흰 육각형이 흰 배경에서 사라진다. 섹션 표면을 깔아 육각형과 그림자가 읽히게 한다. */
+  /* 흰 육각형이 흰 배경에서 사라진다. 섹션 표면을 깔아 육각형과 그림자가 읽히게 한다.
+     ★2026-07-30 회장 지적 "인포그래픽 뒷 배경 색을 좌우 끝까지 채울것".
+     .dk-wrap 안에서 음수 마진으로 파고드는 방식은 ≥1280px에서 패딩이 0이라 실패한다.
+     → 마크업에서 .dk-wrap 밖(섹션 직계)으로 빼서 자연스럽게 화면 폭을 쓰게 했다.
+     (실사이트 .dk-idband-wrap이 쓰는 것과 같은 방식) */
   background: var(--dk-surface-elevated);
   padding: clamp(22px,3.6vw,40px) clamp(10px,1.8vw,20px) clamp(16px,2.6vw,28px);
-  /* 좌우로 파고들어 풀블리드 띠를 만든다. 단 ≥1280px에서는 .dk-wrap 패딩이 0이라
-     파고들 여백이 없어 그대로 문서 밖으로 나간다(실측: 1280px에서 가로 48px). → 아래에서 취소. */
-  margin: 0 calc(-1 * clamp(20px,5vw,48px)) var(--dk-gap-lg);
+  margin: 0 0 var(--dk-gap-lg);
+  width: 100%;
+  overflow: hidden;
 }
-@media (min-width: 1280px) { .dk-hc { margin-inline: 0; } }
 .dk-hc__grid { position: relative; width: calc(var(--w) * 3); height: calc(var(--h) * 2.5); margin: 0 auto; }
 .dk-hx { position: absolute; width: var(--w); height: var(--h);
   left: calc(var(--cx) * var(--w)); top: calc(var(--cy) * var(--h) * .75); padding: 4px;
@@ -1706,8 +1720,7 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 .dk-sw--opt { background: #5c5c5c; }  .dk-sw--base { background: #8f8f8f; }
 /* 좁은 화면(≤880px): 육각형을 버리고 카드 목록으로. 규격 토큰은 그대로 쓴다 */
 @media (max-width: 880px) {
-  .dk-hc { margin-left: 0; margin-right: 0; padding: clamp(16px,3vw,24px);
-    border-radius: var(--dk-radius-lg); }
+  .dk-hc { padding: clamp(16px,3vw,24px) clamp(20px,5vw,48px); border-radius: 0; }
   .dk-hc__grid { display: flex; flex-direction: column; gap: 10px; width: auto; height: auto; }
   .dk-hx { position: static; width: auto; height: auto; padding: 0; filter: none; }
   .dk-hx__c { clip-path: none; background: #fff; border: 1px solid var(--dk-hairline-soft);
