@@ -117,102 +117,117 @@
 
   </div>
 
-      <!-- ══ 6대 핵심 인포그래픽 — 아크 + 알약형 행 (★2026-07-30 회장 지정 레퍼런스) ══
-       레퍼런스 요점:
-         · 좌측에 아크(도넛 일부) + 섹션 제목
-         · 우측에 알약형(스타디움) 행 6개. 행마다 [번호 원][제목·라벨][아이콘]
-         · 점선 곡선 커넥터 + 작은 원 노드로 아크와 행을 잇는다
-         · 행이 좌우로 살짝 엇갈려 곡선을 따라간다
-         · 색은 한 색의 톤 2단 교대 (레퍼런스는 청록, 우리는 코발트)
-       이 구조를 고른 이유: 행이 세로로 쌓이므로 **모바일에서 형태가 안 깨진다.**
-       육각형 벌집은 3열을 강제해 390px에서 텍스트가 못 들어갔다.
-       색약 검증: 진한 #0f52c9 ↔ 연한 #dce8fc 대비 5.53:1(기준 1.9 초과),
-                 흰글자 6.84 / 잉크글자 14.08 / 번호원 흰글자 17.40. -->
-  <div class="dk-arc" data-reveal>
+    <!-- ══ 벌집 인포그래픽 (★2026-07-30 회장 지정 레퍼런스 구조) ══
+       · 중앙 육각형 = 섹션 제목 「6대 핵심 수업 구성」
+       · 둘레 6개 = 6대 핵심. 시계방향으로 원문 순서(수학→국어영어→수능→선택→멘토→자습)
+       · 각 육각형의 컬러 쐐기를 '중앙을 보는 모서리'로 몰았다
+         → 6개 쐐기가 모여 중앙을 감싸는 또 하나의 육각형 링이 된다
+       · 아이콘은 컬러 쐐기 안 / 텍스트는 흰 부분(쐐기 반대쪽)
+       --ang = 그 칸에서 중앙을 향하는 방향. 쐐기와 아이콘이 이 각도로 회전한다.
+       쐐기 색 = 운영 방식. 코발트 1 + 중립 명도 3단이며 링 이웃 명도비 2.07~2.15:1
+       (회장 색약 → 색상 차이가 아니라 명도 차이로 갈리게 하고 범례에 글자 병기). -->
+  <div class="dk-hc" data-reveal>
+    <div class="dk-hc__grid">
 
-    <div class="dk-arc__hd">
-      <svg class="dk-arc__ring" viewBox="0 0 200 200" aria-hidden="true">
-        <path d="M100 14 A86 86 0 0 0 100 186" class="dk-arc__ring-a"/>
-        <path d="M100 44 A56 56 0 0 0 100 156" class="dk-arc__ring-b"/>
-      </svg>
-      <div class="dk-arc__hdtx">
-        <p class="dk-arc__k">닥공 한국 스파르타 캠프</p>
-        <p class="dk-arc__t">6대 핵심<br>수업 구성</p>
-        <p class="dk-arc__d">수학을 중심으로 여섯 가지가 맞물립니다</p>
-      </div>
-    </div>
-
-    <ol class="dk-arc__list">
-      <li class="dk-arc__row dk-arc__row--deep">
-        <span class="dk-arc__n">01</span>
-        <div class="dk-arc__pill">
-          <div class="dk-arc__tx">
-            <p class="dk-arc__rt">수학</p>
-            <p class="dk-arc__rk">핵심과목 · 주중 — 절대적 학습량을 확보합니다</p>
+      <div class="dk-hx dk-hx--hub" style="--cx:1;--cy:1">
+        <div class="dk-hx__c">
+          <div class="dk-hx__hb">
+            <p class="dk-hx__hk">닥공 한국 스파르타 캠프</p>
+            <p class="dk-hx__ht">6대 핵심<br>수업 구성</p>
+            <p class="dk-hx__hd">수학을 중심으로<br>여섯 가지가 맞물립니다</p>
           </div>
-          <svg class="dk-arc__i" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 20V4M4 20h16"/><path d="M6.5 16.5c3-9 6 3 11-8"/></svg>
         </div>
-      </li>
-      <li class="dk-arc__row dk-arc__row--soft">
-        <span class="dk-arc__n">02</span>
-        <div class="dk-arc__pill">
-          <div class="dk-arc__tx">
-            <p class="dk-arc__rt">국어 · 영어 특강</p>
-            <p class="dk-arc__rk">주말특강 — 입시 핵심 과목의 맥락을 잡습니다</p>
+      </div>
+
+      <div class="dk-hx dk-hx--core dk-hx--dr" style="--cx:0.5;--cy:0;--ang:-30deg">
+        <div class="dk-hx__c">
+          <svg class="dk-hx__i" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 20V4M4 20h16"/><path d="M6.5 16.5c3-9 6 3 11-8"/></svg>
+          <div class="dk-hx__in">
+            <span class="dk-hx__n">01</span>
+            <p class="dk-hx__t">수학</p>
+            <p class="dk-hx__k">핵심과목 · 주중</p>
+            <p class="dk-hx__d">절대적 학습량을<br>확보합니다</p>
           </div>
-          <svg class="dk-arc__i" viewBox="0 0 24 24" aria-hidden="true">
+        </div>
+      </div>
+
+      <div class="dk-hx dk-hx--fix dk-hx--dl" style="--cx:1.5;--cy:0;--ang:30deg">
+        <div class="dk-hx__c">
+          <svg class="dk-hx__i" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 6v14M12 6C9 3.5 6 4 4 4.5V18c2-.5 5-1 8 1"/>
             <path d="M12 6c3-2.5 6-2 8-1.5V18c-2-.5-5-1-8 1"/></svg>
-        </div>
-      </li>
-      <li class="dk-arc__row dk-arc__row--deep">
-        <span class="dk-arc__n">03</span>
-        <div class="dk-arc__pill">
-          <div class="dk-arc__tx">
-            <p class="dk-arc__rt">수능 대비 집중반</p>
-            <p class="dk-arc__rk">고2~고3 — 실전 수능 흐름을 몸에 새깁니다</p>
+          <div class="dk-hx__in">
+            <span class="dk-hx__n">02</span>
+            <p class="dk-hx__t">국어 · 영어<span class="dk-hx__tl"> 특강</span></p>
+            <p class="dk-hx__k">주말특강</p>
+            <p class="dk-hx__d">입시 핵심 과목의<br>맥락을 잡습니다</p>
           </div>
-          <svg class="dk-arc__i" viewBox="0 0 24 24" aria-hidden="true">
+        </div>
+      </div>
+
+      <div class="dk-hx dk-hx--opt dk-hx--l" style="--cx:2;--cy:1;--ang:90deg">
+        <div class="dk-hx__c">
+          <svg class="dk-hx__i" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 3h6"/></svg>
-        </div>
-      </li>
-      <li class="dk-arc__row dk-arc__row--soft">
-        <span class="dk-arc__n">04</span>
-        <div class="dk-arc__pill">
-          <div class="dk-arc__tx">
-            <p class="dk-arc__rt">과학 · 사회 선택과목</p>
-            <p class="dk-arc__rk">개인 선택 — 탐구 과목을 조기 완성합니다</p>
+          <div class="dk-hx__in">
+            <span class="dk-hx__n">03</span>
+            <p class="dk-hx__t">수능 대비<span class="dk-hx__tl"> 집중반</span></p>
+            <p class="dk-hx__k">고2~고3</p>
+            <p class="dk-hx__d">실전 수능 흐름을<br>몸에 새깁니다</p>
           </div>
-          <svg class="dk-arc__i" viewBox="0 0 24 24" aria-hidden="true">
+        </div>
+      </div>
+
+      <div class="dk-hx dk-hx--opt dk-hx--ul" style="--cx:1.5;--cy:2;--ang:150deg">
+        <div class="dk-hx__c">
+          <svg class="dk-hx__i" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M9 3h6M10 3v6l-4.5 8A2 2 0 0 0 7 20h10a2 2 0 0 0 1.5-3L14 9V3"/>
             <path d="M7.5 15h9"/></svg>
-        </div>
-      </li>
-      <li class="dk-arc__row dk-arc__row--deep">
-        <span class="dk-arc__n">05</span>
-        <div class="dk-arc__pill">
-          <div class="dk-arc__tx">
-            <p class="dk-arc__rt">SKY · 의대 선배 멘토링</p>
-            <p class="dk-arc__rk">캠프 내 상주 — 성적 · 생기부 · 멘탈까지 함께 봅니다</p>
+          <div class="dk-hx__in">
+            <span class="dk-hx__n">04</span>
+            <p class="dk-hx__t">과학 · 사회<span class="dk-hx__tl"> 선택과목</span></p>
+            <p class="dk-hx__k">개인 선택</p>
+            <p class="dk-hx__d">탐구 과목을<br>조기 완성합니다</p>
           </div>
-          <svg class="dk-arc__i" viewBox="0 0 24 24" aria-hidden="true">
+        </div>
+      </div>
+
+      <div class="dk-hx dk-hx--base dk-hx--ur" style="--cx:0.5;--cy:2;--ang:-150deg">
+        <div class="dk-hx__c">
+          <svg class="dk-hx__i" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/>
             <path d="M16 5.2A3.2 3.2 0 0 1 16 11M18 20c0-2.4-.9-4.2-2.4-5.2"/></svg>
-        </div>
-      </li>
-      <li class="dk-arc__row dk-arc__row--soft">
-        <span class="dk-arc__n">06</span>
-        <div class="dk-arc__pill">
-          <div class="dk-arc__tx">
-            <p class="dk-arc__rt">관리형 자기주도학습</p>
-            <p class="dk-arc__rk">24시간 — 감독 상주로 실행력을 담보합니다</p>
+          <div class="dk-hx__in">
+            <span class="dk-hx__n">05</span>
+            <p class="dk-hx__t">SKY · 의대<span class="dk-hx__tl"> 선배 멘토링</span></p>
+            <p class="dk-hx__k">캠프 내 상주</p>
+            <p class="dk-hx__d">성적 · 생기부 · 멘탈까지<br>함께 봅니다</p>
           </div>
-          <svg class="dk-arc__i" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16v10H4zM4 16l-1 4M20 16l1 4M9 20h6"/><path d="M8 11h8"/></svg>
         </div>
-      </li>
-    </ol>
+      </div>
+
+      <div class="dk-hx dk-hx--base dk-hx--r" style="--cx:0;--cy:1;--ang:-90deg">
+        <div class="dk-hx__c">
+          <svg class="dk-hx__i" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16v10H4zM4 16l-1 4M20 16l1 4M9 20h6"/><path d="M8 11h8"/></svg>
+          <div class="dk-hx__in">
+            <span class="dk-hx__n">06</span>
+            <p class="dk-hx__t"><span class="dk-hx__tl">관리형 </span>자기주도학습</p>
+            <p class="dk-hx__k">24시간</p>
+            <p class="dk-hx__d">감독 상주로<br>실행력을 담보합니다</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <ul class="dk-hc__lg">
+      <li><i class="dk-sw dk-sw--core"></i>수학 <b>중심축</b></li>
+      <li><i class="dk-sw dk-sw--fix"></i>시점 고정</li>
+      <li><i class="dk-sw dk-sw--opt"></i>대상 · 선택</li>
+      <li><i class="dk-sw dk-sw--base"></i>기간 내내</li>
+    </ul>
   </div>
 
   <div class="dk-wrap">
