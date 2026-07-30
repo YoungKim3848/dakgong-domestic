@@ -1280,8 +1280,15 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 /* ── A. 풀블리드 와이드 밴드 — 섹션 사이를 끊는 가로 띠 ── */
 /* ★2026-07-29 — 슬롯 블록 상하 여백 규칙. 섹션 사이 단독 블록이라 .dk-sec와 같은 리듬을 준다.
    (이전엔 .dk-wrap만 걸쳐 위여백 0~84px, 아래여백 -20px 겹침까지 제각각이었다) */
-.dk-ph-block { padding-top: clamp(56px,8vw,96px); padding-bottom: clamp(56px,8vw,96px); margin: 0; }
-.dk-ph-band { margin: 0; }
+/* ★2026-07-30 긴급 수정 — 회장 지적 "pc버전은 버리는거냐".
+   여기 있던 `margin: 0`이 .dk-wrap의 `margin: 0 auto`(가운데 정렬)를 죽여서
+   1280px 넘는 화면에서 슬롯 블록만 왼쪽에 붙고 오른쪽에 죽은 공간이 생겼다
+   (1900px 실측: .dk-wrap 좌310/우310 vs 슬롯 좌0/우620).
+   상하 여백만 만들면 되는 자리이므로 `margin-block`으로 좁혀 좌우 auto를 살린다.
+   ⚠️ 검증에 "가로 위치(좌우 여백 대칭)" 항목이 없어서 놓쳤다. 이제 회귀에 포함한다. */
+.dk-ph-block { padding-top: clamp(56px,8vw,96px); padding-bottom: clamp(56px,8vw,96px);
+  margin-block: 0; margin-inline: auto; }
+.dk-ph-band { margin-block: 0; margin-inline: auto; }
 .dk-ph-band .dk-ph { aspect-ratio: 21/6; min-height: 150px; max-height: 380px; }
 
 /* ── B. 좌우 분할 — 텍스트 : 이미지 = 4 : 6 (교차 가능) ── */
@@ -1402,3 +1409,322 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
   .dk-vi-grid .dk-vi-card:first-child { aspect-ratio: 16/9.5; }
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════
+   입시 컨설팅 페이지 (consulting.html) + 6대 핵심 상세 공용 카드 — ★2026-07-30 신설
+   회장/닥공 통화 확정:
+     · 캠프 비용에 포함된 서비스가 아니다(별도). 단 유료 사실을 페이지에 노출하지 않는다.
+     · POINT5에 두는 이유 = 캠프 전문성 제시 + 간보기. "닥공의 전문 영역 중 하나"로 쓴다.
+     · 중등/고등 컨설팅 문의 CTA를 이 페이지에만 별도로 둔다.
+   CTA 겹침 해법 — 층위를 다르게 둔다:
+     · 컨설팅 문의 = 본문 안(03 직후), 흰 카드 + 상단 코발트 실선  → '안내'
+     · 캠프 문의   = 페이지 끝, 풀블리드 코발트 .dk-cta (6페이지 공통) → '결론'
+   금지 유지: 라운드 + 컬러 좌측 레일 동시 사용(anti-ai-slop P0 #5) → 상단 실선으로 대신.
+   여백은 --dk-gap-* 스케일만 쓴다.
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── 01 닥공의 전문 영역 리드 블록 ── */
+.dk-cs-lead { background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); border-top: 3px solid var(--dk-fg-2);
+  padding: 18px 22px; margin-top: var(--dk-gap-md); }
+.dk .dk-cs-lead__k { margin: 0 0 7px; font-size: 10.5px; font-weight: 700;
+  letter-spacing: 1.1px; color: var(--dk-fg-muted); }
+.dk .dk-cs-lead__v { margin: 0; font-size: 14px; line-height: 1.85;
+  color: var(--dk-fg-3); word-break: keep-all; }
+.dk .dk-cs-lead__v b { color: var(--dk-ink); font-weight: 700; }
+
+/* ── 02 인포그래픽 : 3축 수렴 ── */
+.dk-cvg { margin-bottom: var(--dk-gap-lg); }
+.dk-cvg__cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.dk-cvg__c { background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); border-top: 3px solid var(--tone);
+  padding: 22px 18px; text-align: center; }
+.dk-cvg__n { display: block; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(20px,2.6vw,26px); line-height: 1; letter-spacing: -0.5px;
+  color: var(--tone); margin-bottom: 11px; }
+.dk-cvg__i { width: 26px; height: 26px; margin: 0 auto 11px; display: block; fill: none;
+  stroke: var(--tone); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.dk .dk-cvg__t { margin: 0 0 5px; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(15px,2vw,18px); letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink); word-break: keep-all; }
+.dk .dk-cvg__k { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: .7px;
+  color: var(--dk-fg-muted); }
+.dk-cvg__arrows { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; height: 26px; }
+.dk-cvg__arrows i { position: relative; display: block; }
+.dk-cvg__arrows i::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 7px;
+  width: 1px; background: var(--dk-hairline); transform: translateX(-50%); }
+.dk-cvg__arrows i::after { content: ""; position: absolute; left: 50%; bottom: 0;
+  width: 7px; height: 7px; border-right: 1.5px solid var(--dk-hairline);
+  border-bottom: 1.5px solid var(--dk-hairline); transform: translateX(-50%) rotate(45deg); }
+.dk-cvg__base { background: var(--dk-surface-dark); border-radius: var(--dk-radius-lg);
+  padding: 18px 22px; text-align: center; }
+.dk-cvg__base b { display: block; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(16px,2.2vw,20px); letter-spacing: var(--dk-track-snug); color: #fff; }
+.dk-cvg__base span { display: block; margin-top: 6px; font-size: 12px; color: rgba(255,255,255,0.68); }
+@media (max-width: 640px) {
+  .dk-cvg__cols { grid-template-columns: 1fr; }
+  .dk-cvg__arrows { grid-template-columns: 1fr; height: 22px; }
+  .dk-cvg__arrows i:nth-child(n+2) { display: none; }
+}
+
+/* ── 상세 카드 (커리큘럼 6대 핵심 + 컨설팅 3축 공용 템플릿) ──
+   ★병렬 항목은 레이아웃을 통일한다. 여섯 칸이든 세 칸이든 규격이 하나여야 한다.
+   셀별로 값을 따로 쓰지 않는다. 달라지는 것은 내용과 --tone(의미를 담은 색)뿐이다. */
+.dk-ds-list { display: flex; flex-direction: column; gap: 12px; }
+.dk-ds { background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); border-top: 3px solid var(--tone, var(--dk-hairline));
+  padding: clamp(18px,2.4vw,26px);
+  display: grid; grid-template-columns: 214px 1fr; gap: clamp(18px,2.6vw,34px); align-items: start; }
+.dk-ds--core { --tone: #0f52c9; }
+.dk-ds--fix  { --tone: #2a2a2a; }
+.dk-ds--opt  { --tone: #5c5c5c; }
+.dk-ds--base { --tone: #8f8f8f; }
+.dk-ds__hd { display: grid; grid-template-columns: auto auto; gap: 4px 12px;
+  align-items: center; min-width: 0; }
+.dk-ds__n { font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(22px,2.8vw,28px); line-height: 1; letter-spacing: -0.5px;
+  color: var(--tone); grid-row: 1; }
+.dk-ds__ib { width: 34px; height: 34px; border-radius: var(--dk-radius-sm);
+  background: var(--tone); display: flex; align-items: center; justify-content: center; grid-row: 1; }
+.dk-ds__i { width: 19px; height: 19px; fill: none; stroke: #fff; stroke-width: 1.7;
+  stroke-linecap: round; stroke-linejoin: round; }
+.dk-ds__tw { grid-column: 1 / -1; grid-row: 2; margin-top: 9px; min-width: 0; }
+.dk .dk-ds__t { margin: 0; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(17px,2.3vw,21px); line-height: 1.3; letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink); word-break: keep-all; }
+.dk .dk-ds__k { margin: 6px 0 0; font-size: 11px; font-weight: 700; letter-spacing: .9px;
+  color: var(--dk-fg-muted); }
+.dk-ds__rows { margin: 0; display: grid; grid-template-columns: 88px 1fr; min-width: 0; }
+.dk-ds__rows dt { padding: 11px 14px 11px 0; font-size: 11.5px; font-weight: 700;
+  letter-spacing: .4px; color: var(--dk-fg-2); border-top: 1px solid var(--dk-hairline-soft); }
+.dk-ds__rows dd { margin: 0; padding: 11px 0; font-size: 13.5px; line-height: 1.8;
+  color: var(--dk-fg-3); border-top: 1px solid var(--dk-hairline-soft);
+  word-break: keep-all; min-width: 0; }
+.dk-ds__rows dt:first-of-type, .dk-ds__rows dd:first-of-type { border-top: 0; padding-top: 0; }
+.dk-ds__rows dd b { color: var(--dk-fg-2); font-weight: 700; }
+.dk-ds__rows dd em { display: block; font-style: normal; font-size: 11.5px;
+  color: var(--dk-fg-muted); margin-top: 6px; }
+@media (max-width: 820px) {
+  .dk-ds { grid-template-columns: 1fr; gap: 16px; }
+  .dk-ds__hd { grid-template-columns: auto auto 1fr; align-items: center; gap: 0 12px; }
+  .dk-ds__tw { grid-column: 3; grid-row: 1; margin-top: 0; }
+}
+@media (max-width: 520px) {
+  .dk-ds__hd { grid-template-columns: auto auto; gap: 4px 12px; }
+  .dk-ds__tw { grid-column: 1 / -1; grid-row: 2; margin-top: 10px; }
+  .dk-ds__rows { grid-template-columns: 1fr; }
+  .dk-ds__rows dt { padding: 12px 0 0; }
+  .dk-ds__rows dd { padding: 4px 0 12px; border-top: 0; }
+  .dk-ds__rows dt:first-of-type { padding-top: 0; }
+}
+
+/* ── 03 프로세스 4단계 + 상시 2개 ── */
+.dk-pr { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.dk-pr__i { background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); padding: 18px 20px;
+  display: grid; grid-template-columns: 52px 1fr; gap: 16px; align-items: start; }
+.dk-pr__n { font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(22px,2.8vw,28px); line-height: 1; letter-spacing: -0.5px;
+  color: var(--dk-accent-red-2); }
+.dk-pr__b { min-width: 0; }
+.dk .dk-pr__t { margin: 0 0 6px; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(15.5px,2.1vw,19px); letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink); word-break: keep-all; }
+.dk .dk-pr__d { margin: 0; font-size: 13.5px; line-height: 1.8; color: var(--dk-fg-3);
+  word-break: keep-all; }
+.dk-pr__u { list-style: none; margin: 11px 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 7px; }
+.dk-pr__u li { position: relative; padding-left: 15px; font-size: 12.5px; font-weight: 700;
+  color: var(--dk-fg-2); line-height: 1.6; word-break: keep-all; }
+.dk-pr__u li::before { content: ""; position: absolute; left: 0; top: .62em;
+  width: 7px; height: 1px; background: var(--dk-hairline); }
+.dk-pr__u em { display: block; font-style: normal; font-weight: 400; font-size: 11.5px;
+  color: var(--dk-fg-muted); margin-top: 4px; line-height: 1.65; }
+.dk-pr__add { margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.dk-pr__a { background: var(--dk-surface-elevated); border: 1px dashed var(--dk-hairline);
+  border-radius: var(--dk-radius-lg); padding: 17px 19px;
+  display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
+.dk-pr__ap { font-size: 17px; font-weight: 700; color: var(--dk-fg-2); line-height: 1.2; }
+.dk .dk-pr__m { margin: 9px 0 0; font-size: 11.5px; font-weight: 700;
+  color: var(--dk-fg-muted); line-height: 1.6; }
+@media (max-width: 700px) { .dk-pr__add { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .dk-pr__i { grid-template-columns: 1fr; gap: 9px; } }
+
+/* ── 컨설팅 전용 문의 (본문 내 '안내' 층위) ── */
+.dk-cinq { margin-top: var(--dk-gap-lg); background: #fff;
+  border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-lg);
+  border-top: 3px solid var(--dk-accent-red); padding: clamp(20px,2.8vw,28px);
+  display: grid; grid-template-columns: 1fr auto; gap: clamp(20px,3vw,40px); align-items: center; }
+.dk-cinq__tx { min-width: 0; }
+.dk .dk-cinq__k { margin: 0 0 9px; font-size: 10.5px; font-weight: 700;
+  letter-spacing: 1.1px; color: var(--dk-accent-red); }
+.dk .dk-cinq__t { margin: 0; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(17px,2.5vw,22px); line-height: 1.35; letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink); word-break: keep-all; }
+.dk .dk-cinq__d { margin: 10px 0 0; font-size: 12.5px; line-height: 1.75;
+  color: var(--dk-fg-3); word-break: keep-all; }
+.dk .dk-cinq__d b { color: var(--dk-fg-2); font-weight: 700; }
+.dk-cinq__btns { display: grid; grid-auto-flow: row; gap: 10px; min-width: 0; }
+.dk-cinq__b { background: var(--dk-accent-red); color: #fff; border-radius: var(--dk-radius-md);
+  padding: 13px 22px; font-size: 13.5px; font-weight: 700; text-align: center;
+  white-space: nowrap; text-decoration: none;
+  transition: background var(--dk-dur-fast) var(--dk-ease-out); }
+.dk-cinq__b:hover { background: var(--dk-accent-red-light); }
+.dk-cinq__b--gh { background: transparent; border: 2px solid var(--dk-accent-red);
+  color: var(--dk-accent-red); padding: 11px 20px; }
+.dk-cinq__b--gh:hover { background: var(--dk-accent-red); color: #fff; }
+@media (max-width: 760px) {
+  .dk-cinq { grid-template-columns: 1fr; gap: 18px; }
+  .dk-cinq__btns { grid-auto-flow: column; grid-auto-columns: 1fr; }
+  .dk-cinq__b { white-space: normal; padding: 13px 12px; }
+}
+@media (max-width: 460px) { .dk-cinq__btns { grid-auto-flow: row; grid-auto-columns: auto; } }
+
+/* ── 04 준비물 ── */
+.dk-prep { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.dk-prep__i { background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); padding: 19px 21px;
+  display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start; }
+.dk-prep__ic { width: 24px; height: 24px; fill: none; stroke: var(--dk-fg-2);
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.dk .dk-prep__t { margin: 0 0 5px; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: 17px; letter-spacing: var(--dk-track-snug); color: var(--dk-ink); }
+.dk .dk-prep__k { margin: 0 0 9px; display: inline-block;
+  background: var(--dk-surface-elevated); border-radius: var(--dk-radius-full);
+  padding: 2px 10px; font-size: 10.5px; font-weight: 700; letter-spacing: .6px;
+  color: var(--dk-fg-2); }
+.dk .dk-prep__d { margin: 0; font-size: 13px; line-height: 1.8; color: var(--dk-fg-3);
+  word-break: keep-all; }
+.dk .dk-prep__d b { color: var(--dk-fg-2); font-weight: 700; }
+@media (max-width: 700px) { .dk-prep { grid-template-columns: 1fr; } }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   6대 핵심 수업 구성 — 벌집 인포그래픽 (curriculum.html) ★2026-07-30 신설
+   회장 지정 레퍼런스 구조를 그대로 구현:
+     · 중앙 육각형 = 섹션 제목 「6대 핵심 수업 구성」
+     · 둘레 6개 = 6대 핵심. 시계방향으로 원문 순서
+     · 각 육각형의 컬러 쐐기를 '중앙을 보는 모서리'로 몰았다
+       → 6개 쐐기가 모여 중앙을 감싸는 또 하나의 육각형 링이 된다
+     · 아이콘은 컬러 쐐기 안 / 텍스트는 흰 부분(쐐기 반대쪽)
+
+   구현: 쐐기는 육각형 중심을 기준으로 회전하는 반평면(half-plane)이다.
+     --ang 만 바꾸면 여섯 방향이 전부 나온다. 부모 육각형 clip-path가 잘라 준다.
+     쐐기 안쪽 경계를 중심에서 등거리로 뒀기 때문에 여섯 경계가 정확히 하나의 육각형을 그린다.
+
+   ★규격 통일: 6칸의 번호·아이콘·제목·라벨·본문 크기와 내부 여백을 아래 토큰으로만 정한다.
+     셀별로 값을 따로 쓰지 않는다 → 어긋날 수가 없다.
+
+   ★색: 레퍼런스의 6색 무지개를 쓰지 않는다. 쐐기 색은 장식이 아니라 '운영 방식'이며
+     코발트 1 + 중립 명도 3단이다. 회장 색약이므로 링 이웃끼리 명도비를 계산으로 확보했다 —
+       01수학 #0f52c9 ↔ 02 #2a2a2a 2.10:1 · 02 ↔ 03 #5c5c5c 2.15:1
+       04 ↔ 05 #8f8f8f 2.07:1 · 06 ↔ 01 2.11:1   (전부 기준 1.9 초과)
+     흰 아이콘 대비도 전 색 3:1 이상(최저 #8f8f8f 3.23:1). 범례에 글자 병기.
+
+   ★그림자는 부모(.dk-hx)에 건다. clip-path를 가진 요소에 filter를 같이 걸면
+     자식 쐐기가 클립을 못 받고 육각형 밖으로 나간다(1차 구현에서 실제로 발생).
+═══════════════════════════════════════════════════════════════════ */
+.dk-hc {
+  --w: clamp(206px, 30.5vw, 300px);       /* 육각형 폭 */
+  --h: calc(var(--w) * 1.1547);           /* 정육각 비율 */
+  --cut: 55.6%;                           /* 쐐기 안쪽 경계 (= 중심에서 0.10h) */
+  --ir: 0.275;                            /* 아이콘을 중심에서 밀어낼 거리 (h 배수) */
+  --t-num: clamp(20px, 2.6vw, 26px);
+  --t-ico: clamp(20px, 2.5vw, 25px);
+  --t-ttl: clamp(13px, 1.62vw, 15.5px);
+  --t-lab: 10px;
+  --t-bdy: clamp(10.5px, 1.25vw, 11.5px);
+  --gap-1: 6px; --gap-2: 4px; --gap-3: 7px;
+  /* 흰 육각형이 흰 배경에서 사라진다. 섹션 표면을 깔아 육각형과 그림자가 읽히게 한다. */
+  background: var(--dk-surface-elevated);
+  padding: clamp(22px,3.6vw,40px) clamp(10px,1.8vw,20px) clamp(16px,2.6vw,28px);
+  /* 좌우로 파고들어 풀블리드 띠를 만든다. 단 ≥1280px에서는 .dk-wrap 패딩이 0이라
+     파고들 여백이 없어 그대로 문서 밖으로 나간다(실측: 1280px에서 가로 48px). → 아래에서 취소. */
+  margin: 0 calc(-1 * clamp(20px,5vw,48px)) var(--dk-gap-lg);
+}
+@media (min-width: 1280px) { .dk-hc { margin-inline: 0; } }
+.dk-hc__grid { position: relative; width: calc(var(--w) * 3); height: calc(var(--h) * 2.5); margin: 0 auto; }
+.dk-hx { position: absolute; width: var(--w); height: var(--h);
+  left: calc(var(--cx) * var(--w)); top: calc(var(--cy) * var(--h) * .75); padding: 4px;
+  filter: drop-shadow(0 2px 7px rgba(26,26,26,0.15)); }
+.dk-hx__c { position: relative; width: 100%; height: 100%; background: #fff; overflow: hidden;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+/* 쐐기 : 중심을 향해 회전하는 반평면 */
+.dk-hx__c::after { content: ""; position: absolute; left: -40%; top: -40%; width: 180%; height: 180%;
+  background: var(--wedge, transparent);
+  clip-path: polygon(0 var(--cut), 100% var(--cut), 100% 100%, 0 100%);
+  transform: rotate(var(--ang, 0deg)); transform-origin: 50% 50%; }
+/* 아이콘 : 쐐기 안. 방향으로 밀어낸 뒤 되돌려 세운다 */
+.dk-hx__i { position: absolute; left: 50%; top: 50%; z-index: 2;
+  width: var(--t-ico); height: var(--t-ico);
+  fill: none; stroke: #fff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+  transform: translate(-50%,-50%) rotate(var(--ang, 0deg))
+             translateY(calc(var(--h) * var(--ir))) rotate(calc(-1 * var(--ang, 0deg))); }
+/* 텍스트 : 쐐기 반대쪽 흰 부분 */
+.dk-hx__in { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column;
+  justify-content: center; padding: 18% 14%; }
+.dk-hx__n { font-family: var(--dk-font-display); font-weight: 800; font-size: var(--t-num);
+  line-height: 1; letter-spacing: -0.5px; color: var(--wedge, var(--dk-fg-muted));
+  margin-bottom: var(--gap-1); }
+.dk .dk-hx__t { margin: 0 0 var(--gap-2); font-family: var(--dk-font-display); font-weight: 800;
+  font-size: var(--t-ttl); line-height: 1.3; letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink); word-break: keep-all; }
+.dk .dk-hx__k { margin: 0 0 var(--gap-3); font-size: var(--t-lab); font-weight: 700;
+  letter-spacing: .8px; color: var(--dk-fg-muted); }
+.dk .dk-hx__d { margin: 0; font-size: var(--t-bdy); line-height: 1.65;
+  color: var(--dk-fg-3); word-break: keep-all; }
+/* 방향별 텍스트 자리 — 쐐기 쪽 여백을 키워 흰 부분으로 밀어낸다 */
+.dk-hx--dr .dk-hx__in { padding: 15% 30% 33% 13%; text-align: left; }
+.dk-hx--dl .dk-hx__in { padding: 15% 13% 33% 30%; text-align: right; }
+.dk-hx--l  .dk-hx__in { padding: 19% 12% 19% 34%; text-align: right; }
+.dk-hx--ul .dk-hx__in { padding: 33% 13% 15% 30%; text-align: right; }
+.dk-hx--ur .dk-hx__in { padding: 33% 30% 15% 13%; text-align: left; }
+.dk-hx--r  .dk-hx__in { padding: 19% 34% 19% 12%; text-align: left; }
+/* 운영 방식별 쐐기 색 (명도 계산으로 확정) */
+.dk-hx--core { --wedge: #0f52c9; }
+.dk-hx--fix  { --wedge: #2a2a2a; }
+.dk-hx--opt  { --wedge: #5c5c5c; }
+.dk-hx--base { --wedge: #8f8f8f; }
+/* 중앙 : 섹션 제목 */
+.dk-hx--hub { filter: drop-shadow(0 4px 16px rgba(26,26,26,0.16)); }
+.dk-hx__hb { position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; padding: 20% 16%; }
+.dk .dk-hx__hk { margin: 0 0 10px; font-size: 10px; font-weight: 700; letter-spacing: 1.1px;
+  color: var(--dk-fg-muted); }
+.dk .dk-hx__ht { margin: 0; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(21px,3.1vw,31px); line-height: 1.22; letter-spacing: -0.8px; color: var(--dk-ink); }
+.dk .dk-hx__hd { margin: 11px 0 0; font-size: clamp(10.5px,1.25vw,11.5px); line-height: 1.65;
+  color: var(--dk-fg-3); }
+/* 범례 */
+.dk-hc__lg { list-style: none; margin: clamp(14px,2vw,22px) 0 0; padding: 0;
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 20px; }
+.dk-hc__lg li { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700;
+  color: var(--dk-fg-2); letter-spacing: .2px; }
+.dk-hc__lg b { color: var(--dk-accent-red); font-weight: 700; }
+.dk-sw { width: 17px; height: 6px; flex: none; border-radius: 1px; }
+.dk-sw--core { background: #0f52c9; } .dk-sw--fix { background: #2a2a2a; }
+.dk-sw--opt { background: #5c5c5c; }  .dk-sw--base { background: #8f8f8f; }
+/* 좁은 화면(≤880px): 육각형을 버리고 카드 목록으로. 규격 토큰은 그대로 쓴다 */
+@media (max-width: 880px) {
+  .dk-hc { margin-left: 0; margin-right: 0; padding: clamp(16px,3vw,24px);
+    border-radius: var(--dk-radius-lg); }
+  .dk-hc__grid { display: flex; flex-direction: column; gap: 10px; width: auto; height: auto; }
+  .dk-hx { position: static; width: auto; height: auto; padding: 0; filter: none; }
+  .dk-hx__c { clip-path: none; background: #fff; border: 1px solid var(--dk-hairline-soft);
+    border-radius: var(--dk-radius-lg); overflow: visible; }
+  .dk-hx__c::after { position: absolute; left: 0; top: 14px; bottom: 14px; width: 4px; height: auto;
+    clip-path: none; transform: none; border-radius: 0 3px 3px 0; }
+  .dk-hx__i { position: absolute; left: 20px; top: 20px; transform: none;
+    width: 20px; height: 20px; stroke: var(--wedge, var(--dk-fg-muted)); }
+  .dk-hx__in, .dk-hx--dr .dk-hx__in, .dk-hx--dl .dk-hx__in, .dk-hx--l .dk-hx__in,
+  .dk-hx--ul .dk-hx__in, .dk-hx--ur .dk-hx__in, .dk-hx--r .dk-hx__in {
+    position: static; inset: auto; padding: 18px 20px 18px 54px; text-align: left; }
+  .dk-hx__n { font-size: 17px; margin-bottom: 4px; }
+  .dk-hx--hub .dk-hx__c { background: var(--dk-surface-dark); border-color: var(--dk-surface-dark); }
+  .dk-hx--hub .dk-hx__c::after { display: none; }
+  .dk-hx__hb { position: static; inset: auto; align-items: flex-start; text-align: left; padding: 20px; }
+  .dk .dk-hx__hk { color: rgba(255,255,255,0.6); }
+  .dk .dk-hx__ht { color: #fff; font-size: 24px; }
+  .dk .dk-hx__hd { color: rgba(255,255,255,0.75); }
+  .dk-hc__lg { justify-content: flex-start; }
+}
