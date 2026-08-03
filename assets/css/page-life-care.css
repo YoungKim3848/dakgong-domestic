@@ -53,9 +53,9 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
   font-size: 12px; font-weight: 700; color: var(--dk-fg-2);
   background: var(--dk-surface-soft); border-right: 2px solid #fff;
 }
-.dk-tt-grp.am { background: #f0f0f0; }
-.dk-tt-grp.pm { background: #e2e2e2; }
-.dk-tt-grp.ev { background: #d2d2d2; }
+.dk-tt-grp.am { background: #efefef; }
+.dk-tt-grp.pm { background: #e8e8e8; }
+.dk-tt-grp.ev { background: #d0d0d0; }
 .dk-tt-grp.life { color: var(--dk-fg-muted); background: var(--dk-surface-soft); }
 .dk-tt-grp svg { display: block; width: 16px; height: 16px; margin: 0 auto 5px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 .dk-tt-p {

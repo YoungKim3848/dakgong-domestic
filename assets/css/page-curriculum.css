@@ -88,8 +88,8 @@
 /* 운영 방식별 쐐기 색 (명도 계산으로 확정) */
 .dk-hx--core { --wedge: #0f52c9; }
 .dk-hx--fix  { --wedge: #2a2a2a; }
-.dk-hx--opt  { --wedge: #5c5c5c; }
-.dk-hx--base { --wedge: #8f8f8f; }
+.dk-hx--opt  { --wedge: #555555; }
+.dk-hx--base { --wedge: var(--dk-fg-faint); }
 /* 중앙 : 섹션 제목 */
 .dk-hx--hub { filter: drop-shadow(0 4px 16px rgba(26,26,26,0.16)); }
 .dk-hx__hb { position: absolute; inset: 0; display: flex; flex-direction: column;
@@ -109,8 +109,8 @@
 .dk-sw { width: 17px; height: 6px; flex: none; border-radius: 1px; }
 .dk-sw--core { background: #0f52c9; }
  .dk-sw--fix { background: #2a2a2a; }
-.dk-sw--opt { background: #5c5c5c; }
-  .dk-sw--base { background: #8f8f8f; }
+.dk-sw--opt { background: #555555; }
+  .dk-sw--base { background: var(--dk-fg-faint); }
 /* ★2026-07-30 회장 지적 "모바일에는 육각형 인포그래픽 어디가뿐노" —
    기존엔 ≤880px에서 육각형을 버리고 카드 목록으로 바꿨다. 인포그래픽이 통째로 사라졌다.
    → 육각형 구조를 그대로 유지하고 화면 폭에 맞춰 줄인다.

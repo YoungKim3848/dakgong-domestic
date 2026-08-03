@@ -32,7 +32,7 @@
   font-size: 13px; font-weight: 700; color: var(--dk-accent-red);
   border-top: 1px solid var(--dk-hairline-soft); padding-top: 14px; margin-top: auto;
 }
-.dk-bi-slot .tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: #5b6b85; border: 1px solid #c3ccd8; border-radius: var(--dk-radius-full); padding: 5px 12px; background: rgba(255,255,255,0.6); }
+.dk-bi-slot .tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--dk-fg-cool); border: 1px solid var(--dk-hairline-cool); border-radius: var(--dk-radius-full); padding: 5px 12px; background: rgba(255,255,255,0.6); }
 .dk-bi-slot .spec { font-size: 12.5px; color: var(--dk-fg-muted); max-width: 260px; line-height: 1.6; margin: 0; }
 /* ── 키포인트 요약 ── */
 /* ★2026-07-26 회장 지적 — 어두운 바깥박스+어두운 안쪽카드 이중박스라 가독성 저하.
@@ -145,10 +145,10 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
      안 줄어들어 모바일에서 가로 overflow가 났다. min-width:0으로 풀어 준다. */
   min-width: 0;
   position: relative; border-radius: var(--dk-radius-lg); overflow: hidden;
-  border: 1.5px dashed #c3ccd8;
+  border: 1.5px dashed var(--dk-hairline-cool);
   background-image:
     radial-gradient(circle at 1px 1px, rgba(20,42,77,.10) 1.4px, transparent 0),
-    linear-gradient(155deg, #f5f8fc 0%, #eef2f8 55%, #e9eef5 100%);
+    linear-gradient(155deg, var(--dk-surface-cool) 0%, var(--dk-dot-cool) 55%, var(--dk-dot-cool) 100%);
   background-size: 18px 18px, 100% 100%;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; gap: 9px; padding: 20px; min-height: 130px;
@@ -265,8 +265,8 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
   display: grid; grid-template-columns: 214px 1fr; gap: clamp(18px,2.6vw,34px); align-items: start; }
 .dk-ds--core { --tone: #0f52c9; }
 .dk-ds--fix  { --tone: #2a2a2a; }
-.dk-ds--opt  { --tone: #5c5c5c; }
-.dk-ds--base { --tone: #8f8f8f; }
+.dk-ds--opt  { --tone: #555555; }
+.dk-ds--base { --tone: var(--dk-fg-faint); }
 .dk-ds__hd { display: grid; grid-template-columns: auto auto; gap: 4px 12px;
   align-items: center; min-width: 0; }
 .dk-ds__n { font-family: var(--dk-font-display); font-weight: 800;

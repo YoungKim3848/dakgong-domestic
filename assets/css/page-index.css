@@ -86,7 +86,7 @@
 .dk-bi-slot, .dk-vi-card, .dk-tr-card, .dk-pt-vis {
   background-image:
     radial-gradient(circle at 1px 1px, rgba(20,42,77,0.10) 1.4px, transparent 0),
-    linear-gradient(155deg, #f5f8fc 0%, #eef2f8 55%, #e9eef5 100%);
+    linear-gradient(155deg, var(--dk-surface-cool) 0%, var(--dk-dot-cool) 55%, var(--dk-dot-cool) 100%);
   background-size: 18px 18px, 100% 100%;
   background-position: 0 0, 0 0;
 }
@@ -98,7 +98,7 @@
 }
 .dk-vi-card {
   position: relative; aspect-ratio: 16/9; border-radius: var(--dk-radius-lg);
-  border: 1.5px dashed #c3ccd8; overflow: hidden;
+  border: 1.5px dashed var(--dk-hairline-cool); overflow: hidden;
   transition: transform var(--dk-dur-base) var(--dk-ease-out), border-color var(--dk-dur-base) var(--dk-ease-out);
 }
 .dk-vi-card:hover { transform: translateY(-4px); border-color: var(--dk-fg-muted); }
@@ -110,7 +110,7 @@
 }
 .dk-vi-card:hover .dk-vi-play { background: var(--dk-accent-red); }
 .dk-vi-card:hover .dk-vi-play svg { fill: #fff; }
-.dk-vi-play svg { width: 14px; height: 14px; fill: #5b6b85; }
+.dk-vi-play svg { width: 14px; height: 14px; fill: var(--dk-fg-cool); }
 /* ── 텍스트 리뷰 ── */
 /* ★2026-07-26 회장 지시 — 리뷰 섹션에 필핀 review-carousel.imweb.html의 무한 롤링
    애니메이션 벤치마킹(디자인·모션만, 실제 후기 이미지는 필핀 것이라 가져오지 않음 —
@@ -124,13 +124,13 @@
 }
 .dk-tr-card {
   flex: 0 0 260px; width: 260px; min-height: 200px;
-  border: 1.5px dashed #c3ccd8; border-radius: var(--dk-radius-lg);
+  border: 1.5px dashed var(--dk-hairline-cool); border-radius: var(--dk-radius-lg);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center; text-align: center; gap: 10px; padding: 24px;
   transition: transform var(--dk-dur-base) var(--dk-ease-out), border-color var(--dk-dur-base) var(--dk-ease-out);
 }
 .dk-tr-card:hover { transform: translateY(-4px); border-color: var(--dk-fg-muted); }
-.dk-tr-card svg { width: 26px; height: 26px; stroke: #5b6b85; stroke-width: 1.6; fill: none; }
+.dk-tr-card svg { width: 26px; height: 26px; stroke: var(--dk-fg-cool); stroke-width: 1.6; fill: none; }
 .dk-tr-card p { font-size: 12.5px; color: var(--dk-fg-muted); line-height: 1.6; margin: 0; }
 @media (max-width: 480px) {
 .dk-tr-card { flex: 0 0 200px; width: 200px; }
@@ -153,10 +153,10 @@
 .dk-pt-link:hover { background: var(--dk-accent-red); color: #fff; border-color: var(--dk-accent-red); }
 .dk-pt-vis {
   aspect-ratio: 4/3; border-radius: var(--dk-radius-lg);
-  border: 1.5px solid #e1e7f0;
+  border: 1.5px solid var(--dk-hairline-cool-soft);
   display: flex; align-items: center; justify-content: center;
 }
-.dk-pt-vis .num { font-family: var(--dk-font-display); font-size: 64px; font-weight: 800; color: #c3cee2; }
+.dk-pt-vis .num { font-family: var(--dk-font-display); font-size: 64px; font-weight: 800; color: var(--dk-fg-cool-faint); }
 @media (max-width: 640px) {
 .dk-pt-item--rev .dk-pt-vis { order: 0; }
 }
@@ -167,7 +167,7 @@
 .dk-history__inner { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: clamp(40px, 5vw, 88px); align-items: start; }
 .dk-history__head { position: sticky; top: 48px; }
 .dk-history__label { font: 700 15px/30px 'Pretendard',sans-serif; letter-spacing: normal; color: var(--dk-accent-red); margin: 0 0 10px; }
-.dk-history__label span { color: #cfcfcf; margin: 0 6px; font-weight: 400; }
+.dk-history__label span { color: #d0d0d0; margin: 0 6px; font-weight: 400; }
 .dk-history__label em { color: #333; font-style: normal; }
 .dk-history__title {
   font-family: 'Paperlogy','Pretendard',sans-serif !important;
@@ -310,9 +310,9 @@
 .dk-pt-vis::before { content: ""; position: absolute; left: 16px; top: 16px; right: 0; bottom: 0;
   background: var(--dk-accent-red); border-radius: var(--dk-radius-lg); }
 .dk-pt-vis .card { position: relative; aspect-ratio: 4/3; border-radius: var(--dk-radius-lg);
-  border: 1.5px solid #dbe3f1; background: #fff;
-  background-image: radial-gradient(#e8edf6 1px, transparent 1px); background-size: 11px 11px;
-  display: flex; align-items: center; justify-content: center; color: #a9b6cc; font-size: 12px; }
+  border: 1.5px solid var(--dk-hairline-cool-soft); background: #fff;
+  background-image: radial-gradient(var(--dk-dot-cool) 1px, transparent 1px); background-size: 11px 11px;
+  display: flex; align-items: center; justify-content: center; color: var(--dk-fg-cool-soft); font-size: 12px; }
 .dk-pt-vis .num { position: absolute; left: -4px; top: -14px; font-family: var(--dk-font-display);
   font-size: 38px; font-weight: 800; color: var(--dk-accent-red); line-height: 1;
   text-shadow: 0 0 0 #fff, -2px 0 0 #fff, 2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff; }

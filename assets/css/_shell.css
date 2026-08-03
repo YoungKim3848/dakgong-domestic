@@ -134,7 +134,7 @@ body.dk {
 .site-nav-bar > li { position: relative; }
 .site-nav-bar > li > a {
   position: relative; display: flex; align-items: center; height: 70px; padding: 0 18px;
-  font-family: 'Poppins', 'Pretendard', sans-serif; font-size: 15px; font-weight: 400; color: #212121;
+  font-family: 'Poppins', 'Pretendard', sans-serif; font-size: 15px; font-weight: 400; color: #1a1a1a;
   letter-spacing: normal; text-decoration: none; transition: color var(--dk-dur-fast) var(--dk-ease-out);
 }
 .site-nav-bar > li > a:hover, .site-nav-bar > li.is-active > a { color: var(--dk-accent-red); }
@@ -249,15 +249,15 @@ body.dk {
    근사값이었음), 약관/SNS/사업자정보 텍스트 전부 #eee, copyright만 #828282/13px/200.
    ⚠️ 구조 자체(전화·카카오·이메일 직통 행 유무, 약관 링크 유무)는 이번 지시 범위를
    넘는 발견이라 색상만 정밀화하고 마크업은 그대로 둠 — 보고서 참조. */
-.site-footer { background: #292929; color: #eee; padding: 44px 0 36px; font-size: 13px; line-height: 1.9; }
-.site-footer a { color: #eee; text-decoration: none; }
+.site-footer { background: #2a2a2a; color: #efefef; padding: 44px 0 36px; font-size: 13px; line-height: 1.9; }
+.site-footer a { color: #efefef; text-decoration: none; }
 .site-footer a:hover { color: #fff; }
 /* ★2026-07-25: 필핀 원본 구조 대조 2건 반영 — 약관 링크 행 + SNS 아이콘.
    근거: clients/dakgong/imweb/_reference/live-site-header-footer-extract_2026-07-25.md
    약관 실제 URL 미확인(2026-07-23 자료 34행) → href="#" placeholder. */
-.site-footer__legal { font-size: 12px; color: #eee; margin: 0 0 14px; }
+.site-footer__legal { font-size: 12px; color: #efefef; margin: 0 0 14px; }
 .site-footer__legal span { margin: 0 8px; opacity: .45; }
-.site-footer__contact { font-size: 14px; color: #eee; margin: 0 0 16px; }
+.site-footer__contact { font-size: 14px; color: #efefef; margin: 0 0 16px; }
 /* ★2026-07-25(3차, 최종): Plipop-Social-Icons.ttf가 실제로는 로그인·결제 없이
    공개 URL(vendor-cdn.imweb.me/fonts/Plipop-Social-Icons.ttf)에서 받을 수 있는
    파일임을 재확인 → 손그림 SVG를 걷어내고 실제 아이콘 폰트로 교체.
@@ -269,7 +269,7 @@ body.dk {
 .site-footer__icon-font {
   font-size: 20px;
   line-height: 1;
-  color: #eee;
+  color: #efefef;
   font-style: normal;
   speak: none;
   -webkit-font-smoothing: antialiased;
@@ -283,8 +283,8 @@ body.dk {
 .site-footer__icon-font.fa-instagram { font-family: "FA-Brands"; font-weight: 400; }
 .site-footer__icon-font.fa-instagram::before { content: "\f16d"; }
 .site-footer hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 20px 0; }
-.site-footer__biz { margin: 0; font-size: 12px; color: #eee; }
-.site-footer__copy { margin-top: 16px; color: #828282; font-size: 13px; font-weight: 200; }
+.site-footer__biz { margin: 0; font-size: 12px; color: #efefef; }
+.site-footer__copy { margin-top: 16px; color: #808080; font-size: 13px; font-weight: 200; }
 /* ── 정체성 띠 (무한 롤링 배너) ── */
 .dk-idband-wrap {
   width: 100%;
@@ -365,7 +365,7 @@ body.dk {
   width: 100%;
   height: 100%;
   z-index: 0;
-  background: linear-gradient(135deg, #0a1f3d 0%, #142a4d 55%, #0a1f3d 100%);
+  background: linear-gradient(135deg, var(--dk-navy-deep) 0%, var(--dk-navy) 55%, var(--dk-navy-deep) 100%);
   background-size: cover;
   background-position: center;
 }
