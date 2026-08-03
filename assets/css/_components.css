@@ -268,7 +268,7 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
   display: grid; grid-template-columns: 214px 1fr; gap: clamp(18px,2.6vw,34px); align-items: start; }
 .dk-ds--core { --tone: #0f52c9; }
 .dk-ds--fix  { --tone: #2a2a2a; }
-.dk-ds--opt  { --tone: #555555; }
+.dk-ds--opt  { --tone: var(--dk-tone-3); }
 .dk-ds--base { --tone: var(--dk-fg-faint); }
 .dk-ds__hd { display: grid; grid-template-columns: auto auto; gap: 4px 12px;
   align-items: center; min-width: 0; }
