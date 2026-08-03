@@ -1,0 +1,110 @@
+/* page-life-care.css — site.css 에서 분리(2026-08-03). 내용 무변경, 위치만 이동.
+   불러오는 순서: tokens → _shell → _components → _legacy → page-*
+   ✏️ 이 페이지 전용. 이 페이지 세션이 고치는 유일한 CSS. */
+/* ── 우리가 지켜온 것 (스탯 행) ── */
+.dk-g4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--dk-hairline-soft); border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-lg); overflow: hidden; }
+.dk-stat4 { background: #fff; padding: 30px 20px; text-align: center; transition: background var(--dk-dur-base) var(--dk-ease-out); }
+.dk-stat4:hover { background: var(--dk-surface-soft); }
+.dk-stat4 .v { font-family: var(--dk-font-display); font-size: clamp(20px,2.6vw,26px); font-weight: 800; color: var(--dk-ink); margin-bottom: 8px; }
+.dk-stat4 .v em { color: var(--dk-accent-red); font-style: normal; }
+.dk-stat4 .k { font-size: 13px; color: var(--dk-fg-3); }
+/* ★2026-07-28 — `.dk `를 붙여 실제로 먹게 고침. 그동안 `.dk p`(0-1-1)에 밀려
+   이 규칙(0-1-0)이 한 번도 적용된 적 없었다(주석 크기·색이 본문과 동일했음). */
+.dk .dk-table-note { margin: var(--dk-gap-xs) 4px 0; font-size: 13px; color: var(--dk-fg-muted); line-height: 1.7; }
+/* ── 일정·일과표 블록(생활환경 페이지) — 2026-07-28 신설.
+   한 섹션 안에 월간 일정표 / 중등부 일과 / 고등부 일과 3개를 쌓는다. ── */
+.dk-tt-block { margin-top: var(--dk-gap-xl); }
+.dk-tt-block:first-of-type { margin-top: 0; }
+.dk-tt-h {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-family: 'Paperlogy','Pretendard',sans-serif;
+  font-size: clamp(19px,2vw,23px); font-weight: 700; line-height: 1.4;
+  letter-spacing: var(--dk-track-snug); color: var(--dk-ink); margin: 0 0 6px;
+}
+.dk-tt-h .no {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 30px; height: 30px; padding: 0 8px; border-radius: var(--dk-radius-sm);
+  background: var(--dk-surface-dark); color: #fff;
+  font-family: var(--dk-font-display); font-size: 13px; font-weight: 800; letter-spacing: 0.5px;
+}
+.dk .dk-tt-sub { font-size: 14.5px; color: var(--dk-fg-muted); line-height: 1.7; margin: 0 0 var(--dk-gap-sm); }
+@media (max-width: 640px) {
+.dk-tt-h { font-size: 18px; }
+.dk-tt-sub { font-size: 13.5px; }
+}
+/* ★2026-07-26 killaislop.com #17 반영 — "좌측컬러바+둥근카드"를 아무 안내문에나
+   씌우던 걸 정리. dk-callout은 정말 중요한 결주(수치 정의·근거·상태)에만 남기고,
+   그 외 평범한 보충설명은 박스 없는 dk-plain-note로 내림. */
+.dk-plain-note { font-size: 14px; line-height: 1.7; color: var(--dk-fg-3); margin: 0; }
+/* ── 반응형 안전장치 ── */
+@media (max-width: 480px) {
+.dk-g4 { grid-template-columns: 1fr 1fr; }
+}
+/* ── ② 하루 일과표 — 좌측 시간대 밴드 + 과목 pill + 선택 묶음 ── */
+table.dk-tt { width: 100%; border-collapse: collapse; }
+table.dk-tt thead th {
+  background: var(--dk-surface-dark); color: #fff; font-weight: 700; font-size: 12.5px;
+  letter-spacing: .3px; padding: 12px; text-align: left; white-space: nowrap;
+}
+table.dk-tt td { border-top: 1px solid var(--dk-hairline-soft); }
+table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { background: var(--dk-surface-soft); }
+.dk-tt-grp {
+  width: 56px; padding: 12px 4px; text-align: center; vertical-align: middle;
+  font-size: 12px; font-weight: 700; color: var(--dk-fg-2);
+  background: var(--dk-surface-soft); border-right: 2px solid #fff;
+}
+.dk-tt-grp.am { background: #f0f0f0; }
+.dk-tt-grp.pm { background: #e2e2e2; }
+.dk-tt-grp.ev { background: #d2d2d2; }
+.dk-tt-grp.life { color: var(--dk-fg-muted); background: var(--dk-surface-soft); }
+.dk-tt-grp svg { display: block; width: 16px; height: 16px; margin: 0 auto 5px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.dk-tt-p {
+  width: 78px; padding: 12px 8px; text-align: center; vertical-align: middle;
+  font-size: 11.5px; font-weight: 700; color: var(--dk-fg-2); background: var(--dk-surface-soft); white-space: nowrap;
+}
+.dk-tt-c { padding: 11px 12px; vertical-align: middle; }
+.dk-tt-line { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+.dk-tt-line + .dk-tt-line { margin-top: 8px; }
+.dk .dk-tt-txt { font-size: 13px; color: var(--dk-fg-2); line-height: 1.55; margin: 0; min-width: 0; }
+.dk .dk-tt-txt.dim { color: var(--dk-fg-muted); }
+.dk-pill {
+  display: inline-flex; align-items: center; flex: none; border-radius: var(--dk-radius-xs);
+  padding: 4px 9px; font-size: 11px; font-weight: 700; letter-spacing: .2px;
+}
+.dk-pill--math { background: var(--dk-accent-red); color: #fff; }
+.dk-pill--eng  { background: var(--dk-surface-dark); color: #fff; }
+.dk-pill--sci  { background: var(--dk-hairline); color: var(--dk-ink); }
+.dk-pill--self { background: #fff; color: var(--dk-fg-2); box-shadow: inset 0 0 0 1px var(--dk-hairline); }
+.dk-pill--life { background: #fff; color: var(--dk-fg-3); box-shadow: inset 0 0 0 1px var(--dk-hairline-soft); }
+.dk-tt-choice { border-left: 3px solid var(--dk-surface-dark); padding-left: 11px; }
+.dk-tt-or {
+  display: inline-block; background: #fff; border: 1px solid var(--dk-accent-red);
+  color: var(--dk-accent-red); font-size: 10px; font-weight: 800;
+  border-radius: var(--dk-radius-xs); padding: 1px 6px; margin: 5px 0;
+}
+.dk-tt-legend { display: flex; flex-wrap: wrap; gap: 7px 14px; margin: 14px 2px 0; font-size: 12px; color: var(--dk-fg-3); }
+.dk-tt-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.dk-tt-legend i { width: 12px; height: 12px; border-radius: 3px; display: block; flex: none; border: 1px solid rgba(0,0,0,.06); }
+/* ── ③ 월간 일정표 — 다크 주차 블록 + 평일 병합 ── */
+.dk-mon { border-radius: var(--dk-radius-md); overflow: hidden; background: #fff;
+  border: 1px solid var(--dk-hairline-soft); box-shadow: 0 2px 10px rgba(20,40,90,.06); }
+.dk-mon-head { display: grid; grid-template-columns: 48px 1.5fr repeat(5,1fr) 1.5fr; background: var(--dk-surface-dark); }
+.dk-mon-head div { padding: 11px 2px; text-align: center; font-size: 12px; font-weight: 700; color: #fff; }
+.dk-mon-head div:first-child { font-size: 11px; opacity: .82; }
+.dk-mon-head div.we { background: rgba(255,255,255,.16); }
+.dk-mon-row { display: grid; grid-template-columns: 48px 1fr; border-top: 1px solid var(--dk-hairline-soft); }
+.dk-mon-wk { background: var(--dk-surface-dark); color: #fff; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; font-size: 11px; font-weight: 700; line-height: 1.25; padding: 5px 2px; }
+.dk-mon-wk b { font-size: 16px; font-weight: 700; letter-spacing: -.5px; }
+.dk-mon-cells { display: grid; grid-template-columns: 1.5fr repeat(5,1fr) 1.5fr; gap: 3px; padding: 7px; }
+.dk-mon-day { border-radius: var(--dk-radius-xs); padding: 7px 4px; min-height: 56px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; }
+.dk-mon-day .d { font-size: 9.5px; color: var(--dk-fg-muted); font-variant-numeric: tabular-nums; }
+.dk-mon-day .n { font-size: 10.5px; font-weight: 700; line-height: 1.3; }
+.dk-mon-day.reg { background: var(--dk-surface-soft); border: 1px solid var(--dk-hairline-soft); }
+.dk-mon-day.reg .n { color: var(--dk-fg-3); font-weight: 600; }
+.dk-mon-day.open { background: var(--dk-accent-red); }
+.dk-mon-day.open .d { color: rgba(255,255,255,.72); }
+.dk-mon-day.open .n { color: #fff; }
+.dk-mon-day.we { background: var(--dk-surface-elevated); border: 1px solid var(--dk-hairline); }
+.dk-mon-day.we .n { color: var(--dk-ink); }

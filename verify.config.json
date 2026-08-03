@@ -4,13 +4,13 @@
   "pages": ["index", "curriculum", "teachers", "self-study", "life-care", "consulting", "contact"],
 
   "tokens": "assets/css/tokens-domestic.css",
-  "css": ["assets/css/tokens-domestic.css", "assets/css/site.css"],
+  "css": ["assets/css/tokens-domestic.css", "assets/css/_shell.css", "assets/css/_components.css", "assets/css/_legacy.css", "assets/css/page-index.css", "assets/css/page-curriculum.css", "assets/css/page-teachers.css", "assets/css/page-life-care.css", "assets/css/page-consulting.css", "assets/css/page-contact.css"],
 
   "widths": [320, 360, 375, 390, 430, 560, 768, 880, 1024, 1280, 1440, 1900, 2560],
 
   "wrap_selectors": [".dk-wrap", ".dk-pt-in"],
 
-  "locked_files": ["assets/css/tokens-domestic.css"],
+  "locked_files": ["assets/css/tokens-domestic.css", "assets/css/_shell.css", "assets/css/_components.css"],
   "lock_baseline": "",
 
   "_예외": "contact 는 필핀 원본대로 회색 히어로 + 폼만 있는 페이지다. 롤링밴드·영상히어로·하단CTA 가 셋 다 실제로 없다(2026-08-03 실측 확인). 나머지 6페이지는 전부 있어야 한다.",

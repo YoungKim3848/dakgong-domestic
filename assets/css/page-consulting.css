@@ -1,0 +1,132 @@
+/* page-consulting.css — site.css 에서 분리(2026-08-03). 내용 무변경, 위치만 이동.
+   불러오는 순서: tokens → _shell → _components → _legacy → page-*
+   ✏️ 이 페이지 전용. 이 페이지 세션이 고치는 유일한 CSS. */
+/* ★ 2026-07-30 회장 지시 — 캠프 포함으로 오해되지 않게 성격을 한 줄로 못 박는 안내.
+   작게, 중간 여백에. 강조하지 않는다(간보기 성격을 깨지 않도록). */
+.dk .dk-cs-caveat { margin: var(--dk-gap-md) 0 0; font-size: 12.5px; line-height: 1.75;
+  color: var(--dk-fg-muted); word-break: keep-all; }
+.dk-cs-lead { background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); border-top: 3px solid var(--dk-fg-2);
+  padding: 18px 22px; margin-top: var(--dk-gap-md); }
+.dk .dk-cs-lead__k { margin: 0 0 7px; font-size: 10.5px; font-weight: 700;
+  letter-spacing: 1.1px; color: var(--dk-fg-muted); }
+.dk .dk-cs-lead__v { margin: 0; font-size: 14px; line-height: 1.85;
+  color: var(--dk-fg-3); word-break: keep-all; }
+.dk .dk-cs-lead__v b { color: var(--dk-ink); font-weight: 700; }
+/* ── 02 인포그래픽 : 3축 수렴 ── */
+.dk-cvg { margin-bottom: var(--dk-gap-lg); }
+.dk-cvg__cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.dk-cvg__c { background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); border-top: 3px solid var(--tone);
+  padding: 22px 18px; text-align: center; }
+.dk-cvg__n { display: block; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(20px,2.6vw,26px); line-height: 1; letter-spacing: -0.5px;
+  color: var(--tone); margin-bottom: 11px; }
+.dk-cvg__i { width: 26px; height: 26px; margin: 0 auto 11px; display: block; fill: none;
+  stroke: var(--tone); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.dk .dk-cvg__t { margin: 0 0 5px; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(15px,2vw,18px); letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink); word-break: keep-all; }
+.dk .dk-cvg__k { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: .7px;
+  color: var(--dk-fg-muted); }
+.dk-cvg__arrows { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; height: 26px; }
+.dk-cvg__arrows i { position: relative; display: block; }
+.dk-cvg__arrows i::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 7px;
+  width: 1px; background: var(--dk-hairline); transform: translateX(-50%); }
+.dk-cvg__arrows i::after { content: ""; position: absolute; left: 50%; bottom: 0;
+  width: 7px; height: 7px; border-right: 1.5px solid var(--dk-hairline);
+  border-bottom: 1.5px solid var(--dk-hairline); transform: translateX(-50%) rotate(45deg); }
+.dk-cvg__base { background: var(--dk-surface-dark); border-radius: var(--dk-radius-lg);
+  padding: 18px 22px; text-align: center; }
+.dk-cvg__base b { display: block; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(16px,2.2vw,20px); letter-spacing: var(--dk-track-snug); color: #fff; }
+.dk-cvg__base span { display: block; margin-top: 6px; font-size: 12px; color: rgba(255,255,255,0.68); }
+@media (max-width: 640px) {
+.dk-cvg__cols { grid-template-columns: 1fr; }
+.dk-cvg__arrows { grid-template-columns: 1fr; height: 22px; }
+.dk-cvg__arrows i:nth-child(n+2) { display: none; }
+}
+/* ── 03 프로세스 4단계 + 상시 2개 ── */
+.dk-pr { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.dk-pr__i { background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); padding: 18px 20px;
+  display: grid; grid-template-columns: 52px 1fr; gap: 16px; align-items: start; }
+.dk-pr__n { font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(22px,2.8vw,28px); line-height: 1; letter-spacing: -0.5px;
+  color: var(--dk-accent-red-2); }
+.dk-pr__b { min-width: 0; }
+.dk .dk-pr__t { margin: 0 0 6px; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(15.5px,2.1vw,19px); letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink); word-break: keep-all; }
+.dk .dk-pr__d { margin: 0; font-size: 13.5px; line-height: 1.8; color: var(--dk-fg-3);
+  word-break: keep-all; }
+.dk-pr__u { list-style: none; margin: 11px 0 0; padding: 0;
+  display: flex; flex-direction: column; gap: 7px; }
+.dk-pr__u li { position: relative; padding-left: 15px; font-size: 12.5px; font-weight: 700;
+  color: var(--dk-fg-2); line-height: 1.6; word-break: keep-all; }
+.dk-pr__u li::before { content: ""; position: absolute; left: 0; top: .62em;
+  width: 7px; height: 1px; background: var(--dk-hairline); }
+.dk-pr__u em { display: block; font-style: normal; font-weight: 400; font-size: 11.5px;
+  color: var(--dk-fg-muted); margin-top: 4px; line-height: 1.65; }
+.dk-pr__add { margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.dk-pr__a { background: var(--dk-surface-elevated); border: 1px dashed var(--dk-hairline);
+  border-radius: var(--dk-radius-lg); padding: 17px 19px;
+  display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
+.dk-pr__ap { font-size: 17px; font-weight: 700; color: var(--dk-fg-2); line-height: 1.2; }
+.dk .dk-pr__m { margin: 9px 0 0; font-size: 11.5px; font-weight: 700;
+  color: var(--dk-fg-muted); line-height: 1.6; }
+@media (max-width: 700px) {
+.dk-pr__add { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+.dk-pr__i { grid-template-columns: 1fr; gap: 9px; }
+}
+/* ── 컨설팅 전용 문의 (본문 내 '안내' 층위) ── */
+.dk-cinq { margin-top: var(--dk-gap-lg); background: #fff;
+  border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-lg);
+  border-top: 3px solid var(--dk-accent-red); padding: clamp(20px,2.8vw,28px);
+  display: grid; grid-template-columns: 1fr auto; gap: clamp(20px,3vw,40px); align-items: center; }
+.dk-cinq__tx { min-width: 0; }
+.dk .dk-cinq__k { margin: 0 0 9px; font-size: 10.5px; font-weight: 700;
+  letter-spacing: 1.1px; color: var(--dk-accent-red); }
+.dk .dk-cinq__t { margin: 0; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(17px,2.5vw,22px); line-height: 1.35; letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink); word-break: keep-all; }
+.dk .dk-cinq__d { margin: 10px 0 0; font-size: 12.5px; line-height: 1.75;
+  color: var(--dk-fg-3); word-break: keep-all; }
+.dk .dk-cinq__d b { color: var(--dk-fg-2); font-weight: 700; }
+/* ★2026-07-30 회장 지적 "cta 버튼 글자 안보인다".
+   tokens-domestic.css의 `.dk a`(특성도 0-1-1)가 `.dk-cinq__b`(0-1-0)를 이겨
+   글자색이 코발트로 덮여 코발트 배경과 같아졌다(실측: 글자 rgb(15,82,201) = 배경).
+   HANDOFF에 이미 적힌 함정인데 또 밟았다. → `.dk` 접두를 붙여 0-2-0으로 올린다. */
+.dk .dk-cinq__b { background: var(--dk-accent-red); color: #fff; border-radius: var(--dk-radius-md);
+  padding: 13px 22px; font-size: 13.5px; font-weight: 700; text-align: center;
+  white-space: nowrap; text-decoration: none;
+  transition: background var(--dk-dur-fast) var(--dk-ease-out); }
+.dk .dk-cinq__b:hover { background: var(--dk-accent-red-light); color: #fff; }
+.dk .dk-cinq__b--gh { background: transparent; border: 2px solid var(--dk-accent-red);
+  color: var(--dk-accent-red); padding: 11px 20px; }
+.dk .dk-cinq__b--gh:hover { background: var(--dk-accent-red); color: #fff; }
+@media (max-width: 760px) {
+.dk-cinq { grid-template-columns: 1fr; gap: 18px; }
+.dk-cinq__b { white-space: normal; padding: 13px 12px; }
+}
+/* ── 04 준비물 ── */
+.dk-prep { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.dk-prep__i { background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); padding: 19px 21px;
+  display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start; }
+.dk-prep__ic { width: 24px; height: 24px; fill: none; stroke: var(--dk-fg-2);
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.dk .dk-prep__t { margin: 0 0 5px; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: 17px; letter-spacing: var(--dk-track-snug); color: var(--dk-ink); }
+.dk .dk-prep__k { margin: 0 0 9px; display: inline-block;
+  background: var(--dk-surface-elevated); border-radius: var(--dk-radius-full);
+  padding: 2px 10px; font-size: 10.5px; font-weight: 700; letter-spacing: .6px;
+  color: var(--dk-fg-2); }
+.dk .dk-prep__d { margin: 0; font-size: 13px; line-height: 1.8; color: var(--dk-fg-3);
+  word-break: keep-all; }
+.dk .dk-prep__d b { color: var(--dk-fg-2); font-weight: 700; }
+@media (max-width: 700px) {
+.dk-prep { grid-template-columns: 1fr; }
+}

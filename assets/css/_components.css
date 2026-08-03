@@ -1,0 +1,307 @@
+/* _components.css — site.css 에서 분리(2026-08-03). 내용 무변경, 위치만 이동.
+   불러오는 순서: tokens → _shell → _components → _legacy → page-*
+   🔒 락. 2개 이상 페이지가 함께 쓰는 컴포넌트. */
+/* ── 카드 그리드 (5가지) ── */
+.dk-g5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+.dk-card5 {
+  background: var(--dk-surface-card);
+  border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg);
+  padding: 30px 26px;
+  display: flex; flex-direction: column;
+  transition: transform var(--dk-dur-base) var(--dk-ease-out), box-shadow var(--dk-dur-base) var(--dk-ease-out), border-color var(--dk-dur-base) var(--dk-ease-out);
+}
+.dk-card5:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+  border-color: var(--dk-accent-red-bg);
+}
+.dk-card5 .num {
+  font-family: var(--dk-font-display);
+  font-size: 30px; font-weight: 800; color: var(--dk-accent-red);
+  line-height: 1; margin-bottom: 16px; opacity: 0.85;
+}
+.dk-card5 .lead {
+  font-size: 17px; font-weight: 700; color: var(--dk-ink);
+  line-height: 1.5; margin: 0 0 10px;
+}
+.dk-card5 .sub {
+  font-size: 14px; color: var(--dk-fg-3); line-height: 1.65; margin: 0 0 18px; flex: 1;
+}
+.dk-card5 .goto {
+  font-size: 13px; font-weight: 700; color: var(--dk-accent-red);
+  border-top: 1px solid var(--dk-hairline-soft); padding-top: 14px; margin-top: auto;
+}
+.dk-bi-slot .tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: #5b6b85; border: 1px solid #c3ccd8; border-radius: var(--dk-radius-full); padding: 5px 12px; background: rgba(255,255,255,0.6); }
+.dk-bi-slot .spec { font-size: 12.5px; color: var(--dk-fg-muted); max-width: 260px; line-height: 1.6; margin: 0; }
+/* ── 키포인트 요약 ── */
+/* ★2026-07-26 회장 지적 — 어두운 바깥박스+어두운 안쪽카드 이중박스라 가독성 저하.
+   바깥 wrap을 없애고 카드가 밝은 섹션 배경 위에 바로 놓이게 단일 표면으로 정리. */
+.dk-kp-wrap { padding: 0; }
+.dk-kp-track { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.dk-kp-card { background: var(--dk-surface-dark); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--dk-radius-md); padding: 28px 24px; transition: transform var(--dk-dur-base) var(--dk-ease-out), background var(--dk-dur-base) var(--dk-ease-out); }
+.dk-kp-card:hover { transform: translateY(-4px); background: #333; }
+.dk-kp-num { font-family: var(--dk-font-display); font-size: 30px; font-weight: 800; color: var(--dk-accent-red-light); line-height: 1; margin-bottom: 16px; }
+.dk-kp-text { font-size: 17px; font-weight: 600; color: #fff; line-height: 1.6; margin: 0; }
+/* 표 — 비교표 / 시간표 / 단계표 */
+.dk-table-wrap { overflow-x: auto; border-radius: var(--dk-radius-lg); border: 1px solid var(--dk-hairline-soft); }
+table.dk-table--menu th, table.dk-table--menu td { padding: 12px 14px; font-size: 13px; line-height: 1.5; min-width: 150px; }
+table.dk-table { width: 100%; border-collapse: collapse; min-width: 480px; }
+table.dk-table th, table.dk-table td { padding: 16px 20px; text-align: left; font-size: 14.5px; line-height: 1.6; vertical-align: top; }
+table.dk-table thead th { background: var(--dk-surface-dark); color: #fff; font-weight: 700; font-size: 14px; }
+table.dk-table tbody th { background: var(--dk-surface-card); color: var(--dk-ink); font-weight: 700; white-space: nowrap; }
+table.dk-table tbody td { color: var(--dk-fg-3); border-top: 1px solid var(--dk-hairline-soft); }
+table.dk-table tbody tr:nth-child(even) td, table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-soft); }
+/* 하루 일과표 — 구분/시간 2개 라벨열 + 요일 3열 */
+table.dk-table--day { min-width: 760px; }
+table.dk-table--day tbody td { text-align: center; }
+table.dk-table--day tbody th { font-size: 13.5px; text-align: center; }
+/* 월간 일정표 — 7열이라 더 넓고 촘촘하게. 날짜줄/내용줄이 번갈이라
+   .dk-table 기본 짝수행 줄무늬는 끄고, 날짜줄만 회색으로 구분한다. */
+table.dk-table--month { min-width: 940px; }
+table.dk-table--month th, table.dk-table--month td {
+  padding: 11px 10px; font-size: 12.5px; line-height: 1.55; text-align: center; vertical-align: middle;
+}
+table.dk-table--month tbody tr td { background: #fff; color: var(--dk-fg-3); }
+table.dk-table--month tbody tr.dk-month-date td {
+  background: var(--dk-surface-card); color: var(--dk-ink);
+  font-weight: 700; font-size: 12px; white-space: nowrap;
+}
+/* 배지 */
+.dk-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: var(--dk-radius-full); background: var(--dk-surface-elevated); color: var(--dk-fg-2); vertical-align: middle; margin-left: 4px; white-space: nowrap; }
+.dk-badge--s1 { background: var(--dk-surface-elevated); color: var(--dk-fg-2); }
+.dk-badge--s2 { background: var(--dk-surface-elevated); color: var(--dk-warning); border: 1px solid var(--dk-warning); }
+.dk-badge--s3 { background: var(--dk-accent-red); color: #fff; }
+/* 단계 흐름(순서도) */
+.dk-steps { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; }
+.dk-step { flex: 1 1 140px; min-width: 128px; background: #fff; border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-md); padding: 20px 16px; transition: border-color var(--dk-dur-base) var(--dk-ease-out), transform var(--dk-dur-base) var(--dk-ease-out); }
+.dk-step:hover { border-color: var(--dk-accent-red-bg); transform: translateY(-3px); }
+.dk-step-num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--dk-surface-dark); color: #fff; font-weight: 800; font-size: 12.5px; margin-bottom: 12px; }
+.dk-step p { margin: 0; font-size: 13.5px; color: var(--dk-ink); font-weight: 600; line-height: 1.55; }
+.dk-step-arrow { display: flex; align-items: center; justify-content: center; color: var(--dk-fg-muted); font-size: 18px; padding: 0 6px; flex: 0 0 auto; }
+@media (max-width: 768px) {
+.dk-steps { flex-direction: column; }
+.dk-step-arrow { transform: rotate(90deg); padding: 6px 0; }
+}
+/* 안내 콜아웃 — 희소 자원, 페이지당 한둘만 */
+.dk-callout { display: flex; align-items: flex-start; gap: 14px; background: var(--dk-surface-card); border-left: 4px solid var(--dk-surface-dark); border-radius: var(--dk-radius-md); padding: 20px 24px; margin-top: var(--dk-gap-lg); }
+.dk-callout svg { flex-shrink: 0; width: 20px; height: 20px; stroke: var(--dk-fg-2); stroke-width: 1.8; fill: none; margin-top: 2px; }
+.dk-callout p { margin: 0; font-size: 14.5px; color: var(--dk-fg-2); line-height: 1.7; }
+/* 간단 체크 리스트 */
+.dk-checklist { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.dk-checklist li { position: relative; padding-left: 22px; font-size: 15px; color: var(--dk-fg-3); line-height: 1.8; }
+.dk-checklist li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--dk-accent-red); }
+.dk-contact-direct .k { font-size: 12.5px; font-weight: 700; letter-spacing: .5px; color: var(--dk-accent-red); }
+.dk-contact-direct .v { font-size: 16px; font-weight: 700; color: var(--dk-ink); }
+/* ── 반응형 안전장치 ── */
+@media (max-width: 480px) {
+.dk-g5, .dk-g3, .dk-perf-nums, .dk-kp-track, .dk-vi-grid { grid-template-columns: 1fr; }
+}
+/* =====================================================================
+   2026-07-28 — 표·인포그래픽 재설계 (프리뷰 7차 확정분)
+   레퍼런스에서 가져온 표 문법: 컬러 헤더 밴드 / 좌측 라벨 블록 / 행 줄무늬 /
+   셀 안 pill / 번호 블록. 색은 tokens-domestic.css 값과 그 투명도 파생만 사용.
+   ※ p 요소용 클래스는 `.dk ` 접두 필수 — tokens의 `.dk p`(0-1-1)에 밀린다.
+   ===================================================================== */
+
+/* ★2026-07-29 포인트 컬러 사용 규칙 (회장 지적 "너무 대놓고 많이 써서 촌스럽다")
+   면(배경)에 코발트를 쓰는 곳은 다음 5곳뿐이다:
+     ① 롤링 밴드(브랜드 띠)  ② CTA 섹션  ③ 영상 재생 버튼(핵심 액션)
+     ④ 수학 pill(수학 중심 = 브랜드 메시지)  ⑤ 월간 일정표 입소일
+   그 외 강조(배지·태그·스텝번호·표 헤더·콜아웃)는 다크(--dk-surface-dark)나
+   중립 명도로 처리한다. 글자·아이콘 색으로서의 코발트는 이 규칙과 별개.
+   근거: open_design craft/anti-ai-slop.md "var(--accent) 6회 이상 = P1 tell". */
+
+/* ── ① 표 공통 강화 — 기존 .dk-table 전면 교체(curriculum·life-care 전부 적용) ── */
+.dk-table-wrap {
+  overflow-x: auto; border-radius: var(--dk-radius-md);
+  border: 1px solid var(--dk-hairline-soft); background: #fff;
+  box-shadow: 0 2px 10px rgba(20,40,90,.06);
+}
+table.dk-table thead th {
+  background: var(--dk-surface-dark); color: #fff;
+  font-weight: 700; font-size: 13px; letter-spacing: .3px;
+  padding: 13px 14px; white-space: nowrap; border: none;
+}
+table.dk-table tbody th {
+  background: var(--dk-surface-elevated); color: var(--dk-ink);
+  font-weight: 700; white-space: nowrap;
+}
+table.dk-table tbody td { color: var(--dk-fg-2); border-top: 1px solid var(--dk-hairline-soft); }
+table.dk-table tbody tr:nth-child(even) td { background: var(--dk-surface-soft); }
+table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevated); }
+/* =====================================================================
+   2026-07-28 — 시각 콘텐츠 슬롯 레이아웃 세트 (회장 지시)
+   "히어로 제외 페이지당 시각 콘텐츠 최소 1/3". 정비례 그리드 금지 —
+   섹션마다 다른 구도를 쓰되 사이즈는 다각화한다.
+   실물 사진·영상이 없어도 슬롯이 '설계된 자리'로 보이게 만들고,
+   실물이 들어오면 마크업 그대로 <img>/<video>만 갈아끼우면 되게 짠다.
+   색은 tokens 값과 그 투명도 파생만 사용.
+   ===================================================================== */
+
+/* ── 슬롯 기본 ── */
+.dk-ph {
+  /* ★그리드 자식의 기본 min-width:auto 때문에 최소 콘텐츠 폭(한글 keep-all) 아래로
+     안 줄어들어 모바일에서 가로 overflow가 났다. min-width:0으로 풀어 준다. */
+  min-width: 0;
+  position: relative; border-radius: var(--dk-radius-lg); overflow: hidden;
+  border: 1.5px dashed #c3ccd8;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(20,42,77,.10) 1.4px, transparent 0),
+    linear-gradient(155deg, #f5f8fc 0%, #eef2f8 55%, #e9eef5 100%);
+  background-size: 18px 18px, 100% 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: 9px; padding: 20px; min-height: 130px;
+}
+.dk-ph svg { width: 26px; height: 26px; stroke: var(--dk-accent-red); fill: none; stroke-width: 1.6; opacity: .55; }
+.dk-ph .tag {
+  font-size: 11px; font-weight: 700; letter-spacing: .3px; color: var(--dk-accent-red);
+  background: rgba(15,82,201,.10); border-radius: var(--dk-radius-full); padding: 3px 10px;
+}
+.dk .dk-ph .cap { font-size: 13px; font-weight: 700; color: var(--dk-fg-2); margin: 0; line-height: 1.45; }
+.dk .dk-ph .spec { font-size: 11.5px; color: var(--dk-fg-muted); margin: 0; line-height: 1.5; overflow-wrap: anywhere; }
+.dk .dk-ph .cap { overflow-wrap: anywhere; }
+/* 실물이 들어오면 이 클래스만 추가 — 점선·도트 제거 */
+.dk-ph.is-filled { border-style: solid; border-color: var(--dk-hairline-soft); background: none; padding: 0; }
+.dk-ph.is-filled > img, .dk-ph.is-filled > video { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* ── A. 풀블리드 와이드 밴드 — 섹션 사이를 끊는 가로 띠 ── */
+/* ★2026-07-29 — 슬롯 블록 상하 여백 규칙. 섹션 사이 단독 블록이라 .dk-sec와 같은 리듬을 준다.
+   (이전엔 .dk-wrap만 걸쳐 위여백 0~84px, 아래여백 -20px 겹침까지 제각각이었다) */
+/* ★2026-07-30 긴급 수정 — 회장 지적 "pc버전은 버리는거냐".
+   여기 있던 `margin: 0`이 .dk-wrap의 `margin: 0 auto`(가운데 정렬)를 죽여서
+   1280px 넘는 화면에서 슬롯 블록만 왼쪽에 붙고 오른쪽에 죽은 공간이 생겼다
+   (1900px 실측: .dk-wrap 좌310/우310 vs 슬롯 좌0/우620).
+   상하 여백만 만들면 되는 자리이므로 `margin-block`으로 좁혀 좌우 auto를 살린다.
+   ⚠️ 검증에 "가로 위치(좌우 여백 대칭)" 항목이 없어서 놓쳤다. 이제 회귀에 포함한다. */
+.dk-ph-block { padding-top: clamp(56px,8vw,96px); padding-bottom: clamp(56px,8vw,96px);
+  margin-block: 0; margin-inline: auto; }
+.dk-ph-band { margin-block: 0; margin-inline: auto; }
+.dk-ph-band .dk-ph { aspect-ratio: 21/6; min-height: 150px; max-height: 380px; }
+/* ── B. 좌우 분할 — 텍스트 : 이미지 = 4 : 6 (교차 가능) ── */
+/* 텍스트가 2~3줄뿐이라 컬럼이 넓으면 한 줄로 퍼져 좌우 균형이 깨진다.
+   텍스트 컬럼을 캡션 폭(최대 340px)으로 묶어 덩어리를 만든다. */
+.dk-ph-split { display: grid; grid-template-columns: minmax(220px,340px) 1fr; gap: clamp(20px,3.5vw,56px); align-items: center; }
+/* ★2026-07-29 — order는 배치 순서만 바꾼다. 컬럼 폭은 그대로라
+   .rev에선 이미지가 캡션 폭(340px)에 들어가 890x72로 눌렸다. 컬럼 폭도 함께 뒤집는다. */
+.dk-ph-split.rev { grid-template-columns: 1fr minmax(220px,340px); }
+.dk-ph-split.rev > *:first-child { order: 2; }
+.dk-ph-split .dk-ph { aspect-ratio: 16/9.5; }
+.dk-ph-split .txt h3 { font: var(--dk-title-lg); color: var(--dk-ink); margin: 0 0 10px; letter-spacing: var(--dk-track-snug); }
+.dk .dk-ph-split .txt p { font: var(--dk-body-md); color: var(--dk-fg-3); line-height: 1.75; margin: 0; }
+@media (max-width: 768px) {
+.dk-ph-split, .dk-ph-split.rev { grid-template-columns: 1fr; gap: 18px; }
+.dk-ph-split.rev > *:first-child { order: 0; }
+.dk-ph-split .dk-ph { aspect-ratio: 16/9.5; }
+}
+/* ── C. 비대칭 3분할 — 큰 1 + 작은 2 (좌우 반전 가능) ── */
+.dk-ph-tri { display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
+.dk-ph-tri > *:first-child { grid-row: 1 / 3; }
+.dk-ph-tri.rev { grid-template-columns: 1fr 1.6fr; }
+.dk-ph-tri.rev > *:first-child { grid-column: 2; grid-row: 1 / 3; }
+.dk-ph-tri.rev > *:nth-child(2) { grid-column: 1; grid-row: 1; }
+.dk-ph-tri.rev > *:nth-child(3) { grid-column: 1; grid-row: 2; }
+.dk-ph-tri > *:first-child { aspect-ratio: 16/11; }
+.dk-ph-tri > *:nth-child(n+2) { aspect-ratio: auto; height: 100%; }
+/* ★2026-07-29 회장 제보(모바일 스샷) — 모바일 tri가 계단식으로 어긋나 좌측이 통째로 비었다.
+   원인: PC용 배치 지정을 부분적으로만 되돌렸다. .rev의 grid-row(1/3, 1, 2)는 (0,3,0)이라
+   .dk-ph-tri > *(0,2,0)의 초기화를 이기고 살아남았고, height:100%도 남아 칸 크기가 뒤틀렸다.
+   → 모바일에선 .rev 여부와 무관하게 "전부 초기화 후 한 가지 배치"로 통일한다. 부분 초기화 금지. */
+@media (max-width: 640px) {
+.dk-ph-tri, .dk-ph-tri.rev { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+  /* PC 규칙이 .dk-ph-tri.rev > *:nth-child(2) 형태라 (0,3,0)이다.
+     리셋을 `> *`(0,2,0)로 쓰면 특성도에서 져서 조용히 무시된다. :nth-child(n)으로 맞춘다. */
+  .dk-ph-tri > *:nth-child(n), .dk-ph-tri.rev > *:nth-child(n) { grid-column: auto; grid-row: auto; height: auto; }
+.dk-ph-tri > *:first-child, .dk-ph-tri.rev > *:first-child { grid-column: 1 / -1; aspect-ratio: 16/11; }
+.dk-ph-tri > *:nth-child(n+2), .dk-ph-tri.rev > *:nth-child(n+2) { aspect-ratio: 4/3; }
+}
+/* ── D. 오프셋 겹침 2장 — 세로로 어긋나게 ── */
+.dk-ph-stack { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px,2.5vw,26px); align-items: start; }
+.dk-ph-stack > *:first-child { aspect-ratio: 4/3.4; }
+/* ★2026-07-30 회장 지적 "레이아웃 또 안맞음". 세로 엇갈림(offset)이 정돈돼 보이지 않아
+   PC에서도 두 칸을 같은 높이에 맞춘다. 아래 주석문도 좌측 정렬로 붙인다. */
+.dk-ph-stack > *:last-child { aspect-ratio: 4/3.4; margin-top: 0; }
+.dk-ph-stack { align-items: stretch; }
+.dk .dk-ph-note { text-align: left; max-width: 720px; }
+/* 슬롯 묶음 위 안내문 */
+.dk .dk-ph-note { font-size: 12px; color: var(--dk-fg-muted); margin: var(--dk-gap-xs) 2px 0; line-height: 1.65; }
+/* ── 슬롯 비율 브레이크포인트 (★2026-07-29 정리) ──
+   기존엔 560/640/768/880에 비율 재정의가 흩어져 있어, 폰용 세로 비율이 태블릿까지 흘러가
+   768px에서 이미지 하나가 816px, tri 한 덩어리가 950px까지 길어졌다.
+   → 경계를 둘로만 둔다.  ≤480px 폰 = 세로형 / 481~1023px 태블릿 = 완만한 가로형 / ≥1024px = PC(위 블록) */
+@media (max-width: 480px) {
+  /* 폰에선 텍스트가 세로로 길어지므로 슬롯도 세워야 시각 비중이 유지된다. */
+  .dk-ph-band .dk-ph { aspect-ratio: 1/1.18; }
+.dk-ph-split .dk-ph { aspect-ratio: 1/1.18; }
+.dk-ph-tri > *:first-child, .dk-ph-tri.rev > *:first-child { aspect-ratio: 4/5.2; }
+.dk-ph-tri > *:nth-child(n+2), .dk-ph-tri.rev > *:nth-child(n+2) { aspect-ratio: 1/1.15; }
+.dk-ph-stack { grid-template-columns: 1fr; }
+.dk-ph-stack > *:first-child, .dk-ph-stack > *:last-child { aspect-ratio: 4/3.4; margin-top: 0; }
+}
+@media (min-width: 481px) and (max-width: 1023px) {
+.dk-ph-band .dk-ph { aspect-ratio: 16/9; }
+.dk-ph-split .dk-ph { aspect-ratio: 16/10; }
+.dk-ph-stack > *:first-child, .dk-ph-stack > *:last-child { aspect-ratio: 16/10; }
+}
+/* ── PC 슬롯 높이 상한 (2026-07-29) ──
+   aspect-ratio만 두면 1440px에서 슬롯 하나가 836px까지 커져 화면을 거의 다 먹었다.
+   폭이 넓어질수록 비율 대신 상한이 걸리게 해서 블록 높이를 뷰포트의 ~70% 아래로 묶는다. */
+/* ★2026-07-29 2차 수정 — 처음엔 max-height로 높이를 눌렀는데, aspect-ratio가 걸린 칸은
+   높이를 누르면 폭도 같이 줄어서 컬럼보다 좁아진다. 그 결과 우측에 죽은 공간이 생겼다
+   (1440px에서 tri 780px 컬럼에 카드가 698px). → 상한 대신 "완만한 비율"로 높이를 잡는다.
+   비율은 폭을 100% 채우면서 높이만 낮추므로 빈 공간이 안 생긴다. */
+@media (min-width: 1024px) {
+.dk-ph-split .dk-ph { aspect-ratio: 21/10; }
+.dk-ph-tri > *:first-child { aspect-ratio: 16/9.5; }
+.dk-ph-stack > *:first-child { aspect-ratio: 16/10; }
+.dk-ph-stack > *:last-child { aspect-ratio: 16/10; }
+}
+/* ── 상세 카드 (커리큘럼 6대 핵심 + 컨설팅 3축 공용 템플릿) ──
+   ★병렬 항목은 레이아웃을 통일한다. 여섯 칸이든 세 칸이든 규격이 하나여야 한다.
+   셀별로 값을 따로 쓰지 않는다. 달라지는 것은 내용과 --tone(의미를 담은 색)뿐이다. */
+.dk-ds-list { display: flex; flex-direction: column; gap: 12px; }
+.dk-ds { background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-lg); border-top: 3px solid var(--tone, var(--dk-hairline));
+  padding: clamp(18px,2.4vw,26px);
+  display: grid; grid-template-columns: 214px 1fr; gap: clamp(18px,2.6vw,34px); align-items: start; }
+.dk-ds--core { --tone: #0f52c9; }
+.dk-ds--fix  { --tone: #2a2a2a; }
+.dk-ds--opt  { --tone: #5c5c5c; }
+.dk-ds--base { --tone: #8f8f8f; }
+.dk-ds__hd { display: grid; grid-template-columns: auto auto; gap: 4px 12px;
+  align-items: center; min-width: 0; }
+.dk-ds__n { font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(22px,2.8vw,28px); line-height: 1; letter-spacing: -0.5px;
+  color: var(--tone); grid-row: 1; }
+.dk-ds__ib { width: 34px; height: 34px; border-radius: var(--dk-radius-sm);
+  background: var(--tone); display: flex; align-items: center; justify-content: center; grid-row: 1; }
+.dk-ds__i { width: 19px; height: 19px; fill: none; stroke: #fff; stroke-width: 1.7;
+  stroke-linecap: round; stroke-linejoin: round; }
+.dk-ds__tw { grid-column: 1 / -1; grid-row: 2; margin-top: 9px; min-width: 0; }
+.dk .dk-ds__t { margin: 0; font-family: var(--dk-font-display); font-weight: 800;
+  font-size: clamp(17px,2.3vw,21px); line-height: 1.3; letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink); word-break: keep-all; }
+.dk .dk-ds__k { margin: 6px 0 0; font-size: 11px; font-weight: 700; letter-spacing: .9px;
+  color: var(--dk-fg-muted); }
+.dk-ds__rows { margin: 0; display: grid; grid-template-columns: 88px 1fr; min-width: 0; }
+.dk-ds__rows dt { padding: 11px 14px 11px 0; font-size: 11.5px; font-weight: 700;
+  letter-spacing: .4px; color: var(--dk-fg-2); border-top: 1px solid var(--dk-hairline-soft); }
+.dk-ds__rows dd { margin: 0; padding: 11px 0; font-size: 13.5px; line-height: 1.8;
+  color: var(--dk-fg-3); border-top: 1px solid var(--dk-hairline-soft);
+  word-break: keep-all; min-width: 0; }
+.dk-ds__rows dt:first-of-type, .dk-ds__rows dd:first-of-type { border-top: 0; padding-top: 0; }
+.dk-ds__rows dd b { color: var(--dk-fg-2); font-weight: 700; }
+.dk-ds__rows dd em { display: block; font-style: normal; font-size: 11.5px;
+  color: var(--dk-fg-muted); margin-top: 6px; }
+@media (max-width: 820px) {
+.dk-ds { grid-template-columns: 1fr; gap: 16px; }
+.dk-ds__hd { grid-template-columns: auto auto 1fr; align-items: center; gap: 0 12px; }
+.dk-ds__tw { grid-column: 3; grid-row: 1; margin-top: 0; }
+}
+@media (max-width: 520px) {
+.dk-ds__hd { grid-template-columns: auto auto; gap: 4px 12px; }
+.dk-ds__tw { grid-column: 1 / -1; grid-row: 2; margin-top: 10px; }
+.dk-ds__rows { grid-template-columns: 1fr; }
+.dk-ds__rows dt { padding: 12px 0 0; }
+.dk-ds__rows dd { padding: 4px 0 12px; border-top: 0; }
+.dk-ds__rows dt:first-of-type { padding-top: 0; }
+}
