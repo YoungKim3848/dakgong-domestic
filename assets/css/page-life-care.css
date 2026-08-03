@@ -115,3 +115,133 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 .dk .page-life-care-mt-md { margin-top: var(--dk-gap-md); }
 .dk .page-life-care-h3 { font: var(--dk-title-lg); color: var(--dk-ink); margin: 0 0 var(--dk-gap-sm); }
 .dk .page-life-care-h3--gap { margin-top: var(--dk-gap-lg); }
+
+/* ══════════════════════════════════════════════════════════════
+   시설 갤러리 — 필핀 시설 페이지(facility.imweb.html) 01~05 골격 이식
+   2026-08-03 회장 지시. 형태는 필핀 그대로, 색만 국내 코발트로 치환한다.
+
+   · 배열 4종(p0·p2·p3·p4)을 섹션마다 다르게 쓴다. 바깥 상자(폭·높이·간격)는 전부 같아
+     스크롤 리듬은 유지되고 섹션마다 얼굴만 달라진다.
+   · 변주에 근거를 둔다 — 사진이 노출분보다 많은 섹션(전경 11장)에만 「전체 보기」 버튼이
+     붙고, 4장짜리는 다 보이므로 버튼 대신 사진이 그 칸을 채운다.
+   · 전역에 두는 클래스는 `.page-life-care-gal` 하나뿐. 나머지는 그 안으로 스코프한다
+     (공통 이름공간 침범 금지 + 요소 기본값 `.dk h3`(0,1,1) 를 이기는 특성도 확보).
+   ══════════════════════════════════════════════════════════════ */
+.dk .page-life-care-gal--alt { background: var(--dk-surface-card); }
+.page-life-care-gal .fac + .fac { margin-top: var(--dk-gap-xl); }
+
+.page-life-care-gal .hd { display: flex; align-items: center; gap: 14px; margin: 0 0 28px; }
+.page-life-care-gal .hd .no { font-size: 15px; font-weight: 400; color: var(--dk-accent-red);
+  flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.dk .page-life-care-gal .hd .nm { font-family: var(--dk-font-display); font-size: 36px;
+  font-weight: 700; line-height: 1.25; margin: 0; flex-shrink: 0; color: var(--dk-ink); }
+.page-life-care-gal .hd .rule { flex: 1; height: 1px; background: var(--dk-hairline); }
+.page-life-care-gal .hd .cnt { font-size: 13px; font-weight: 700; color: var(--dk-fg-muted);
+  flex-shrink: 0; font-variant-numeric: tabular-nums; }
+
+.page-life-care-gal .bento { display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-rows: 260px 200px; gap: 8px; }
+.page-life-care-gal .b { border-radius: var(--dk-radius-md); overflow: hidden; position: relative;
+  background: var(--dk-surface-elevated); cursor: zoom-in;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+.page-life-care-gal .b img { width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.page-life-care-gal .b:hover img { transform: scale(1.04); }
+.page-life-care-gal .b > svg { width: 22px; height: 22px; stroke: var(--dk-fg-muted);
+  fill: none; stroke-width: 1.6; }
+.dk .page-life-care-gal .b .t { font-size: 12.5px; font-weight: 700; color: var(--dk-fg-2); margin: 0; }
+.dk .page-life-care-gal .b .s { font-size: 11px; color: var(--dk-fg-muted); margin: 0; }
+.page-life-care-gal .b.wait { background: repeating-linear-gradient(45deg,
+  var(--dk-surface-elevated), var(--dk-surface-elevated) 9px,
+  var(--dk-surface-soft) 9px, var(--dk-surface-soft) 18px);
+  outline: 2px dashed var(--dk-warning-ink); outline-offset: -6px; }
+.dk .page-life-care-gal .b.wait .t { color: var(--dk-warning-ink); }
+
+.page-life-care-gal .more { grid-column: 3; grid-row: 2; border: none; padding: 0;
+  border-radius: var(--dk-radius-md); background: var(--dk-ink); cursor: pointer;
+  font-family: inherit; transition: background .2s;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.page-life-care-gal .more:hover { background: var(--dk-accent-red); }
+.page-life-care-gal .more .c { font-size: 28px; font-weight: 800; color: #fff; line-height: 1;
+  font-variant-numeric: tabular-nums; }
+.page-life-care-gal .more .l { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.65);
+  letter-spacing: .5px; }
+
+.page-life-care-gal .bul { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 20px 0 0; }
+.page-life-care-gal .bul span { display: flex; align-items: center; gap: 7px;
+  font-size: 13px; color: var(--dk-fg-2); }
+.page-life-care-gal .bul span::before { content: ""; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--dk-accent-red); flex-shrink: 0; }
+
+/* ── 배열 4종 ── */
+.page-life-care-gal .p0 .bm { grid-column: 1; grid-row: 1/3; }
+.page-life-care-gal .p0 .b1 { grid-column: 2; grid-row: 1; }
+.page-life-care-gal .p0 .b2 { grid-column: 3; grid-row: 1; }
+.page-life-care-gal .p0 .b3 { grid-column: 2; grid-row: 2; }
+.page-life-care-gal .p2 .bm { grid-column: 1; grid-row: 1/3; }
+.page-life-care-gal .p2 .b1 { grid-column: 2; grid-row: 1; }
+.page-life-care-gal .p2 .b2 { grid-column: 3; grid-row: 1; }
+.page-life-care-gal .p2 .b3 { grid-column: 2/4; grid-row: 2; }
+.page-life-care-gal .p3 { grid-template-rows: 250px 210px; }
+.page-life-care-gal .p3 .bm { grid-column: 1/4; grid-row: 1; }
+.page-life-care-gal .p3 .b1 { grid-column: 1; grid-row: 2; }
+.page-life-care-gal .p3 .b2 { grid-column: 2; grid-row: 2; }
+.page-life-care-gal .p3 .b3 { grid-column: 3; grid-row: 2; }
+.page-life-care-gal .p4 .bm { grid-column: 3; grid-row: 1/3; }
+.page-life-care-gal .p4 .b1 { grid-column: 1; grid-row: 1; }
+.page-life-care-gal .p4 .b2 { grid-column: 2; grid-row: 1; }
+.page-life-care-gal .p4 .b3 { grid-column: 1/3; grid-row: 2; }
+
+/* ── 모바일 — 배열마다 얼굴이 달라야 스크롤이 안 지겹다 ── */
+@media (max-width: 768px) {
+  .page-life-care-gal .hd { gap: 10px; margin-bottom: 20px; }
+  .dk .page-life-care-gal .hd .nm { font-size: 24px; }
+  .page-life-care-gal .bento { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .page-life-care-gal .p0 { grid-template-rows: 52vw 34vw 34vw; }
+  .page-life-care-gal .p0 .bm { grid-column: 1/3; grid-row: 1; }
+  .page-life-care-gal .p0 .b1 { grid-column: 1; grid-row: 2; }
+  .page-life-care-gal .p0 .b2 { grid-column: 2; grid-row: 2; }
+  .page-life-care-gal .p0 .b3 { grid-column: 1; grid-row: 3; }
+  .page-life-care-gal .p0 .more { grid-column: 2; grid-row: 3; }
+  .page-life-care-gal .p2 { grid-template-rows: 52vw 34vw 34vw; }
+  .page-life-care-gal .p2 .bm { grid-column: 1/3; grid-row: 1; }
+  .page-life-care-gal .p2 .b1 { grid-column: 1; grid-row: 2; }
+  .page-life-care-gal .p2 .b2 { grid-column: 2; grid-row: 2; }
+  .page-life-care-gal .p2 .b3 { grid-column: 1/3; grid-row: 3; }
+  .page-life-care-gal .p3 { grid-template-rows: 34vw 34vw 44vw; }
+  .page-life-care-gal .p3 .bm { grid-column: 1; grid-row: 1/3; }
+  .page-life-care-gal .p3 .b1 { grid-column: 2; grid-row: 1; }
+  .page-life-care-gal .p3 .b2 { grid-column: 2; grid-row: 2; }
+  .page-life-care-gal .p3 .b3 { grid-column: 1/3; grid-row: 3; }
+  .page-life-care-gal .p4 { grid-template-rows: 34vw 34vw 52vw; }
+  .page-life-care-gal .p4 .b1 { grid-column: 1; grid-row: 1; }
+  .page-life-care-gal .p4 .b2 { grid-column: 2; grid-row: 1; }
+  .page-life-care-gal .p4 .b3 { grid-column: 1/3; grid-row: 2; }
+  .page-life-care-gal .p4 .bm { grid-column: 1/3; grid-row: 3; }
+}
+
+/* ── 확대창 ── 이름을 갤러리 전용으로 분리한다.
+   슬롯 라벨과 같은 이름을 쓰면 `position:fixed; display:none` 이 라벨을 덮어 글자가 사라진다.
+   이름 겹침은 특성도로 막히지 않는다 — 상대가 선언하지 않은 속성은 그대로 먹기 때문이다.
+   (2026-08-03 프리뷰 제작 중 실제로 밟은 버그) */
+.dk-galbox { position: fixed; inset: 0; background: rgba(12,14,18,.94); z-index: 60;
+  display: none; align-items: center; justify-content: center; padding: 56px 16px; }
+.dk-galbox.is-on { display: flex; }
+.dk-galbox__fig { max-width: 1000px; width: 100%; text-align: center; margin: 0; }
+.dk-galbox__img { background: #333; border-radius: var(--dk-radius-md); aspect-ratio: 4/3;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.dk .dk-galbox__img .t { font-size: 15px; font-weight: 700; color: #efefef; margin: 0; }
+.dk .dk-galbox__img .s { font-size: 12.5px; color: var(--dk-fg-muted); margin: 0; }
+.dk .dk-galbox__cap { margin: 14px 0 0; color: #efefef; font-size: 14px; font-weight: 700; }
+.dk .dk-galbox__idx { margin: 4px 0 0; color: var(--dk-fg-cool-soft); font-size: 12.5px;
+  font-variant-numeric: tabular-nums; }
+.dk-galbox__x, .dk-galbox__nav { position: absolute; background: rgba(255,255,255,.12); border: none;
+  color: #fff; border-radius: 50%; cursor: pointer; font: inherit;
+  display: flex; align-items: center; justify-content: center; }
+.dk-galbox__x { top: 16px; right: 16px; width: 40px; height: 40px; font-size: 20px; }
+.dk-galbox__nav { top: 50%; transform: translateY(-50%); width: 46px; height: 46px; font-size: 22px; }
+.dk-galbox__nav.is-prev { left: 16px; }
+.dk-galbox__nav.is-next { right: 16px; }
+.dk-galbox__x:hover, .dk-galbox__nav:hover { background: rgba(255,255,255,.22); }
+.dk-galbox__x:focus-visible, .dk-galbox__nav:focus-visible {
+  outline: 2px solid var(--dk-accent-onDark); outline-offset: 2px; }
