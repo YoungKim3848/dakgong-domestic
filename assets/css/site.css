@@ -683,6 +683,11 @@ body.dk {
   max-width: 1280px;
   margin: 0 auto;
 }
+/* ★2026-08-03: 셀렉터가 h2 만 겨냥하고 있어서, h1 을 쓰는 하위 5페이지는 이 규칙을
+   안 받고 전역 `.dk h1` 을 받고 있었다. 두 계통의 값이 우연히 맞춰져 있었을 뿐이라
+   한쪽만 고치면 조용히 갈라진다(2026-07-25 에 실제로 갈라졌던 그 구조).
+   히어로 제목은 태그와 무관하게 이 한 규칙이 책임진다. */
+.dk-bg-video-content h1,
 .dk-bg-video-content h2 {
   margin: 0 0 20px;
   font-family: 'Paperlogy', sans-serif;
@@ -695,23 +700,15 @@ body.dk {
   letter-spacing: var(--dk-track-snug);
   word-break: keep-all;
 }
-/* ★2026-07-25 수정: 기존 `.dk-bg-video-content p`(범용 p 선택자, specificity 0,1,1)가
-   `.dk-breadcrumb`(0,1,0)·`.lead`(0,1,0)보다 세서 하위 5페이지 브레드크럼·리드문단까지
-   20px/300/흰색으로 덮어써 위계가 깨졌던 버그 수정. 홈 히어로의 무클래스 리드문단
-   전용 클래스(.dk-hero-lead-plain)를 index.html에 부여하고, 이 규칙은 그 클래스만
-   겨냥하도록 좁혔다. */
-/* ★2026-07-26 회장 지적 — 히어로 서브카피가 필핀보다 커 보인다는 피드백으로 재조정.
-   기존 20px/300/Helvetica는 홈 전용 임시값이었고, 실측 검증된 공용 .lead(18px/400/1.7/
-   Pretendard)와 달랐던 게 원인. 공용 값에 맞춰 통일. */
-.dk-bg-video-content .dk-hero-lead-plain {
-  margin: 0;
-  font-family: 'Pretendard', -apple-system, sans-serif;
-  font-size: 18px;
-  line-height: 1.7;
-  font-weight: 400;
-  color: #fff;
-  word-break: keep-all;
-}
+/* 히어로 리드문단 이력 —
+   2026-07-25: 범용 `.dk-bg-video-content p`(0,1,1)가 `.lead`(0,1,0)를 이겨서 하위
+     5페이지 브레드크럼·리드까지 덮어쓰던 버그. 홈 전용 `.dk-hero-lead-plain`을
+     만들어 범용 규칙을 좁혔다.
+   2026-07-26: 홈 전용값(20px/300/Helvetica)이 공용 `.lead`와 달라 커 보인다는 지적.
+     공용 값(18px/400/1.7/Pretendard)에 맞춰 통일.
+   2026-08-03: 값이 같아진 이상 클래스를 둘로 유지할 이유가 없다. 홈도 `.lead`를 쓴다.
+     두 계통을 남겨두면 한쪽만 고쳐서 또 갈라진다. */
+.dk-bg-video-section .dk-bg-video-content h1,
 .dk-bg-video-section .dk-bg-video-content h2 {
   color: #fff;
 }
@@ -729,17 +726,16 @@ body.dk {
   .dk-bg-video-content {
     padding: 72px 24px;
   }
+  .dk-bg-video-content h1,
   .dk-bg-video-content h2 {
     font-size: 22px;
   }
   .dk-bg-video-content p {
     font-size: 16px;
   }
-  /* ★2026-07-26 회장 지시 — 모바일이 디자인 기준점. 기존엔 .dk-hero-lead-plain(0,2,0)과
-     .dk .lead(0,2,0)의 specificity가 위 범용 p 규칙(0,1,1)을 이겨서 모바일에서도
-     데스크톱과 똑같이 18px로 렌더링되고 있었음(실제로 안 줄어들던 버그). 명시적으로
-     타깃해서 모바일 전용 크기를 강제. */
-  .dk-bg-video-content .dk-hero-lead-plain,
+  /* ★2026-07-26 회장 지시 — 모바일이 디자인 기준점. `.dk .lead`(0,2,0)가 위 범용 p
+     규칙(0,1,1)을 이겨서 모바일에서도 데스크톱과 똑같이 18px로 렌더링되던 버그.
+     명시적으로 타깃해서 모바일 전용 크기를 강제. */
   .dk-bg-video-content .lead {
     font-size: 16px;
     line-height: 1.6;
