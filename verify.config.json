@@ -11,7 +11,7 @@
   "wrap_selectors": [".dk-wrap", ".dk-pt-in"],
 
   "locked_files": ["assets/css/tokens-domestic.css", "assets/css/_shell.css", "assets/css/_components.css"],
-  "lock_baseline": "1e35ace069e007decd75a3dc17f0f71e3e427748",
+  "lock_baseline": "44c287e3302e2f6cec1cad75585086a3229956c4",
 
   "_예외": "contact 는 필핀 원본대로 회색 히어로 + 폼만 있는 페이지다. 롤링밴드·영상히어로·하단CTA 가 셋 다 실제로 없다(2026-08-03 실측 확인). 나머지 6페이지는 전부 있어야 한다.",
 
