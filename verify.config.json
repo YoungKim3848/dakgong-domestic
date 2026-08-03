@@ -1,0 +1,53 @@
+{
+  "_": "닥공 국내캠프 — 웹 에이전트 공용 검증 설정. 실행: python \"C:/Users/ADMINY/Desktop/claude code/tools/web/web agent/verify/all.py\" .",
+
+  "pages": ["index", "curriculum", "teachers", "self-study", "life-care", "consulting", "contact"],
+
+  "tokens": "assets/css/tokens-domestic.css",
+  "css": ["assets/css/tokens-domestic.css", "assets/css/site.css"],
+
+  "widths": [320, 360, 375, 390, 430, 560, 768, 880, 1024, 1280, 1440, 1900, 2560],
+
+  "wrap_selectors": [".dk-wrap", ".dk-pt-in"],
+
+  "locked_files": ["assets/css/tokens-domestic.css"],
+  "lock_baseline": "",
+
+  "shared_text": [
+    { "name": "롤링밴드", "selector": ".dk-idband-track", "required": false }
+  ],
+
+  "shared_computed": [
+    { "name": "히어로 h1", "selector": ".dk-bg-video-content h1",
+      "props": ["fontFamily", "fontSize", "fontWeight", "lineHeight", "color", "letterSpacing"],
+      "required": false },
+    { "name": "히어로 리드", "selector": ".dk-bg-video-content .lead",
+      "props": ["fontFamily", "fontSize", "fontWeight", "lineHeight", "color"],
+      "required": false },
+    { "name": "하단 CTA 버튼", "selector": ".dk-cta .btn-group > *:first-child",
+      "props": ["width", "height", "fontSize", "fontWeight", "borderRadius"],
+      "required": false }
+  ],
+
+  "gap_scale": ["--dk-gap-xs", "--dk-gap-sm", "--dk-gap-md", "--dk-gap-lg", "--dk-gap-xl"],
+
+  "shape_keep": [
+    { "selector": ".dk-hx__c", "prop": "clipPath", "must_contain": "polygon" }
+  ],
+
+  "full_bleed": [".dk-hc"],
+
+  "accent_colors": ["rgb(15, 82, 201)"],
+  "accent_max": 8,
+
+  "contrast_pairs": [
+    { "a": "#0f52c9", "b": "#2a2a2a", "label": "벌집 링 01↔02" },
+    { "a": "#2a2a2a", "b": "#5c5c5c", "label": "벌집 링 02↔03" },
+    { "a": "#5c5c5c", "b": "#8f8f8f", "label": "벌집 링 04↔05" }
+  ],
+
+  "ignore_colors": [
+    "#0f52c9", "#2666d6", "#5187e8", "#dce8fc", "#1a1a1a",
+    "#2a2a2a", "#5c5c5c", "#8f8f8f"
+  ]
+}
