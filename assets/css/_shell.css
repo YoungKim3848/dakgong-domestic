@@ -54,7 +54,7 @@ body.dk {
 }
 .dk-h2 em { color: var(--dk-accent-red); font-style: normal; }
 .dk-sec--dark .dk-h2 { color: #fff; }
-.dk-sec--dark .dk-h2 em { color: var(--dk-accent-red-light); }
+.dk-sec--dark .dk-h2 em { color: var(--dk-accent-onDark); }
 .dk-sec--dark .dk-split p { color: rgba(255,255,255,0.7); }
 @media (max-width: 640px) {
 .dk-sec { padding: 56px 0 !important; }
@@ -218,7 +218,7 @@ body.dk {
   transition: color var(--dk-dur-fast) var(--dk-ease-out);
 }
 .site-nav__list > li > a:hover { color: #fff; }
-.site-nav__list > li.is-active > a { color: var(--dk-accent-red-light); font-weight: 700; }
+.site-nav__list > li.is-active > a { color: var(--dk-accent-onDark); font-weight: 700; }
 .site-nav__list > li.has-sub > a::after {
   content: "⌄"; display: inline-block; font-size: 15px; line-height: 1;
   color: rgba(255,255,255,0.6); transform: translateY(-3px);
@@ -234,7 +234,7 @@ body.dk {
   color: rgba(255,255,255,0.72); font-size: 14.5px; text-decoration: none;
 }
 .site-nav__sub li a:hover { color: #fff; }
-.site-nav__sub li.is-active a { color: var(--dk-accent-red-light); }
+.site-nav__sub li.is-active a { color: var(--dk-accent-onDark); }
 /* ── 모바일: 로고 중앙정렬(필핀 실측), 헤더는 삼선만 우측에 ── */
 @media (max-width: 880px) {
 .site-header__inner { position: relative; justify-content: center; }
@@ -284,7 +284,10 @@ body.dk {
 .site-footer__icon-font.fa-instagram::before { content: "\f16d"; }
 .site-footer hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 20px 0; }
 .site-footer__biz { margin: 0; font-size: 12px; color: #efefef; }
-.site-footer__copy { margin-top: 16px; color: #808080; font-size: 13px; font-weight: 200; }
+/* ★2026-08-03 회장 승인 — 대비 3.63:1(기준 4.5) 로 안 읽혔다. 어두운 배경 위라
+   밝은 배경용 muted 를 쓰면 반대로 더 안 보인다. 전용 토큰 + 굵기 200→400.
+   크기·위치·간격은 그대로. 대비 5.10:1 */
+.site-footer__copy { margin-top: 16px; color: var(--dk-fg-muted-onDark); font-size: 13px; font-weight: 400; }
 /* ── 정체성 띠 (무한 롤링 배너) ── */
 .dk-idband-wrap {
   width: 100%;
@@ -461,7 +464,7 @@ body.dk {
    올려 `.dk p`를 이기도록 고쳤다. */
 .dk-bg-video-content .dk-breadcrumb { font-size: 13px; color: rgba(255,255,255,0.55); margin: 0 0 18px; letter-spacing: .2px; }
 .dk-bg-video-content .dk-breadcrumb span { color: #fff; font-weight: 600; }
-.dk-bg-video-content .dk-label { color: var(--dk-accent-red-light); margin-bottom: 14px; }
+.dk-bg-video-content .dk-label { color: var(--dk-accent-onDark); margin-bottom: 14px; }
 .dk-bg-video-content h1 {
   margin: 0 0 20px;
   font-family: 'Paperlogy', sans-serif;

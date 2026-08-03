@@ -244,9 +244,9 @@
 .dk .dk-hub-cap b { color: #fff; font-weight: 700; }
 .dk-hub-badge { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid var(--dk-accent-red-light);
   border-radius: var(--dk-radius-full); padding: 7px 16px; margin: 12px 0 0; }
-.dk-hub-badge span { font-size: 11.5px; font-weight: 700; color: var(--dk-accent-red-light); letter-spacing: .4px; }
+.dk-hub-badge span { font-size: 11.5px; font-weight: 700; color: var(--dk-accent-onDark); letter-spacing: .4px; }
 .dk-hub-badge b { font-size: 17px; font-weight: 700; color: #fff; letter-spacing: -.6px; }
-.dk-hub-badge b u { text-decoration: none; font-size: .62em; font-weight: 600; color: var(--dk-accent-red-light); }
+.dk-hub-badge b u { text-decoration: none; font-size: .62em; font-weight: 600; color: var(--dk-accent-onDark); }
 .dk-duo { display: grid; gap: 1px; background: rgba(255,255,255,.12); margin-top: var(--dk-gap-md); border-top: 1px solid rgba(255,255,255,.12); }
 @media (min-width: 640px) {
 .dk-duo { grid-template-columns: 1fr 1fr; }
@@ -257,7 +257,7 @@
 .dk-glowstat::before { content: ""; position: absolute; width: 250px; height: 118px; filter: blur(7px);
   background: radial-gradient(ellipse at center, rgba(81,135,232,.42) 0%, rgba(81,135,232,.12) 42%, transparent 72%); }
 .dk-glowstat .n { position: relative; font-size: clamp(56px,15vw,76px); font-weight: 700; letter-spacing: -3.5px; line-height: 1; color: #fff; }
-.dk-glowstat .n u { text-decoration: none; font-size: .3em; letter-spacing: -1px; margin-left: 2px; color: var(--dk-accent-red-light); }
+.dk-glowstat .n u { text-decoration: none; font-size: .3em; letter-spacing: -1px; margin-left: 2px; color: var(--dk-accent-onDark); }
 .dk-eq { display: inline-flex; background: rgba(255,255,255,.09); border-radius: var(--dk-radius-full);
   padding: 8px 15px; margin: 5px 0 0; font-size: 13px; color: rgba(255,255,255,.82); }
 .dk-eq b { color: #fff; font-weight: 700; }
@@ -339,3 +339,11 @@
 @media (min-width: 1024px) {
 .dk-vi-grid .dk-vi-card:first-child { aspect-ratio: 16/9.5; }
 }
+
+/* ★2026-08-03 — HTML 인라인 여백을 클래스로 옮김. 값은 원래대로(전부 토큰이었다).
+   인라인이면 여백을 바꿀 때 HTML 여러 곳을 찾아다녀야 한다. */
+.dk .page-index-intro { font: var(--dk-body-lg); color: var(--dk-fg-3); line-height: 1.75; margin: var(--dk-gap-sm) 0 0; max-width: 720px; }
+.dk .page-index-badges { margin-top: var(--dk-gap-md); }
+.dk .page-index-qahead { text-align: center; max-width: 640px; margin: 0 auto; }
+.dk .page-index-qahead .lead { margin-top: var(--dk-gap-sm); }
+.dk .page-index-faqcat { margin: var(--dk-gap-lg) auto var(--dk-gap-xs); max-width: 820px; }

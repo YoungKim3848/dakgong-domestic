@@ -56,7 +56,10 @@
   --dk-on-dark:           #1a1a1a;
   --dk-accent-red:        #0f52c9;   /* ★국내 파생: 코발트 B안 주력(필핀 #ab0000 치환). 이름은 유지 */
   --dk-accent-red-2:      #2666d6;   /* ★국내 파생: 코발트 보조(필핀 #c1272d 치환) */
-  --dk-accent-red-light:  #5187e8;   /* ★국내 파생: 코발트 hover(필핀 #e74c5a 치환) */
+  --dk-accent-red-light:  #5187e8;   /* ★국내 파생: 코발트 hover(필핀 #e74c5a 치환) — 밝은 면·면(fill) 용 */
+  --dk-accent-onDark:     #6393ea;   /* 어두운 면 위 글자 전용. #5187e8 은 #2a2a2a 위에서
+                                        4.09:1 로 미달(기준 4.5). 색상각 219° 그대로, 밝기만 +4%.
+                                        밝은 면에서 이걸 쓰면 거꾸로 대비가 떨어진다 — 용도를 지킨다 */
   --dk-accent-red-bg:     #dce8fc;   /* ★국내 파생: 연한 코발트 배경(필핀 #fbd7d7 치환) */
   --dk-surface-dark:      #2a2a2a;   /* ★실측: 검정 섹션·카드. 순검정 #111 ❌ (변경 없음) */
   --dk-accent-black:      #1a1a1a;
@@ -65,7 +68,11 @@
   --dk-fg-1:              #1a1a1a;   /* primary text (= ink) */
   --dk-fg-2:              #2a2a2a;   /* body-strong, leads */
   --dk-fg-3:              #555555;   /* ★실측: 본문 회색. 구값 #4a4a4a ❌ */
-  --dk-fg-muted:          #808080;   /* captions, meta, breadcrumbs */
+  --dk-fg-muted:          #6a6a6a;   /* captions, meta, breadcrumbs
+                                        ★2026-08-03 #808080→#6a6a6a. 흰 배경 3.95:1 로
+                                        본문 기준(4.5)에 미달했다. 12건 중 11건의 원인. */
+  --dk-fg-muted-onDark:   #9a9a9a;   /* 어두운 면 위 보조 글자 — 밝은 배경용을 그대로
+                                        쓰면 반대로 어두워져 더 안 보인다(푸터 3.63:1) */
 
   /* ----- Surfaces --------------------------------------------------- */
   --dk-canvas:            #ffffff;
@@ -78,7 +85,9 @@
   --dk-hairline-soft:     #e8e8e8;   /* card edge / faint rule */
 
   /* ----- Semantic --------------------------------------------------- */
-  --dk-warning:           #ff6b6b;
+  --dk-warning:           #ff6b6b;   /* 면(fill) 전용 */
+  --dk-warning-ink:       #c1272d;   /* 글자·선 전용 — craft/color.md: 브랜드 밝은 색은
+                                        면에만 쓰고, 글자엔 어두운 단계를 쓴다 */
   --dk-success:           #2ecc71;
 
   /* ----- Type families --------------------------------------------- */

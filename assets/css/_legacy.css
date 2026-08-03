@@ -28,7 +28,7 @@
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .dk-stat-dark-icon svg { width: 24px; height: 24px; stroke: var(--dk-accent-red); stroke-width: 1.8; fill: none; }
-.dk-stat-dark-num { font-family: var(--dk-font-display); font-size: clamp(24px,3vw,30px); font-weight: 800; color: var(--dk-accent-red-light); line-height: 1; }
+.dk-stat-dark-num { font-family: var(--dk-font-display); font-size: clamp(24px,3vw,30px); font-weight: 800; color: var(--dk-accent-onDark); line-height: 1; }
 .dk-stat-dark-num span { font-size: 16px; font-weight: 600; margin-left: 2px; }
 .dk-stat-dark-desc { font-size: 14px; color: rgba(255,255,255,0.72); margin: 6px 0 0; line-height: 1.6; }
 @media (max-width: 640px) {

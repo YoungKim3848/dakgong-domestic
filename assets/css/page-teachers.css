@@ -37,3 +37,6 @@
 @media (min-width: 1024px) {
 .dk-ph-quad .dk-ph { aspect-ratio: 3/3.4; }
 }
+
+/* ★2026-08-03 — 인라인 여백을 클래스로. 값 무변경. */
+.dk .page-teachers-nums { margin-top: var(--dk-gap-lg); }

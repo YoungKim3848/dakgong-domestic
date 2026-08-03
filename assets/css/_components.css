@@ -70,7 +70,8 @@ table.dk-table--month tbody tr.dk-month-date td {
 /* 배지 */
 .dk-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: var(--dk-radius-full); background: var(--dk-surface-elevated); color: var(--dk-fg-2); vertical-align: middle; margin-left: 4px; white-space: nowrap; }
 .dk-badge--s1 { background: var(--dk-surface-elevated); color: var(--dk-fg-2); }
-.dk-badge--s2 { background: var(--dk-surface-elevated); color: var(--dk-warning); border: 1px solid var(--dk-warning); }
+/* ★2026-08-03 — 밝은 배경에 밝은 빨강이라 2.41:1 로 거의 안 보였다. 글자·선은 어두운 단계로. */
+.dk-badge--s2 { background: var(--dk-surface-elevated); color: var(--dk-warning-ink); border: 1px solid var(--dk-warning-ink); }
 .dk-badge--s3 { background: var(--dk-accent-red); color: #fff; }
 /* 단계 흐름(순서도) */
 .dk-steps { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; }
@@ -84,7 +85,9 @@ table.dk-table--month tbody tr.dk-month-date td {
 .dk-step-arrow { transform: rotate(90deg); padding: 6px 0; }
 }
 /* 안내 콜아웃 — 희소 자원, 페이지당 한둘만 */
-.dk-callout { display: flex; align-items: flex-start; gap: 14px; background: var(--dk-surface-card); border-left: 4px solid var(--dk-surface-dark); border-radius: var(--dk-radius-md); padding: 20px 24px; margin-top: var(--dk-gap-lg); }
+/* ★2026-08-03 회장 승인 B안 — '라운드 + 컬러 좌측 레일' 동시 사용은 금지 조합
+   (craft/anti-ai-slop P0 #5). 세로줄을 남기고 모서리를 각지게 한다. */
+.dk-callout { display: flex; align-items: flex-start; gap: 14px; background: var(--dk-surface-card); border-left: 4px solid var(--dk-surface-dark); border-radius: 0; padding: 20px 24px; margin-top: var(--dk-gap-lg); }
 .dk-callout svg { flex-shrink: 0; width: 20px; height: 20px; stroke: var(--dk-fg-2); stroke-width: 1.8; fill: none; margin-top: 2px; }
 .dk-callout p { margin: 0; font-size: 14.5px; color: var(--dk-fg-2); line-height: 1.7; }
 /* 간단 체크 리스트 */

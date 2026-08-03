@@ -108,3 +108,10 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 .dk-mon-day.open .n { color: #fff; }
 .dk-mon-day.we { background: var(--dk-surface-elevated); border: 1px solid var(--dk-hairline); }
 .dk-mon-day.we .n { color: var(--dk-ink); }
+
+/* ★2026-08-03 — 인라인 여백을 클래스로. 값 무변경. */
+.dk .page-life-care-mb { margin-bottom: var(--dk-gap-lg); }
+.dk .page-life-care-mt-lg { margin-top: var(--dk-gap-lg); }
+.dk .page-life-care-mt-md { margin-top: var(--dk-gap-md); }
+.dk .page-life-care-h3 { font: var(--dk-title-lg); color: var(--dk-ink); margin: 0 0 var(--dk-gap-sm); }
+.dk .page-life-care-h3--gap { margin-top: var(--dk-gap-lg); }
