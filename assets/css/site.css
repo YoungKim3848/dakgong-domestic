@@ -1775,7 +1775,5 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 @media (max-width: 400px) {
   .dk-hx__i { display: none; }
   .dk-hx__n { font-size: 17px; }
-  .dk .dk-hx__ht { font-size: 12.5px; }}
-
-}
+  .dk .dk-hx__ht { font-size: 12.5px; }
 }
