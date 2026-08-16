@@ -353,6 +353,18 @@
   border: 1.5px solid var(--dk-hairline-cool-soft); background: #fff;
   background-image: radial-gradient(var(--dk-dot-cool) 1px, transparent 1px); background-size: 11px 11px;
   display: flex; align-items: center; justify-content: center; color: var(--dk-fg-cool-soft); font-size: 12px; }
+/* ★2026-08-17 — POINT 01~05 에 실물 사진이 들어왔다.
+   자리표시일 때의 점 패턴 배경을 끄고 사진이 칸을 채우게 한다.
+   칸 4:3 vs 사진 1.498:1 → 89% 남는다(검사 기준 75%). 전 폭에서 칸 비율이 안 바뀌어
+   PC/모바일이 따로 놀지 않는다 — .dk-ph-split(51%) 이 났던 문제가 여기선 구조상 안 난다. */
+.dk-pt-vis .card.is-filled { background: none; display: block; overflow: hidden; padding: 0; }
+/* ★padding:0 이 없으면 사진이 칸을 25px씩 못 채운다.
+   tokens 의 `.dk .card` 가 padding: var(--dk-space-lg) 를 들고 있는데
+   `.dk-pt-vis .card` 는 padding 을 아예 선언하지 않아 그 값이 그대로 살아 있었다.
+   자리표시(가운데 정렬된 글자)일 땐 티가 안 났고 실물 사진이 들어와서야 드러났다 —
+   실측 칸 590x443 인데 사진은 540x393 이었다. `.card` 는 이름이 너무 흔해서 또 물릴 자리다. */
+.dk-pt-vis .card > img { width: 100%; height: 100%; object-fit: cover;
+  display: block; border-radius: inherit; }
 .dk-pt-vis .num { position: absolute; left: -4px; top: -14px; font-family: var(--dk-font-display);
   font-size: 38px; font-weight: 800; color: var(--dk-accent-red); line-height: 1;
   text-shadow: 0 0 0 #fff, -2px 0 0 #fff, 2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff; }
