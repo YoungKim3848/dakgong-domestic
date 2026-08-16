@@ -81,9 +81,10 @@
    전: flat var(--dk-surface-soft)(#fafafa, 흰 배경 섹션 위에서 거의 안 보임) →
        "빈 회색 박스/버그"로 오인되는 원인. 실물 사진·영상은 여전히 넣지 않되(원칙 유지),
        "여기 콘텐츠 들어올 자리"임이 분명하도록 은은한 코발트 톤 그리드 패턴 + 그라디언트로 교체.
-   .dk-bi-slot(브랜드 인트로 3개)/.dk-vi-card(인터뷰 4개)/.dk-tr-card(후기 6개)/.dk-pt-vis(POINT 6개)
+   .dk-bi-slot(브랜드 인트로 3개)/.dk-vi-card(인터뷰 4개)/.dk-pt-vis(POINT 6개)
+   ※후기(.dk-tr-shot)는 2026-08-17 실물 캡처 22장이 들어와 이 그룹에서 빠졌다.
    전부 이 배경 하나로 통일 — 페이지별 담당자가 실물 넣을 땐 이 background만 지우면 됨. */
-.dk-bi-slot, .dk-vi-card, .dk-tr-card, .dk-pt-vis {
+.dk-bi-slot, .dk-vi-card, .dk-pt-vis {
   background-image:
     radial-gradient(circle at 1px 1px, rgba(20,42,77,0.10) 1.4px, transparent 0),
     linear-gradient(155deg, var(--dk-surface-cool) 0%, var(--dk-dot-cool) 55%, var(--dk-dot-cool) 100%);
@@ -113,28 +114,67 @@
 .dk-vi-play svg { width: 14px; height: 14px; fill: var(--dk-fg-cool); }
 /* ── 텍스트 리뷰 ── */
 /* ★2026-07-26 회장 지시 — 리뷰 섹션에 필핀 review-carousel.imweb.html의 무한 롤링
-   애니메이션 벤치마킹(디자인·모션만, 실제 후기 이미지는 필핀 것이라 가져오지 않음 —
-   placeholder 카드를 그대로 굴린다). hover 시 정지, 카드 목록을 통째로 한 번 더
-   반복해 이음새 없는 루프를 만든다(JS 없이 순수 CSS). */
+   애니메이션 벤치마킹(디자인·모션만). hover 시 정지, 카드 목록을 통째로 한 번 더
+   반복해 이음새 없는 루프를 만든다(롤링 자체는 JS 없이 순수 CSS).
+   ★2026-08-17 — 그동안 굴리던 placeholder 카드를 닥공이 준 실물 캡처 22장으로 교체했다. */
 .dk-review-scroll { width: 100%; overflow: hidden; margin-top: var(--dk-gap-lg); }
-.dk-review-scroll-track { display: flex; gap: 20px; width: max-content; animation: dkReviewScroll 36s linear infinite; }
+.dk-review-scroll-track { display: flex; gap: 20px; width: max-content; animation: dkReviewScroll 140s linear infinite; }
 .dk-review-scroll:hover .dk-review-scroll-track { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
 .dk-review-scroll-track { animation: none; }
 }
-.dk-tr-card {
-  flex: 0 0 260px; width: 260px; min-height: 200px;
-  border: 1.5px dashed var(--dk-hairline-cool); border-radius: var(--dk-radius-lg);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; text-align: center; gap: 10px; padding: 24px;
+.dk-tr-shot {
+  /* ★2026-08-17 — placeholder 카드(.dk-tr-card) 폐기, 실물 캡처 22장으로 교체.
+     ★높이만 고정하고 폭은 auto 다. object-fit:cover 로 칸에 맞추면 카톡 글이 잘린다.
+       원본 비율 0.45~0.96 이 제각각이라 어떤 고정 비율을 잡아도 누군가는 잘린다.
+       세로 스크린샷은 "덜 보이는" 게 아니라 "못 읽는" 것이 되므로 크롭 0 이 유일한 답. */
+  flex: 0 0 auto; height: 420px; padding: 0; background: none; cursor: zoom-in;
+  border: 1px solid var(--dk-hairline-cool); border-radius: var(--dk-radius-lg);
+  overflow: hidden; display: block;
   transition: transform var(--dk-dur-base) var(--dk-ease-out), border-color var(--dk-dur-base) var(--dk-ease-out);
 }
-.dk-tr-card:hover { transform: translateY(-4px); border-color: var(--dk-fg-muted); }
-.dk-tr-card svg { width: 26px; height: 26px; stroke: var(--dk-fg-cool); stroke-width: 1.6; fill: none; }
-.dk-tr-card p { font-size: 12.5px; color: var(--dk-fg-muted); line-height: 1.6; margin: 0; }
-@media (max-width: 480px) {
-.dk-tr-card { flex: 0 0 200px; width: 200px; }
+.dk-tr-shot:hover { transform: translateY(-4px); border-color: var(--dk-fg-muted); }
+.dk-tr-shot:focus-visible { outline: 2px solid var(--dk-accent-red); outline-offset: 2px; }
+.dk-tr-shot img { display: block; height: 100%; width: auto; }
+@media (max-width: 880px) {
+.dk-tr-shot { height: 340px; }
+.dk-review-scroll-track { animation-duration: 116s; }
 }
+@media (max-width: 480px) {
+.dk-tr-shot { height: 300px; }
+.dk-review-scroll-track { animation-duration: 104s; }
+}
+
+/* ── 후기 확대창 ────────────────────────────────────────────
+   ★생활환경 페이지의 시설 갤러리 확대창(.dk-galbox, page-life-care.css:227~)을
+     값 그대로 복제했다. 새로 만들지 않는다(0순위 8-①).
+     두 파일이 같은 이름을 쓰지만 한 페이지가 둘을 같이 부르는 일이 없어 충돌하지 않는다.
+     ⚠️ 다음에 _components.css 로 승격할 후보다 — 지금 하면 🔒 락 파일 변경이라 멈춰야 한다.
+   다른 점 하나: 시설 쪽은 사진이 없어 자리표시 텍스트를 띄웠고, 여기는 실물이 있어 img 를 넣는다. */
+.dk-galbox { position: fixed; inset: 0; background: rgba(12,14,18,.94); z-index: 420;
+  display: none; align-items: center; justify-content: center; padding: 56px 16px; }
+/* ★z-index 만 원본(60)과 다르다. 헤더가 400, 모바일 메뉴가 401 이라 60 이면 헤더가 위로 올라온다.
+   PC 는 헤더 띠만 보여 어색한 정도지만 모바일은 ✕ 버튼이 통째로 헤더에 가려 닫히지 않는다.
+   ⚠️ 같은 버그가 생활환경 시설 갤러리(page-life-care.css)에도 그대로 있다 — 거긴 아직 사진이
+      없어서 아무도 안 눌러 봤을 뿐이다. 승격할 때 같이 고칠 것. */
+.dk-galbox.is-on { display: flex; }
+.dk-galbox__fig { max-width: 1000px; width: 100%; text-align: center; margin: 0; }
+.dk-galbox__shot { max-height: calc(100vh - 150px); width: auto; max-width: 100%;
+  border-radius: var(--dk-radius-md); display: block; margin: 0 auto; }
+.dk .dk-galbox__cap { margin: 14px 0 0; color: #efefef; font-size: 14px; font-weight: 700; }
+.dk .dk-galbox__idx { margin: 4px 0 0; color: var(--dk-fg-cool-soft); font-size: 12.5px;
+  font-variant-numeric: tabular-nums; }
+.dk-galbox__x, .dk-galbox__nav { position: absolute; background: rgba(255,255,255,.12); border: none;
+  color: #fff; border-radius: 50%; cursor: pointer; font: inherit;
+  display: flex; align-items: center; justify-content: center; }
+.dk-galbox__x { top: 16px; right: 16px; width: 40px; height: 40px; font-size: 20px; }
+.dk-galbox__nav { top: 50%; transform: translateY(-50%); width: 46px; height: 46px; font-size: 22px; }
+.dk-galbox__nav.is-prev { left: 16px; }
+.dk-galbox__nav.is-next { right: 16px; }
+.dk-galbox__x:hover, .dk-galbox__nav:hover { background: rgba(255,255,255,.22); }
+.dk-galbox__x:focus-visible, .dk-galbox__nav:focus-visible {
+  outline: 2px solid var(--dk-accent-onDark); outline-offset: 2px; }
+
 /* ── 키포인트별 상세(좌우교차) ── */
 .dk-pt-item { display: flex; padding: clamp(48px,6vw,72px) 0; }
 .dk-pt-item:nth-child(odd) { background: #fff; }
