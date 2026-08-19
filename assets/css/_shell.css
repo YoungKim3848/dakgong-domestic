@@ -315,7 +315,11 @@ body.dk {
 @media (max-width: 768px) {
 .dk-idband-track span { font-size: 13px; padding: 0 12px; }
 }
-.dk-stat-dark-sec .dk-label { color: rgba(255,255,255,0.6); }
+/* ★2026-08-17 — 다크 배경 라벨이 두 곳인데 색이 갈려 있었다.
+   여긴 흰색 60%, teachers 선발기준은 --dk-accent-onDark. 후자로 통일한다.
+   라벨은 전 사이트 36개 중 34개가 코발트고, 다크에서 밝은 코발트로 가는 게
+   그 규칙의 연장이다. 흰색 60% 는 코발트라는 정체성을 잃는다. */
+.dk-stat-dark-sec .dk-label { color: var(--dk-accent-onDark); }
 .dk-stat-dark-sec .dk-h2 { color: #fff; }
 /* ── 문의 CTA ── */
 .dk-cta { background: var(--dk-accent-red); text-align: center; }
