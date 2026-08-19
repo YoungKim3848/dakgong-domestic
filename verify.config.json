@@ -1,61 +1,164 @@
 {
   "_": "닥공 국내캠프 — 웹 에이전트 공용 검증 설정. 실행: python \"C:/Users/ADMINY/Desktop/claude code/tools/web/web agent/verify/all.py\" .",
-
-  "pages": ["index", "curriculum", "teachers", "self-study", "life-care", "consulting", "contact"],
-
+  "pages": [
+    "index",
+    "curriculum",
+    "teachers",
+    "self-study",
+    "life-care",
+    "consulting",
+    "contact"
+  ],
   "tokens": "assets/css/tokens-domestic.css",
-  "css": ["assets/css/tokens-domestic.css", "assets/css/_shell.css", "assets/css/_components.css", "assets/css/_legacy.css", "assets/css/page-index.css", "assets/css/page-curriculum.css", "assets/css/page-teachers.css", "assets/css/page-life-care.css", "assets/css/page-consulting.css", "assets/css/page-contact.css"],
-
-  "widths": [320, 360, 375, 390, 430, 560, 768, 880, 1024, 1280, 1440, 1900, 2560],
-
-  "wrap_selectors": [".dk-wrap", ".dk-pt-in"],
-
-  "locked_files": ["assets/css/tokens-domestic.css", "assets/css/_shell.css", "assets/css/_components.css"],
-  "lock_baseline": "5fbef0dcdd4376e160c899149c383ef6c8c30e26",
-
+  "css": [
+    "assets/css/tokens-domestic.css",
+    "assets/css/_shell.css",
+    "assets/css/_components.css",
+    "assets/css/_legacy.css",
+    "assets/css/page-index.css",
+    "assets/css/page-curriculum.css",
+    "assets/css/page-teachers.css",
+    "assets/css/page-life-care.css",
+    "assets/css/page-consulting.css",
+    "assets/css/page-contact.css"
+  ],
+  "widths": [
+    320,
+    360,
+    375,
+    390,
+    430,
+    560,
+    768,
+    880,
+    1024,
+    1280,
+    1440,
+    1900,
+    2560
+  ],
+  "wrap_selectors": [
+    ".dk-wrap",
+    ".dk-pt-in"
+  ],
+  "locked_files": [
+    "assets/css/tokens-domestic.css",
+    "assets/css/_shell.css",
+    "assets/css/_components.css"
+  ],
+  "lock_baseline": "99647f54cd6a70b044ce0665657528f6fba8878e",
   "_예외": "contact 는 필핀 원본대로 회색 히어로 + 폼만 있는 페이지다. 롤링밴드·영상히어로·하단CTA 가 셋 다 실제로 없다(2026-08-03 실측 확인). 나머지 6페이지는 전부 있어야 한다.",
-
   "shared_text": [
-    { "name": "롤링밴드", "selector": ".dk-idband-track", "except_pages": ["contact"] }
+    {
+      "name": "롤링밴드",
+      "selector": ".dk-idband-track",
+      "except_pages": [
+        "contact"
+      ]
+    }
   ],
-
   "shared_computed": [
-    { "name": "히어로 h1", "selector": ".dk-bg-video-content h1",
-      "props": ["fontFamily", "fontSize", "fontWeight", "lineHeight", "color", "letterSpacing"],
-      "except_pages": ["contact"] },
-    { "name": "히어로 리드", "selector": ".dk-bg-video-content .lead",
-      "props": ["fontFamily", "fontSize", "fontWeight", "lineHeight", "color"],
-      "except_pages": ["contact"] },
-    { "name": "하단 CTA 버튼", "selector": ".dk-cta .btn-group > *:first-child",
-      "props": ["width", "height", "fontSize", "fontWeight", "borderRadius"],
-      "except_pages": ["contact"] }
+    {
+      "name": "히어로 h1",
+      "selector": ".dk-bg-video-content h1",
+      "props": [
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "lineHeight",
+        "color",
+        "letterSpacing"
+      ],
+      "except_pages": [
+        "contact"
+      ]
+    },
+    {
+      "name": "히어로 리드",
+      "selector": ".dk-bg-video-content .lead",
+      "props": [
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "lineHeight",
+        "color"
+      ],
+      "except_pages": [
+        "contact"
+      ]
+    },
+    {
+      "name": "하단 CTA 버튼",
+      "selector": ".dk-cta .btn-group > *:first-child",
+      "props": [
+        "width",
+        "height",
+        "fontSize",
+        "fontWeight",
+        "borderRadius"
+      ],
+      "except_pages": [
+        "contact"
+      ]
+    }
   ],
-
-  "gap_scale": ["--dk-gap-xs", "--dk-gap-sm", "--dk-gap-md", "--dk-gap-lg", "--dk-gap-xl"],
-
+  "gap_scale": [
+    "--dk-gap-xs",
+    "--dk-gap-sm",
+    "--dk-gap-md",
+    "--dk-gap-lg",
+    "--dk-gap-xl"
+  ],
   "shape_keep": [
-    { "selector": ".dk-hx__c", "prop": "clipPath", "must_contain": "polygon" }
+    {
+      "selector": ".dk-hx__c",
+      "prop": "clipPath",
+      "must_contain": "polygon"
+    }
   ],
-
-  "full_bleed": [".dk-hc"],
-
-  "accent_colors": ["rgb(15, 82, 201)"],
+  "full_bleed": [
+    ".dk-hc"
+  ],
+  "accent_colors": [
+    "rgb(15, 82, 201)"
+  ],
   "accent_max": 8,
-
   "_대비예외": "회장이 라이브 유지로 정한 색. 사유 없이는 예외로 안 쳐준다.",
   "contrast_exempt": [
-    { "color": "#808080", "reason": "회장 지시(2026-08-03) — 인포그래픽·주석 텍스트는 라이브 버전 그대로 둔다. 이 색을 어둡게 하면 dk-ds·dk-cvg·dk-pr·일과표 라벨이 같이 바뀐다" },
-    { "color": "#8f8f8f", "reason": "회장 지시(2026-08-03) — 인포그래픽 단계 사다리(01→05)의 마지막 단. 진하게 하면 단계가 무너진다" }
+    {
+      "color": "#808080",
+      "reason": "회장 지시(2026-08-03) — 인포그래픽·주석 텍스트는 라이브 버전 그대로 둔다. 이 색을 어둡게 하면 dk-ds·dk-cvg·dk-pr·일과표 라벨이 같이 바뀐다"
+    },
+    {
+      "color": "#8f8f8f",
+      "reason": "회장 지시(2026-08-03) — 인포그래픽 단계 사다리(01→05)의 마지막 단. 진하게 하면 단계가 무너진다"
+    }
   ],
-
   "contrast_pairs": [
-    { "a": "#0f52c9", "b": "#2a2a2a", "label": "벌집 링 01↔02" },
-    { "a": "#2a2a2a", "b": "#5c5c5c", "label": "벌집 링 02↔03" },
-    { "a": "#5c5c5c", "b": "#8f8f8f", "label": "벌집 링 04↔05" }
+    {
+      "a": "#0f52c9",
+      "b": "#2a2a2a",
+      "label": "벌집 링 01↔02"
+    },
+    {
+      "a": "#2a2a2a",
+      "b": "#5c5c5c",
+      "label": "벌집 링 02↔03"
+    },
+    {
+      "a": "#5c5c5c",
+      "b": "#8f8f8f",
+      "label": "벌집 링 04↔05"
+    }
   ],
-
   "ignore_colors": [
-    "#0f52c9", "#2666d6", "#5187e8", "#dce8fc", "#1a1a1a",
-    "#2a2a2a", "#5c5c5c", "#8f8f8f"
+    "#0f52c9",
+    "#2666d6",
+    "#5187e8",
+    "#dce8fc",
+    "#1a1a1a",
+    "#2a2a2a",
+    "#5c5c5c",
+    "#8f8f8f"
   ]
 }
