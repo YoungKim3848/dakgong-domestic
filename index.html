@@ -131,7 +131,7 @@
      2-1) 캠프 한눈에 보기 표 — 2026-07-28 회장 지시로 신설.
      브랜드 섹션과 "숫자로 보는 닥공캠프" 사이. 좌측 라벨열은 회장 승인 A안.
 ══════════════════════════════════════════ -->
-<section class="dk-sec" style="background: var(--dk-surface-card);">
+<section class="dk-sec dk-glance-sec">
   <div class="dk-wrap">
     <div class="dk-split" data-reveal>
       <div>
@@ -143,30 +143,45 @@
     <!-- 번호 블록 + 아이콘 라벨 + 값 3단. 5개가 서로 동등한 항목이라
          번호 블록 농도는 일부러 계단으로 만들지 않고 전부 같은 코발트로 둔다. -->
     <div class="dk-glance" data-reveal="stagger">
-      <div class="dk-glance-row">
-        <div class="dk-glance-no">01</div>
-        <div class="dk-glance-k"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 21v-1.6a6 6 0 016-6h3a6 6 0 016 6V21"/></svg>대상</div>
-        <p class="dk-glance-v">중1 ~ 고3학년</p>
+      <div class="dk-glance-card">
+        <span class="dk-glance-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 21v-1.6a6 6 0 016-6h3a6 6 0 016 6V21"/></svg></span>
+        <i class="dk-glance-dash"></i>
+        <div class="dk-glance-txt">
+          <p class="dk-glance-head"><span class="dk-glance-no">01</span><span class="dk-glance-k">대상</span></p>
+          <p class="dk-glance-v">중1 ~ 고3학년</p>
+        </div>
       </div>
-      <div class="dk-glance-row">
-        <div class="dk-glance-no">02</div>
-        <div class="dk-glance-k"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.6V12l3.4 3.4"/></svg>학습량</div>
-        <p class="dk-glance-v">수학 중심 일 9시간 이상 압도적 학습량</p>
+      <div class="dk-glance-card">
+        <span class="dk-glance-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.6V12l3.4 3.4"/></svg></span>
+        <i class="dk-glance-dash"></i>
+        <div class="dk-glance-txt">
+          <p class="dk-glance-head"><span class="dk-glance-no">02</span><span class="dk-glance-k">학습량</span></p>
+          <p class="dk-glance-v">수학 중심 일 9시간 이상 압도적 학습량</p>
+        </div>
       </div>
-      <div class="dk-glance-row">
-        <div class="dk-glance-no">03</div>
-        <div class="dk-glance-k"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v12H4z"/><path d="M8 21h8M12 17.5V21"/></svg>특강</div>
-        <p class="dk-glance-v">국어·영어·사회·과학 특강</p>
+      <div class="dk-glance-card">
+        <span class="dk-glance-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v12H4z"/><path d="M8 21h8M12 17.5V21"/></svg></span>
+        <i class="dk-glance-dash"></i>
+        <div class="dk-glance-txt">
+          <p class="dk-glance-head"><span class="dk-glance-no">03</span><span class="dk-glance-k">특강</span></p>
+          <p class="dk-glance-v">국어·영어·사회·과학 특강</p>
+        </div>
       </div>
-      <div class="dk-glance-row">
-        <div class="dk-glance-no">04</div>
-        <div class="dk-glance-k"><svg viewBox="0 0 24 24"><path d="M6.5 3.5h11v17h-11z"/><path d="M9.5 8h5M9.5 12h5M9.5 16h3"/></svg>시험 대비</div>
-        <p class="dk-glance-v">내신과 수능대비 학습</p>
+      <div class="dk-glance-card">
+        <span class="dk-glance-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h11v17h-11z"/><path d="M9.5 8h5M9.5 12h5M9.5 16h3"/></svg></span>
+        <i class="dk-glance-dash"></i>
+        <div class="dk-glance-txt">
+          <p class="dk-glance-head"><span class="dk-glance-no">04</span><span class="dk-glance-k">시험 대비</span></p>
+          <p class="dk-glance-v">내신과 수능대비 학습</p>
+        </div>
       </div>
-      <div class="dk-glance-row">
-        <div class="dk-glance-no">05</div>
-        <div class="dk-glance-k"><svg viewBox="0 0 24 24"><path d="M12 3.2l7 3.1v5c0 4.4-2.9 8-7 9.5-4.1-1.5-7-5.1-7-9.5v-5z"/></svg>관리</div>
-        <p class="dk-glance-v">기숙형 밀착 관리 (24시간)</p>
+      <div class="dk-glance-card">
+        <span class="dk-glance-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l7 3v5.4c0 4.2-2.9 7.6-7 9.2-4.1-1.6-7-5-7-9.2V6.2z"/></svg></span>
+        <i class="dk-glance-dash"></i>
+        <div class="dk-glance-txt">
+          <p class="dk-glance-head"><span class="dk-glance-no">05</span><span class="dk-glance-k">관리</span></p>
+          <p class="dk-glance-v">기숙형 밀착 관리 (24시간)</p>
+        </div>
       </div>
     </div>
   </div>
@@ -280,29 +295,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     5) 5대 핵심역량 요약 (POINT1~5 티저)
-══════════════════════════════════════════ -->
-<section class="dk-sec" style="background: var(--dk-surface-card);">
-  <div class="dk-wrap">
-    <div class="dk-split" data-reveal>
-      <div>
-        <span class="dk-label">KEY POINTS | 차별점</span>
-        <h2 class="dk-h2">한국 스파르타 캠프 5대 핵심 역량</h2>
-      </div>
-      <p>이 5가지가 닥공캠프 학습 시스템의 뼈대입니다.<br>아래에서 각각 자세히 확인하세요.</p>
-    </div>
-    <div class="dk-kp-wrap">
-      <div class="dk-kp-track" data-reveal="stagger">
-        <div class="dk-kp-card"><div class="dk-kp-num">01</div><p class="dk-kp-text">하루 9시간 이상<br>압도적인 수학 학습량</p></div>
-        <div class="dk-kp-card"><div class="dk-kp-num">02</div><p class="dk-kp-text">SKY·의대 선배들의<br>24시간 밀착 멘토링</p></div>
-        <div class="dk-kp-card"><div class="dk-kp-num">03</div><p class="dk-kp-text">빈틈없는<br>관리형 자기주도 학습</p></div>
-        <div class="dk-kp-card"><div class="dk-kp-num">04</div><p class="dk-kp-text">무너지지 않는<br>완벽한 생활 루틴 구축</p></div>
-        <div class="dk-kp-card"><div class="dk-kp-num">05</div><p class="dk-kp-text">국내 1타 대치동<br>프리미엄 입시 컨설팅</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ══════════════════════════════════════════
      6) 진학실적
