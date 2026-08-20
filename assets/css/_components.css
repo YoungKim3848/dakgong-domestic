@@ -142,6 +142,13 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
    색은 tokens 값과 그 투명도 파생만 사용.
    ===================================================================== */
 
+/* ★2026-08-20 — 사진 칸 비율을 실물(3:2)에 맞춘다. 🔒 락 파일 수정(회장 보고 후 진행).
+   활동사진 55장이 전부 1600x1068 = 1.50:1 인데 칸 비율이 제각각이라 잘려 나갔다.
+   남는 비율 = min(원본비/칸비, 칸비/원본비). 기준 75% (verify/03_layout.py).
+     split 폰 1/1.18 → 56% · PC 21/10 → 71%      (둘 다 실패)
+     tri   폰 4/5.2  → 51% · 작은칸 auto → 69%    (실패 + 큰칸 아래 201px 빈 공간)
+   ⚠️ 자리표시는 min-height:130px 라 이게 안 보인다. 실물이 들어와야 드러난다 —
+      8/16 에 여기서 하루를 썼다. 이제 비율을 사진 쪽에 맞춰 둔다. */
 /* ── 슬롯 기본 ── */
 .dk-ph {
   /* ★그리드 자식의 기본 min-width:auto 때문에 최소 콘텐츠 폭(한글 keep-all) 아래로
@@ -188,23 +195,28 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
    .rev에선 이미지가 캡션 폭(340px)에 들어가 890x72로 눌렸다. 컬럼 폭도 함께 뒤집는다. */
 .dk-ph-split.rev { grid-template-columns: 1fr minmax(220px,340px); }
 .dk-ph-split.rev > *:first-child { order: 2; }
-.dk-ph-split .dk-ph { aspect-ratio: 16/9.5; }
+.dk-ph-split .dk-ph { aspect-ratio: 3/2; }
 .dk-ph-split .txt h3 { font: var(--dk-title-lg); color: var(--dk-ink); margin: 0 0 10px; letter-spacing: var(--dk-track-snug); }
 .dk .dk-ph-split .txt p { font: var(--dk-body-md); color: var(--dk-fg-3); line-height: 1.75; margin: 0; }
 @media (max-width: 768px) {
 .dk-ph-split, .dk-ph-split.rev { grid-template-columns: 1fr; gap: 18px; }
 .dk-ph-split.rev > *:first-child { order: 0; }
-.dk-ph-split .dk-ph { aspect-ratio: 16/9.5; }
+.dk-ph-split .dk-ph { aspect-ratio: 3/2; }
 }
 /* ── C. 비대칭 3분할 — 큰 1 + 작은 2 (좌우 반전 가능) ── */
-.dk-ph-tri { display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
+.dk-ph-tri { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
 .dk-ph-tri > *:first-child { grid-row: 1 / 3; }
-.dk-ph-tri.rev { grid-template-columns: 1fr 1.6fr; }
+.dk-ph-tri.rev { grid-template-columns: 1fr 2fr; }
 .dk-ph-tri.rev > *:first-child { grid-column: 2; grid-row: 1 / 3; }
 .dk-ph-tri.rev > *:nth-child(2) { grid-column: 1; grid-row: 1; }
 .dk-ph-tri.rev > *:nth-child(3) { grid-column: 1; grid-row: 2; }
-.dk-ph-tri > *:first-child { aspect-ratio: 16/11; }
-.dk-ph-tri > *:nth-child(n+2) { aspect-ratio: auto; height: 100%; }
+/* ★2026-08-20 — 비율을 거는 쪽을 뒤집었다. 전에는 큰 칸이 16/11 고정이고 작은 칸이
+   height:100% 로 따라가서, 작은 칸 비율이 2.17:1 까지 벌어져 사진이 69% 만 남았다
+   (그리고 큰 칸 아래가 1440px 에서 201px 비었다).
+   → 작은 칸을 3:2 로 고정하고 큰 칸이 그 높이를 채운다. 컬럼 2fr/1fr 이면
+     큰 칸 실효비 = 2·col2 / (2·col2/1.5 + 12) ≈ 1.47:1 → 남는 비율 98%. 빈 공간 0. */
+.dk-ph-tri > *:first-child { aspect-ratio: auto; height: 100%; }
+.dk-ph-tri > *:nth-child(n+2) { aspect-ratio: 3/2; height: auto; }
 /* ★2026-07-29 회장 제보(모바일 스샷) — 모바일 tri가 계단식으로 어긋나 좌측이 통째로 비었다.
    원인: PC용 배치 지정을 부분적으로만 되돌렸다. .rev의 grid-row(1/3, 1, 2)는 (0,3,0)이라
    .dk-ph-tri > *(0,2,0)의 초기화를 이기고 살아남았고, height:100%도 남아 칸 크기가 뒤틀렸다.
@@ -214,7 +226,7 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
   /* PC 규칙이 .dk-ph-tri.rev > *:nth-child(2) 형태라 (0,3,0)이다.
      리셋을 `> *`(0,2,0)로 쓰면 특성도에서 져서 조용히 무시된다. :nth-child(n)으로 맞춘다. */
   .dk-ph-tri > *:nth-child(n), .dk-ph-tri.rev > *:nth-child(n) { grid-column: auto; grid-row: auto; height: auto; }
-.dk-ph-tri > *:first-child, .dk-ph-tri.rev > *:first-child { grid-column: 1 / -1; aspect-ratio: 16/11; }
+.dk-ph-tri > *:first-child, .dk-ph-tri.rev > *:first-child { grid-column: 1 / -1; aspect-ratio: 3/2; height: auto; }
 .dk-ph-tri > *:nth-child(n+2), .dk-ph-tri.rev > *:nth-child(n+2) { aspect-ratio: 4/3; }
 }
 /* ── D. 오프셋 겹침 2장 — 세로로 어긋나게 ── */
@@ -234,15 +246,27 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
 @media (max-width: 480px) {
   /* 폰에선 텍스트가 세로로 길어지므로 슬롯도 세워야 시각 비중이 유지된다. */
   .dk-ph-band .dk-ph { aspect-ratio: 1/1.18; }
-.dk-ph-split .dk-ph { aspect-ratio: 1/1.18; }
-.dk-ph-tri > *:first-child, .dk-ph-tri.rev > *:first-child { aspect-ratio: 4/5.2; }
-.dk-ph-tri > *:nth-child(n+2), .dk-ph-tri.rev > *:nth-child(n+2) { aspect-ratio: 1/1.15; }
+/* ★2026-08-20 — 폰 세로 비율(1/1.18 · 4/5.2 · 1/1.15)이 크롭의 최대 원인이었다.
+   원본이 가로 사진(1.5:1)인데 칸을 세워 놓아 51~58% 만 남았다. 가로형으로 되돌린다.
+   시각 비중은 폭을 다 쓰므로 3:2 로도 충분히 유지된다(390px 폰에서 342x228). */
+.dk-ph-split .dk-ph { aspect-ratio: 3/2; }
+.dk-ph-tri > *:first-child, .dk-ph-tri.rev > *:first-child { aspect-ratio: 3/2; }
+.dk-ph-tri > *:nth-child(n+2), .dk-ph-tri.rev > *:nth-child(n+2) { aspect-ratio: 4/3;
+  /* ★2026-08-20 — 여기서 min-height:130px 를 풀어야 한다. 320px 에서 이 두 칸은 폭이
+     134px 인데 4/3 이면 높이가 100px 다. min-height 가 이기면 브라우저는 높이를 130 으로
+     잡고 비율을 맞추려 폭을 173 으로 늘린다 → 트랙(134)을 39px 넘겨 문서가 19px 밀린다.
+     tri 를 쓰는 3페이지(커리큘럼·관리형자습·생활환경)만 실패하고 나머지가 멀쩡했던 이유.
+     ⚠️ 이 폭에서는 min-height 와 「사진 75% 이상 남기기」를 동시에 만족할 수 없다 —
+        높이 130 을 지키려면 비율이 1.03 이하여야 하는데 75% 기준은 1.125~2.0 을 요구한다.
+        둘 중 하나를 놔야 하고, 잘림 기준이 회장 지적으로 박힌 것이라 min-height 를 놓는다.
+        대신 자리표시(사진 전) 안내문은 이 칸에서 잘린다 — 실물이 들어오면 사라질 문제다. */
+  min-height: 0; }
 .dk-ph-stack { grid-template-columns: 1fr; }
 .dk-ph-stack > *:first-child, .dk-ph-stack > *:last-child { aspect-ratio: 4/3.4; margin-top: 0; }
 }
 @media (min-width: 481px) and (max-width: 1023px) {
 .dk-ph-band .dk-ph { aspect-ratio: 16/9; }
-.dk-ph-split .dk-ph { aspect-ratio: 16/10; }
+.dk-ph-split .dk-ph { aspect-ratio: 3/2; }
 .dk-ph-stack > *:first-child, .dk-ph-stack > *:last-child { aspect-ratio: 16/10; }
 }
 /* ── PC 슬롯 높이 상한 (2026-07-29) ──
@@ -253,25 +277,72 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
    (1440px에서 tri 780px 컬럼에 카드가 698px). → 상한 대신 "완만한 비율"로 높이를 잡는다.
    비율은 폭을 100% 채우면서 높이만 낮추므로 빈 공간이 안 생긴다. */
 @media (min-width: 1024px) {
-.dk-ph-split .dk-ph { aspect-ratio: 21/10; }
-.dk-ph-tri > *:first-child { aspect-ratio: 16/9.5; }
+.dk-ph-split .dk-ph { aspect-ratio: 3/2; }
+.dk-ph-tri > *:first-child { aspect-ratio: auto; }
 .dk-ph-stack > *:first-child { aspect-ratio: 16/10; }
 .dk-ph-stack > *:last-child { aspect-ratio: 16/10; }
 }
 /* ── 상세 카드 (커리큘럼 6대 핵심 + 컨설팅 3축 공용 템플릿) ──
    ★병렬 항목은 레이아웃을 통일한다. 여섯 칸이든 세 칸이든 규격이 하나여야 한다.
    셀별로 값을 따로 쓰지 않는다. 달라지는 것은 내용과 --tone(의미를 담은 색)뿐이다. */
-.dk-ds-list { display: flex; flex-direction: column; gap: 12px; }
+/* ★2026-08-20 회장 지시 — 레퍼런스(일정표 리본 카드) 벤치마킹.
+   가져온 것 넷:
+     ① 좌측 식별 블록과 본문을 **세로 구분선**으로 가른다
+     ② **컬러 캡이 카드 뒤에서 좌·우 번갈아** 삐져나온다
+     ③ 캡이 접혀 들어가는 **입체** — 캡 안쪽 짙은 그림자 + 그 접힘이 카드에 드리우는 그늘
+     ④ 카드가 바닥에서 뜨는 2겹 그림자
+   ★교차가 핵심이다. 한쪽에만 두면 색인표가 되고, 번갈아 두면 아래로 훑을 때
+     시선이 지그재그로 끌린다. 홈 POINT 01~05 의 우·좌·우·좌·우 와 같은 리듬이다.
+   ★교차하는 건 색뿐이다 — 번호·제목·라벨 순서는 여섯 장 모두 그대로다.
+   ★상단 3px 레일은 뺐다. 색이 이미 번호(--tone)와 아이콘 박스(--tone)에 있어서
+     레일은 같은 색의 세 번째 반복이었고, 카드 위 모서리가 바로 위 카드의 아래 모서리와
+     마주 보는 자리라 "카드의 성질"이 아니라 "카드 사이 칸막이"로 읽혔다.
+   ★바탕은 흰색으로 둔다 — 연회색 바탕이 그림자가 더 잘 살지만, 바로 위 벌집(#efefef)이
+     이미 회색이라 두 덩어리가 연달아 회색이 된다. 이 사이트는 연속 두 섹션이 같은 배경인
+     데가 한 곳도 없고, 홈에서 그 리듬 때문에 다크 배경을 원복한 적이 있다. */
+/* ★padding-inline 은 캡이 나갈 자리다. 없으면 1280px 에서 21px 가로 스크롤이 난다 —
+   .dk-wrap 이 정확히 1280px 에서 패딩 0 이 되어 카드가 화면 폭을 꽉 채우고,
+   캡이 밖으로 나갈 공간이 물리적으로 사라지기 때문이다.
+   (같은 함정이 page-curriculum.css 벌집 주석에도 이미 적혀 있다 — 음수 마진으로
+    파고드는 방식이 ≥1280px 에서 실패한 그 건이다.)
+   카드가 섹션 제목보다 22px 안으로 들어오는데, 레퍼런스도 캡을 포함한 덩어리가
+   안쪽에 놓인 모양이라 어긋나 보이지 않는다. 좌우가 같은 값이라 대칭도 유지된다. */
+.dk-ds-list { display: flex; flex-direction: column; gap: 16px; padding-inline: 22px; }
 .dk-ds { background: #fff; border: 1px solid var(--dk-hairline-soft);
-  border-radius: var(--dk-radius-lg); border-top: 3px solid var(--tone, var(--dk-hairline));
-  padding: clamp(18px,2.4vw,26px);
-  display: grid; grid-template-columns: 214px 1fr; gap: clamp(18px,2.6vw,34px); align-items: start; }
+  border-radius: var(--dk-radius-lg);
+  padding: clamp(18px,2.4vw,26px); position: relative;
+  /* ④ 가까운 그림자(윤곽) + 먼 그림자(높이). 한 겹만 쓰면 번지기만 하고 안 뜬다. */
+  box-shadow: 0 1px 2px rgba(20,40,90,.10), 0 10px 22px -6px rgba(20,40,90,.20);
+  display: grid; grid-template-columns: 214px 1fr; gap: clamp(18px,2.6vw,34px);
+  align-items: stretch; }
+/* ② 컬러 캡 — 홀수(01·03·05) 오른쪽 / 짝수(02·04·06) 왼쪽.
+   ⚠️ z-index:-1 로 카드 뒤에 넣으면 안 된다. .dk-ds 가 쌓임 맥락을 안 만들어서 캡이
+      카드뿐 아니라 **바탕색을 가진 조상 뒤로도** 내려가 통째로 사라진다(실제로 겪었다).
+      카드 위에 그리되 겹침을 6px 만 줘서 카드 라운드가 만드는 틈만 메운다. */
+.dk-ds::after { content: ""; position: absolute; top: 7px; bottom: 7px; width: 28px;
+  background: var(--tone, var(--dk-hairline)); }
+.dk-ds:nth-child(odd)::after { right: -22px; border-radius: 0 11px 11px 0;
+  box-shadow: inset 13px 0 11px -9px rgba(0,0,0,.62), 0 5px 11px -4px rgba(20,40,90,.38); }
+.dk-ds:nth-child(even)::after { left: -22px; border-radius: 11px 0 0 11px;
+  box-shadow: inset -13px 0 11px -9px rgba(0,0,0,.62), 0 5px 11px -4px rgba(20,40,90,.38); }
+/* ③ 접힘이 카드 표면에 드리우는 그늘. 없으면 캡과 카드가 남남처럼 논다. */
+.dk-ds::before { content: ""; position: absolute; top: 1px; bottom: 1px; width: 34px;
+  pointer-events: none; z-index: 1; }
+.dk-ds:nth-child(odd)::before { right: 1px; border-radius: 0 15px 15px 0;
+  background: linear-gradient(270deg, rgba(20,40,90,.16), rgba(20,40,90,0)); }
+.dk-ds:nth-child(even)::before { left: 1px; border-radius: 15px 0 0 15px;
+  background: linear-gradient(90deg, rgba(20,40,90,.16), rgba(20,40,90,0)); }
 .dk-ds--core { --tone: #0f52c9; }
 .dk-ds--fix  { --tone: #2a2a2a; }
 .dk-ds--opt  { --tone: var(--dk-tone-3); }
 .dk-ds--base { --tone: var(--dk-fg-faint); }
+/* ① 세로 구분선 — 전에는 좌측 블록과 우측 라벨행이 여백으로만 갈려 있었다.
+   선이 카드 높이를 지나야 「식별자 │ 내용」으로 읽히므로 위 .dk-ds 에서
+   align-items 를 start → stretch 로 풀었다(그래야 두 칸 높이가 같아진다). */
 .dk-ds__hd { display: grid; grid-template-columns: auto auto; gap: 4px 12px;
-  align-items: center; min-width: 0; }
+  align-items: center; min-width: 0;
+  border-right: 1px solid var(--dk-hairline-soft);
+  padding-right: clamp(9px,1.3vw,17px); align-content: start; }
 .dk-ds__n { font-family: var(--dk-font-display); font-weight: 800;
   font-size: clamp(22px,2.8vw,28px); line-height: 1; letter-spacing: -0.5px;
   color: var(--tone); grid-row: 1; }
@@ -297,8 +368,19 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
   color: var(--dk-fg-muted); margin-top: 6px; }
 @media (max-width: 820px) {
 .dk-ds { grid-template-columns: 1fr; gap: 16px; }
-.dk-ds__hd { grid-template-columns: auto auto 1fr; align-items: center; gap: 0 12px; }
+/* ★1열이 되면 좌측 블록이 본문 '옆'이 아니라 '위'로 간다 — 구분선도 같이 눕혀야 한다.
+   오른쪽에 그대로 두면 카드 한가운데를 세로로 긋는 선이 된다.
+   ⚠️ padding-right 도 같이 지운다. 부분만 되돌리면 남은 값이 배치를 뒤튼다. */
+.dk-ds__hd { grid-template-columns: auto auto 1fr; align-items: center; gap: 0 12px;
+  border-right: 0; padding-right: 0;
+  border-bottom: 1px solid var(--dk-hairline-soft); padding-bottom: 14px; }
 .dk-ds__tw { grid-column: 3; grid-row: 1; margin-top: 0; }
+/* ★캡 돌출을 줄인다 — .dk-wrap 좌우 패딩이 390px 에서 20px 뿐이라
+   22px 이 그대로면 2px 이 화면 밖으로 나가 가로 스크롤이 생긴다. */
+.dk-ds-list { padding-inline: 14px; }
+.dk-ds::after { top: 6px; bottom: 6px; width: 22px; }
+.dk-ds:nth-child(odd)::after  { right: -14px; }
+.dk-ds:nth-child(even)::after { left: -14px; }
 }
 @media (max-width: 520px) {
 .dk-ds__hd { grid-template-columns: auto auto; gap: 4px 12px; }
