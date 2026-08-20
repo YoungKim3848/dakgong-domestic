@@ -267,7 +267,12 @@
      ④ 숫자를 고정폭으로 잡아 라벨 시작점을 일직선으로 (오와열)
    색만 우리 것으로 바꿨다 — 다크는 --dk-surface-dark, 강조는 어두운 면 위 전용
    --dk-accent-onDark. 필핀은 레드(#ab0000)에 배경 #0d0d0d 지만 그건 그쪽 브랜드다. */
-.dk-daily { position: relative; overflow: hidden; min-height: 520px;
+/* ★2026-08-20 2차 — 표(타임라인)와 이 밴드가 같은 내용을 두 번 말하고 있어서 합쳤다.
+   우측 패널 내용이 숫자 3행 → 타임라인 6항목이 됐다.
+   ⚠️ 그래서 높이를 min-height 로 고정하면 안 된다. 패널을 흐름 안에 두고(margin-left)
+      내용이 높이를 정하게 한다. 사진 칸만 absolute 로 그 높이에 맞춰 늘어난다.
+      절대배치 패널에 6항목을 넣으면 밴드 밖으로 넘친다. */
+.dk-daily { position: relative; overflow: hidden;
   border-radius: var(--dk-radius-lg); background: var(--dk-surface-dark); }
 .dk-daily__bg { position: absolute; left: 0; top: 0; bottom: 0; width: 48%; overflow: hidden;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent 100%);
@@ -279,10 +284,10 @@
 /* 목록을 두 벌 깔고 -50% 까지만 밀면 이음새가 안 보인다(후기 롤링과 같은 원리). */
 @keyframes dkDailyUp { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 
-.dk-daily__panel { position: absolute; right: 0; top: 0; bottom: 0; width: 60%;
+.dk-daily__panel { position: relative; margin-left: 40%; width: 60%;
   background: var(--dk-surface-dark); border-radius: 80px 0 0 80px;
-  display: flex; flex-direction: column; justify-content: center;
-  gap: clamp(20px, 3vw, 40px); padding: 44px 44px 44px 0; box-sizing: border-box; }
+  padding: clamp(34px,4vw,48px) clamp(26px,3vw,44px) clamp(34px,4vw,48px) clamp(30px,3.4vw,46px);
+  box-sizing: border-box; }
 .dk-daily__row { display: flex; align-items: center; gap: clamp(14px, 1.8vw, 22px); }
 
 /* 메달리온 — 패널 밖으로 절반 나가 사진 경계에 걸친다. */
@@ -367,3 +372,30 @@
   .dk .dk-tl__h { flex-wrap: wrap; gap: 2px 10px; }
   .dk-tl__t { flex: 1 1 100%; }
 }
+
+
+/* ── 다크 면 위 타임라인 (★2026-08-20) ────────────────────────────────
+   같은 타임라인 컴포넌트를 어두운 패널 안에서 쓴다. 구조는 그대로 두고 색만 뒤집는다 —
+   새 컴포넌트를 만들지 않는다. 폭 상한(720px)도 패널이 이미 잡아 주므로 푼다. */
+.dk-tl--dark { max-width: none; }
+.dk-tl--dark .dk-tl__it::before { background: rgba(255,255,255,.22); }
+.dk-tl--dark .dk-tl__it::after { background: var(--dk-surface-dark);
+  border-color: rgba(255,255,255,.38); }
+.dk-tl--dark .dk-tl__it.is-key::after { border-color: var(--dk-accent-onDark);
+  box-shadow: inset 0 0 0 3px var(--dk-surface-dark), inset 0 0 0 16px var(--dk-accent-onDark); }
+.dk-tl--dark .dk-tl__card { background: rgba(255,255,255,.07); }
+.dk .dk-tl--dark .dk-tl__h { color: #fff; }
+.dk-tl--dark .dk-tl__t { color: rgba(255,255,255,.72); }
+.dk .dk-tl--dark .dk-tl__d { color: var(--dk-fg-cool-soft); }
+/* 강조 칸 — 어두운 면 위에서는 진한 코발트가 배경과 덜 갈린다. 밝은 쪽 코발트를 쓰고
+   글자를 어둡게 뒤집는다(어두운 면 위 글자 전용 토큰이 그 용도다). */
+.dk-tl--dark .dk-tl__it.is-key .dk-tl__card { background: var(--dk-accent-onDark); }
+.dk .dk-tl--dark .dk-tl__it.is-key .dk-tl__h { color: var(--dk-surface-dark); }
+.dk-tl--dark .dk-tl__it.is-key .dk-tl__t { color: rgba(42,42,42,.78); }
+.dk .dk-tl--dark .dk-tl__it.is-key .dk-tl__d { color: rgba(42,42,42,.86); }
+
+@media (max-width: 768px) {
+  .dk-daily__panel { margin-left: 0; width: 100%; }
+}
+/* (2026-08-20 — .dk-daily__row/__badge/__num/__txt 규칙은 숫자 3행이 타임라인으로
+   바뀌면서 쓰는 데가 없어졌다. 마크업에 남은 게 없어 무해하지만 다음에 정리 대상.) */
