@@ -71,3 +71,11 @@
     background: linear-gradient(90deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.48) 60%, rgba(0,0,0,.42) 100%),
                 linear-gradient(to top, rgba(0,0,0,.46) 0%, rgba(0,0,0,0) 70%); }
 }
+
+/* 사진 블록 위 리드 (★2026-08-20) — .dk-ph-split .txt 가 쓰던 값을 그대로 가져왔다.
+   글을 사진 위로 올리면서 필요해진 것이고, 새 값을 짓지 않는다. */
+.page-teachers-phlead { margin-bottom: var(--dk-gap-lg); }
+.page-teachers-phlead h3 { font: var(--dk-title-lg); color: var(--dk-ink);
+  margin: 0 0 10px; letter-spacing: var(--dk-track-snug); }
+.dk .page-teachers-phlead p { font: var(--dk-body-md); color: var(--dk-fg-3);
+  line-height: 1.75; margin: 0; max-width: 680px; }
