@@ -176,7 +176,11 @@
        국어 · 영어(특강) / 수능 대비(집중반) / 과학 · 사회(선택과목) /
        SKY · 의대(선배 멘토링) / (관리형) 자기주도학습
      라벨·설명·아이콘은 감추고, 그 내용은 바로 아래 상세 6칸이 담당한다(번호 01~06이 1:1 대응). */
-  .dk .dk-hx__d, .dk .dk-hx__k, .dk-hx__i, .dk-hx__tl { display: none; }
+  /* ★2026-08-20 회장 지적 — 아이콘은 다시 살린다. PC 에는 컬러 쐐기 안에 아이콘이 있는데
+     모바일만 없어서 같은 그림이 아니었다. 아이콘이 들어가는 자리는 쐐기(컬러 면)이고
+     번호·제목이 들어가는 자리는 그 반대쪽 흰 부분이라, 서로 자리를 뺏지 않는다.
+     처음에 같이 숨긴 건 텍스트 자리를 걱정한 것이었는데 실제로는 겹치지 않는다. */
+  .dk .dk-hx__d, .dk .dk-hx__k, .dk-hx__tl { display: none; }
 .dk .dk-hx__t { font-size: clamp(11px,3vw,14px); line-height: 1.2;
     letter-spacing: -0.7px; margin: 3px 0 0; }
 .dk-hx__in, .dk-hx--dr .dk-hx__in, .dk-hx--dl .dk-hx__in, .dk-hx--l .dk-hx__in,
@@ -202,7 +206,9 @@
 }
 /* 아주 좁은 화면(≤400px) — 아이콘까지 빼고 번호만. 그 아래가 안 뭉개지는 최소 조건이다 */
 @media (max-width: 400px) {
-.dk-hx__i { display: none; }
+/* ★2026-08-20 — 여기에도 아이콘 숨김이 또 있었다(≤880 에 이어 두 번째).
+   회장 지적대로 PC 와 같게 살린다. 대신 이 폭에선 육각형이 112px 라 아이콘을 한 단 줄인다. */
+.dk-hx__i { width: 14px; height: 14px; }
 .dk-hx__n { font-size: 17px; }
 .dk .dk-hx__ht { font-size: 12.5px; }
 }

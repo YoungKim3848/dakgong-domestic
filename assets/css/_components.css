@@ -383,8 +383,12 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
 .dk-ds:nth-child(even)::after { left: -14px; }
 }
 @media (max-width: 520px) {
-.dk-ds__hd { grid-template-columns: auto auto; gap: 4px 12px; }
-.dk-ds__tw { grid-column: 1 / -1; grid-row: 2; margin-top: 10px; }
+/* ★2026-08-20 회장 지적 — 여기서 헤더를 두 줄로 내리던 것을 뺐다.
+   「01 · 아이콘 · 수학」 셋이 한 줄에 좌측정렬로 붙는 게 낫다는 판단.
+   521~820px 구간이 이미 그 배치(auto auto 1fr, 제목이 3열)라, 이 구간의 덮어쓰기만
+   지우면 폰까지 그대로 내려온다 — 새 규칙을 짜지 않는다.
+   ⚠️ 제목이 긴 칸(SKY · 의대 선배 멘토링 / 관리형 자기주도학습)은 3열 안에서 2줄로 접힌다.
+      keep-all 이 걸려 있어 어절 단위로만 끊긴다. 320px 까지 넘침 0 확인. */
 .dk-ds__rows { grid-template-columns: 1fr; }
 .dk-ds__rows dt { padding: 12px 0 0; }
 .dk-ds__rows dd { padding: 4px 0 12px; border-top: 0; }
