@@ -142,6 +142,11 @@
 .dk-bg-video-section .dk-bg-video-placeholder {
   background-image: url("../images/hero/dakgong-domestic-hero-consulting-1920.webp");
   background-size: cover; background-position: center 42%;
+  /* ★2026-08-20 — 원본에서 왼쪽 24% 를 잘라 낸 파일을 쓴다. 7/30 「컨설턴트 실명·사진
+     게재 안 함, 인물 노출 없이 시스템만」 판단 때문이다. 무대 위 발표자가 그 구간에 있었다.
+     ⚠️ background-position 으로는 못 뺀다 — 이 히어로는 이미지가 폭을 꽉 채우고 세로만
+        잘리는 구조라 가로 위치 값이 아무 효과가 없다(72%/84%/94% 가 전부 같은 그림).
+        파일 자체를 자르는 것 말고 방법이 없다. */
 }
 @media (max-width: 820px) {
   .dk-bg-video-section .dk-bg-video-placeholder {

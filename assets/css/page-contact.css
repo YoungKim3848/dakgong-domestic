@@ -4,14 +4,30 @@
 /* CONTACT 전용 회색 히어로 — 실측: bg #F9F9F9, 높이 175px(헤더 70px 아래), 좌측정렬,
    제목만(부제 없음), Paperlogy 800 36px 잉크색. 다른 페이지의 .dk-bg-video-section
    (영상배경 600px 코발트그라디언트)과 완전히 다른, 원본에도 별도로 존재하는 스타일. */
-.dk-contact-hero { background: #fafafa; padding: 60px 0; }
+/* ★2026-08-20 회장 지시 — 여기에도 배경 이미지.
+   ⚠️ 다른 5페이지 히어로는 600px 인데 여긴 111~163px 짜리 얇은 띠다. 높이는 안 건드린다 —
+      "배경을 이미지로"는 지시지만 "히어로를 600px 로 키워라"는 지시가 아니다.
+   그래서 3:2 원본이 13:1 가까이 잘린다. 인물이 읽힐 크기가 아니므로 피사체가 또렷한 컷 대신
+   결이 고른 야외 컷(daily-life-02)을 골랐다.
+   글자색을 잉크 → 흰색으로 바꾼다. 사진 위에 어두운 잉크를 두면 어떤 사진에서도 안 읽힌다. */
+.dk-contact-hero { position: relative; padding: 60px 0; background: #fafafa;
+  background-image: url("../images/hero/dakgong-domestic-hero-contact-1920.webp");
+  background-size: cover; background-position: center 22%; overflow: hidden; }
+  /* 55% 로 잡으면 인물 상반신이 가로로 잘려 어수선하다. 111px 짜리 띠에서는 사람이
+     읽힐 크기가 아니므로, 결이 고른 위쪽(나무·잔디)이 오게 22% 로 올린다. */
+.dk-contact-hero::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.38) 45%, rgba(0,0,0,.10) 75%); }
+.dk-contact-hero > .dk-wrap { position: relative; z-index: 1; }
 .dk-contact-hero h1 {
   margin: 0; font-family: 'Paperlogy', sans-serif; font-weight: 800; font-size: 36px;
-  color: var(--dk-ink); letter-spacing: var(--dk-track-snug);
+  color: #fff; letter-spacing: var(--dk-track-snug);
 }
 @media (max-width: 768px) {
-.dk-contact-hero { padding: 40px 0; }
+.dk-contact-hero { padding: 40px 0;
+  background-image: url("../images/hero/dakgong-domestic-hero-contact-1200.webp"); }
 .dk-contact-hero h1 { font-size: 26px; }
+.dk-contact-hero::after {
+  background: linear-gradient(90deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.48) 60%, rgba(0,0,0,.42) 100%); }
 }
 /* 폼 위 안내 — 원본은 센터정렬 제목(36px/700)+회색 부제(18px/#555), 에어브로우 라벨 없음 */
 .dk-contact-formhead { text-align: center; margin-bottom: var(--dk-gap-lg); }

@@ -241,3 +241,14 @@
     background: linear-gradient(90deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.48) 60%, rgba(0,0,0,.42) 100%),
                 linear-gradient(to top, rgba(0,0,0,.46) 0%, rgba(0,0,0,0) 70%); }
 }
+
+/* ── 사진 블록 위 리드 (★2026-08-20) ────────────────────────────────
+   .dk-ph-split(글 좌 + 사진 우)을 버리고 글을 사진 위로 올리면서 필요해진 것.
+   값은 .dk-ph-split .txt 가 쓰던 것을 그대로 가져왔다 — title-lg / body-md. 새로 안 짓는다. */
+.page-curriculum-phlead { margin-bottom: var(--dk-gap-lg); }
+.page-curriculum-phlead h3 { font: var(--dk-title-lg); color: var(--dk-ink);
+  margin: 0 0 10px; letter-spacing: var(--dk-track-snug); }
+.dk .page-curriculum-phlead p { font: var(--dk-body-md); color: var(--dk-fg-3);
+  line-height: 1.75; margin: 0; max-width: 680px; }
+
+/* ── 컨설팅 히어로 크롭 (★2026-08-20) ── 는 page-consulting.css 에 있다. */
