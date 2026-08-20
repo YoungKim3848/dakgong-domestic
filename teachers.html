@@ -186,43 +186,63 @@
       <h2 class="dk-h2">가르치는 선생님 + 먼저 그 길을 경험한 선배 멘토</h2>
     </div>
 
-    <div class="dk-g5" data-reveal="stagger">
-      <div class="dk-card5">
-        <div class="num">01</div>
-        <p class="lead">대표 수학 선생님</p>
-        <p class="sub">담당: 수학 총괄·반 편성<br>핵심: 개념·문제풀이·오답관리</p>
-      </div>
-      <div class="dk-card5">
-        <div class="num">02</div>
-        <p class="lead">수학 전담 선생님</p>
-        <p class="sub">담당: 중등·고등 수학 수업<br>핵심: 진도 점검·질문 해결</p>
-      </div>
-      <div class="dk-card5">
-        <div class="num">03</div>
-        <p class="lead">SKY 선배 멘토</p>
-        <p class="sub">담당: 학습 루틴 멘토링<br>핵심: 공부법·시간관리</p>
-      </div>
-      <div class="dk-card5">
-        <div class="num">04</div>
-        <p class="lead">의치한약 선배 멘토</p>
-        <p class="sub">담당: 상위권 입시 멘토링<br>핵심: 목표 설정·멘탈 관리</p>
-      </div>
-      <div class="dk-card5">
-        <div class="num">05</div>
-        <p class="lead">수능 경험 멘토</p>
-        <p class="sub">담당: 모의고사·오답 멘토링<br>핵심: 실전 루틴·오답 전략</p>
-      </div>
-      <div class="dk-card5">
-        <div class="num">06</div>
-        <p class="lead">생활관리 멘토</p>
-        <p class="sub">담당: 기숙 생활·자습 관리<br>핵심: 생활 패턴·집중 습관</p>
-      </div>
-    </div>
+    <!-- ★2026-08-20 회장 지시 — 레퍼런스(큰 숫자가 링에 걸치고 링 안에 내용) 문법 이식.
+         모바일 세로 1열 / PC 3열 2행.
+         ★색을 항목마다 다르게 하지 않는다. 6개가 선생님 2 + 멘토 4 로 갈리므로 그 두 계열로만
+           나눈다 — 섹션 제목이 이미 그 둘을 말한다. 무지개로 칠하면 의미가 없고,
+           회장 색약 기준에서도 색상 차이보다 명도 차이가 안전하다(코발트 / 다크 두 단).
+         ⚠️ 원 안에 글을 넣는 구조라 좌측은 숫자가 겹치는 만큼 더 비운다(padding-left). -->
+    <ol class="dk-role">
+      <li class="dk-role__it dk-role__it--t" data-reveal>
+        <span class="dk-role__n">01</span>
+        <div class="dk-role__ring">
+          <svg class="dk-role__i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="M6.5 16.5c3-9 6 3 11-8"/></svg>
+          <p class="dk-role__t">대표 수학 선생님</p>
+          <p class="dk-role__d"><b>담당</b> 수학 총괄 · 반 편성<br><b>핵심</b> 개념 · 문제풀이 · 오답관리</p>
+        </div>
+      </li>
+      <li class="dk-role__it dk-role__it--t" data-reveal>
+        <span class="dk-role__n">02</span>
+        <div class="dk-role__ring">
+          <svg class="dk-role__i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v14M12 6C9 3.5 6 4 4 4.5V18c2-.5 5-1 8 1"/><path d="M12 6c3-2.5 6-2 8-1.5V18c-2-.5-5-1-8 1"/></svg>
+          <p class="dk-role__t">수학 전담 선생님</p>
+          <p class="dk-role__d"><b>담당</b> 중등 · 고등 수학 수업<br><b>핵심</b> 진도 점검 · 질문 해결</p>
+        </div>
+      </li>
+      <li class="dk-role__it dk-role__it--m" data-reveal>
+        <span class="dk-role__n">03</span>
+        <div class="dk-role__ring">
+          <svg class="dk-role__i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M6.5 10.5V16c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6v-5.5"/></svg>
+          <p class="dk-role__t">SKY 선배 멘토</p>
+          <p class="dk-role__d"><b>담당</b> 학습 루틴 멘토링<br><b>핵심</b> 공부법 · 시간관리</p>
+        </div>
+      </li>
+      <li class="dk-role__it dk-role__it--m" data-reveal>
+        <span class="dk-role__n">04</span>
+        <div class="dk-role__ring">
+          <svg class="dk-role__i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.3-7-9.4A4.1 4.1 0 0112 9a4.1 4.1 0 017 2.6c0 5.1-7 9.4-7 9.4z"/></svg>
+          <p class="dk-role__t">의치한약 선배 멘토</p>
+          <p class="dk-role__d"><b>담당</b> 상위권 입시 멘토링<br><b>핵심</b> 목표 설정 · 멘탈 관리</p>
+        </div>
+      </li>
+      <li class="dk-role__it dk-role__it--m" data-reveal>
+        <span class="dk-role__n">05</span>
+        <div class="dk-role__ring">
+          <svg class="dk-role__i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 3h6"/></svg>
+          <p class="dk-role__t">수능 경험 멘토</p>
+          <p class="dk-role__d"><b>담당</b> 모의고사 · 오답 멘토링<br><b>핵심</b> 실전 루틴 · 오답 전략</p>
+        </div>
+      </li>
+      <li class="dk-role__it dk-role__it--m" data-reveal>
+        <span class="dk-role__n">06</span>
+        <div class="dk-role__ring">
+          <svg class="dk-role__i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5L12 4l8 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9.5 21v-6h5v6"/></svg>
+          <p class="dk-role__t">생활관리 멘토</p>
+          <p class="dk-role__d"><b>담당</b> 기숙 생활 · 자습 관리<br><b>핵심</b> 생활 패턴 · 집중 습관</p>
+        </div>
+      </li>
+    </ol>
 
-    <div class="dk-callout" data-reveal>
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.5" r="0.9" fill="currentColor" stroke="none"/></svg>
-      <p>선생님·멘토 개별 소개(이름·학교/전공·사진)는 실제 배정이 확정되는 대로 순차 공개될 예정입니다.</p>
-    </div>
   </div>
 </section>
 
