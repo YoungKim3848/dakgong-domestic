@@ -78,7 +78,20 @@
      1) 히어로 + 슬로건
 ══════════════════════════════════════════ -->
 <section class="dk-bg-video-section">
+  <!-- ★2026-08-20 회장 지시 — 실물 배경 영상 투입. 원본 `홈 히어로.mov`(3840x2160 HEVC,
+       8.4초, 17.5Mbps, 18MB)를 웹용으로 다시 인코딩했다.
+       · H.264 mp4 — HEVC(.mov)는 브라우저가 거의 못 읽는다
+       · 오디오 트랙 제거 — 배경 영상이라 어차피 muted 다. 안 지우면 헛되이 용량만 먹는다
+       · faststart — 헤더를 앞으로 보내 다 받기 전에 재생이 시작된다
+       · 1920 / 1280 두 벌 (2.3MB / 1.06MB). 좁은 화면에 4K 를 내려보낼 이유가 없다
+       외부 CDN 은 안 쓴다 — 저장소에 담아 같은 도메인에서 서빙(회장 지시, 세션 5).
+       placeholder 는 지우지 않고 영상 뒤에 남긴다 — 영상이 못 뜨는 환경의 바닥이다. -->
   <div class="dk-bg-video-placeholder"></div>
+  <video class="dk-bg-video" autoplay muted loop playsinline preload="auto"
+         poster="assets/video/dakgong-domestic-hero-poster.webp" aria-hidden="true" tabindex="-1">
+    <source src="assets/video/dakgong-domestic-hero-1920.mp4" media="(min-width: 768px)" type="video/mp4">
+    <source src="assets/video/dakgong-domestic-hero-1280.mp4" type="video/mp4">
+  </video>
   <div class="dk-bg-video-content">
     <!-- ★2026-08-03: h2 → h1. 홈에만 h1 이 없어서 문서 최상위 제목이 비어 있었다.
          리드도 홈 전용 .dk-hero-lead-plain → 공용 .lead 로 통일(값은 이미 동일).
@@ -113,12 +126,14 @@
 <section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
     <!-- ★2026-07-29 회장 지시 — 원칙 블록을 위로, 캠프 소개 블록을 아래로 순서 교체.
-         구분선도 아래 블록의 border-top으로 옮긴다(.dk-brand-intro--after). -->
-    <span class="dk-label">PHILOSOPHY | 닥공캠프가 지키는 원칙</span>
-    <h2 class="dk-h2">이 방학, 성적을 바꾸는 건<br>재능이 아니라 학습량입니다</h2>
-    <p class="page-index-intro">
-      방학은 입시의 흐름을 결정짓는 시기입니다. 닥공캠프는 진짜 공부하고자 하는 학생들을 위한 국내 기숙형 스파르타 입시캠프로, 방학 동안 학습 흐름이 끊기지 않도록 최적의 학습 환경을 제공합니다.
-    </p>
+         구분선도 아래 블록의 border-top으로 옮긴다(.dk-brand-intro--after).
+         ★2026-08-20 회장 지시 — 그 둘을 다시 맞바꾼다. 캠프 소개가 위, 원칙이 아래.
+         사진은 자리 그대로(가운데) 둔다. 8/17 지시(사진이 두 덩어리를 갈라 주므로
+         구분선은 두지 않는다)는 위치가 바뀌어도 그대로 유효하다 → --lead 도 선 없음. -->
+    <div class="dk-brand-intro dk-brand-intro--lead" data-reveal>
+      <p class="dk-brand-kicker">닥공 Summer-Winter 스파르타 입시캠프!</p>
+      <p class="dk-brand-sub">수많은 성공사례를 기반으로 만든 검증된 학습 시스템, 학생의 성적을 완전히 바꿉니다.</p>
+    </div>
 
     <figure class="page-index-philo-shot" data-reveal>
       <img src="assets/images/activity/dakgong-domestic-class-01-content.webp"
@@ -126,9 +141,12 @@
            loading="lazy" width="1600" height="1068">
     </figure>
 
-    <div class="dk-brand-intro dk-brand-intro--after" data-reveal>
-      <p class="dk-brand-kicker">닥공 Summer-Winter 스파르타 입시캠프!</p>
-      <p class="dk-brand-sub">수많은 성공사례를 기반으로 만든 검증된 학습 시스템, 학생의 성적을 완전히 바꿉니다.</p>
+    <div class="page-index-philo" data-reveal>
+      <span class="dk-label">PHILOSOPHY | 닥공캠프가 지키는 원칙</span>
+      <h2 class="dk-h2">이 방학, 성적을 바꾸는 건<br>재능이 아니라 학습량입니다</h2>
+      <p class="page-index-intro">
+        방학은 입시의 흐름을 결정짓는 시기입니다. 닥공캠프는 진짜 공부하고자 하는 학생들을 위한 국내 기숙형 스파르타 입시캠프로, 방학 동안 학습 흐름이 끊기지 않도록 최적의 학습 환경을 제공합니다.
+      </p>
     </div>
   </div>
 </section>
@@ -332,7 +350,7 @@
 ══════════════════════════════════════════ -->
 <section class="dk-sec dk-perf">
   <div class="dk-wrap">
-    <p class="dk-perf-title">[숫자가 증명하는 닥공교육그룹 <span style="white-space:nowrap"><em>20년의 신화</em>]</span></p>
+    <p class="dk-perf-title">숫자가 증명하는 닥공교육그룹 <span style="white-space:nowrap"><em>20년의 신화</em></span></p>
     <!-- ★2026-07-28 재설계 — 막대·면적 폐기. 길이=인원수로 매핑하면 1,500이 무조건 제일 크고
          SKY가 제일 작아져 소구가 뒤집힌다. 허브 다이어그램은 값 비교용 도형이 아니므로
          크기를 "핵심/확장 위계"에 쓸 수 있다. 실제 인원은 각 요소 안에 그대로 적혀 있다. -->
@@ -372,10 +390,42 @@
     </div>
     <div class="dk-vi-grid" data-reveal="stagger">
       <!-- ★2026-07-28 — 균등 3칸 → 큰1+작은2 비대칭. 캡션은 카드 위로 올라탄다.
-           실물 영상이 들어와도 골격을 다시 안 짜도 되도록 지금 잡아둔다. -->
-      <div class="dk-vi-card"><div class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="dk-vi-cap">학부모 인터뷰 <span style="opacity:.7">· 권장 16:11</span></p></div>
-      <div class="dk-vi-card"><div class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="dk-vi-cap">수료생 인터뷰 <span style="opacity:.7">· 권장 16:9</span></p></div>
-      <div class="dk-vi-card"><div class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="dk-vi-cap">학부모 인터뷰 <span style="opacity:.7">· 권장 16:9</span></p></div>
+           실물 영상이 들어와도 골격을 다시 안 짜도 되도록 지금 잡아둔다.
+           ★2026-08-20 회장 지시 — 3칸 비대칭 폐기. 2개만, 좌우 아니라 상하로 쌓는다.
+           이유: 좌우로 놓으면 두 썸네일이 나란히 놓여 통일 안 된 게 바로 드러난다.
+           상하면 둘이 같은 폭·같은 비율이라 규격이 하나가 된다.
+           그래서 규격 표기도 둘 다 16:9 하나로 통일했다(영상 원본 비율 = 안 자름). -->
+      <!-- ★2026-08-20 회장 지시 — https://youtu.be/MbH8Uae25y0 를 학부모 칸에.
+           유튜브 제목은 「국내캠프 홈피 인터뷰」로 대상 표기가 없다(닥공캠프 채널, 3분 29초).
+           회장이 학부모 칸으로 지정했으므로 캡션은 그대로 두되,
+           alt 는 제목이 보증하는 범위(닥공캠프 인터뷰 영상)까지만 쓴다. -->
+      <div class="dk-vi-card is-filled" data-yt="MbH8Uae25y0">
+        <button class="dk-vi-btn" type="button" aria-label="닥공캠프 학부모 인터뷰 영상 재생 — 3분 29초">
+          <img src="assets/images/video/dakgong-domestic-interview-parent-1280.webp"
+               srcset="assets/images/video/dakgong-domestic-interview-parent-700.webp 700w, assets/images/video/dakgong-domestic-interview-parent-1280.webp 1280w"
+               sizes="(max-width: 1023px) 92vw, 880px" width="1280" height="720"
+               loading="lazy" decoding="async"
+               alt="닥공캠프 인터뷰 영상 미리보기">
+          <span class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+        <p class="dk-vi-cap">학부모 인터뷰 <span style="opacity:.7">· 3분 29초</span></p>
+      </div>
+      <!-- ★2026-08-20 회장 지시 — 실물 영상 1개 투입. https://youtu.be/heLX33X-v9o
+           유튜브 제목이 「닥공캠프 졸업생 아이들의 인터뷰 입니다.」라 학부모가 아니라
+           수료생 칸에 넣었다(닥공캠프 채널, 4분 54초).
+           썸네일은 유튜브 maxresdefault(1280x720)를 받아 저장소에 담았다 — 외부 CDN 안 쓴다.
+           1280x720 = 16:9 라 칸 비율과 정확히 같다(안 잘림). -->
+      <div class="dk-vi-card is-filled" data-yt="heLX33X-v9o">
+        <button class="dk-vi-btn" type="button" aria-label="닥공캠프 졸업생 인터뷰 영상 재생 — 4분 54초">
+          <img src="assets/images/video/dakgong-domestic-interview-graduate-1280.webp"
+               srcset="assets/images/video/dakgong-domestic-interview-graduate-700.webp 700w, assets/images/video/dakgong-domestic-interview-graduate-1280.webp 1280w"
+               sizes="(max-width: 1023px) 92vw, 1280px" width="1280" height="720"
+               loading="lazy" decoding="async"
+               alt="닥공캠프 졸업생 인터뷰 영상 미리보기">
+          <span class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+        <p class="dk-vi-cap">수료생 인터뷰 <span style="opacity:.7">· 4분 54초</span></p>
+      </div>
     </div>
   </div>
 </section>
@@ -399,51 +449,51 @@
   </div>
   <div class="dk-review-scroll">
     <div class="dk-review-scroll-track">
-      <button class="dk-tr-shot" type="button" data-i="1" aria-label="후기 1번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-01-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 1"></button>
-      <button class="dk-tr-shot" type="button" data-i="2" aria-label="후기 2번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-02-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 2"></button>
-      <button class="dk-tr-shot" type="button" data-i="3" aria-label="후기 3번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-03-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 3"></button>
-      <button class="dk-tr-shot" type="button" data-i="4" aria-label="후기 4번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-04-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 4"></button>
-      <button class="dk-tr-shot" type="button" data-i="5" aria-label="후기 5번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-05-card.webp" width="470" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 5"></button>
-      <button class="dk-tr-shot" type="button" data-i="6" aria-label="후기 6번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-06-card.webp" width="472" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 6"></button>
-      <button class="dk-tr-shot" type="button" data-i="7" aria-label="후기 7번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-07-card.webp" width="428" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 7"></button>
-      <button class="dk-tr-shot" type="button" data-i="8" aria-label="후기 8번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-08-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 8"></button>
-      <button class="dk-tr-shot" type="button" data-i="9" aria-label="후기 9번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-09-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 9"></button>
-      <button class="dk-tr-shot" type="button" data-i="10" aria-label="후기 10번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-10-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 10"></button>
-      <button class="dk-tr-shot" type="button" data-i="11" aria-label="후기 11번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-11-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 11"></button>
-      <button class="dk-tr-shot" type="button" data-i="12" aria-label="후기 12번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-12-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 12"></button>
-      <button class="dk-tr-shot" type="button" data-i="13" aria-label="후기 13번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-13-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 13"></button>
-      <button class="dk-tr-shot" type="button" data-i="14" aria-label="후기 14번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-14-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 14"></button>
-      <button class="dk-tr-shot" type="button" data-i="15" aria-label="후기 15번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-15-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 15"></button>
-      <button class="dk-tr-shot" type="button" data-i="16" aria-label="후기 16번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-16-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 16"></button>
-      <button class="dk-tr-shot" type="button" data-i="17" aria-label="후기 17번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-17-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 17"></button>
-      <button class="dk-tr-shot" type="button" data-i="18" aria-label="후기 18번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-18-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 18"></button>
-      <button class="dk-tr-shot" type="button" data-i="19" aria-label="후기 19번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-19-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 19"></button>
-      <button class="dk-tr-shot" type="button" data-i="20" aria-label="후기 20번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-20-card.webp" width="439" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 20"></button>
-      <button class="dk-tr-shot" type="button" data-i="21" aria-label="후기 21번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-21-card.webp" width="733" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 21"></button>
-      <button class="dk-tr-shot" type="button" data-i="22" aria-label="후기 22번 크게 보기"><img src="assets/images/review/dakgong-domestic-review-22-card.webp" width="355" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 22"></button>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-01-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 1"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-02-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 2"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-03-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 3"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-04-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 4"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-05-card.webp" width="470" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 5"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-06-card.webp" width="472" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 6"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-07-card.webp" width="428" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 7"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-08-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 8"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-09-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 9"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-10-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 10"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-11-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 11"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-12-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 12"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-13-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 13"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-14-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 14"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-15-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 15"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-16-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 16"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-17-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 17"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-18-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 18"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-19-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 19"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-20-card.webp" width="439" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 20"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-21-card.webp" width="733" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 21"></div>
+      <div class="dk-tr-shot"><img src="assets/images/review/dakgong-domestic-review-22-card.webp" width="355" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 22"></div>
       <!-- 이음새 없는 루프용 반복 -->
-      <button class="dk-tr-shot" type="button" data-i="1" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-01-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 1"></button>
-      <button class="dk-tr-shot" type="button" data-i="2" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-02-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 2"></button>
-      <button class="dk-tr-shot" type="button" data-i="3" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-03-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 3"></button>
-      <button class="dk-tr-shot" type="button" data-i="4" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-04-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 4"></button>
-      <button class="dk-tr-shot" type="button" data-i="5" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-05-card.webp" width="470" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 5"></button>
-      <button class="dk-tr-shot" type="button" data-i="6" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-06-card.webp" width="472" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 6"></button>
-      <button class="dk-tr-shot" type="button" data-i="7" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-07-card.webp" width="428" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 7"></button>
-      <button class="dk-tr-shot" type="button" data-i="8" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-08-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 8"></button>
-      <button class="dk-tr-shot" type="button" data-i="9" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-09-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 9"></button>
-      <button class="dk-tr-shot" type="button" data-i="10" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-10-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 10"></button>
-      <button class="dk-tr-shot" type="button" data-i="11" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-11-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 11"></button>
-      <button class="dk-tr-shot" type="button" data-i="12" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-12-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 12"></button>
-      <button class="dk-tr-shot" type="button" data-i="13" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-13-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 13"></button>
-      <button class="dk-tr-shot" type="button" data-i="14" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-14-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 14"></button>
-      <button class="dk-tr-shot" type="button" data-i="15" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-15-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 15"></button>
-      <button class="dk-tr-shot" type="button" data-i="16" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-16-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 16"></button>
-      <button class="dk-tr-shot" type="button" data-i="17" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-17-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 17"></button>
-      <button class="dk-tr-shot" type="button" data-i="18" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-18-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 18"></button>
-      <button class="dk-tr-shot" type="button" data-i="19" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-19-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 19"></button>
-      <button class="dk-tr-shot" type="button" data-i="20" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-20-card.webp" width="439" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 20"></button>
-      <button class="dk-tr-shot" type="button" data-i="21" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-21-card.webp" width="733" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 21"></button>
-      <button class="dk-tr-shot" type="button" data-i="22" aria-hidden="true" tabindex="-1"><img src="assets/images/review/dakgong-domestic-review-22-card.webp" width="355" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 22"></button>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-01-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 1"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-02-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 2"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-03-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 3"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-04-card.webp" width="351" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 4"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-05-card.webp" width="470" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 5"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-06-card.webp" width="472" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 6"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-07-card.webp" width="428" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 7"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-08-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 8"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-09-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 9"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-10-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 10"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-11-card.webp" width="370" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 11"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-12-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 12"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-13-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 13"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-14-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 14"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-15-card.webp" width="360" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 15"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-16-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 16"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-17-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 17"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-18-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 18"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-19-card.webp" width="342" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 19"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-20-card.webp" width="439" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 20"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-21-card.webp" width="733" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 21"></div>
+      <div class="dk-tr-shot" aria-hidden="true"><img src="assets/images/review/dakgong-domestic-review-22-card.webp" width="355" height="760" decoding="async" alt="닥공캠프 학부모·수료생이 보내온 카카오톡 메시지 캡처 22"></div>
     </div>
   </div>
 </section>
@@ -468,7 +518,7 @@
           <p class="dk-pt-d">수학을 중심축으로 국어·영어특강, 수능대비, 선택과목까지 입시에 필요한 과목 밸런스를 완벽하게 책임집니다.</p>
           <a class="dk-pt-link" href="curriculum.html">학습 시스템 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="dk-pt-vis"><div class="card is-filled"><img src="assets/images/point/dakgong-domestic-point-01-1200.webp" srcset="assets/images/point/dakgong-domestic-point-01-700.webp 700w, assets/images/point/dakgong-domestic-point-01-1200.webp 1200w" sizes="(max-width: 640px) 88vw, 45vw" width="1200" height="801" loading="lazy" decoding="async" alt="강사가 화이트보드에 수학 함수 풀이를 적으며 수업하는 모습"></div><span class="num">01</span></div>
+        <div class="dk-pt-vis"><div class="card is-filled"><img src="assets/images/point/dakgong-domestic-point-01-1200.webp" srcset="assets/images/point/dakgong-domestic-point-01-700.webp 700w, assets/images/point/dakgong-domestic-point-01-1200.webp 1200w" sizes="(max-width: 640px) 88vw, 45vw" width="1200" height="801" loading="lazy" decoding="async" alt="강사가 화이트보드에 판서하며 수업하고 학생들이 자리에 앉아 듣는 모습"></div></div>
       </div>
     </div>
 
@@ -480,7 +530,7 @@
           <p class="dk-pt-d">닥공을 직접 버텨본 사람만이 학생의 흐트러지는 순간을 잡을 수 있습니다. 가장 가깝고 강력한 입시 페이스메이커입니다.</p>
           <a class="dk-pt-link" href="teachers.html">선생님·멘토 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="dk-pt-vis"><div class="card is-filled"><img src="assets/images/point/dakgong-domestic-point-02-1200.webp" srcset="assets/images/point/dakgong-domestic-point-02-700.webp 700w, assets/images/point/dakgong-domestic-point-02-1200.webp 1200w" sizes="(max-width: 640px) 88vw, 45vw" width="1200" height="801" loading="lazy" decoding="async" alt="스태프 조끼를 입은 멘토가 학생 옆에 앉아 문제 풀이를 봐 주는 모습"></div><span class="num">02</span></div>
+        <div class="dk-pt-vis"><div class="card is-filled"><img src="assets/images/point/dakgong-domestic-point-02-1200.webp" srcset="assets/images/point/dakgong-domestic-point-02-700.webp 700w, assets/images/point/dakgong-domestic-point-02-1200.webp 1200w" sizes="(max-width: 640px) 88vw, 45vw" width="1200" height="801" loading="lazy" decoding="async" alt="스태프 조끼를 입은 멘토가 학생 옆에 앉아 문제 풀이를 봐 주는 모습"></div></div>
       </div>
     </div>
 
@@ -492,7 +542,7 @@
           <p class="dk-pt-d">계획만 거창한 자습은 없습니다. 목표 제출 → 상시 순회 확인 → 질문·보완 → 완료량 점검까지, 실행력을 담보하는 환경입니다.</p>
           <a class="dk-pt-link" href="self-study.html">관리형 자습 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="dk-pt-vis"><div class="card is-filled"><img src="assets/images/point/dakgong-domestic-point-03-1200.webp" srcset="assets/images/point/dakgong-domestic-point-03-700.webp 700w, assets/images/point/dakgong-domestic-point-03-1200.webp 1200w" sizes="(max-width: 640px) 88vw, 45vw" width="1200" height="801" loading="lazy" decoding="async" alt="자습 중인 학생들 사이를 담당자가 돌며 질문을 받는 모습"></div><span class="num">03</span></div>
+        <div class="dk-pt-vis"><div class="card is-filled"><img src="assets/images/point/dakgong-domestic-point-03-1200.webp" srcset="assets/images/point/dakgong-domestic-point-03-700.webp 700w, assets/images/point/dakgong-domestic-point-03-1200.webp 1200w" sizes="(max-width: 640px) 88vw, 45vw" width="1200" height="801" loading="lazy" decoding="async" alt="자습 중인 학생들 사이를 담당자가 돌며 질문을 받는 모습"></div></div>
       </div>
     </div>
 
@@ -504,7 +554,7 @@
           <p class="dk-pt-d">닥공캠프는 수업만 하고 끝나는 캠프가 아닙니다. 생활·건강·식단·안전까지 입체적으로 케어하는 기숙형 토탈 관리 시스템입니다.</p>
           <a class="dk-pt-link" href="life-care.html">생활환경 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="dk-pt-vis"><div class="card is-filled"><img src="assets/images/point/dakgong-domestic-point-04-1200.webp" srcset="assets/images/point/dakgong-domestic-point-04-700.webp 700w, assets/images/point/dakgong-domestic-point-04-1200.webp 1200w" sizes="(max-width: 640px) 88vw, 45vw" width="1200" height="801" loading="lazy" decoding="async" alt="학생들이 야외 잔디밭에 모여 다 함께 스트레칭하는 모습"></div><span class="num">04</span></div>
+        <div class="dk-pt-vis"><div class="card is-filled"><img src="assets/images/point/dakgong-domestic-point-04-1200.webp" srcset="assets/images/point/dakgong-domestic-point-04-700.webp 700w, assets/images/point/dakgong-domestic-point-04-1200.webp 1200w" sizes="(max-width: 640px) 88vw, 45vw" width="1200" height="801" loading="lazy" decoding="async" alt="학생들이 야외 잔디밭에 모여 다 함께 스트레칭하는 모습"></div></div>
       </div>
     </div>
 
@@ -518,7 +568,7 @@
           <p class="dk-pt-d">캠프에서의 노력이 확실한 결과로 이어지도록, 대치동 프리미엄 컨설팅으로 최적의 입시 전략을 완성합니다.</p>
           <a class="dk-pt-link" href="consulting.html">입시 컨설팅 자세히 보기 <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.2" fill="none"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="dk-pt-vis"><div class="card is-filled"><img src="assets/images/point/dakgong-domestic-point-05-1200.webp" srcset="assets/images/point/dakgong-domestic-point-05-700.webp 700w, assets/images/point/dakgong-domestic-point-05-1200.webp 1200w" sizes="(max-width: 640px) 88vw, 45vw" width="1200" height="801" loading="lazy" decoding="async" alt="컨설턴트가 노트북 화면 자료를 짚어 가며 상담하는 모습"></div><span class="num">05</span></div>
+        <div class="dk-pt-vis"><div class="card is-filled"><img src="assets/images/point/dakgong-domestic-point-05-1200.webp" srcset="assets/images/point/dakgong-domestic-point-05-700.webp 700w, assets/images/point/dakgong-domestic-point-05-1200.webp 1200w" sizes="(max-width: 640px) 88vw, 45vw" width="1200" height="801" loading="lazy" decoding="async" alt="컨설턴트가 노트북 화면 자료를 짚어 가며 상담하는 모습"></div></div>
       </div>
     </div>
   </div>
@@ -636,5 +686,6 @@
 <script src="assets/js/nav.js"></script>
 <script src="assets/js/reveal.js"></script>
 <script src="assets/js/review.js"></script>
+<script src="assets/js/video.js"></script>
 </body>
 </html>

@@ -17,6 +17,17 @@
   padding: clamp(28px,3.5vw,40px) 0 0;
   border-bottom: none;
 }
+/* ★2026-08-20 회장 지시 — 캠프 소개 블록이 다시 위로, PHILOSOPHY 가 아래로.
+   위로 올라왔지만 구분선은 두지 않는다 — 바로 아래가 사진이라 8/17 과 같은 상황
+   (선과 사진이 겹치면 경계가 두 번 그어진다)이기 때문. 아래 여백은 사진의
+   margin-top(gap-xl)과 겹쳐 collapse 되므로 gap-lg 만 둔다. */
+.dk-brand-intro--lead {
+  margin: 0 0 var(--dk-gap-lg);
+  padding: 0;
+  border-bottom: none;
+}
+/* 사진 아래로 내려간 PHILOSOPHY 덩어리 — 사진 위쪽 여백(gap-xl)과 대칭을 맞춘다. */
+.page-index-philo { margin-top: var(--dk-gap-xl); }
 /* ※ 셀렉터에 `.dk `를 붙이는 이유 — tokens-domestic.css의 `.dk p`(특성도 0-1-1)가
    클래스 하나짜리(0-1-0) 규칙을 이겨서 p 요소용 클래스는 그냥 두면 안 먹는다.
    이 파일의 `.dk .lead`와 같은 기존 관례를 따른다. */
@@ -32,6 +43,40 @@
   font: var(--dk-body-lg); color: var(--dk-fg-3); line-height: 1.75;
   margin: 0; max-width: 760px;
 }
+/* ── 히어로 배경 영상 (★2026-08-20 회장 지시) ────────────────────────────
+   🔒 _shell.css 는 안 건드린다 — 실물 영상이 있는 건 홈뿐이라 여기서 얹는다.
+   하위 5페이지는 지금처럼 코발트 그라디언트 placeholder 를 그대로 쓴다. */
+.dk-bg-video { position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0; display: block; }
+/* ★블랙박스 — 필리핀 실측값(0.55/0.25/0.05, facility히어로영상배경.html:25)에서 한 단 올렸다.
+   ⚠️ 필핀 값을 그대로 쓰면 **리드가 4.40:1 로 미달**한다(기준 4.5:1). 그 값은 필핀 영상
+      위에서 검증된 것이지 우리 영상 기준이 아니다 — 우리 히어로가 더 밝다.
+      "레퍼런스 값을 가져온다"가 곧 "통과한다"는 아니라는 걸 여기서 한 번 맞았다.
+   실측(영상 0.2/2/4/6/8초 × 흰 글자가 실제 놓인 줄 상자):
+      0.55/0.25/0.05 → h1 3.74 · 리드 4.40 ✗
+      0.62/0.32/0.08 → h1 4.59 · 리드 5.45 ✓   ← 통과하는 최소값이라 이걸 쓴다
+      0.70/0.42/0.12 → h1 6.07 · 리드 7.18 (통과하지만 영상이 어두워진다)
+   ⚠️ 글자 전체 블록이 아니라 Range.getClientRects() 의 줄 상자로 재야 한다.
+      블록으로 재면 글자 없는 오른쪽 빈 영역의 밝은 영상까지 섞여 실제보다 나쁘게 나온다.
+   ⚠️ _shell.css 의 ::after 와 같은 특성도인데 이 파일이 뒤에 로드돼서 이긴다. */
+.dk-bg-video-section::after {
+  background: linear-gradient(90deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.32) 45%, rgba(0,0,0,.08) 75%); }
+/* 모바일은 글이 화면 폭을 거의 다 쓴다. 가로 그라디언트만 두면 오른쪽 글자가 밝은 영상
+   위에 놓인다 → 아래에서 위로 한 겹 더 덮어 전 폭에서 대비를 확보한다. */
+@media (max-width: 768px) {
+  .dk-bg-video-section::after {
+    background: linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.34) 60%, rgba(0,0,0,.28) 100%),
+                linear-gradient(to top, rgba(0,0,0,.42) 0%, rgba(0,0,0,0) 55%); }
+}
+/* 모션 최소화 설정이면 영상을 재우고 포스터만 남긴다 — 배경에서 계속 움직이는 화면은
+   그 설정을 켠 사람에게 가장 부담되는 종류다. */
+@media (prefers-reduced-motion: reduce) {
+  .dk-bg-video { display: none; }
+  .dk-bg-video-section .dk-bg-video-placeholder {
+    background-image: url("../video/dakgong-domestic-hero-poster.webp");
+    background-size: cover; background-position: center; }
+}
+
 .dk-split {
   display: flex; justify-content: space-between; align-items: flex-end;
   gap: clamp(24px,4vw,48px); flex-wrap: wrap;
@@ -94,10 +139,8 @@
 }
 /* ── 비디오 인터뷰 — 필핀 실사이트 gallery2 실측(우상단 재생버튼 + 좌하단 캡션 오버레이바) 재현.
    PC 3칸 그리드 / 모바일 1칸씩 수직 나열(회장 확정 2026-07-26). */
-.dk-vi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-@media (max-width: 880px) {
-.dk-vi-grid { grid-template-columns: 1fr; }
-}
+/* ★2026-08-20 회장 지시 — 3칸 → 2개 상하. 여기 있던 3열/880px 분기는 지운다.
+   실제 배치는 아래 「⑥ 영상 자리」 한 벌에서만 정한다(정의를 두 군데 두지 않는다). */
 .dk-vi-card {
   position: relative; aspect-ratio: 16/9; border-radius: var(--dk-radius-lg);
   border: 1.5px dashed var(--dk-hairline-cool); overflow: hidden;
@@ -113,68 +156,68 @@
 .dk-vi-card:hover .dk-vi-play { background: var(--dk-accent-red); }
 .dk-vi-card:hover .dk-vi-play svg { fill: #fff; }
 .dk-vi-play svg { width: 14px; height: 14px; fill: var(--dk-fg-cool); }
+/* ── 실물 영상이 들어온 칸 (★2026-08-20) ──────────────────────────────
+   자리표시는 점선 테두리 + 도트 배경인데, 실물이 들어오면 그게 사진 위로 비쳐 지저분해진다.
+   .dk-ph.is-filled 이 이미 쓰는 방식(점선→실선, 배경 제거)을 그대로 따른다. */
+.dk-vi-card.is-filled { border-style: solid; border-color: var(--dk-hairline-soft);
+  background-image: none; }
+/* 파사드 버튼 — 카드 전체가 누를 수 있는 영역이다. <div> 가 아니라 <button> 인 이유는
+   키보드(탭·엔터)와 스크린리더로도 재생이 되어야 하기 때문. */
+.dk-vi-btn { position: absolute; inset: 0; width: 100%; height: 100%;
+  padding: 0; margin: 0; border: 0; background: none; cursor: pointer; display: block; }
+.dk-vi-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* 포커스 링 — 카드 안쪽으로 넣는다(카드가 overflow:hidden 이라 밖에 그리면 잘린다). */
+.dk-vi-btn:focus-visible { outline: 3px solid var(--dk-accent-red); outline-offset: -3px; }
+.dk-vi-card.is-playing { transform: none; }
+.dk-vi-card.is-playing:hover { transform: none; }
+.dk-vi-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+/* 재생이 시작되면 캡션 바는 걷는다 — 유튜브가 자기 컨트롤을 하단에 그려서 겹친다. */
+.dk-vi-card.is-playing .dk-vi-cap { display: none; }
 /* ── 텍스트 리뷰 ── */
 /* ★2026-07-26 회장 지시 — 리뷰 섹션에 필핀 review-carousel.imweb.html의 무한 롤링
    애니메이션 벤치마킹(디자인·모션만). hover 시 정지, 카드 목록을 통째로 한 번 더
    반복해 이음새 없는 루프를 만든다(롤링 자체는 JS 없이 순수 CSS).
    ★2026-08-17 — 그동안 굴리던 placeholder 카드를 닥공이 준 실물 캡처 22장으로 교체했다. */
-.dk-review-scroll { width: 100%; overflow: hidden; margin-top: var(--dk-gap-lg); }
-.dk-review-scroll-track { display: flex; gap: 20px; width: max-content; animation: dkReviewScroll 140s linear infinite; }
-.dk-review-scroll:hover .dk-review-scroll-track { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) {
-.dk-review-scroll-track { animation: none; }
-}
+/* ★2026-08-20 회장 지시 — CSS 애니메이션에서 JS 로 옮겼다(review.js).
+   요구가 셋인데 CSS 로는 셋째가 안 된다:
+     ① 손·커서 올리면 정지  ② 좌우로 밀 수 있게  ③ 민 속도만큼 미끄러지다 멈춤(관성)
+   ①은 animation-play-state 로 됐지만, ②③은 매 프레임 위치를 사람이 민 만큼 바꿔야 해서
+   keyframes 로는 표현이 안 된다. 그래서 위치를 JS 가 잡고 CSS 는 골격만 남긴다.
+   ⚠️ 🔒 _shell.css 의 @keyframes dkReviewScroll 은 안 지웠다 — 락 파일이라 멈춰야 하고,
+      쓰는 데가 없어져 무해하다. 락 파일 손댈 일 생기면 그때 같이 지운다.
+   touch-action: pan-y — 가로는 우리가 먹고 세로는 브라우저에 넘긴다.
+   이걸 빼면 폰에서 후기를 밀 때 페이지가 같이 스크롤돼 둘 다 어정쩡해진다. */
+.dk-review-scroll { width: 100%; overflow: hidden; margin-top: var(--dk-gap-lg);
+  cursor: grab; touch-action: pan-y; -webkit-user-select: none; user-select: none; }
+.dk-review-scroll.is-dragging { cursor: grabbing; }
+.dk-review-scroll-track { display: flex; gap: 20px; width: max-content; will-change: transform; }
 .dk-tr-shot {
   /* ★2026-08-17 — placeholder 카드(.dk-tr-card) 폐기, 실물 캡처 22장으로 교체.
      ★높이만 고정하고 폭은 auto 다. object-fit:cover 로 칸에 맞추면 카톡 글이 잘린다.
        원본 비율 0.45~0.96 이 제각각이라 어떤 고정 비율을 잡아도 누군가는 잘린다.
        세로 스크린샷은 "덜 보이는" 게 아니라 "못 읽는" 것이 되므로 크롭 0 이 유일한 답. */
-  flex: 0 0 auto; height: 420px; padding: 0; background: none; cursor: zoom-in;
+  /* ★2026-08-20 — cursor:zoom-in · hover 들림 · focus 링을 뺐다. 확대창이 없어졌으니
+     누를 게 없고, 이제 이 띠는 "미는 면"이다. 카드가 커서 따라 들리면 미는 감각을 방해한다.
+     커서는 띠 전체(.dk-review-scroll)가 grab/grabbing 으로 갖는다. */
+  flex: 0 0 auto; height: 420px; padding: 0; background: none;
   border: 1px solid var(--dk-hairline-cool); border-radius: var(--dk-radius-lg);
   overflow: hidden; display: block;
-  transition: transform var(--dk-dur-base) var(--dk-ease-out), border-color var(--dk-dur-base) var(--dk-ease-out);
 }
-.dk-tr-shot:hover { transform: translateY(-4px); border-color: var(--dk-fg-muted); }
-.dk-tr-shot:focus-visible { outline: 2px solid var(--dk-accent-red); outline-offset: 2px; }
-.dk-tr-shot img { display: block; height: 100%; width: auto; }
+/* 이미지 자체를 브라우저가 끌고 가면(네이티브 drag) 미는 동작이 끊긴다. */
+.dk-tr-shot img { display: block; height: 100%; width: auto;
+  -webkit-user-drag: none; user-select: none; pointer-events: none; }
 @media (max-width: 880px) {
 .dk-tr-shot { height: 340px; }
-.dk-review-scroll-track { animation-duration: 116s; }
 }
 @media (max-width: 480px) {
 .dk-tr-shot { height: 300px; }
-.dk-review-scroll-track { animation-duration: 104s; }
 }
 
-/* ── 후기 확대창 ────────────────────────────────────────────
-   ★생활환경 페이지의 시설 갤러리 확대창(.dk-galbox, page-life-care.css:227~)을
-     값 그대로 복제했다. 새로 만들지 않는다(0순위 8-①).
-     두 파일이 같은 이름을 쓰지만 한 페이지가 둘을 같이 부르는 일이 없어 충돌하지 않는다.
-     ⚠️ 다음에 _components.css 로 승격할 후보다 — 지금 하면 🔒 락 파일 변경이라 멈춰야 한다.
-   다른 점 하나: 시설 쪽은 사진이 없어 자리표시 텍스트를 띄웠고, 여기는 실물이 있어 img 를 넣는다. */
-.dk-galbox { position: fixed; inset: 0; background: rgba(12,14,18,.94); z-index: 420;
-  display: none; align-items: center; justify-content: center; padding: 56px 16px; }
-/* ★z-index 만 원본(60)과 다르다. 헤더가 400, 모바일 메뉴가 401 이라 60 이면 헤더가 위로 올라온다.
-   PC 는 헤더 띠만 보여 어색한 정도지만 모바일은 ✕ 버튼이 통째로 헤더에 가려 닫히지 않는다.
-   ⚠️ 같은 버그가 생활환경 시설 갤러리(page-life-care.css)에도 그대로 있다 — 거긴 아직 사진이
-      없어서 아무도 안 눌러 봤을 뿐이다. 승격할 때 같이 고칠 것. */
-.dk-galbox.is-on { display: flex; }
-.dk-galbox__fig { max-width: 1000px; width: 100%; text-align: center; margin: 0; }
-.dk-galbox__shot { max-height: calc(100vh - 150px); width: auto; max-width: 100%;
-  border-radius: var(--dk-radius-md); display: block; margin: 0 auto; }
-.dk .dk-galbox__cap { margin: 14px 0 0; color: #efefef; font-size: 14px; font-weight: 700; }
-.dk .dk-galbox__idx { margin: 4px 0 0; color: var(--dk-fg-cool-soft); font-size: 12.5px;
-  font-variant-numeric: tabular-nums; }
-.dk-galbox__x, .dk-galbox__nav { position: absolute; background: rgba(255,255,255,.12); border: none;
-  color: #fff; border-radius: 50%; cursor: pointer; font: inherit;
-  display: flex; align-items: center; justify-content: center; }
-.dk-galbox__x { top: 16px; right: 16px; width: 40px; height: 40px; font-size: 20px; }
-.dk-galbox__nav { top: 50%; transform: translateY(-50%); width: 46px; height: 46px; font-size: 22px; }
-.dk-galbox__nav.is-prev { left: 16px; }
-.dk-galbox__nav.is-next { right: 16px; }
-.dk-galbox__x:hover, .dk-galbox__nav:hover { background: rgba(255,255,255,.22); }
-.dk-galbox__x:focus-visible, .dk-galbox__nav:focus-visible {
-  outline: 2px solid var(--dk-accent-onDark); outline-offset: 2px; }
+/* ── 후기 확대창 — 2026-08-20 회장 지시로 삭제 ────────────────────────
+   "왜 쓸데없이 클릭확대 기능 넣었냐". .dk-galbox 규칙 23줄 + review.js 의 확대창
+   전량을 지웠다. 확대본(-full) 22장 1MB 도 이제 아무도 안 받는다.
+   ⚠️ 같은 이름의 규칙이 page-life-care.css 에 따로 있다(시설 갤러리). 그건 그대로 둔다 —
+      두 파일이 이름만 같을 뿐 한 페이지가 둘을 같이 부르지 않아 여기 삭제와 무관하다. */
 
 /* ── 키포인트별 상세(좌우교차) ── */
 .dk-pt-item { display: flex; padding: clamp(48px,6vw,72px) 0; }
@@ -197,7 +240,8 @@
   border: 1.5px solid var(--dk-hairline-cool-soft);
   display: flex; align-items: center; justify-content: center;
 }
-.dk-pt-vis .num { font-family: var(--dk-font-display); font-size: 64px; font-weight: 800; color: var(--dk-fg-cool-faint); }
+/* ★2026-08-20 회장 지시 — 사진 좌측 모서리의 번호(01~05)를 전부 제거.
+   "지저분한 느낌만 든다". HTML 의 <span class="num"> 5개와 함께 규칙도 지운다. */
 @media (max-width: 640px) {
 .dk-pt-item--rev .dk-pt-vis { order: 0; }
 }
@@ -322,17 +366,33 @@
 .dk-strip .v { font-size: clamp(17px,4.4vw,21px); font-weight: 700; color: #fff; letter-spacing: -.8px; line-height: 1; }
 .dk-strip .v u { text-decoration: none; font-size: .46em; color: rgba(255,255,255,.6); font-weight: 600; }
 .dk .dk-strip .k { font-size: 11px; color: rgba(255,255,255,.55); margin: 6px 0 0; }
-/* ── ⑥ 영상·사진 자리 — 큰 1 + 작은 2 비대칭, 캡션 오버레이 ── */
-.dk-vi-grid { display: grid; grid-template-columns: 1.65fr 1fr; grid-template-rows: auto auto; gap: 12px; }
-.dk-vi-grid .dk-vi-card { aspect-ratio: auto; height: 100%; position: relative; }
-.dk-vi-grid .dk-vi-card:first-child { grid-row: 1 / 3; aspect-ratio: 16/11; height: auto; }
-/* ★2026-07-29 회귀 수정 — 위 height:100%는 PC 2열에서 우측 카드를 좌측 높이에 맞추려는 것인데,
-   1열로 접히면 행 높이가 auto라 100%가 내용 높이(=2px)로 붕괴해 카드가 사라졌다.
-   1열 구간에선 비율 기반으로 되돌린다. */
-@media (max-width: 880px) {
-.dk-vi-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-.dk-vi-grid .dk-vi-card { height: auto; aspect-ratio: 16/10; }
-.dk-vi-grid .dk-vi-card:first-child { grid-row: auto; height: auto; aspect-ratio: 16/10; }
+/* ── ⑥ 영상 자리 — 2개를 상하로 (★2026-08-20 회장 지시) ──────────────────
+   전에는 「큰1 + 작은2」 비대칭 3칸이었고, 비율·배치 재정의가 base·880·480·1023·1024
+   다섯 군데에 흩어져 있었다(그래서 7/29 에 height:100% 가 1열에서 2px 로 붕괴하는
+   회귀가 났다). 2개 상하는 분기가 필요 없다 — 폭이 얼마든 1열 2행이고 비율도 하나다.
+   흩어진 정의를 전부 지우고 이 한 벌만 남긴다.
+   · 왜 상하인가 — 좌우로 놓으면 두 썸네일이 나란히 놓여 통일 안 된 게 바로 드러난다.
+     상하면 둘이 같은 폭·같은 비율이라 규격이 하나가 된다.
+   · 16:9 = 영상 원본 비율. 썸네일을 안 자른다(다른 비율을 걸면 인물 얼굴이 잘린다).
+   · 폭 — 처음엔 1280 을 다 썼는데 회장 지적 "PC 에서 영상 화면 너무 크다"(한 칸 1280x720).
+     ★그래서 PC 에서만 880px 로 줄이되 반드시 가운데로 둔다(margin-inline:auto).
+       좌측 정렬로 좁히면 우측만 400px 비어 「우측 죽은 공간」이 된다 —
+       920px 좌측정렬을 재 봤을 때 좌80 우440 이었다. 가운데면 좌우가 280/280 으로 맞는다.
+     모바일·태블릿은 원래 폭을 다 쓰는 게 맞으므로 제한을 PC 구간에만 건다.
+   · 모서리 — radius-lg(16px) → radius-sm(8px). 회장 "야악간 라운드".
+     영상은 카드가 아니라 화면이라 카드 라운드를 그대로 쓰면 둥글어 보인다.
+     캡션 바 아래 모서리도 같이 맞춰야 한다(안 맞추면 바가 카드 밖으로 튀어나온 것처럼 보인다). */
+/* ★2026-08-20 회장 지시 "영상 두 개 높이 간격이 너무 좁다 — 두 배로".
+   16px 은 내가 그때 지어 넣은 raw 값이었다(여백도 토큰에서 고른다는 규칙 위반).
+   두 배 자리에 있는 스케일 단이 --dk-gap-md(clamp 26~34px)라 그걸로 바꾼다.
+   실측 — 1440px 34px · 768px 26px · 390px 26px. */
+.dk-vi-grid { display: grid; grid-template-columns: 1fr; grid-template-rows: auto auto;
+  gap: var(--dk-gap-md); }
+.dk-vi-grid .dk-vi-card { position: relative; height: auto; aspect-ratio: 16/9;
+  border-radius: var(--dk-radius-sm); }
+.dk-vi-grid .dk-vi-cap { border-radius: 0 0 var(--dk-radius-sm) var(--dk-radius-sm); }
+@media (min-width: 1024px) {
+  .dk-vi-grid { max-width: 880px; margin-inline: auto; }
 }
 .dk-vi-cap { position: absolute; left: 0; right: 0; bottom: 0; background: rgba(26,26,26,.74); color: #fff;
   padding: 8px 11px; font-size: 11.5px; font-weight: 600; line-height: 1.4; text-align: left;
@@ -360,21 +420,16 @@
    실측 칸 590x443 인데 사진은 540x393 이었다. `.card` 는 이름이 너무 흔해서 또 물릴 자리다. */
 .dk-pt-vis .card > img { width: 100%; height: 100%; object-fit: cover;
   display: block; border-radius: inherit; }
-.dk-pt-vis .num { position: absolute; left: -4px; top: -14px; font-family: var(--dk-font-display);
-  font-size: 38px; font-weight: 800; color: var(--dk-accent-red); line-height: 1;
-  text-shadow: 0 0 0 #fff, -2px 0 0 #fff, 2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff; }
+/* (2026-08-20 회장 지시로 .dk-pt-vis .num 규칙 삭제 — 위 주석 참조) */
 /* ── 슬롯 비율 브레이크포인트 (★2026-07-29 정리) ──
    기존엔 560/640/768/880에 비율 재정의가 흩어져 있어, 폰용 세로 비율이 태블릿까지 흘러가
    768px에서 이미지 하나가 816px, tri 한 덩어리가 950px까지 길어졌다.
    → 경계를 둘로만 둔다.  ≤480px 폰 = 세로형 / 481~1023px 태블릿 = 완만한 가로형 / ≥1024px = PC(위 블록) */
 @media (max-width: 480px) {
-.dk-vi-grid .dk-vi-card { aspect-ratio: 4/3; }
 }
 @media (min-width: 481px) and (max-width: 1023px) {
-  /* 3장을 1열로 쌓으면 1320px까지 길어진다. 태블릿에선 2열로 접는다. */
-  .dk-vi-grid { grid-template-columns: 1fr 1fr; }
-.dk-vi-grid .dk-vi-card { aspect-ratio: 16/10; }
-.dk-vi-grid .dk-vi-card:first-child { grid-column: 1 / -1; }
+  /* (2026-08-20 — 인터뷰 2개 상하로 바뀌어 여기 있던 .dk-vi-grid 분기 3줄 삭제.
+     3장을 접는 문제가 사라졌다. 폭과 무관하게 1열 2행 하나다.) */
 }
 /* ── PC 슬롯 높이 상한 (2026-07-29) ──
    aspect-ratio만 두면 1440px에서 슬롯 하나가 836px까지 커져 화면을 거의 다 먹었다.
@@ -384,7 +439,7 @@
    (1440px에서 tri 780px 컬럼에 카드가 698px). → 상한 대신 "완만한 비율"로 높이를 잡는다.
    비율은 폭을 100% 채우면서 높이만 낮추므로 빈 공간이 안 생긴다. */
 @media (min-width: 1024px) {
-.dk-vi-grid .dk-vi-card:first-child { aspect-ratio: 16/9.5; }
+  /* (2026-08-20 — .dk-vi-grid 첫 칸 예외 삭제. 두 칸이 같은 규격이라 예외가 없다.) */
 }
 
 /* ★2026-08-03 — HTML 인라인 여백을 클래스로 옮김. 값은 원래대로(전부 토큰이었다).
@@ -437,9 +492,19 @@
 .dk-glance-v    { order: 3; }
 
 /* 원형 배지 — 카드 위로 걸친다. 카드에 overflow:hidden 을 걸면 잘리므로 안 건다. */
+/* ★2026-08-20 회장 지시 — 배지 원이 안 보였다. 배지도 카드도 #fff 라 아래 절반은 1.00:1,
+   위 절반은 섹션배경(#f5f5f5)과 1.09:1. 원의 윤곽을 그릴 게 그림자뿐인데 그 알파가
+   카드와 같은 .06 이라 사실상 투명했다. 8/17 에 카드 껍데기를 그대로 복제하면서
+   "카드는 테두리+그림자로 푼다"는 부분을 배지에 안 옮긴 것이 원인.
+   → 테두리(선을 하나 더 긋는 것) 대신 그림자를 살려 "살짝 떠 있게" 한다(회장 선택 2안).
+     색은 새로 안 만든다 — 카드와 같은 rgba(20,40,90,…) 이고 알파만 .06 → .14.
+     두 겹인 이유: 넓은 쪽(6/14)이 뜬 거리를, 좁은 쪽(2/4)이 원의 가장자리를 만든다.
+     한 겹만 쓰면 번지기만 하고 윤곽이 안 잡힌다.
+   ※ 그림자는 명도 단서라 색약 기준에서도 안전하다. */
 .dk-glance-badge { position: absolute; top: -26px; left: 50%; transform: translateX(-50%);
   width: 68px; height: 68px; border-radius: 50%; background: #fff;
-  box-shadow: 0 2px 10px rgba(20,40,90,.06); display: grid; place-items: center; }
+  box-shadow: 0 6px 14px rgba(20,40,90,.14), 0 2px 4px rgba(20,40,90,.10);
+  display: grid; place-items: center; }
 .dk-glance-badge svg { width: 30px; height: 30px; stroke: var(--dk-ink);
   fill: none; stroke-width: 1.7; }
 
@@ -447,7 +512,15 @@
 .dk .dk-glance-no { font-size: 12px; font-weight: 700; letter-spacing: .06em;
   color: var(--dk-fg-muted); font-variant-numeric: tabular-nums; }
 .dk .dk-glance-k { font-size: 13.5px; font-weight: 600; color: var(--dk-fg-3); }
-.dk-glance-dash { width: 18px; height: 1px; background: var(--dk-hairline);
+/* ★2026-08-20 회장 지시 "바가 좀 더 길었으면" → 18px → 56px.
+   18px 에는 근거가 없었다(주석도 토큰도 없는 하드코딩). 배지 30px 아이콘보다도 짧아
+   구분선이 아니라 티끌로 읽혔다.
+   56px 인 이유 — 라벨 행(「01 대상」·「02 학습량」)의 폭과 거의 같다. 그래서 라벨에
+   딸린 밑줄로 읽히고, 위의 배지 68px → 56px → 값 순으로 폭이 좁아지는 테이퍼가 된다.
+   ⚠️ 라벨 글자수는 칸마다 다르지만 선은 5칸 전부 같은 값으로 고정한다 —
+      병렬 세트 안에서 값이 갈리면 안 된다(라벨 폭에 맞추면 5칸이 제각각이 된다).
+   ※ 카드 폭 전체(align-self:stretch)도 봤는데, 5칸이 전부 가로줄로 잘려 표처럼 보였다. */
+.dk-glance-dash { width: 56px; height: 1px; background: var(--dk-hairline);
   margin: 11px 0; flex: none; }
 .dk .dk-glance-v { flex: 1; font-size: 18px; font-weight: 700; line-height: 1.5;
   color: var(--dk-accent-red); margin: 0; word-break: keep-all; }
