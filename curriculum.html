@@ -357,21 +357,51 @@
       <h2 class="dk-h2">하루 9시간, 실제로 어떻게 채워지나</h2>
     </div>
 
-    <div class="dk-table-wrap">
-      <table class="dk-table">
-        <thead>
-          <tr><th>구성</th><th>배분</th></tr>
-        </thead>
-        <tbody>
-          <tr><th>수학 수업</th><td>하루 6시간, 총 8타임</td></tr>
-          <tr><th>과학 수업</th><td>하루 1시간 30분</td></tr>
-          <tr><th>국어 주말 과제</th><td>약 1시간</td></tr>
-          <tr><th>영어 주말 수업 및 과제</th><td>약 1시간</td></tr>
-          <tr><th>야간 추가수업</th><td>선택과목, 실전반, 개인·소규모 요청수업</td></tr>
-          <tr><th>관리형 자습</th><td>학생별 과제와 목표 학습량에 따라 별도 운영</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <!-- ★2026-08-20 회장 지시 — 표를 타임라인으로. "하루 아홉시간 부분 너무 디자인이 없다".
+         레퍼런스(일정 앱 타임라인) 문법: 좌측 세로선 + 원형 노드, 우측 카드에
+         [제목 + 시간] 한 줄 / 설명 아래. 하나는 채워진 노드 + 컬러 카드로 강조.
+         ★강조는 장식이 아니라 의미다 — 수학이 중심축이라 그 칸만 코발트다(벌집 01 과 같은 뜻).
+         ⚠️ 문구·수치는 원래 표에서 글자 그대로 옮겼다. 시간이 없는 두 항목
+            (야간 추가수업 · 관리형 자습)은 time 칸을 비우고 설명만 둔다 —
+            없는 시간을 지어내지 않는다. -->
+    <ol class="dk-tl">
+      <li class="dk-tl__it is-key">
+        <div class="dk-tl__card">
+          <p class="dk-tl__h">수학 수업<span class="dk-tl__t">하루 6시간</span></p>
+          <p class="dk-tl__d">총 8타임. 중심축을 가장 두껍게 깝니다.</p>
+        </div>
+      </li>
+      <li class="dk-tl__it">
+        <div class="dk-tl__card">
+          <p class="dk-tl__h">과학 수업<span class="dk-tl__t">하루 1시간 30분</span></p>
+          <p class="dk-tl__d">탐구 과목을 매일 이어 갑니다.</p>
+        </div>
+      </li>
+      <li class="dk-tl__it">
+        <div class="dk-tl__card">
+          <p class="dk-tl__h">국어 주말 과제<span class="dk-tl__t">약 1시간</span></p>
+          <p class="dk-tl__d">주말을 활용해 핵심 과목의 맥락을 잡습니다.</p>
+        </div>
+      </li>
+      <li class="dk-tl__it">
+        <div class="dk-tl__card">
+          <p class="dk-tl__h">영어 주말 수업 및 과제<span class="dk-tl__t">약 1시간</span></p>
+          <p class="dk-tl__d">주말을 활용해 핵심 과목의 맥락을 잡습니다.</p>
+        </div>
+      </li>
+      <li class="dk-tl__it">
+        <div class="dk-tl__card">
+          <p class="dk-tl__h">야간 추가수업</p>
+          <p class="dk-tl__d">선택과목, 실전반, 개인 · 소규모 요청수업.</p>
+        </div>
+      </li>
+      <li class="dk-tl__it">
+        <div class="dk-tl__card">
+          <p class="dk-tl__h">관리형 자습</p>
+          <p class="dk-tl__d">학생별 과제와 목표 학습량에 따라 별도 운영.</p>
+        </div>
+      </li>
+    </ol>
 
     <div class="dk-callout" data-reveal>
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.5" r="0.9" fill="currentColor" stroke="none"/></svg>
@@ -380,8 +410,66 @@
   </div>
 </section>
 
-<div class="dk-wrap dk-ph-band dk-ph-block" data-reveal>
-  <div class="dk-ph"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5z"/></svg><span class="tag">영상</span><p class="cap">하루 흐름 타임랩스</p><p class="spec">권장 21:6 · 기상부터 취침까지 압축 · 실물 확보 후 이 자리에 삽입</p></div>
+<!-- ══════════════════════════════════════════
+     하루 학습량 — 필핀 「닥공 약속」 섹션(home브랜드약속_dark.html) 문법 이식.
+     ★2026-08-20 회장 지시: "타임랩스 따위 없으니 차라리 필핀 인덱스 해당 섹션
+       디자인이랑 애니메이션을 벤치마킹해라". 그 자리에 있던 영상 자리표시를 걷어낸다.
+     가져온 것: ①좌측 사진이 세로로 무한 슬라이딩 ②우측 다크 패널이 사진 위로 얹힘
+       ③원형 메달리온이 두 레이어 경계에 걸침 ④큰 숫자 + 라벨/설명 3행
+       ⑤모바일에선 레이어를 풀어 [사진 위 / 내용 아래] 스택
+     바꾼 것: 색은 우리 토큰(다크 #2a2a2a · 어두운 면 위 코발트 --dk-accent-onDark).
+       필핀은 레드(#ab0000)에 배경 #0d0d0d 지만 그건 그쪽 브랜드다.
+     ⚠️ 숫자는 바로 위 표에서 그대로 가져온 값이다. 새로 만든 수치가 아니다.
+        「9시간+」가 앞의 둘을 포함하는 총량이라는 것은 아래 안내문이 이미 말하고 있다. -->
+<div class="dk-wrap dk-ph-block" data-reveal>
+  <div class="dk-daily">
+    <div class="dk-daily__bg" aria-hidden="true">
+      <div class="dk-daily__track">
+        <img src="assets/images/daily/dakgong-domestic-daily-01.webp" width="680" height="454" alt="" decoding="async">
+        <img src="assets/images/daily/dakgong-domestic-daily-02.webp" width="680" height="454" alt="" decoding="async">
+        <img src="assets/images/daily/dakgong-domestic-daily-03.webp" width="680" height="454" alt="" decoding="async">
+        <img src="assets/images/daily/dakgong-domestic-daily-04.webp" width="680" height="454" alt="" decoding="async">
+        <img src="assets/images/daily/dakgong-domestic-daily-05.webp" width="680" height="454" alt="" decoding="async">
+        <img src="assets/images/daily/dakgong-domestic-daily-06.webp" width="680" height="454" alt="" decoding="async">
+        <!-- 이음새 없는 루프를 위해 같은 목록을 한 번 더 (translateY(-50%) 로 도는 구조) -->
+        <img src="assets/images/daily/dakgong-domestic-daily-01.webp" width="680" height="454" alt="" decoding="async">
+        <img src="assets/images/daily/dakgong-domestic-daily-02.webp" width="680" height="454" alt="" decoding="async">
+        <img src="assets/images/daily/dakgong-domestic-daily-03.webp" width="680" height="454" alt="" decoding="async">
+        <img src="assets/images/daily/dakgong-domestic-daily-04.webp" width="680" height="454" alt="" decoding="async">
+        <img src="assets/images/daily/dakgong-domestic-daily-05.webp" width="680" height="454" alt="" decoding="async">
+        <img src="assets/images/daily/dakgong-domestic-daily-06.webp" width="680" height="454" alt="" decoding="async">
+      </div>
+    </div>
+    <div class="dk-daily__panel">
+      <div class="dk-daily__row">
+        <span class="dk-daily__badge"><svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 20V4M4 20h16"/><path d="M6.5 16.5c3-9 6 3 11-8"/></svg></span>
+        <span class="dk-daily__num">6<span>시간</span></span>
+        <div class="dk-daily__txt">
+          <p class="lbl">수학 수업</p>
+          <p class="p">하루 총 8타임. 중심축을 가장 두껍게 깝니다.</p>
+        </div>
+      </div>
+      <div class="dk-daily__row">
+        <span class="dk-daily__badge"><svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M10 3v6.2L4.6 18a2 2 0 001.7 3h11.4a2 2 0 001.7-3L14 9.2V3"/><path d="M8.5 3h7M7.6 14h8.8"/></svg></span>
+        <span class="dk-daily__num">1<span>시간</span> 30<span>분</span></span>
+        <div class="dk-daily__txt">
+          <p class="lbl">과학 수업</p>
+          <p class="p">탐구 과목을 매일 이어 갑니다.</p>
+        </div>
+      </div>
+      <div class="dk-daily__row">
+        <span class="dk-daily__badge"><svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 3h6"/></svg></span>
+        <span class="dk-daily__num">9<span>시간+</span></span>
+        <div class="dk-daily__txt">
+          <p class="lbl">하루 총 학습량</p>
+          <p class="p">강의시간만이 아니라 수업 · 과제 · 오답관리를 포함합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
