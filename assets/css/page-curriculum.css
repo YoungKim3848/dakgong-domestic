@@ -279,7 +279,9 @@
    (후기 띠에서 gap 반 칸 때문에 겪었던 것과 같은 함정). */
 .dk-daily__track { display: flex; flex-direction: column; gap: 0;
   animation: dkDailyUp 40s linear infinite; }
-.dk-daily__bg:hover .dk-daily__track { animation-play-state: paused; }
+/* 2026-08-20 회장 지시 — hover/터치로 멈추는 기능 제거. 계속 돌아야 한다.
+   후기 띠는 사람이 읽는 콘텐츠라 멈추는 게 맞지만, 여기 사진은 배경이다.
+   배경이 손 닿을 때마다 멈추면 오히려 고장 난 것처럼 보인다. 속도는 그대로(40s). */
 .dk-daily__track img { width: 100%; height: auto; display: block; margin-top: -18px;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18px);
           mask-image: linear-gradient(to bottom, transparent 0, #000 18px); }
