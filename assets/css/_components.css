@@ -88,28 +88,49 @@ table.dk-table--month tbody tr.dk-month-date td {
 .dk-steps { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; }
 /* ★2026-08-21 — 카드가 흰색인데 「학습 보완」 섹션도 흰색이라 헤어라인만 남았다.
    .dk-card5 와 같은 처방(2겹 그림자로 띄우기). 값은 .dk-ds 에서 복제. */
-.dk-step { flex: 1 1 140px; min-width: 128px; background: #fff; border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-md); padding: 20px 16px;
+/* ★2026-08-21 회장 지시 "pc 버전도 차라리 번호랑 텍스트랑 같은 줄에 놓던지".
+   번호를 위에 두면 칸 높이가 두 배가 되는데 담긴 것은 짧은 라벨 한 줄뿐이라
+   아래쪽이 통째로 비었다. 한 줄로 놓으면 칸이 라벨 높이까지 내려온다. */
+.dk-step { flex: 1 1 140px; min-width: 128px; background: #fff; border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-md); padding: 15px 16px;
+  display: flex; align-items: center; gap: 10px;
   box-shadow: 0 1px 2px rgba(20,40,90,.10), 0 10px 22px -6px rgba(20,40,90,.20);
   transition: border-color var(--dk-dur-base) var(--dk-ease-out), transform var(--dk-dur-base) var(--dk-ease-out), box-shadow var(--dk-dur-base) var(--dk-ease-out); }
 .dk-step:hover { border-color: var(--dk-accent-red-bg); transform: translateY(-3px);
   box-shadow: 0 2px 4px rgba(20,40,90,.12), 0 18px 34px -8px rgba(20,40,90,.26); }
-.dk-step-num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--dk-surface-dark); color: #fff; font-weight: 800; font-size: 12.5px; margin-bottom: 12px; }
+.dk-step-num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--dk-surface-dark); color: #fff; font-weight: 800; font-size: 12.5px; flex: 0 0 auto; }
 .dk-step p { margin: 0; font-size: 13.5px; color: var(--dk-ink); font-weight: 600; line-height: 1.55; }
 .dk-step-arrow { display: flex; align-items: center; justify-content: center; color: var(--dk-fg-muted); font-size: 18px; padding: 0 6px; flex: 0 0 auto; }
-@media (max-width: 768px) {
-.dk-steps { flex-direction: column; }
-.dk-step-arrow { transform: rotate(90deg); padding: 6px 0; }
-/* ★2026-08-21 회장 지적 "모바일에서 보면 오른쪽 여백이 전부다 붕 떠가지고".
-   세로로 쌓이면 카드 하나가 화면 폭 전체(350px)인데 담긴 것은 번호 원과
-   짧은 라벨 한 줄뿐이라, 번호를 위에 두는 세로 배치에서는 오른쪽 3분의 2가
-   통째로 빈 채 카드 높이만 커졌다.
-   → 번호와 글자를 한 줄에 놓아 행으로 만든다. 폭을 다 쓰는 목록 항목이 되고
-     높이도 78px → 50px 대로 내려간다. 넓은 화면(≥769px)의 세로 배치는 그대로다. */
-/* ⚠️ flex 방향이 column 이면 `flex: 1 1 140px` 의 140px 은 폭이 아니라 **높이**다.
-   그래서 한 줄짜리 행으로 바꿔도 칸이 140px 아래로 안 내려갔다 — 내용을 줄였는데
-   높이가 그대로라 빈 공간만 아래로 옮겨간 셈이었다. 세로에서는 크기를 내용에 맡긴다. */
-.dk-step { flex: 0 0 auto; display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
-.dk-step-num { margin-bottom: 0; flex: 0 0 auto; }
+@media (max-width: 1099px) {
+/* ★2026-08-21 회장 "이거 아직 좀 구린데".
+   세로로 쌓은 상태에서 칸 하나가 화면 폭 전체(350px)인데 담긴 것은 번호 원과
+   짧은 라벨뿐이다. 번호를 옆으로 옮겨 높이를 절반으로 줄여도 오른쪽은 여전히 비었다 —
+   **비는 것은 높이가 아니라 상자 자체**였다. 여섯 개의 큰 빈 상자가 남는다.
+
+   그래서 좁은 폭에서는 상자를 걷어내고 세로 타임라인으로 잇는다. 절차는 '방향'이므로
+   형태도 선이 맞다(카드는 항목 사이에 관계가 없을 때 쓰는 형태다).
+   이 페이지의 「하루 9시간」 .dk-tl 이 이미 쓰는 언어라 결이 갈리지 않는다 —
+   세로선 + 원 노드 + 오른쪽 라벨.
+   ⚠️ 상자를 없앤 것은 형태 변경이다. 상자를 남기는 쪽을 원하시면 되돌린다.
+
+   가운데 떠 있던 화살표도 뺀다. 선이 같은 일을 하고, 좌측 번호와 이어지지 않아
+   따로 노는 기호였다. 
+   ★기준을 768 이 아니라 1099 로 잡았다. 실측 결과 6칸이 한 줄에 들어가는 것은
+     1100px 부터이고, 769~1099 에서는 5칸 + 1칸으로 접혀 **둘째 줄 오른쪽이
+     통째로 비었다** — 회장이 지적한 그 모양이 태블릿 폭에서 그대로 났다.
+     한 줄로 못 서는 폭이면 처음부터 세로로 세운다. */
+.dk-steps { flex-direction: column; gap: 0; }
+.dk-step-arrow { display: none; }
+.dk-step { flex: 0 0 auto; position: relative; gap: 14px; padding: 11px 0;
+  background: none; border: 0; border-radius: 0; box-shadow: none; }
+.dk-step:hover { transform: none; box-shadow: none; }
+/* 세로선 — 번호 원(26px)의 중심이 13px 이므로 2px 선은 12px 에서 시작한다.
+   첫 칸은 원 아래부터, 마지막 칸은 원 위까지만 그어 선이 밖으로 새지 않게 한다. */
+.dk-step::before { content: ""; position: absolute; left: 12px; top: 0; bottom: 0;
+  width: 2px; background: var(--dk-hairline); }
+.dk-step:first-child::before { top: 50%; }
+.dk-step:last-child::before  { bottom: 50%; }
+.dk-step-num { position: relative; }
+.dk-step p { font-size: 15px; }
 }
 /* 안내 콜아웃 — 희소 자원, 페이지당 한둘만 */
 /* ★2026-08-03 회장 승인 B안 — '라운드 + 컬러 좌측 레일' 동시 사용은 금지 조합
