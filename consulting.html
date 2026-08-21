@@ -114,10 +114,10 @@
      ★2026-07-30 닥공 통화: 캠프 비용 미포함 별도 서비스지만 유료 사실을 노출하지 않는다.
      "학생 개별"·"중등 · 고등 구분"·"신청"이라는 단어로만 별도 절차를 읽히게 한다.
 ══════════════════════════════════════════ -->
-<section class="dk-sec dk-sec--white dk-sec--csintro">
+<section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
     <div class="dk-shead" data-reveal>
-      <p class="dk-label">01 WHY | 컨설팅이 필요한 이유</p>
+      <p class="dk-label">WHY | 컨설팅이 필요한 이유</p>
       <h2 class="dk-h2">캠프가 끝나는 지점에서<br>입시가 시작됩니다</h2>
       <p class="lead">학습량을 쌓는 것과 그 학습량을 입시 결과로 바꾸는 것은 다른 일입니다.
         닥공은 그 다음 구간까지 다루기 위해 대치동 프리미엄 입시 컨설팅을 전문 영역으로 운영합니다.</p>
@@ -130,16 +130,35 @@
     <!-- ★ 2026-07-30 회장 지시 — 캠프 안에서 해주는 것으로 오해될 수 있어
          성격을 한 줄로 못 박는다. 유료라는 말은 쓰지 않는다. -->
     <p class="dk-cs-caveat" data-reveal>(해당 서비스는 캠프 이후 별도 신청자 한정으로 진행되는 서비스로 개별 문의 부탁드립니다.)</p>
+
+    <!-- ★2026-08-21 회장 지시 — https://youtu.be/GyFXhyF51Fk 한 개를 이 섹션 하단에.
+         유튜브 제목은 「홈피 컨설팅 영상」(닿공캠프 채널, 31초). 제목이 보증하는 범위가
+         「컨설팅 영상」까지라 캐프션도 거기서 멈춘다 — 설명회·학부모 같은 말은 붙이지 않는다.
+         카드는 홈(index)의 인터뷰 영상 칸과 같은 컴포넌트다(.dk-vi-card, 파사드 방식).
+         썸네일은 유튜브 maxresdefault(1280x720 = 16:9, 안 잘림)를 받아 저장소에 담았다 — 외부 CDN 안 쓴다. -->
+    <div class="page-consulting-vid" data-reveal>
+      <div class="dk-vi-card is-filled" data-yt="GyFXhyF51Fk">
+        <button class="dk-vi-btn" type="button" aria-label="닿공캠프 컨설팅 영상 재생 — 31초">
+          <img src="assets/images/video/dakgong-domestic-consulting-talk-1280.webp"
+               srcset="assets/images/video/dakgong-domestic-consulting-talk-700.webp 700w, assets/images/video/dakgong-domestic-consulting-talk-1280.webp 1280w"
+               sizes="(max-width: 1023px) 92vw, 880px" width="1280" height="720"
+               loading="lazy" decoding="async"
+               alt="닿공캠프 컨설팅 영상 미리보기">
+          <span class="dk-vi-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+        <p class="dk-vi-cap">컨설팅 영상 <span style="opacity:.7">· 31초</span></p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════
      02 SYSTEM — 3축 수렴 인포그래픽 + 상세 3칸
 ══════════════════════════════════════════ -->
-<section class="dk-sec">
+<section class="dk-sec" style="background: var(--dk-surface-card);">
   <div class="dk-wrap">
     <div class="dk-shead" data-reveal>
-      <p class="dk-label">02 SYSTEM | 담당 구성</p>
+      <p class="dk-label">SYSTEM | 담당 구성</p>
       <h2 class="dk-h2">한 명의 학생에게<br>세 사람이 동시에 붙습니다</h2>
       <p class="lead">담당자 한 명이 다 보는 구조가 아닙니다. 컨설팅을 신청하면
         관리·설계·분석을 각각 다른 축이 맡고, 그 셋이 한 학생에게 동시에 붙습니다.</p>
@@ -216,6 +235,20 @@
         </dl>
       </article>
     </div>
+
+    <!-- ★2026-08-21 회장 지시 — 「컨설팅 7, 9, 4, 6 을 섞어서」 이 섹션 맨 아래에.
+         배치는 사이트에 이미 있는 4칸 사진 띄(자습·선생님 페이지)를 그대로 따른다 —
+         병렬 항목 4개는 레이아웃을 통일한다(칸폭·비율·간격 전부 1종).
+         ⚠ 파일명은 사이트 정본 슬러그(MANIFEST.csv)를 따른다. 원본 폴더의 번호와 둘이 어긋나 있다 —
+            컨설팅9 = consulting-10, 컨설팅10 = consulting-09 (폴더 정렬이 1,10,2,3… 순이어서 밀렸다).
+            여기 들어간 네 장은 회장이 지정한 컨설팅7·9·4·6 이 맞다(그림으로 대조함).
+         비율은 원본 그대로 3:2 — 자르지 않는다. -->
+    <div class="page-consulting-strip" data-reveal="stagger">
+      <div class="dk-ph is-filled"><img src="assets/images/consulting/dakgong-domestic-consulting-07-700.webp" srcset="assets/images/consulting/dakgong-domestic-consulting-07-700.webp 700w, assets/images/consulting/dakgong-domestic-consulting-07-1200.webp 1200w" sizes="(max-width: 880px) 46vw, 23vw" width="700" height="467" loading="lazy" decoding="async" alt="정장 차림의 담당자가 책상 맞은편 학생과 마주 앉아 노트북 화면의 표를 가리키며 설명하는 모습"></div>
+      <div class="dk-ph is-filled"><img src="assets/images/consulting/dakgong-domestic-consulting-10-700.webp" srcset="assets/images/consulting/dakgong-domestic-consulting-10-700.webp 700w, assets/images/consulting/dakgong-domestic-consulting-10-1200.webp 1200w" sizes="(max-width: 880px) 46vw, 23vw" width="700" height="467" loading="lazy" decoding="async" alt="담당자가 마주 앉은 두 사람에게 손짓을 썰 가며 설명하는 상담실 모습"></div>
+      <div class="dk-ph is-filled"><img src="assets/images/consulting/dakgong-domestic-consulting-04-700.webp" srcset="assets/images/consulting/dakgong-domestic-consulting-04-700.webp 700w, assets/images/consulting/dakgong-domestic-consulting-04-1200.webp 1200w" sizes="(max-width: 880px) 46vw, 23vw" width="700" height="467" loading="lazy" decoding="async" alt="강단에서 발표자가 스크린에 띄운 화면을 가리키며 설명하는 모습"></div>
+      <div class="dk-ph is-filled"><img src="assets/images/consulting/dakgong-domestic-consulting-06-700.webp" srcset="assets/images/consulting/dakgong-domestic-consulting-06-700.webp 700w, assets/images/consulting/dakgong-domestic-consulting-06-1200.webp 1200w" sizes="(max-width: 880px) 46vw, 23vw" width="700" height="467" loading="lazy" decoding="async" alt="강단에서 마이크를 들고 발표하는 모습과 앉아 듣는 참석자들"></div>
+    </div>
   </div>
 </section>
 
@@ -225,7 +258,7 @@
 <section class="dk-sec dk-sec--white">
   <div class="dk-wrap">
     <div class="dk-shead" data-reveal>
-      <p class="dk-label">03 PROCESS | 진행 순서</p>
+      <p class="dk-label">PROCESS | 진행 순서</p>
       <h2 class="dk-h2">어떻게 진행되나</h2>
       <p class="lead">컨설팅은 자료 분석부터 주간 상담까지 네 단계가 순서대로 돌아가고,
         여기에 입시상담·학부모 상담이 더해집니다.</p>
@@ -288,10 +321,10 @@
 <!-- ══════════════════════════════════════════
      04 PREPARE — 준비물 안내 (접수 퍼널 아님)
 ══════════════════════════════════════════ -->
-<section class="dk-sec">
+<section class="dk-sec" style="background: var(--dk-surface-card);">
   <div class="dk-wrap">
     <div class="dk-shead" data-reveal>
-      <p class="dk-label">04 PREPARE | 사전 준비</p>
+      <p class="dk-label">PREPARE | 사전 준비</p>
       <h2 class="dk-h2">미리 준비해 두면 좋은 것</h2>
       <p class="lead">컨설팅 신청 후 학생 분석은 아래 자료에서 출발합니다.
         문의를 남기시면 관리 팀장이 연락드려 준비 방법을 안내합니다.</p>
@@ -352,5 +385,6 @@
 
 <script src="assets/js/nav.js"></script>
 <script src="assets/js/reveal.js"></script>
+<script src="assets/js/video.js"></script>
 </body>
 </html>
