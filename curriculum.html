@@ -10,6 +10,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/images/logo.png">
+<!-- ★2026-08-21 — 히어로 배경은 CSS 안에 있어서 브라우저가 CSS 를 다 받은 뒤에야
+     요청한다(실측 988ms). 그 1초가 회장이 본 회색 판이다. 여기서 미리 잡아 준다.
+     media 를 걸어 화면 크기에 맞는 한 장만 받는다. -->
+<link rel="preload" as="image" media="(min-width: 821px)"
+      href="assets/images/hero/dakgong-domestic-hero-curriculum-1920.webp">
+<link rel="preload" as="image" media="(max-width: 820px)"
+      href="assets/images/hero/dakgong-domestic-hero-curriculum-1200.webp">
 <link rel="stylesheet" href="assets/css/tokens-domestic.css">
 <link rel="stylesheet" href="assets/css/_shell.css">
 <link rel="stylesheet" href="assets/css/_components.css">

@@ -10,8 +10,20 @@
    그래서 3:2 원본이 13:1 가까이 잘린다. 인물이 읽힐 크기가 아니므로 피사체가 또렷한 컷 대신
    결이 고른 야외 컷(daily-life-02)을 골랐다.
    글자색을 잉크 → 흰색으로 바꾼다. 사진 위에 어두운 잉크를 두면 어떤 사진에서도 안 읽힌다. */
+/* ★2026-08-21 회장 지적 — "히어로에 회색창 1초 떴다가 로딩된다".
+   원인 둘이었다.
+   ① CSS 배경이라 브라우저가 CSS 5장을 다 받은 뒤에야(988ms) 사진을 요청한다.
+      → HTML <head> 에 preload 를 넣어 요청을 앞으로 당겼다.
+   ② 그동안 보이는 것이 회색이었다. placeholder 배경이 투명이라 흰 섹션 위에
+      검은 오버레이만 얹혀 회색이 된 것이다(_shell.css 의 남색 그라디언트는
+      여기서 background-image 를 덮어써서 사라진다).
+      → 20px 짜리 흐린 축소본(아래 base64, 140바이트)을 아래층에 깔았다.
+        회색 대신 그 사진의 흐릿한 형태가 보이다가 실물이 도착하면 덮인다.
+   ⚠️ background-image 를 새로 선언하는 곳은 아래층(var(--hero-lqip))을 같이 써야 한다.
+      한 층만 쓰면 흐린 층이 사라져 다시 회색이 된다. */
 .dk-contact-hero { position: relative; padding: 60px 0; background: #fafafa;
-  background-image: url("../images/hero/dakgong-domestic-hero-contact-1920.webp");
+  --hero-lqip: url("data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABwBACdASoUAA0APsFQoUqnpKMhsAgA8BgJaACsLwABr7GO1jY3lG+LjFJOuAD+qGFnA/qo1CojVgxDSfd5lio71N3d87wMWmpzLgLUyLvqYeaAbNpbdAyzfOJE1oB5sJvtpTPyFK+2LS34vmJxmz5pHo8Y7ukAAAA=");
+  background-image: url("../images/hero/dakgong-domestic-hero-contact-1920.webp"), var(--hero-lqip);
   background-size: cover; background-position: center 22%; overflow: hidden; }
   /* 55% 로 잡으면 인물 상반신이 가로로 잘려 어수선하다. 111px 짜리 띠에서는 사람이
      읽힐 크기가 아니므로, 결이 고른 위쪽(나무·잔디)이 오게 22% 로 올린다. */
@@ -24,7 +36,7 @@
 }
 @media (max-width: 768px) {
 .dk-contact-hero { padding: 40px 0;
-  background-image: url("../images/hero/dakgong-domestic-hero-contact-1200.webp"); }
+  background-image: url("../images/hero/dakgong-domestic-hero-contact-1200.webp"), var(--hero-lqip); }
 .dk-contact-hero h1 { font-size: 26px; }
 .dk-contact-hero::after {
   background: linear-gradient(90deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.48) 60%, rgba(0,0,0,.42) 100%); }

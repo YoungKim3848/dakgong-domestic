@@ -261,13 +261,25 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
    ⚠️ 히어로는 600px 고정 높이의 풀블리드라 3:2 원본이 세로로 크게 잘린다.
       슬롯 사진의 「75% 이상 남기기」 기준은 여기 적용 대상이 아니다(그건 콘텐츠 칸 기준).
       대신 background-position 으로 피사체가 잘려 나가지 않는 지점을 잡는다. */
+/* ★2026-08-21 회장 지적 — "히어로에 회색창 1초 떴다가 로딩된다".
+   원인 둘이었다.
+   ① CSS 배경이라 브라우저가 CSS 5장을 다 받은 뒤에야(988ms) 사진을 요청한다.
+      → HTML <head> 에 preload 를 넣어 요청을 앞으로 당겼다.
+   ② 그동안 보이는 것이 회색이었다. placeholder 배경이 투명이라 흰 섹션 위에
+      검은 오버레이만 얹혀 회색이 된 것이다(_shell.css 의 남색 그라디언트는
+      여기서 background-image 를 덮어써서 사라진다).
+      → 20px 짜리 흐린 축소본(아래 base64, 152바이트)을 아래층에 깔았다.
+        회색 대신 그 사진의 흐릿한 형태가 보이다가 실물이 도착하면 덮인다.
+   ⚠️ background-image 를 새로 선언하는 곳은 아래층(var(--hero-lqip))을 같이 써야 한다.
+      한 층만 쓰면 흐린 층이 사라져 다시 회색이 된다. */
 .dk-bg-video-section .dk-bg-video-placeholder {
-  background-image: url("../images/hero/dakgong-domestic-hero-life-care-1920.webp");
+  --hero-lqip: url("data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABwAwCdASoUAA0APsFOoUqnpCMhsAgA8BgJQBadAkVu1tnLYgAA/mDnllZkDLXJQpl5n5oAWsIa5KhTxFQU/A9QLgd8/1NQ4NteskYf8fbIyCYULGXDZkGBVupdHHM56iCS3Zjr0qtJq1mv0O4IZF2dwXxH2PrEuTihYL/aZyxlgleScAA=");
+  background-image: url("../images/hero/dakgong-domestic-hero-life-care-1920.webp"), var(--hero-lqip);
   background-size: cover; background-position: center 42%;
 }
 @media (max-width: 820px) {
   .dk-bg-video-section .dk-bg-video-placeholder {
-    background-image: url("../images/hero/dakgong-domestic-hero-life-care-1200.webp"); }
+    background-image: url("../images/hero/dakgong-domestic-hero-life-care-1200.webp"), var(--hero-lqip); }
 }
 /* ★블랙박스 — 5페이지 전부에서 흰 글자가 읽히는 **최소값**이다. 회장 "옅은".
    실측(글자가 실제 놓인 줄 상자 기준, 기준 h1 3:1 · 리드 4.5:1) —
