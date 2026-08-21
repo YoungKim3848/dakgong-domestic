@@ -192,3 +192,9 @@
     transform: translate(-50%, -50%); }
   .page-self-study-op__c h3 { font-size: 18px; }
 }
+
+/* ★회장 지적(2026-08-21) — 순회 사진이 03 REVIEW 것인데 바깥에 떠 있어서
+   위(인포그래픽)와는 멀고 아래 04 섹션과는 붙어 있었다. 블록을 섹션 안으로
+   넣었더니 이번엔 위쪽 간격이 0 이 됐다(바깥용 margin-block 이 섹션 안에서 상쇄).
+   섹션 내부 여백 스케일로 띄운다. 아래 간격은 섹션 패딩이 만든다. */
+.dk-sec .dk-ph-block { margin-top: var(--dk-gap-lg); margin-bottom: 0; }
