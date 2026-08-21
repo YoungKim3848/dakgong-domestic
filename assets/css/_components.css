@@ -282,7 +282,7 @@ table.dk-table tbody tr:nth-child(even) th { background: var(--dk-surface-elevat
 .dk-ph-split.rev { grid-template-columns: 1fr minmax(220px,340px); }
 .dk-ph-split.rev > *:first-child { order: 2; }
 .dk-ph-split .dk-ph { aspect-ratio: 3/2; }
-.dk-ph-split .txt h3 { font: var(--dk-title-lg); color: var(--dk-ink); margin: 0 0 10px; letter-spacing: var(--dk-track-snug); }
+.dk-ph-split .txt h3 { font: var(--dk-display-xs); color: var(--dk-ink); margin: 0 0 10px; letter-spacing: var(--dk-track-snug); }
 .dk .dk-ph-split .txt p { font: var(--dk-body-md); color: var(--dk-fg-3); line-height: 1.75; margin: 0; }
 @media (max-width: 768px) {
 .dk-ph-split, .dk-ph-split.rev { grid-template-columns: 1fr; gap: 18px; }

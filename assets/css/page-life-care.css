@@ -113,7 +113,7 @@ table.dk-tt tbody tr:nth-child(even) td:not(.dk-tt-grp):not(.dk-tt-p) { backgrou
 .dk .page-life-care-mb { margin-bottom: var(--dk-gap-lg); }
 .dk .page-life-care-mt-lg { margin-top: var(--dk-gap-lg); }
 .dk .page-life-care-mt-md { margin-top: var(--dk-gap-md); }
-.dk .page-life-care-h3 { font: var(--dk-title-lg); color: var(--dk-ink); margin: 0 0 var(--dk-gap-sm); }
+.dk .page-life-care-h3 { font: var(--dk-display-xs); color: var(--dk-ink); margin: 0 0 var(--dk-gap-sm); }
 .dk .page-life-care-h3--gap { margin-top: var(--dk-gap-lg); }
 
 /* ══════════════════════════════════════════════════════════════
