@@ -10,36 +10,19 @@
    그래서 3:2 원본이 13:1 가까이 잘린다. 인물이 읽힐 크기가 아니므로 피사체가 또렷한 컷 대신
    결이 고른 야외 컷(daily-life-02)을 골랐다.
    글자색을 잉크 → 흰색으로 바꾼다. 사진 위에 어두운 잉크를 두면 어떤 사진에서도 안 읽힌다. */
-/* ★2026-08-21 회장 지적 — "히어로에 회색창 1초 떴다가 로딩된다".
-   원인 둘이었다.
-   ① CSS 배경이라 브라우저가 CSS 5장을 다 받은 뒤에야(988ms) 사진을 요청한다.
-      → HTML <head> 에 preload 를 넣어 요청을 앞으로 당겼다.
-   ② 그동안 보이는 것이 회색이었다. placeholder 배경이 투명이라 흰 섹션 위에
-      검은 오버레이만 얹혀 회색이 된 것이다(_shell.css 의 남색 그라디언트는
-      여기서 background-image 를 덮어써서 사라진다).
-      → 20px 짜리 흐린 축소본(아래 base64, 140바이트)을 아래층에 깔았다.
-        회색 대신 그 사진의 흐릿한 형태가 보이다가 실물이 도착하면 덮인다.
-   ⚠️ background-image 를 새로 선언하는 곳은 아래층(var(--hero-lqip))을 같이 써야 한다.
-      한 층만 쓰면 흐린 층이 사라져 다시 회색이 된다. */
-.dk-contact-hero { position: relative; padding: 60px 0; background: #fafafa;
-  --hero-lqip: url("data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABwBACdASoUAA0APsFQoUqnpKMhsAgA8BgJaACsLwABr7GO1jY3lG+LjFJOuAD+qGFnA/qo1CojVgxDSfd5lio71N3d87wMWmpzLgLUyLvqYeaAbNpbdAyzfOJE1oB5sJvtpTPyFK+2LS34vmJxmz5pHo8Y7ukAAAA=");
-  background-image: url("../images/hero/dakgong-domestic-hero-contact-1920.webp"), var(--hero-lqip);
-  background-size: cover; background-position: center 22%; overflow: hidden; }
-  /* 55% 로 잡으면 인물 상반신이 가로로 잘려 어수선하다. 111px 짜리 띠에서는 사람이
-     읽힐 크기가 아니므로, 결이 고른 위쪽(나무·잔디)이 오게 22% 로 올린다. */
-.dk-contact-hero::after { content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.38) 45%, rgba(0,0,0,.10) 75%); }
+/* ★회장 지시(2026-08-21) — 필핀 원본대로 되돌린다. 글자 뒤 사진을 뺀다.
+   사진을 깔면서 붙었던 것들(어두운 오버레이 · 흰 글자 · LQIP 아래층 · <head> preload)이
+   전부 그 사진 때문에 있던 것이라 같이 걷어 냈다. 밝은 바탕 + 잉크 글자만 남는다.
+   대비 15.9:1. */
+.dk-contact-hero { position: relative; padding: 60px 0; background: var(--dk-surface-soft); }
 .dk-contact-hero > .dk-wrap { position: relative; z-index: 1; }
 .dk-contact-hero h1 {
   margin: 0; font-family: 'Paperlogy', sans-serif; font-weight: 800; font-size: 36px;
-  color: #fff; letter-spacing: var(--dk-track-snug);
+  color: var(--dk-ink); letter-spacing: var(--dk-track-snug);
 }
 @media (max-width: 768px) {
-.dk-contact-hero { padding: 40px 0;
-  background-image: url("../images/hero/dakgong-domestic-hero-contact-1200.webp"), var(--hero-lqip); }
+.dk-contact-hero { padding: 40px 0; }
 .dk-contact-hero h1 { font-size: 26px; }
-.dk-contact-hero::after {
-  background: linear-gradient(90deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.48) 60%, rgba(0,0,0,.42) 100%); }
 }
 /* 폼 위 안내 — 원본은 센터정렬 제목(36px/700)+회색 부제(18px/#555), 에어브로우 라벨 없음 */
 .dk-contact-formhead { text-align: center; margin-bottom: var(--dk-gap-lg); }
