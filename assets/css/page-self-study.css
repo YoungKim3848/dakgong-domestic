@@ -21,13 +21,21 @@
    ⚠️ background-image 를 새로 선언하는 곳은 아래층(var(--hero-lqip))을 같이 써야 한다.
       한 층만 쓰면 흐린 층이 사라져 다시 회색이 된다. */
 .dk-bg-video-section .dk-bg-video-placeholder {
-  --hero-lqip: url("data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADwAwCdASoUAA0APsFOoUqnpCMhsAgA8BgJZwATgAEXKjXGqpSAz51AAP7tqa757e49zyM6lKtxBYduDNrvLMGjWJSkBCRdUZTXiw/uEV1c5FB718WOClEkbzkm7uBC0moC3YhCnjj9WfGuiQPBtgAA");
+  --hero-lqip: url("data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAADwAwCdASoUAA0APuleqE0pJSOiMAgBIB0JYwC/OB6yMWB8/pshXIgAAP7RtLiRlKsbqUugoSvvEuujC/tYxDEcXlgWWAjyObwD+jy0N0Mnto7buUncFl4lSUaJ4byYYraa8zYf6kb2ISSKsQJjbay2JWifPgLKXHvMXvjs+Nolg3m3poAAAA==");
   background-image: url("../images/hero/dakgong-domestic-hero-self-study-1920.webp"), var(--hero-lqip);
   background-size: cover; background-position: center 42%;
 }
 @media (max-width: 820px) {
   .dk-bg-video-section .dk-bg-video-placeholder {
     background-image: url("../images/hero/dakgong-domestic-hero-self-study-1200.webp"), var(--hero-lqip); }
+}
+/* ★회장 "선생님 좀 더 나오게" (2026-08-21) — 가로는 안 잘린다. cover 는 세로만 자른다.
+   PC 히어로 박스가 2.4:1 인데 사진은 1.5:1 이라 세로 38% 가 잘리고 가로는 전부 보인다.
+   사진을 축소하면 그만큼 좌우에 빈 자리가 생기므로, 잘리는 총량은 그대로 두고
+   보이는 창만 위로 올렸다(42% → 12%). 선생님 머리부터 상반신까지 들어온다.
+   모바일은 박스가 세로로 길어 사정이 반대라 42% 를 유지한다. */
+@media (min-width: 821px) {
+  .dk-bg-video-section .dk-bg-video-placeholder { background-position: center 12%; }
 }
 /* ★블랙박스 — 5페이지 전부에서 흰 글자가 읽히는 **최소값**이다. 회장 "옅은".
    실측(글자가 실제 놓인 줄 상자 기준, 기준 h1 3:1 · 리드 4.5:1) —
@@ -110,3 +118,77 @@
 .page-self-study-zz__pills span { font-size: 13px; font-weight: 700; color: #fff;
   background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28);
   border-radius: var(--dk-radius-full); padding: 9px 14px; line-height: 1; }
+
+/* ── 축과 갈래 (02 CHECK) ──────────────────────────────────────────
+   회장 지시(2026-08-21) — 담당자 확인 6항목은 순서가 아니라 병렬이라
+   지그재그(순서로 읽힘) 대신 하나가 여럿으로 갈라지는 형태로 바꾼다.
+   03 REVIEW 는 지그재그 그대로 — 다양성은 섹션 사이에 둔다. */
+.page-self-study-fk { display: grid; grid-template-columns: minmax(200px, 260px) 1fr; }
+.page-self-study-fk__head { background: var(--dk-surface-dark); color: #fff;
+  border-radius: var(--dk-radius-lg); padding: 24px; align-self: start; }
+.page-self-study-fk__head .k { display: block; font-size: 13px; font-weight: 700;
+  letter-spacing: 1px; color: var(--dk-accent-onDark); margin-bottom: 10px; }
+.page-self-study-fk__head h3 { font: var(--dk-display-xs); font-size: 22px; color: #fff;
+  margin: 0; letter-spacing: var(--dk-track-snug); }
+.page-self-study-fk__branch { position: relative; padding-left: 56px; }
+.page-self-study-fk__branch::before { content: ""; position: absolute; left: 28px;
+  top: 30px; bottom: 30px; border-left: 2px solid var(--dk-hairline-cool); }
+.page-self-study-fk__row { position: relative; display: flex; align-items: center; gap: 14px;
+  background: #fff; border: 1px solid var(--dk-hairline-soft);
+  border-radius: var(--dk-radius-md); padding: 16px 20px; margin-bottom: 12px; }
+.page-self-study-fk__row:last-child { margin-bottom: 0; }
+.page-self-study-fk__row::before { content: ""; position: absolute; left: -28px; top: 50%;
+  width: 28px; border-top: 2px solid var(--dk-hairline-cool); }
+.page-self-study-fk__ico { flex: 0 0 40px; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--dk-accent-red-bg); display: flex; align-items: center;
+  justify-content: center; color: var(--dk-accent-red); }
+.page-self-study-fk__ico svg { width: 21px; height: 21px; fill: none; stroke: currentColor;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.dk .page-self-study-fk__row b { font-size: 17px; font-weight: 700; color: var(--dk-ink);
+  line-height: 1.45; }
+@media (max-width: 760px) {
+  .page-self-study-fk { grid-template-columns: 1fr; }
+  .page-self-study-fk__head { margin-bottom: 18px; padding: 20px; }
+  .page-self-study-fk__branch { padding-left: 34px; }
+  .page-self-study-fk__branch::before { left: 12px; }
+  .page-self-study-fk__row { padding: 13px 15px; gap: 11px; }
+  .page-self-study-fk__row::before { left: -22px; width: 22px; }
+  .dk .page-self-study-fk__row b { font-size: 15px; }
+  .page-self-study-fk__ico { flex-basis: 34px; width: 34px; height: 34px; }
+}
+
+/* ── 패널 3칸 + 육각 배지 + 점선 레일 (04 SUPPORT) ─────────────────
+   회장 지시(2026-08-21) — 레퍼런스 벤치마킹. 원본은 패널마다 다른 색인데
+   그건 안 가져온다: ①회장이 색약이라 색으로 구분시키면 안 되고
+   ②우리 팔레트는 코발트 단색이다. 형태(패널·육각 배지·점선 노드)만 가져오고
+   구분은 아이콘과 제목이 한다. 번호도 안 붙인다 — 이 3개는 순서가 아니다. */
+.page-self-study-op { display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--dk-gap-sm); position: relative; padding-bottom: 56px; margin-top: 34px; }
+.page-self-study-op::before { content: ""; position: absolute; left: 16%; right: 16%;
+  bottom: 26px; border-top: 2px dashed var(--dk-hairline-cool); }
+.page-self-study-op__c { position: relative; background: #fff;
+  border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-lg);
+  padding: 46px 24px 26px; }
+.page-self-study-op__c::after { content: ""; position: absolute; bottom: -41px; left: 50%;
+  width: 18px; height: 18px; border-radius: 50%; background: #fff;
+  border: 3px solid var(--dk-accent-red); transform: translateX(-50%); }
+.page-self-study-op__hex { position: absolute; top: -24px; left: 24px;
+  width: 54px; height: 60px; background: var(--dk-accent-red); color: #fff;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  display: flex; align-items: center; justify-content: center; }
+.page-self-study-op__hex svg { width: 24px; height: 24px; fill: none; stroke: currentColor;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.page-self-study-op__c h3 { font: var(--dk-display-xs); font-size: 20px; color: var(--dk-ink);
+  margin: 0 0 12px; letter-spacing: var(--dk-track-snug); }
+.dk .page-self-study-op__c p { font: var(--dk-body-sm); font-size: 15px;
+  color: var(--dk-fg-3); line-height: 1.8; margin: 0; }
+@media (max-width: 880px) {
+  .page-self-study-op { grid-template-columns: 1fr; gap: 26px;
+    padding-bottom: 0; padding-left: 40px; }
+  .page-self-study-op::before { left: 13px; right: auto; top: 26px; bottom: 26px;
+    border-top: 0; border-left: 2px dashed var(--dk-hairline-cool); }
+  .page-self-study-op__c { padding: 40px 20px 22px; }
+  .page-self-study-op__c::after { bottom: auto; top: 50%; left: -40px;
+    transform: translate(-50%, -50%); }
+  .page-self-study-op__c h3 { font-size: 18px; }
+}
