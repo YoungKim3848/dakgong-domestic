@@ -43,3 +43,14 @@
     background: linear-gradient(90deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.48) 60%, rgba(0,0,0,.42) 100%),
                 linear-gradient(to top, rgba(0,0,0,.46) 0%, rgba(0,0,0,0) 70%); }
 }
+
+/* ── 01 FLOW 스텝 카드 밑 사진 4칸 ────────────────────────────────
+   회장 지시(2026-08-21) — 「자습실은 이렇게 돌아갑니다」 글+사진 조합을 빼고
+   카드 네 장 밑에 사진만 깐다. 정의는 teachers 의 page-teachers-strip 을
+   그대로 복제하고 figcaption 만 뺀 것이다(같은 역할 = 같은 값). */
+.page-self-study-strip { display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: var(--dk-gap-xs); margin-top: var(--dk-gap-lg); }
+.page-self-study-strip .dk-ph { aspect-ratio: 3/2; min-height: 0; }
+@media (max-width: 880px) {
+  .page-self-study-strip { grid-template-columns: repeat(2, 1fr); }
+}
