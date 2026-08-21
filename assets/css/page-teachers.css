@@ -99,3 +99,19 @@
    커리큘럼에서 이미 같은 처방을 했다(`.page-curriculum-inph`) — 사진은 자기를 설명하는
    섹션 안에 둔다. `.dk-ph-block` 의 자체 padding(56~96px)은 버리고 스케일 값만 쓴다. */
 .page-teachers-inph { margin: var(--dk-gap-xl) 0 0; }
+
+/* ★2026-08-21 회장 승인(프리뷰 A안) — 「역할 구성」 제목 아래 과목 수업 사진 4장.
+   PC 4열 / 태블릿·폰 2열. 6칸 카드가 880px 에서 3열로 서므로 띠도 같은 경계에서 접는다.
+   ⚠️ `.dk-ph` 의 `min-height:130px` 를 여기서만 푼다. 촬영분이 전부 3:2 인데, 좁은 폭에서
+      칸 폭이 130px 아래로 내려가면 min-height 가 이겨서 칸이 1:1 쪽으로 눌리고 사진이 잘린다
+      (320px 기준 칸 134px → 3:2 면 89px 인데 130px 로 밀린다 = 31% 손실).
+      자리표시일 땐 안 보이고 실물에서만 드러나는 종류라 미리 막아 둔다. */
+.page-teachers-strip { display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: var(--dk-gap-xs); margin-bottom: var(--dk-gap-lg); }
+.page-teachers-strip figure { margin: 0; min-width: 0; }
+.page-teachers-strip .dk-ph { aspect-ratio: 3/2; min-height: 0; }
+.dk .page-teachers-strip figcaption { font-size: 13px; font-weight: 700;
+  color: var(--dk-fg-2); line-height: 1.45; margin-top: 10px; }
+@media (max-width: 880px) {
+  .page-teachers-strip { grid-template-columns: repeat(2, 1fr); }
+}
