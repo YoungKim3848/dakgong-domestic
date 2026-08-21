@@ -2,15 +2,19 @@
    불러오는 순서: tokens → _shell → _components → _legacy → page-*
    ✏️ 이 페이지 전용. 이 페이지 세션이 고치는 유일한 CSS. */
 .dk-perf-nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; margin-bottom: var(--dk-gap-sm); }
+/* ★2026-08-21 — 섹션이 다크에서 흰색으로 바뀌면서, 다크 배경을 전제로 한 반투명 흰색
+   (rgba(255,255,255,.14))이 흰 바닥 위에서 거의 안 보이게 됐다.
+   같은 섹션 안 카드(.dk-kp-card)가 어두운 면이므로 숫자 상자도 같은 면으로 맞춘다 —
+   섹션이 「흰 바닥 + 어두운 블록들」 한 가족으로 읽힌다. 값은 카드에서 복제. */
 .dk-perf-num {
-  background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28);
+  background: var(--dk-surface-dark); border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--dk-radius-lg); padding: 30px 24px; text-align: center;
   transition: transform var(--dk-dur-base) var(--dk-ease-out), background var(--dk-dur-base) var(--dk-ease-out);
 }
-.dk-perf-num:hover { transform: translateY(-4px); background: rgba(255,255,255,0.1); }
+.dk-perf-num:hover { transform: translateY(-4px); background: var(--dk-surface-dark-2); }
 .dk-perf-num .v { font-family: var(--dk-font-display); font-weight: 800; font-size: clamp(28px,3.6vw,38px); color: var(--dk-accent-red-light); margin-bottom: 8px; }
 .dk-perf-num .k { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.5; }
-.dk-kp-note { text-align: center; margin: var(--dk-gap-md) auto 0; max-width: 640px; font: var(--dk-title-md); color: #fff; opacity: 0.92; }
+.dk-kp-note { text-align: center; margin: var(--dk-gap-md) auto 0; max-width: 640px; font: var(--dk-title-md); color: var(--dk-fg-3); }
 /* ── E. 균등 4열 (프로필·시설 목록용) ── */
 .dk-ph-quad { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
 .dk-ph-quad .dk-ph { aspect-ratio: 3/3.6; }
