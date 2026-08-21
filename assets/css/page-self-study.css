@@ -200,7 +200,10 @@
    위(인포그래픽)와는 멀고 아래 04 섹션과는 붙어 있었다. 블록을 섹션 안으로
    넣었더니 이번엔 위쪽 간격이 0 이 됐다(바깥용 margin-block 이 섹션 안에서 상쇄).
    섹션 내부 여백 스케일로 띄운다. 아래 간격은 섹션 패딩이 만든다. */
-.dk-sec .dk-ph-block { margin-top: var(--dk-gap-lg); margin-bottom: 0; }
+/* ⚠️ margin 만 껐더니 padding-block 96px 이 그대로 남아 섹션 패딩과 이중으로 붙었다.
+   사진 아래가 192px(폰 112px) — 다른 섹션의 두 배였다. 바깥에 있을 때 쓰던
+   섹션 리듬용 패딩이라 안에서는 필요 없다. */
+.dk-sec .dk-ph-block { padding-block: 0; margin-top: var(--dk-gap-lg); margin-bottom: 0; }
 
 /* 육각 배지를 가운데로 옮겼다가 되돌렸다(회장, 2026-08-21) —
    본문이 좌측 정렬인데 배지만 가운데면 축이 두 개가 된다. 배지는 글 시작선에 맞춘다. */
