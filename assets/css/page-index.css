@@ -230,7 +230,16 @@
       두 파일이 이름만 같을 뿐 한 페이지가 둘을 같이 부르지 않아 여기 삭제와 무관하다. */
 
 /* ── 키포인트별 상세(좌우교차) ── */
-.dk-pt-item { display: flex; padding: clamp(48px,6vw,72px) 0; }
+/* ★회장 지적(2026-08-21) — POINT 1~5 는 흰/회색 교차 배경이라 **각각이 시각적으로
+   독립 섹션**이다. 그런데 상하 패딩만 48~72px 로 섹션 규칙(56~96px)보다 좁아
+   유독 답답해 보였다. 섹션 규칙에 맞춘다.
+   감싸는 섹션의 패딩은 0 으로 넘긴다 — 안 그러면 첫·마지막 POINT 바깥에
+   96px 이 한 겹 더 붙어 192px 이 된다. 여백을 만드는 주체는 이제 item 이다. */
+.dk-pt-item { display: flex; padding: clamp(56px,8vw,96px) 0; }
+/* ⚠️ _shell.css 의 ≤640px 규칙이 `.dk-sec { padding: 56px 0 !important }` 라
+   그냥 0 을 주면 폰에서만 안 먹는다(첫 POINT 위가 56+56=112px 이 됐다).
+   같은 !important 로 맞서되, 특성도가 위라 이긴다. */
+section:has(> .dk-pt-wrap) { padding-block: 0 !important; }
 .dk-pt-item:nth-child(odd) { background: #fff; }
 .dk-pt-item:nth-child(even) { background: var(--dk-surface-card); }
 .dk-pt-item--rev .dk-pt-vis { order: -1; }
