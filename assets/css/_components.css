@@ -3,17 +3,28 @@
    🔒 락. 2개 이상 페이지가 함께 쓰는 컴포넌트. */
 /* ── 카드 그리드 (5가지) ── */
 .dk-g5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+/* ★2026-08-21 회장 지적 "이 두 섹션 카드 디자인 시야에 졸라 안들어온다".
+   원인은 취향이 아니라 값이었다 — 카드 배경이 var(--dk-surface-card)(#f5f5f5)인데
+   「실제 반 구성」 섹션 배경도 같은 #f5f5f5 다. 즉 **카드와 바닥이 같은 색**이고
+   1px 헤어라인만 남아 있었다. 홈에서 "아이콘 원이랑 카드가 같은 색이라 안 보인다"고
+   지적받은 것과 정확히 같은 종류다.
+   → 그때 회장이 고른 해법(2안 = 그림자로 살짝 띄우기)을 그대로 쓴다. 흰 면 + 2겹 그림자는
+     어제 승인된 .dk-ds 의 값을 글자 그대로 복제한 것이다(새로 짓지 않는다).
+     흰 배경 섹션(배정 기준)에서도 그림자가 모서리를 만들어 카드가 읽힌다. */
 .dk-card5 {
-  background: var(--dk-surface-card);
+  background: #fff;
   border: 1px solid var(--dk-hairline-soft);
   border-radius: var(--dk-radius-lg);
+  box-shadow: 0 1px 2px rgba(20,40,90,.10), 0 10px 22px -6px rgba(20,40,90,.20);
   padding: 30px 26px;
   display: flex; flex-direction: column;
   transition: transform var(--dk-dur-base) var(--dk-ease-out), box-shadow var(--dk-dur-base) var(--dk-ease-out), border-color var(--dk-dur-base) var(--dk-ease-out);
 }
 .dk-card5:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+  /* 기본 그림자보다 확실히 위여야 hover 가 읽힌다. 예전 값(0 10px 28px/.10)은
+     새 기본값보다 오히려 약해서 올려도 내려앉아 보였다. */
+  box-shadow: 0 2px 4px rgba(20,40,90,.12), 0 18px 34px -8px rgba(20,40,90,.26);
   border-color: var(--dk-accent-red-bg);
 }
 .dk-card5 .num {
@@ -75,14 +86,30 @@ table.dk-table--month tbody tr.dk-month-date td {
 .dk-badge--s3 { background: var(--dk-accent-red); color: #fff; }
 /* 단계 흐름(순서도) */
 .dk-steps { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; }
-.dk-step { flex: 1 1 140px; min-width: 128px; background: #fff; border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-md); padding: 20px 16px; transition: border-color var(--dk-dur-base) var(--dk-ease-out), transform var(--dk-dur-base) var(--dk-ease-out); }
-.dk-step:hover { border-color: var(--dk-accent-red-bg); transform: translateY(-3px); }
+/* ★2026-08-21 — 카드가 흰색인데 「학습 보완」 섹션도 흰색이라 헤어라인만 남았다.
+   .dk-card5 와 같은 처방(2겹 그림자로 띄우기). 값은 .dk-ds 에서 복제. */
+.dk-step { flex: 1 1 140px; min-width: 128px; background: #fff; border: 1px solid var(--dk-hairline-soft); border-radius: var(--dk-radius-md); padding: 20px 16px;
+  box-shadow: 0 1px 2px rgba(20,40,90,.10), 0 10px 22px -6px rgba(20,40,90,.20);
+  transition: border-color var(--dk-dur-base) var(--dk-ease-out), transform var(--dk-dur-base) var(--dk-ease-out), box-shadow var(--dk-dur-base) var(--dk-ease-out); }
+.dk-step:hover { border-color: var(--dk-accent-red-bg); transform: translateY(-3px);
+  box-shadow: 0 2px 4px rgba(20,40,90,.12), 0 18px 34px -8px rgba(20,40,90,.26); }
 .dk-step-num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--dk-surface-dark); color: #fff; font-weight: 800; font-size: 12.5px; margin-bottom: 12px; }
 .dk-step p { margin: 0; font-size: 13.5px; color: var(--dk-ink); font-weight: 600; line-height: 1.55; }
 .dk-step-arrow { display: flex; align-items: center; justify-content: center; color: var(--dk-fg-muted); font-size: 18px; padding: 0 6px; flex: 0 0 auto; }
 @media (max-width: 768px) {
 .dk-steps { flex-direction: column; }
 .dk-step-arrow { transform: rotate(90deg); padding: 6px 0; }
+/* ★2026-08-21 회장 지적 "모바일에서 보면 오른쪽 여백이 전부다 붕 떠가지고".
+   세로로 쌓이면 카드 하나가 화면 폭 전체(350px)인데 담긴 것은 번호 원과
+   짧은 라벨 한 줄뿐이라, 번호를 위에 두는 세로 배치에서는 오른쪽 3분의 2가
+   통째로 빈 채 카드 높이만 커졌다.
+   → 번호와 글자를 한 줄에 놓아 행으로 만든다. 폭을 다 쓰는 목록 항목이 되고
+     높이도 78px → 50px 대로 내려간다. 넓은 화면(≥769px)의 세로 배치는 그대로다. */
+/* ⚠️ flex 방향이 column 이면 `flex: 1 1 140px` 의 140px 은 폭이 아니라 **높이**다.
+   그래서 한 줄짜리 행으로 바꿔도 칸이 140px 아래로 안 내려갔다 — 내용을 줄였는데
+   높이가 그대로라 빈 공간만 아래로 옮겨간 셈이었다. 세로에서는 크기를 내용에 맡긴다. */
+.dk-step { flex: 0 0 auto; display: flex; align-items: center; gap: 12px; padding: 14px 16px; }
+.dk-step-num { margin-bottom: 0; flex: 0 0 auto; }
 }
 /* 안내 콜아웃 — 희소 자원, 페이지당 한둘만 */
 /* ★2026-08-03 회장 승인 B안 — '라운드 + 컬러 좌측 레일' 동시 사용은 금지 조합
