@@ -228,10 +228,11 @@
    이 칸은 항상 is-filled 라 그 background-image 를 none 으로 덮어쓴다(계산값 동일).
    그리드만 다르다: 홈은 2개를 상하로 쌓지만 여기는 한 개뿐이라
    `grid-template-rows: auto auto` 를 그대로 쓰면 빈 둘째 행 앞에 gap 만 남는다. */
+/* ★2026-08-21 회장 지시 — 「영상 창 사이즈를 섬션 폭 규정으로 키워버리자」.
+   홈은 영상 2개를 상하로 쌓아서 880px 로 묶어 둔 것이고, 여기는 한 개뿐이라
+   그 묶음을 따를 이유가 없다. 폭을 따로 정하지 않고 `.dk-wrap` 이 주는 그대로 둔다
+   — 그래야 위의 글·카드와 좌우 끝이 같은 선에 떨어진다(실측 1440px 에서 1280px). */
 .page-consulting-vid { margin-top: var(--dk-gap-lg); }
-@media (min-width: 1024px) {
-  .page-consulting-vid { max-width: 880px; margin-inline: auto; }
-}
 .page-consulting-vid .dk-vi-card {
   position: relative; height: auto; aspect-ratio: 16/9; border-radius: var(--dk-radius-sm);
   border: 1.5px dashed var(--dk-hairline-cool); overflow: hidden;
