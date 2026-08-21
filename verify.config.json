@@ -46,7 +46,7 @@
     "assets/css/_shell.css",
     "assets/css/_components.css"
   ],
-  "lock_baseline": "8e10b06c2d15bdec5e4d335efe2eac224f5e7b5a",
+  "lock_baseline": "a6d28ac662184c99662be8a1dbec8201025b2d5d",
   "_예외": "contact 는 필핀 원본대로 회색 히어로 + 폼만 있는 페이지다. 롤링밴드·영상히어로·하단CTA 가 셋 다 실제로 없다(2026-08-03 실측 확인). 나머지 6페이지는 전부 있어야 한다.",
   "shared_text": [
     {

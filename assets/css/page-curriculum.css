@@ -41,8 +41,11 @@
      ★2026-07-30 회장 지적 "인포그래픽 뒷 배경 색을 좌우 끝까지 채울것".
      .dk-wrap 안에서 음수 마진으로 파고드는 방식은 ≥1280px에서 패딩이 0이라 실패한다.
      → 마크업에서 .dk-wrap 밖(섹션 직계)으로 빼서 자연스럽게 화면 폭을 쓰게 했다.
-     (실사이트 .dk-idband-wrap이 쓰는 것과 같은 방식) */
-  background: var(--dk-surface-elevated);
+     (실사이트 .dk-idband-wrap이 쓰는 것과 같은 방식)
+
+     ★2026-08-21 회장 지시로 배경이 여기서 .page-curriculum-hcband 로 올라갔다.
+       「과목마다 목적이 다릅니다」 헤드와 벌집이 서로 다른 배경 위에 앉아 있어
+       한 덩어리로 안 읽혔다. 배경을 두 곳에 두면 언젠가 한쪽만 바뀌므로 여기선 뺀다. */
   padding: clamp(22px,3.6vw,40px) clamp(10px,1.8vw,20px) clamp(16px,2.6vw,28px);
   margin: 0 0 var(--dk-gap-lg);
   width: 100%;
@@ -363,7 +366,7 @@
   gap: 12px; margin: 0 0 6px; font-family: var(--dk-font-display); font-weight: 800;
   font-size: clamp(15px,1.9vw,17.5px); line-height: 1.4; color: var(--dk-ink);
   word-break: keep-all; }
-.dk-tl__t { flex: 0 0 auto; font-family: var(--dk-font-body); font-weight: 700;
+.dk-tl__t { flex: 0 0 auto; font-family: var(--dk-font-sans); font-weight: 700;
   font-size: clamp(12.5px,1.5vw,14px); color: var(--dk-fg-muted); white-space: nowrap; }
 .dk .dk-tl__d { margin: 0; font-size: clamp(13px,1.6vw,14px); line-height: 1.7;
   color: var(--dk-fg-3); word-break: keep-all; }
@@ -403,3 +406,26 @@
 }
 /* (2026-08-20 — .dk-daily__row/__badge/__num/__txt 규칙은 숫자 3행이 타임라인으로
    바뀌면서 쓰는 데가 없어졌다. 마크업에 남은 게 없어 무해하지만 다음에 정리 대상.) */
+
+/* ═══════════════════════════════════════════════════════════════════
+   배경 띠 — 「6대 핵심 수업 구성」 헤드 + 벌집 인포그래픽 (2026-08-21 회장 지시)
+
+   회장은 이 둘을 "섹션 두 개"로 본다. 실제 마크업은 상세카드까지 포함한 한 섹션이라
+   섹션 배경을 바꾸면 상세카드 뒤까지 회색이 되고, 바로 다음 「하루 9시간」 섹션이
+   #f5f5f5 라 #efefef 와 붙으면 이음매가 실수처럼 보인다.
+   → 헤드와 벌집만 띠로 묶고 상세카드는 흰 배경 그대로 둔다.
+
+   ★음수 마진으로 섹션 상단 패딩을 걷어낸다. 안 그러면 띠 위에 흰 줄이 남는다.
+     값은 .dk-sec 패딩과 같아야 하므로 _shell.css 의 clamp 와 640px 오버라이드를
+     그대로 따라간다 — 한쪽만 바뀌면 흰 줄이 다시 생긴다.
+   ★아래쪽은 .dk-hc 의 margin-bottom 이 띠 밖으로 상쇄돼 나가므로
+     띠는 벌집 아래 모서리에서 정확히 끝난다(바닥 패딩을 주면 상쇄가 막힌다).
+═══════════════════════════════════════════════════════════════════ */
+.page-curriculum-hcband {
+  background: var(--dk-surface-elevated);
+  margin-top: calc(-1 * clamp(56px, 8vw, 96px));
+  padding-top: clamp(56px, 8vw, 96px);
+}
+@media (max-width: 640px) {
+  .page-curriculum-hcband { margin-top: -56px; padding-top: 56px; }
+}
