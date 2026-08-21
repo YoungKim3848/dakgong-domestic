@@ -188,7 +188,10 @@
   .page-self-study-op::before { left: 13px; right: auto; top: 26px; bottom: 26px;
     border-top: 0; border-left: 2px dashed var(--dk-hairline-cool); }
   .page-self-study-op__c { padding: 40px 20px 22px; }
-  .page-self-study-op__c::after { bottom: auto; top: 50%; left: -40px;
+  /* ⚠️ -40px 은 padding-left 값을 그대로 쓴 것인데, 점선 축은 그 안 12px 에 있다.
+     그래서 원이 축에서 12px 벗어나 화면 가장자리에 반쯤 물려 있었다.
+     축 위에 올리려면 (padding-left 40 − 축 12) = 28px 만큼만 왼쪽으로 간다. */
+  .page-self-study-op__c::after { bottom: auto; top: 50%; left: -28px;
     transform: translate(-50%, -50%); }
   .page-self-study-op__c h3 { font-size: 18px; }
 }
