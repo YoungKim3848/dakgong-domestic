@@ -177,7 +177,10 @@ body.dk {
 /* ── 삼선이 여는 어두운 슬라이드 패널: PC·모바일 공통, 폭 무관하게 항상 이 구조 ── */
 .site-nav {
   position: fixed; top: 0; right: 0; bottom: 0;
-  width: min(72vw, 340px);
+  /* ★회장 지시(2026-08-21) — 「폭이 과하게 넓다」. 72vw 340px → 64vw 300px.
+     393px 폰 기준 283px → 251px. 가장 긴 항목(ABOUT CAMP, 16px Poppins)이
+     좌우 24px 패딩 안에 여유 있게 들어간다. */
+  width: min(64vw, 300px);
   background: var(--dk-surface-dark);
   transform: translateX(100%);
   transition: transform var(--dk-dur-base) var(--dk-ease-out);
@@ -205,15 +208,17 @@ body.dk {
 .site-nav__close::before { transform: rotate(45deg); }
 .site-nav__close::after  { transform: rotate(-45deg); }
 .site-nav__close:hover::before, .site-nav__close:hover::after { background: #fff; }
-.site-nav__logo { padding: 64px 28px 40px; text-align: center; }
+/* ★회장 지시(2026-08-21) — 좌측 정렬 + 로고~메뉴 간격 축소.
+   ⚠️ 아래 주석의 「필핀 실측: 가운데 정렬」과 여기서 갈라진다. 국내 지시분이다. */
+.site-nav__logo { padding: 52px 24px 20px; text-align: left; }
 .site-nav__logo a { display: inline-block; }
-.site-nav__logo img { display: block; height: 26px; width: auto; margin: 0 auto; }
+.site-nav__logo img { display: block; height: 26px; width: auto; margin: 0; }
 /* 메뉴 항목 = 필핀 실측: 가운데 정렬, 구분선 없음(국내엔 좌측정렬+구분선이 들어가 있었음) */
 .site-nav__list { display: flex; flex-direction: column; align-items: stretch; gap: 0; list-style: none; margin: 0; padding: 0; }
 .site-nav__list > li { position: relative; }
 .site-nav__list > li > a {
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  height: auto; padding: 14px 28px; color: rgba(255,255,255,0.92); font-size: 16px;
+  display: flex; align-items: center; justify-content: flex-start; gap: 6px;
+  height: auto; padding: 11px 24px; color: rgba(255,255,255,0.92); font-size: 16px;
   font-family: 'Poppins', 'Pretendard', sans-serif; letter-spacing: 0.5px; text-decoration: none;
   transition: color var(--dk-dur-fast) var(--dk-ease-out);
 }
@@ -230,7 +235,7 @@ body.dk {
 }
 .site-nav__list > li.has-sub.is-open .site-nav__sub { display: block; }
 .site-nav__sub li a {
-  display: block; padding: 9px 28px; text-align: center;
+  display: block; padding: 8px 24px 8px 36px; text-align: left;
   color: rgba(255,255,255,0.72); font-size: 14.5px; text-decoration: none;
 }
 .site-nav__sub li a:hover { color: #fff; }
