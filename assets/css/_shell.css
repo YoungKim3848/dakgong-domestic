@@ -551,3 +551,75 @@ body.dk {
 @media (max-width: 460px) {
 .dk-cinq__btns { grid-auto-flow: row; grid-auto-columns: auto; }
 }
+
+
+/* ── 푸터 법적 고지 팝업 · 전문 페이지 (2026-08-25) ────────────────────
+   그전까지 푸터의 이용약관·개인정보처리방침이 href="#" 이라 눌러도 아무 일이
+   없었다. 필핀 실사이트는 같은 자리에서 팝업으로 전문을 띄운다.
+   값은 전부 토큰 참조 — 이 팝업 때문에 새 색·새 여백을 만들지 않는다. */
+.dk-legal {
+  position: fixed; inset: 0; z-index: 70;
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--dk-gap-sm);
+  background: rgba(12, 14, 18, .72);
+}
+.dk-legal[hidden] { display: none; }
+
+.dk-legal__panel {
+  width: min(760px, 100%);
+  max-height: min(82vh, 780px);
+  display: flex; flex-direction: column;
+  background: var(--dk-primary);
+  border-radius: var(--dk-radius-md);
+  overflow: hidden;
+}
+
+.dk-legal__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--dk-gap-xs);
+  padding: 20px var(--dk-gap-sm);
+  border-bottom: 1px solid var(--dk-hairline-soft);
+}
+:where(.dk) .dk-legal__h {
+  margin: 0; font-size: 18px; font-weight: 700; line-height: 1.4;
+  color: var(--dk-fg-1);
+}
+.dk-legal__x {
+  flex: none; width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border: 0; border-radius: var(--dk-radius-full);
+  background: transparent; color: var(--dk-fg-3);
+  font-size: 16px; line-height: 1; cursor: pointer;
+}
+.dk-legal__x:hover { background: var(--dk-surface-card); color: var(--dk-fg-1); }
+
+.dk-legal__body {
+  overflow-y: auto;
+  padding: var(--dk-gap-sm);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 문서 본문 — 팝업과 전문 페이지가 같은 규칙을 쓴다 */
+/* ⚠️ :where() 로 쓰면 안 된다 — tokens-domestic.css 의 `.dk p`(0,1,1)가
+   특성도 0 을 이겨서 16px 로 떨어진다. 실제로 그렇게 뚫렸다(2026-08-25). */
+.dk .dk-legal-doc p,
+.dk-legal-page .dk-legal-doc p {
+  margin: 0 0 14px;
+  font-size: 13px; line-height: 1.8;
+  color: var(--dk-fg-3);
+  word-break: keep-all;
+}
+.dk .dk-legal-doc p:last-child, .dk-legal-page .dk-legal-doc p:last-child { margin-bottom: 0; }
+.dk .dk-legal-doc b, .dk-legal-page .dk-legal-doc b { color: var(--dk-fg-1); font-weight: 700; }
+
+/* 전문 페이지 (JS 없이 열렸을 때) */
+.dk-legal-page { padding: var(--dk-gap-xl) 0; }
+:where(.dk) .dk-legal-page__h {
+  margin: 0 0 var(--dk-gap-md);
+  font-size: clamp(24px, 4vw, 32px); font-weight: 800; line-height: 1.3;
+  color: var(--dk-fg-1);
+}
+.dk-legal-page .dk-legal-doc { max-width: 760px; }
+.dk-legal-page__back { margin: var(--dk-gap-md) 0 0; font-size: 14px; }
+.dk-legal-page__back a { color: var(--dk-accent-red); text-decoration: none; }
+.dk-legal-page__back a:hover { text-decoration: underline; }
