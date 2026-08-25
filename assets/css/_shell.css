@@ -254,26 +254,34 @@ body.dk {
    근사값이었음), 약관/SNS/사업자정보 텍스트 전부 #eee, copyright만 #828282/13px/200.
    ⚠️ 구조 자체(전화·카카오·이메일 직통 행 유무, 약관 링크 유무)는 이번 지시 범위를
    넘는 발견이라 색상만 정밀화하고 마크업은 그대로 둠 — 보고서 참조. */
-.site-footer { background: #2a2a2a; color: #efefef; padding: 44px 0 36px; font-size: 13px; line-height: 1.9; }
+/* ★2026-08-25 회장 지시 — 필핀 실사이트 배치로 통일.
+   패딩 실측: 필핀 30/30 (국내는 44/36 이었다). */
+.site-footer { background: #2a2a2a; color: #efefef; padding: 30px 0 53px; font-size: 13px; line-height: 1.9; }
+/* 하단 42px — 필핀은 padding 30 이지만 마지막 줄 아래 실제 여백이 50px 이다.
+   패딩값이 아니라 렌더 결과를 맞춘다. */
 .site-footer a { color: #efefef; text-decoration: none; }
 .site-footer a:hover { color: #fff; }
 /* ★2026-07-25: 필핀 원본 구조 대조 2건 반영 — 약관 링크 행 + SNS 아이콘.
    근거: clients/dakgong/imweb/_reference/live-site-header-footer-extract_2026-07-25.md
    약관 실제 URL 미확인(2026-07-23 자료 34행) → href="#" placeholder. */
-.site-footer__legal { font-size: 12px; color: #efefef; margin: 0 0 14px; }
-.site-footer__legal span { margin: 0 8px; opacity: .45; }
-.site-footer__contact { font-size: 14px; color: #efefef; margin: 0 0 16px; }
+/* 약관 링크 + SNS 를 한 행에. 필핀은 링크가 좌측, SNS 가 우측이다.
+   구분선(|)은 필핀에 없어 뺐다. 개인정보처리방침만 굵게(실측 700). */
+.site-footer__top { display: flex; align-items: center; justify-content: space-between;
+                    gap: 16px; flex-wrap: wrap; margin: 0 0 27px; }   /* SNS 끝→저작권 27px (필핀 실측) */
+.site-footer__legal { font-size: 12px; color: #efefef; margin: 0; }
+.site-footer__legal a { margin-right: 20px; }
+.site-footer__legal a:last-child { margin-right: 0; font-weight: 700; }
 /* ★2026-07-25(3차, 최종): Plipop-Social-Icons.ttf가 실제로는 로그인·결제 없이
    공개 URL(vendor-cdn.imweb.me/fonts/Plipop-Social-Icons.ttf)에서 받을 수 있는
    파일임을 재확인 → 손그림 SVG를 걷어내고 실제 아이콘 폰트로 교체.
    순서=블로그·유튜브·인스타그램·카카오, 색상=#eee 단색, 텍스트 라벨 없음(sr-only만),
    높이(font-size) 20px, hover 시 #fff. 글리프 코드포인트는 tokens-domestic.css
    @font-face 주석의 실측 근거(ii.css 원본 + Playwright computed style) 참조. */
-.site-footer__social { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 20px; }
+.site-footer__social { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin: 0; }
 .site-footer__social a { display: inline-flex; align-items: center; }
 .site-footer__icon-font {
   font-size: 20px;
-  line-height: 1;
+  line-height: 28.57px;   /* ★2026-08-25 필핀 실측. 1 이면 아이콘 박스가 20px 로 작아진다 */
   color: #efefef;
   font-style: normal;
   speak: none;
@@ -287,12 +295,29 @@ body.dk {
 .site-footer__icon-font.ii-kakaotalk::before { content: "\e90d"; }
 .site-footer__icon-font.fa-instagram { font-family: "FA-Brands"; font-weight: 400; }
 .site-footer__icon-font.fa-instagram::before { content: "\f16d"; }
+/* 구분선(hr)은 필핀에 없다 — 마크업에서 뺐고 규칙만 남겨 둔다. */
 .site-footer hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 20px 0; }
-.site-footer__biz { margin: 0; font-size: 12px; color: #efefef; }
+/* 사업자 정보 — 필핀은 항목을 가로로 이어 붙인다(2줄). 좁은 폭에서는
+   자동으로 접히게 두되, 항목이 서로 붙지 않게 오른쪽 여백을 준다. */
+.site-footer__biz { margin: 0; font-size: 12px; color: #efefef; line-height: 30px; }  /* 필핀 실측 30px */
+/* 줄 간격은 부모(30px), 글자 상자는 24px — 필핀과 같이 줄 사이 6px 이 남는다. */
+/* 항목 간격 8px — 필핀 실측(항목 사이가 일관되게 8px 이다).
+   span 사이에 공백이 없으면 줄바꿈 기회가 아예 없어 880px 에서 화면을 뚫었다.
+   그래서 마크업에서 span 을 줄바꿈해 공백을 만들고, 나머지를 margin 으로 채운다. */
+.site-footer__biz span { margin-right: 5px; white-space: nowrap; line-height: 24px; }
+.site-footer__biz span:last-child { margin-right: 0; }
+/* 좁은 폭 — nowrap 을 풀지 않으면 긴 항목(사업장주소 338px)이 320px 화면을
+   뚫고 나가 가로 스크롤이 생긴다. 필핀 실사이트는 모바일에서 실제로 가로
+   스크롤이 생기는데(390px 실측), 그 결함까지 따라갈 이유는 없다. */
+@media (max-width: 768px) {
+  .site-footer__biz span { white-space: normal; margin-right: 5px; }
+}
 /* ★2026-08-03 회장 승인 — 대비 3.63:1(기준 4.5) 로 안 읽혔다. 어두운 배경 위라
    밝은 배경용 muted 를 쓰면 반대로 더 안 보인다. 전용 토큰 + 굵기 200→400.
    크기·위치·간격은 그대로. 대비 5.10:1 */
-.site-footer__copy { margin-top: 16px; color: var(--dk-fg-muted-onDark); font-size: 13px; font-weight: 400; }
+/* ★2026-08-25 — 필핀은 저작권이 사업자 정보 **위**에 온다. 순서를 맞췄다. */
+.site-footer__copy { margin: 0; color: var(--dk-fg-muted-onDark); font-size: 13px;
+                     font-weight: 400; line-height: 26px; }   /* lh 는 필핀 실측 */
 /* ── 정체성 띠 (무한 롤링 배너) ── */
 .dk-idband-wrap {
   width: 100%;
