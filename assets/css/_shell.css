@@ -275,6 +275,14 @@ body.dk {
 /* ── 모바일: 로고 중앙정렬(필핀 실측), 헤더는 삼선만 우측에 ── */
 @media (max-width: 880px) {
 .site-header__inner { position: relative; justify-content: center; }
+/* ★2026-08-26 회장 지적 - 폰에서 국내 헤더가 필핀보다 두꺼웠다.
+   실측(375px): 필핀 헤더 49px / 로고 23px  vs  국내 70px / 로고 32px.
+   PC 값(70/32)이 폰까지 그대로 내려와 있던 것이다. 필핀 폰 값에 맞춘다.
+   ⚠️ 미디어쿼리는 특성도를 안 올린다 - 위쪽 `.site-header{height:70px}` 와
+      같은 (0,1,0) 이라 「뒤에 있어서」 이긴다. 이 블록을 위로 옮기면 조용히 죽는다.
+   삼선 버튼은 40x40 이라 49px 안에 들어간다(위아래 4.5px 여유). */
+.site-header, .site-header__inner { height: 49px; }
+.site-logo img { height: 23px; }
 /* ★2026-08-26 - 캠프 전환 버튼은 폰 헤더에 안 넣는다(390px 에서 로고 오른쪽과
    삼선 사이가 26px 뿐). 삼선 패널 안에서 만난다. 묶음을 contents 로 풀어야
    아래 `.site-logo` 중앙정렬이 원래대로 먹는다. */
