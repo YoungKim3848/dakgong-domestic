@@ -118,23 +118,26 @@ body.dk {
    ⚠️ 특성도 - `.dk a`(0,1,1)가 `.site-camp-switch`(0,1,0)를 조용히 이긴다.
       그래서 `.dk` 를 붙여 (0,2,0)으로 올린다. 이걸 빼면 글자색이 코발트로 돌아간다. */
 .site-header__left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+/* ★2026-08-27 회장 지시 - PC 도 폰과 같은 「면 채움」으로 통일한다.
+   원래 PC 만 테두리형이었던 건 흰 헤더에서 컬러 면이 튄다고 봐서였는데,
+   그러다 보니 한 사이트 안에서 PC 와 폰의 버튼이 서로 달랐다. 하나로 맞춘다. */
 .dk .site-camp-switch {
   display: inline-flex; align-items: center; gap: 6px;
   height: 32px; padding: 0 15px;
   border: 1px solid var(--dk-accent-phil);
   border-radius: var(--dk-radius-full);
-  background: #fff;
-  font-size: 13px; font-weight: 600; color: var(--dk-accent-phil);
+  background: var(--dk-accent-phil);
+  font-size: 13px; font-weight: 600; color: #fff;
   text-decoration: none; white-space: nowrap; letter-spacing: -0.01em;
-  transition: background var(--dk-dur-fast) var(--dk-ease-out),
-              color var(--dk-dur-fast) var(--dk-ease-out);
+  transition: opacity var(--dk-dur-fast) var(--dk-ease-out);
 }
-/* hover 는 글자색만 바꾸지 않고 면을 채운다 - 색으로만 갈리면 색약에서 안 읽힌다 */
-.dk .site-camp-switch:hover { background: var(--dk-accent-phil); color: #fff; }
+/* hover 는 투명도만 준다 - 더 어두운 레드를 만들면 토큰 밖 색을 새로 짓는 셈이다 */
+.dk .site-camp-switch:hover { opacity: .88; }
 .site-camp-switch__arrow { font-size: 11px; }
 /* 삼선 패널 안 - 바닥이 #2a2a2a 라 #ab0000 글자는 1.87:1 로 안 읽힌다.
    색을 바꾸지 말라는 지시라, 색은 그대로 두고 면을 채워 글자를 흰색으로 돌린다(7.69:1). */
-.site-nav__switch { padding: 0 24px 16px; }
+/* ★2026-08-27 - 메뉴 목록 「아래」로 내렸다(회장 지시). 필핀도 같은 자리다. */
+.site-nav__switch { padding: 14px 24px 6px; }
 .dk .site-nav__switch .site-camp-switch {
   display: flex; width: 100%; justify-content: center; height: 38px;
   background: var(--dk-accent-phil); border-color: var(--dk-accent-phil); color: #fff;
