@@ -588,6 +588,9 @@ body.dk {
 .dk-bg-video-content .lead br,
   .dk-bg-video-content .dk-hero-lead-plain br { display: none; }
 }
+/* 홈 리드만 인용구를 통째로 묶는다 - br 이 사라지면 「"실패 없는 / 입시 루틴"」 으로
+   따옴표가 갈라진다. 다른 5페이지 리드는 서술문이라 어디서 잘려도 무방하다. */
+.dk-bg-video-content .lead .dk-hero-quote { white-space: nowrap; }
 /* ── 고아 행 방지 (web agent CLAUDE.md「한글 타이포·줄바꿈 기준」) ──
    마지막 행에 한두 글자만 남는 것을 브라우저가 알아서 피하게 한다.
    제목·짧은 캡션 = balance(행 길이 균등), 본문 = pretty(고아 행 방지). */
